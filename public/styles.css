@@ -13,11 +13,38 @@
 
 /* Logotipo oficial dentro del elemento visual principal */
 .machine-center img{
-  width:76%;
+  width:82%;
   height:auto;
   display:block;
   object-fit:contain;
   filter:drop-shadow(0 10px 24px rgba(0,143,75,.16));
+}
+
+.hero-machine .ring-one{animation:maqassist-ring-spin 22s linear infinite}
+.hero-machine .ring-two{animation:maqassist-ring-spin-reverse 16s linear infinite}
+.hero-machine .machine-center{
+  inset:172px 92px 142px 122px;
+  border:1px solid rgba(0,173,91,.2);
+  border-radius:26px;
+  background:rgba(255,255,255,.82);
+  box-shadow:0 20px 55px rgba(22,32,27,.12);
+  backdrop-filter:blur(8px);
+  animation:maqassist-logo-float 4s ease-in-out infinite;
+}
+
+@keyframes maqassist-logo-float{
+  0%,100%{transform:translate3d(0,0,0) rotate(-1deg)}
+  50%{transform:translate3d(0,-14px,0) rotate(1deg)}
+}
+@keyframes maqassist-ring-spin{to{transform:rotate(360deg)}}
+@keyframes maqassist-ring-spin-reverse{to{transform:rotate(-360deg)}}
+
+@media(max-width:900px){
+  .hero-machine .machine-center{inset:172px 92px 142px 122px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-machine .ring-one,.hero-machine .ring-two,.hero-machine .machine-center{animation:none}
 }
 @media(max-width:620px){.machine-store-grid,.future-categories{grid-template-columns:1fr}.store-intro{padding:30px}.general-plans article{min-height:auto}.hero{background:linear-gradient(160deg,#fff 0%,#edf9f2 100%)}}
 main{display:flex;flex-direction:column}.hero{order:1}.trust-strip{order:2}.marketplace{order:3}.plans{order:4}.machine-store{order:5}.services{order:6}.sectors{order:7}.about{order:8}.cta-section{order:9}.parts-section{box-shadow:0 14px 40px rgba(30,70,47,.06)}
