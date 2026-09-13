@@ -1,0 +1,12 @@
+{
+  "name": "maqassist-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web corporativo de MaqAssist",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
