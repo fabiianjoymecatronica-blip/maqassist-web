@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MaqAssist ofrece mantenimiento, reparación, repuestos y acompañamiento técnico continuo para maquinaria industrial en toda Colombia.">
+  <meta name="theme-color" content="#07110d">
+  <title>MaqAssist | Acompañamiento técnico continuo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header" id="inicio">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="MaqAssist, inicio">
+        <img src="/assets/maqassist-logo-v2.png" alt="MaqAssist">
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="#repuestos">Store Repuestos</a>
+        <a href="#planes">Store Planes</a>
+        <a href="#maquinas">Store Máquinas</a>
+        <a href="#sectores">Sectores</a>
+        <a href="#nosotros">Nosotros</a>
+        <button class="cart-button" id="open-cart" type="button" aria-label="Abrir carrito">Carrito <span id="cart-count">0</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="container hero-content">
+        <div class="eyebrow"><span></span> Servicio técnico industrial en Colombia</div>
+        <h1>El repuesto correcto.<br><em>Tu producción en marcha.</em></h1>
+        <p>Encuentra repuestos organizados por máquina, confirma compatibilidad y recibe acompañamiento técnico especializado en todo Colombia.</p>
+        <form class="hero-search" id="hero-search-form">
+          <label class="sr-only" for="hero-search-input">Buscar repuesto o máquina</label>
+          <span>⌕</span><input id="hero-search-input" type="search" placeholder="Ej: termocupla, resistencia, FR-900…" autocomplete="off"><button type="submit">Buscar repuesto</button>
+        </form>
+        <div class="hero-actions">
+          <a class="button primary" href="#repuestos">Buscar repuestos <span>↓</span></a>
+          <a class="button secondary" href="#planes">Ver planes técnicos</a>
+        </div>
+        <div class="hero-proof">
+          <div><strong>Todo Colombia</strong><span>Cobertura técnica</span></div>
+          <div><strong>Multimarca</strong><span>Diagnóstico especializado</span></div>
+          <div><strong>Continuo</strong><span>Soporte y seguimiento</span></div>
+        </div>
+      </div>
+      <div class="hero-machine" aria-hidden="true">
+        <div class="machine-ring ring-one"></div>
+        <div class="machine-ring ring-two"></div>
+        <div class="machine-center">MA</div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Especialidades">
+      <div class="container marquee">
+        <span>Empacadoras</span><i></i><span>Selladoras</span><i></i><span>Molinos</span><i></i><span>Cutter</span><i></i><span>Tumbler</span><i></i><span>Compresores</span>
+      </div>
+    </section>
+
+    <section class="section marketplace" id="repuestos">
+      <div class="container">
+        <nav class="shop-breadcrumb" aria-label="Ruta de compra"><span>Inicio</span><b>›</b><strong>Store Repuestos</strong><b>›</b><span>Selladoras de banda</span></nav>
+        <div class="section-head">
+          <div><span class="kicker">Store Repuestos</span><h2>Encuentra tu máquina.<br>Ubica el repuesto correcto.</h2></div>
+          <p>Nuestra tienda se organiza por máquina para que puedas consultar repuestos compatibles, mantenimiento y soporte sin confusiones.</p>
+        </div>
+        <div class="shopping-steps"><div><b>1</b><span><strong>Elige la máquina</strong>Selecciona la categoría</span></div><div><b>2</b><span><strong>Confirma el modelo</strong>Verifica compatibilidad</span></div><div><b>3</b><span><strong>Agrega repuestos</strong>Envía tu pedido</span></div></div>
+        <div class="parts-searchbar"><span>⌕</span><input id="parts-search-input" type="search" placeholder="Buscar dentro de repuestos para selladoras…"><button id="clear-parts-search" type="button">Limpiar</button></div>
+        <div class="market-shell">
+          <aside class="machine-sidebar">
+            <span class="selector-label">1. Selecciona la máquina</span>
+            <button class="category-button active" type="button"><span>▰</span> Selladoras de banda continua</button>
+            <div class="future-machine-list"><button type="button" disabled>Empacadoras <span>Próximamente</span></button><button type="button" disabled>Molinos <span>Próximamente</span></button><button type="button" disabled>Compresores <span>Próximamente</span></button></div>
+            <span class="selector-label model-label">2. Selecciona el modelo</span>
+            <div class="model-list" role="tablist" aria-label="Modelos de selladora">
+              <button class="model-button active" type="button" data-model="fr770" role="tab">FR-770 <span>→</span></button>
+              <button class="model-button" type="button" data-model="fr900" role="tab">FR-900 <span>→</span></button>
+              <button class="model-button" type="button" data-model="fr1000" role="tab">FR-1000 <span>→</span></button>
+              <button class="model-button" type="button" data-model="fr1300" role="tab">FR-1300 <span>→</span></button>
+            </div>
+            <div class="more-machines"><strong>¿Otra máquina?</strong><span>Pronto agregaremos más categorías.</span><a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20quiero%20consultar%20por%20otra%20m%C3%A1quina" target="_blank" rel="noopener">Consultar equipo</a></div>
+          </aside>
+          <div class="machine-detail">
+            <div class="machine-title-row">
+              <div><span class="availability-tag">SERVICIO DISPONIBLE</span><h3>Selladora de banda continua <span id="selected-model">FR-770</span></h3><p>Inspección, mantenimiento y respuesta técnica con informe profesional.</p></div>
+              <div class="machine-photo"><img src="/assets/selladora-banda-continua.png" alt="Selladora de banda continua FR"></div>
+            </div>
+            <div class="service-purchase-grid">
+              <article class="purchase-card">
+                <span class="purchase-type">Diagnóstico</span><h4>Visita técnica de inspección</h4><div class="price">$80.000 <small>COP</small></div>
+                <ul><li>Revisión general del equipo</li><li>Resultado de la visita</li><li>Informe y recomendaciones</li></ul>
+                <a class="button secondary-green service-quote" data-service="Visita técnica de inspección" data-price="$80.000" href="#">Solicitar visita</a>
+              </article>
+              <article class="purchase-card main-option">
+                <span class="purchase-type">Recomendado</span><h4>Mantenimiento preventivo</h4><div class="price" id="preventive-price">$350.000 <small>COP</small></div>
+                <div class="duration">⏱ Tiempo estimado: 4 horas</div>
+                <ul><li>Mantenimiento preventivo integral</li><li>Informe técnico del servicio</li><li>Resultado y recomendaciones</li><li>Se descuenta la inspección previa</li></ul>
+                <a class="button primary service-quote" id="preventive-quote" data-service="Mantenimiento preventivo" data-price="$350.000" href="#">Agendar mantenimiento <span>↗</span></a>
+              </article>
+              <article class="purchase-card">
+                <span class="purchase-type">Atención correctiva</span><h4>Servicio de urgencia</h4><div class="price" id="emergency-price">$150.000 <small>COP</small></div>
+                <ul><li>Atención de falla urgente</li><li>Evaluación técnica</li><li>Informe del servicio</li></ul>
+                <a class="button secondary-green service-quote" id="emergency-quote" data-service="Servicio de urgencia" data-price="$150.000" href="#">Solicitar urgencia</a>
+              </article>
+            </div>
+            <div class="discount-note"><strong>Beneficio por diagnóstico previo</strong><span>Si realizaste la inspección de $80.000 y apruebas el mantenimiento preventivo, descontamos ese valor del mantenimiento.</span></div>
+            <div class="parts-section">
+              <div class="parts-heading"><div><span class="kicker">3. Elige los repuestos</span><h3>Repuestos compatibles con <span id="parts-model-name">FR-770</span></h3><p>Filtra por sistema, revisa la descripción y agrega los productos al carrito.</p></div><span class="parts-count"><b id="visible-parts-count">4</b> disponibles</span></div>
+              <div class="parts-filters" aria-label="Filtrar repuestos"><button class="active" type="button" data-filter="all">Todos</button><button type="button" data-filter="sellado">Sellado</button><button type="button" data-filter="calentamiento">Calentamiento</button><button type="button" data-filter="temperatura">Temperatura</button><button type="button" data-filter="transmision">Transmisión</button></div>
+              <div class="parts-grid">
+                <article class="part-card" data-category="sellado" data-search="cintas teflon sellado banda"><div class="part-visual">▱</div><span>Sellado</span><h4>Cintas de teflón</h4><p>Bandas y cintas resistentes a temperatura para el sistema de sellado.</p><small class="compatibility">✓ Compatible por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Cintas de teflón" data-store="Repuestos">Agregar al carrito</button></article>
+                <article class="part-card" data-category="calentamiento" data-search="resistencias calentamiento calor sellado"><div class="part-visual">≈</div><span>Calentamiento</span><h4>Resistencias</h4><p>Elementos calefactores para mordazas y bloques de sellado.</p><small class="compatibility">✓ Compatible por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Resistencias" data-store="Repuestos">Agregar al carrito</button></article>
+                <article class="part-card" data-category="temperatura" data-search="termocuplas termopar sensor temperatura"><div class="part-visual">⌁</div><span>Temperatura</span><h4>Termocuplas</h4><p>Sensores para medición y control estable de temperatura.</p><small class="compatibility">✓ Compatible por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Termocuplas" data-store="Repuestos">Agregar al carrito</button></article>
+                <article class="part-card" data-category="transmision" data-search="bandas rodillos transmision arrastre transporte"><div class="part-visual">◌</div><span>Transmisión</span><h4>Bandas y rodillos</h4><p>Componentes de arrastre y transporte para la banda continua.</p><small class="compatibility">✓ Compatible por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Bandas y rodillos" data-store="Repuestos">Agregar al carrito</button></article>
+              </div>
+              <div class="no-parts" id="no-parts"><strong>No encontramos ese repuesto</strong><span>Podemos ayudarte a identificarlo por fotografía o placa del equipo.</span></div>
+              <div class="parts-request"><div><strong>¿No encuentras el repuesto?</strong><span>Envíanos una fotografía y la placa del equipo para ayudarte a identificarlo.</span></div><a class="button secondary-green" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20identificar%20un%20repuesto%20para%20una%20selladora%20de%20banda" target="_blank" rel="noopener">Identificar repuesto</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section machine-store" id="maquinas">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="kicker">Store Máquinas</span><h2>Equipos seleccionados<br>para tu producción</h2></div>
+          <p>Próximamente podrás comparar y comprar maquinaria industrial con orientación técnica antes y después de la venta.</p>
+        </div>
+        <div class="machine-store-grid">
+          <article class="store-intro"><span>PRÓXIMAMENTE</span><h3>Venta de maquinaria con respaldo técnico</h3><p>Publicaremos selladoras, empacadoras, codificadores y equipos auxiliares con especificaciones, precios y disponibilidad.</p><a class="button primary" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20quiero%20recibir%20asesor%C3%ADa%20para%20comprar%20maquinaria" target="_blank" rel="noopener">Solicitar una máquina <span>↗</span></a></article>
+          <div class="future-categories"><div><strong>Selladoras</strong><span>Banda continua y soluciones de sellado</span></div><div><strong>Empacadoras</strong><span>Equipos para empaque y dosificación</span></div><div><strong>Codificación</strong><span>Tinta, presión e inkjet</span></div><div><strong>Equipos auxiliares</strong><span>Compresores y accesorios industriales</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="kicker">Lo que hacemos</span><h2>Soluciones para cada etapa<br>de tu operación</h2></div>
+          <p>Desde una falla urgente hasta un plan preventivo completo, acompañamos tus equipos durante todo su ciclo de vida.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card featured">
+            <span class="number">01</span>
+            <div class="service-icon">⚙</div>
+            <h3>Mantenimiento y reparación</h3>
+            <p>Diagnóstico, mantenimiento preventivo y correctivo para recuperar la confiabilidad de tus equipos.</p>
+            <ul><li>Atención de fallas</li><li>Planes preventivos</li><li>Puesta a punto</li></ul>
+          </article>
+          <article class="service-card">
+            <span class="number">02</span>
+            <div class="service-icon">◇</div>
+            <h3>Repuestos industriales</h3>
+            <p>Suministro y asesoría para seleccionar componentes eléctricos, mecánicos, neumáticos y de control.</p>
+            <a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20busco%20un%20repuesto%20para%20mi%20maquinaria" target="_blank" rel="noopener">Cotizar repuesto →</a>
+          </article>
+          <article class="service-card">
+            <span class="number">03</span>
+            <div class="service-icon">▰</div>
+            <h3>Venta de maquinaria</h3>
+            <p>Equipos y soluciones seleccionadas según el producto, capacidad y necesidades reales de tu proceso.</p>
+            <a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20asesor%C3%ADa%20para%20comprar%20maquinaria" target="_blank" rel="noopener">Recibir asesoría →</a>
+          </article>
+          <article class="service-card">
+            <span class="number">04</span>
+            <div class="service-icon">⌁</div>
+            <h3>Automatización y mejora</h3>
+            <p>Modernización de controles, sensores, variadores y sistemas para mejorar desempeño y seguridad.</p>
+            <a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20quiero%20mejorar%20o%20automatizar%20un%20equipo" target="_blank" rel="noopener">Evaluar proyecto →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sectors" id="sectores">
+      <div class="container sectors-grid">
+        <div>
+          <span class="kicker">Experiencia multindustria</span>
+          <h2>Entendemos procesos donde cada minuto cuenta</h2>
+          <p>Trabajamos alrededor de tus estándares de producción, inocuidad, seguridad y continuidad operativa.</p>
+          <a class="text-link" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20quiero%20consultar%20si%20atienden%20mi%20industria" target="_blank" rel="noopener">Consultar mi aplicación <span>↗</span></a>
+        </div>
+        <div class="sector-list">
+          <article><b>01</b><div><h3>Alimentos y bebidas</h3><p>Empaque, dosificación, mezcla, molienda, sellado y codificación.</p></div></article>
+          <article><b>02</b><div><h3>Industria farmacéutica</h3><p>Soporte técnico con enfoque en precisión, limpieza y documentación.</p></div></article>
+          <article><b>03</b><div><h3>Procesamiento cárnico</h3><p>Cutter, tumbler, molinos, empacadoras, selladoras y equipos auxiliares.</p></div></article>
+          <article><b>04</b><div><h3>Manufactura y empaque</h3><p>Compresores, transportadores, automatización y equipos de final de línea.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section plans" id="planes">
+      <div class="container">
+        <div class="section-head light">
+          <div><span class="kicker">Store Planes</span><h2>Acompañamiento técnico<br>a la medida de tu operación</h2></div>
+          <p>Elige entre cobertura general para tu operación o un plan diseñado alrededor de una máquina específica.</p>
+        </div>
+        <div class="plans-subtitle"><span>01</span><div><h3>Planes generales</h3><p>Cobertura transversal para mantenimiento y soporte de tu planta.</p></div></div>
+        <div class="general-plans">
+          <article><span>Diagnóstico</span><h3>Plan de evaluación</h3><p>Levantamiento inicial de equipos, necesidades y prioridades de mantenimiento.</p><ul><li>Inventario de equipos</li><li>Evaluación de condición</li><li>Plan de acción recomendado</li></ul><a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20quiero%20cotizar%20un%20plan%20general%20de%20evaluaci%C3%B3n" target="_blank" rel="noopener">Solicitar cotización →</a></article>
+          <article><span>Continuidad</span><h3>Plan general de planta</h3><p>Visitas programadas y seguimiento técnico para varios tipos de maquinaria.</p><ul><li>Cronograma personalizado</li><li>Informes por servicio</li><li>Soporte y recomendaciones</li></ul><a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20quiero%20cotizar%20un%20plan%20general%20de%20planta" target="_blank" rel="noopener">Solicitar cotización →</a></article>
+          <article><span>Personalizado</span><h3>Plan empresarial</h3><p>Cobertura adaptada a plantas con múltiples líneas, sedes o equipos críticos.</p><ul><li>Alcance por criticidad</li><li>Atención prioritaria</li><li>Gestión técnica continua</li></ul><a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20quiero%20dise%C3%B1ar%20un%20plan%20empresarial" target="_blank" rel="noopener">Diseñar mi plan →</a></article>
+        </div>
+        <div class="plans-subtitle machine-plan-title"><span>02</span><div><h3>Planes por máquina</h3><p>Configura la cobertura según el número de equipos y duración.</p></div></div>
+        <div class="plan-configurator">
+          <div class="config-panel">
+            <span class="plan-label">Plan personalizado</span><h3>Configura MaqAssist Care</h3>
+            <label for="machine-count">Cantidad de máquinas</label>
+            <div class="quantity-control"><button id="qty-minus" type="button" aria-label="Quitar una máquina">−</button><input id="machine-count" type="number" min="1" max="50" value="1"><button id="qty-plus" type="button" aria-label="Agregar una máquina">+</button></div>
+            <label>Duración del plan</label>
+            <div class="period-options" role="radiogroup">
+              <button type="button" data-months="3" class="active">3 meses</button>
+              <button type="button" data-months="6">6 meses</button>
+              <button type="button" data-months="12">12 meses</button>
+            </div>
+            <p class="config-help">La cotización se ajusta al número de equipos, ubicación y condiciones de operación.</p>
+          </div>
+          <div class="coverage-panel">
+            <div class="coverage-top"><div><span class="plan-label">Cobertura calculada</span><h3 id="plan-title">Plan Care · 3 meses</h3></div><span class="machines-badge"><b id="machine-badge">1</b><span id="machine-word"> máquina</span></span></div>
+            <div class="coverage-stats">
+              <div><strong id="preventive-total">1</strong><span>Mantenimiento preventivo</span></div>
+              <div><strong id="inspection-total">4</strong><span>Inspecciones programadas</span></div>
+              <div><strong id="emergency-included">0</strong><span>Urgencias incluidas</span></div>
+            </div>
+            <ul class="coverage-list">
+              <li><span>✓</span><div><strong>Informe técnico por servicio</strong><small>Resultados y recomendaciones para cada equipo.</small></div></li>
+              <li><span>✓</span><div><strong id="emergency-condition">Urgencias a $60.000 cada una</strong><small id="response-level">Nivel de respuesta estándar.</small></div></li>
+              <li><span>✓</span><div><strong>Programación personalizada</strong><small>Calendario coordinado con tu operación.</small></div></li>
+            </ul>
+            <a class="button primary" id="plan-quote" href="#" target="_blank" rel="noopener">Solicitar cotización del plan <span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="nosotros">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <div class="big-mark">M</div>
+          <div class="availability"><span></span><div><strong>Disponibles para ayudarte</strong><small>Cobertura en todo Colombia</small></div></div>
+        </div>
+        <div>
+          <span class="kicker">Acerca de MaqAssist</span>
+          <h2>Más que un servicio técnico, un aliado para tu planta</h2>
+          <p>Combinamos conocimiento de campo, respuesta clara y seguimiento permanente para que las decisiones técnicas sean más sencillas y tus equipos trabajen mejor.</p>
+          <div class="values"><div><strong>Diagnóstico honesto</strong><span>Recomendaciones con criterio técnico.</span></div><div><strong>Soluciones prácticas</strong><span>Intervenciones pensadas para producción.</span></div><div><strong>Seguimiento real</strong><span>Acompañamiento después del servicio.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container cta-box">
+        <div><span class="kicker">Hablemos de tu equipo</span><h2>¿Una falla está frenando<br>tu producción?</h2><p>Cuéntanos qué sucede y recibe orientación técnica para dar el siguiente paso.</p></div>
+        <a class="button white" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20tengo%20una%20falla%20en%20un%20equipo" target="_blank" rel="noopener">Escribir por WhatsApp <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand"><img src="/assets/maqassist-logo-v2.png" alt="MaqAssist"><p>Acompañamiento técnico continuo para la industria colombiana.</p></div>
+      <div><h3>Servicios</h3><a href="#servicios">Mantenimiento</a><a href="#servicios">Repuestos</a><a href="#servicios">Maquinaria</a><a href="#planes">Planes Care</a></div>
+      <div><h3>Contacto</h3><a href="tel:+573189324488">+57 318 932 4488</a><a href="mailto:maqassist.ceo@gmail.com">maqassist.ceo@gmail.com</a><span>Atención en toda Colombia</span></div>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> MaqAssist. Todos los derechos reservados.</span><span>Acompañamiento técnico continuo</span></div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20asesor%C3%ADa%20t%C3%A9cnica" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">◉</a>
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="cart-head"><div><span>STORE MAQASSIST</span><h2>Tu carrito</h2></div><button id="close-cart" type="button" aria-label="Cerrar carrito">×</button></div>
+    <div class="cart-body" id="cart-items"><div class="empty-cart"><strong>Tu carrito está vacío</strong><span>Agrega repuestos para preparar tu pedido.</span></div></div>
+    <div class="cart-footer"><div class="cart-note"><span>Resumen estimado</span><strong>Precios pendientes de confirmación</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Continuar por WhatsApp <span>↗</span></button><small>Confirmaremos compatibilidad, disponibilidad y valor antes del pago.</small></div>
+  </aside>
+  <script src="/script.js"></script>
+</body>
+</html>
