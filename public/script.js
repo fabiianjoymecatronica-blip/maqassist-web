@@ -52,7 +52,20 @@ let currentModel = null;
 
 function selectModel(modelId) {
   currentModel = modelId === 'all' ? null : currentMachine.models.find(model => model.id === modelId) || null;
-  document.querySelectorAll('.model-button').forEach(button => button.classList.toggle('active', button.dataset.model === (currentModel?.id || 'all')));
+  document.querySelectorAll('.model-button').forEach(button => {
+    const selected = button.dataset.model === (currentModel?.id || 'all');
+    button.classList.toggle('active', selected);
+    button.setAttribute('aria-pressed', String(selected));
+  });
+  const preview = document.getElementById('selection-preview');
+  preview.hidden = !currentModel;
+  document.querySelector('.machine-sidebar').classList.toggle('has-selection', Boolean(currentModel));
+  if (currentModel) {
+    const photo = document.getElementById('selection-photo');
+    photo.src = currentModel.image || currentMachine.image;
+    photo.alt = currentMachine.label + ' ' + currentModel.name + ' · imagen de referencia';
+    document.getElementById('selection-name').textContent = currentMachine.label + ' · ' + currentModel.name;
+  }
   document.getElementById('machine-image').src = currentModel?.image || currentMachine.image;
   document.getElementById('machine-image').alt = currentModel ? `${currentMachine.label} ${currentModel.name} · imagen de referencia` : currentMachine.imageAlt;
   const selection = currentModel ? currentModel.name : 'Todas las referencias';
