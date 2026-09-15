@@ -84,62 +84,41 @@
 
     <section class="section marketplace" id="repuestos">
       <div class="container">
-        <nav class="shop-breadcrumb" aria-label="Ruta de compra"><span>Inicio</span><b>›</b><strong>Store Repuestos</strong><b>›</b><span>Selladoras de banda</span></nav>
+        <nav class="shop-breadcrumb" aria-label="Ruta de compra"><span>Inicio</span><b>›</b><strong>Store Repuestos</strong><b>›</b><span id="shop-machine-breadcrumb">Selladoras de banda</span></nav>
         <div class="section-head">
           <div><span class="kicker">Store Repuestos</span><h2>Encuentra tu máquina.<br>Ubica el repuesto correcto.</h2></div>
-          <p>Nuestra tienda se organiza por máquina para que puedas consultar repuestos compatibles, mantenimiento y soporte sin confusiones.</p>
+          <p>Nuestra tienda se organiza por familia y referencia de máquina para encontrar únicamente los repuestos compatibles, sin mezclar servicios ni planes.</p>
         </div>
         <div class="shopping-steps"><div><b>1</b><span><strong>Elige la máquina</strong>Selecciona la categoría</span></div><div><b>2</b><span><strong>Confirma el modelo</strong>Verifica compatibilidad</span></div><div><b>3</b><span><strong>Agrega repuestos</strong>Envía tu pedido</span></div></div>
         <div class="parts-searchbar"><span>⌕</span><input id="parts-search-input" type="search" placeholder="Buscar dentro de repuestos para selladoras…"><button id="clear-parts-search" type="button">Limpiar</button></div>
         <div class="market-shell">
           <aside class="machine-sidebar">
-            <span class="selector-label">1. Selecciona la máquina</span>
-            <button class="category-button active" type="button"><span>▰</span> Selladoras de banda continua</button>
-            <div class="future-machine-list"><button type="button" disabled>Empacadoras <span>Próximamente</span></button><button type="button" disabled>Molinos <span>Próximamente</span></button><button type="button" disabled>Compresores <span>Próximamente</span></button></div>
-            <span class="selector-label model-label">2. Selecciona el modelo</span>
-            <div class="model-list" role="tablist" aria-label="Modelos de selladora">
-              <button class="model-button active" type="button" data-model="fr770" role="tab">FR-770 <span>→</span></button>
-              <button class="model-button" type="button" data-model="fr900" role="tab">FR-900 <span>→</span></button>
-              <button class="model-button" type="button" data-model="fr1000" role="tab">FR-1000 <span>→</span></button>
-              <button class="model-button" type="button" data-model="fr1300" role="tab">FR-1300 <span>→</span></button>
+            <span class="selector-label">1. Selecciona la familia</span>
+            <div class="category-list">
+              <button class="category-button active" type="button" data-machine="selladora" aria-expanded="true"><span>▰</span><strong>Selladoras</strong><b>⌄</b></button>
+              <div class="model-list open" id="model-list" role="list" aria-label="Referencias de selladoras"></div>
+              <button class="category-button" type="button" data-machine="empacadora290" aria-expanded="false"><span>▥</span><strong>Empacadoras verticales 290</strong><b>⌄</b></button>
             </div>
+            <div class="future-machine-list"><button type="button" disabled>Molinos <span>Próximamente</span></button><button type="button" disabled>Compresores <span>Próximamente</span></button></div>
             <div class="more-machines"><strong>¿Otra máquina?</strong><span>Pronto agregaremos más categorías.</span><a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20quiero%20consultar%20por%20otra%20m%C3%A1quina" target="_blank" rel="noopener">Consultar equipo</a></div>
           </aside>
           <div class="machine-detail">
             <div class="machine-title-row">
-              <div><span class="availability-tag">SERVICIO DISPONIBLE</span><h3>Selladora de banda continua <span id="selected-model">FR-770</span></h3><p>Inspección, mantenimiento y respuesta técnica con informe profesional.</p></div>
-              <div class="machine-photo"><img src="/assets/selladora-banda-continua.png" alt="Selladora de banda continua FR"></div>
+              <div><span class="availability-tag" id="machine-status">CATÁLOGO DE REPUESTOS</span><h3><span id="machine-type">Selladoras</span> <span id="selected-model">Todas las referencias</span></h3><p id="machine-description">Explora todos los repuestos o selecciona una referencia para filtrar compatibilidad.</p></div>
+              <div class="machine-photo"><img id="machine-image" src="/assets/selladora-banda-continua.png" alt="Selladora de banda continua FR"></div>
             </div>
-            <div class="service-purchase-grid">
-              <article class="purchase-card">
-                <span class="purchase-type">Diagnóstico</span><h4>Visita técnica de inspección</h4><div class="price">$80.000 <small>COP</small></div>
-                <ul><li>Revisión general del equipo</li><li>Resultado de la visita</li><li>Informe y recomendaciones</li></ul>
-                <a class="button secondary-green service-quote" data-service="Visita técnica de inspección" data-price="$80.000" href="#">Solicitar visita</a>
-              </article>
-              <article class="purchase-card main-option">
-                <span class="purchase-type">Recomendado</span><h4>Mantenimiento preventivo</h4><div class="price" id="preventive-price">$350.000 <small>COP</small></div>
-                <div class="duration">⏱ Tiempo estimado: 4 horas</div>
-                <ul><li>Mantenimiento preventivo integral</li><li>Informe técnico del servicio</li><li>Resultado y recomendaciones</li><li>Se descuenta la inspección previa</li></ul>
-                <a class="button primary service-quote" id="preventive-quote" data-service="Mantenimiento preventivo" data-price="$350.000" href="#">Agendar mantenimiento <span>↗</span></a>
-              </article>
-              <article class="purchase-card">
-                <span class="purchase-type">Atención correctiva</span><h4>Servicio de urgencia</h4><div class="price" id="emergency-price">$150.000 <small>COP</small></div>
-                <ul><li>Atención de falla urgente</li><li>Evaluación técnica</li><li>Informe del servicio</li></ul>
-                <a class="button secondary-green service-quote" id="emergency-quote" data-service="Servicio de urgencia" data-price="$150.000" href="#">Solicitar urgencia</a>
-              </article>
-            </div>
-            <div class="discount-note"><strong>Beneficio por diagnóstico previo</strong><span>Si realizaste la inspección de $80.000 y apruebas el mantenimiento preventivo, descontamos ese valor del mantenimiento.</span></div>
+            <div class="machine-pending-panel" id="machine-pending-panel" hidden><strong>Repuestos en preparación</strong><span>Estamos cargando los repuestos de esta familia. Puedes enviarnos una fotografía o la placa para identificar el componente.</span><a id="machine-pending-link" href="#">Consultar repuesto por WhatsApp →</a></div>
             <div class="parts-section">
-              <div class="parts-heading"><div><span class="kicker">3. Elige los repuestos</span><h3>Repuestos compatibles con <span id="parts-model-name">FR-770</span></h3><p>Filtra por sistema, revisa la descripción y agrega los productos al carrito.</p></div><span class="parts-count"><b id="visible-parts-count">4</b> disponibles</span></div>
+              <div class="parts-heading"><div><span class="kicker">2. Elige los repuestos</span><h3>Repuestos para <span id="parts-model-name">Selladoras · todas las referencias</span></h3><p>Filtra por sistema, revisa la descripción y agrega los productos al carrito.</p></div><span class="parts-count"><b id="visible-parts-count">4</b> disponibles</span></div>
               <div class="parts-filters" aria-label="Filtrar repuestos"><button class="active" type="button" data-filter="all">Todos</button><button type="button" data-filter="sellado">Sellado</button><button type="button" data-filter="calentamiento">Calentamiento</button><button type="button" data-filter="temperatura">Temperatura</button><button type="button" data-filter="transmision">Transmisión</button></div>
               <div class="parts-grid">
-                <article class="part-card" data-category="sellado" data-search="cintas teflon sellado banda"><div class="part-visual">▱</div><span>Sellado</span><h4>Cintas de teflón</h4><p>Bandas y cintas resistentes a temperatura para el sistema de sellado.</p><small class="compatibility">✓ Compatible por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Cintas de teflón" data-store="Repuestos">Agregar al carrito</button></article>
-                <article class="part-card" data-category="calentamiento" data-search="resistencias calentamiento calor sellado"><div class="part-visual">≈</div><span>Calentamiento</span><h4>Resistencias</h4><p>Elementos calefactores para mordazas y bloques de sellado.</p><small class="compatibility">✓ Compatible por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Resistencias" data-store="Repuestos">Agregar al carrito</button></article>
-                <article class="part-card" data-category="temperatura" data-search="termocuplas termopar sensor temperatura"><div class="part-visual">⌁</div><span>Temperatura</span><h4>Termocuplas</h4><p>Sensores para medición y control estable de temperatura.</p><small class="compatibility">✓ Compatible por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Termocuplas" data-store="Repuestos">Agregar al carrito</button></article>
-                <article class="part-card" data-category="transmision" data-search="bandas rodillos transmision arrastre transporte"><div class="part-visual">◌</div><span>Transmisión</span><h4>Bandas y rodillos</h4><p>Componentes de arrastre y transporte para la banda continua.</p><small class="compatibility">✓ Compatible por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Bandas y rodillos" data-store="Repuestos">Agregar al carrito</button></article>
+                <article class="part-card" data-machine="selladora" data-models="fr770 fr900 fr1000 fr1300" data-category="sellado" data-search="cintas teflon sellado banda"><div class="part-visual">▱</div><span>Sellado</span><h4>Cintas de teflón</h4><p>Bandas y cintas resistentes a temperatura para el sistema de sellado.</p><small class="compatibility">✓ Referencia exacta por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Cintas de teflón" data-store="Repuestos">Agregar al carrito</button></article>
+                <article class="part-card" data-machine="selladora" data-models="fr770 fr900 fr1000 fr1300" data-category="calentamiento" data-search="resistencias calentamiento calor sellado"><div class="part-visual">≈</div><span>Calentamiento</span><h4>Resistencias</h4><p>Elementos calefactores para mordazas y bloques de sellado.</p><small class="compatibility">✓ Referencia exacta por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Resistencias" data-store="Repuestos">Agregar al carrito</button></article>
+                <article class="part-card" data-machine="selladora" data-models="fr770 fr900 fr1000 fr1300" data-category="temperatura" data-search="termocuplas termopar sensor temperatura"><div class="part-visual">⌁</div><span>Temperatura</span><h4>Termocuplas</h4><p>Sensores para medición y control estable de temperatura.</p><small class="compatibility">✓ Referencia exacta por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Termocuplas" data-store="Repuestos">Agregar al carrito</button></article>
+                <article class="part-card" data-machine="selladora" data-models="fr770 fr900 fr1000 fr1300" data-category="transmision" data-search="bandas rodillos transmision arrastre transporte"><div class="part-visual">◌</div><span>Transmisión</span><h4>Bandas y rodillos</h4><p>Componentes de arrastre y transporte para la banda continua.</p><small class="compatibility">✓ Referencia exacta por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Bandas y rodillos" data-store="Repuestos">Agregar al carrito</button></article>
               </div>
               <div class="no-parts" id="no-parts"><strong>No encontramos ese repuesto</strong><span>Podemos ayudarte a identificarlo por fotografía o placa del equipo.</span></div>
-              <div class="parts-request"><div><strong>¿No encuentras el repuesto?</strong><span>Envíanos una fotografía y la placa del equipo para ayudarte a identificarlo.</span></div><a class="button secondary-green" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20identificar%20un%20repuesto%20para%20una%20selladora%20de%20banda" target="_blank" rel="noopener">Identificar repuesto</a></div>
+              <div class="parts-request"><div><strong>¿No encuentras el repuesto?</strong><span>Envíanos una fotografía y la placa del equipo para ayudarte a identificarlo.</span></div><a class="button secondary-green" id="identify-part-link" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20identificar%20un%20repuesto%20para%20una%20selladora%20de%20banda" target="_blank" rel="noopener">Identificar repuesto</a></div>
             </div>
           </div>
         </div>
