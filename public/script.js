@@ -22,10 +22,10 @@ const machineCatalog = {
     status: 'CATÁLOGO DE REPUESTOS',
     description: 'Explora todos los repuestos o selecciona una referencia para filtrar compatibilidad.',
     models: [
-      { id: 'fr770', name: 'FR-770' },
-      { id: 'fr900', name: 'FR-900' },
-      { id: 'fr1000', name: 'FR-1000' },
-      { id: 'fr1300', name: 'FR-1300' }
+      { id: 'fr770', name: 'FR-770', image: '/assets/selladora-fr770.png' },
+      { id: 'fr900', name: 'FR-900', image: '/assets/selladora-fr900.png' },
+      { id: 'fr1000', name: 'FR-1000', image: '/assets/selladora-fr1000.png' },
+      { id: 'fr1300', name: 'FR-1300', image: '/assets/selladora-fr1300.png' }
     ]
   },
   empacadora290: {
@@ -53,6 +53,8 @@ let currentModel = null;
 function selectModel(modelId) {
   currentModel = modelId === 'all' ? null : currentMachine.models.find(model => model.id === modelId) || null;
   document.querySelectorAll('.model-button').forEach(button => button.classList.toggle('active', button.dataset.model === (currentModel?.id || 'all')));
+  document.getElementById('machine-image').src = currentModel?.image || currentMachine.image;
+  document.getElementById('machine-image').alt = currentModel ? `Selladora ${currentModel.name} · imagen de referencia` : currentMachine.imageAlt;
   const selection = currentModel ? currentModel.name : 'Todas las referencias';
   document.getElementById('selected-model').textContent = selection;
   document.getElementById('parts-model-name').textContent = `${currentMachine.label} · ${currentModel ? currentModel.name : 'todas las referencias'}`;
@@ -90,6 +92,7 @@ function renderMachine(machineKey) {
 
 document.querySelectorAll('.category-button').forEach(button => button.addEventListener('click', () => {
   if (button.dataset.machine === currentMachineKey && document.getElementById('model-list').classList.contains('open')) {
+    selectModel('all');
     document.getElementById('model-list').classList.remove('open');
     button.setAttribute('aria-expanded', 'false');
     return;
@@ -248,3 +251,14 @@ document.querySelectorAll('.period-options button').forEach(button => button.add
 }));
 
 updatePlan();
+
+// Store Repuestos is an exclusive catalog view; other sections remain accessible from navigation.
+function updateStoreView() {
+  const inStore = ['#repuestos', '#catalogo-repuestos'].includes(location.hash);
+  document.body.classList.toggle('store-view', inStore);
+  document.querySelectorAll('main > section').forEach(section => {
+    section.hidden = inStore && section.id !== 'repuestos';
+  });
+}
+window.addEventListener('hashchange', updateStoreView);
+updateStoreView();
