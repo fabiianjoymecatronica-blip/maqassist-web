@@ -270,3 +270,39 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   document.querySelectorAll('.parts-filters button').forEach(button => button.classList.toggle('active', button.dataset.filter === activePartFilter));
   filterParts();
 }));
+
+(() => {
+  const root = document.querySelector('.parts-carousel');
+  if (!root) return;
+  const slides = [...root.querySelectorAll('.parts-slide')];
+  const dots = [...root.querySelectorAll('[data-carousel-index]')];
+  const pause = root.querySelector('[data-carousel-pause]');
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let index = 0, paused = motion.matches, timer;
+  function show(next) {
+    index = (next + slides.length) % slides.length;
+    slides.forEach((slide, i) => { slide.hidden = i !== index; });
+    dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === index)));
+  }
+  function stop() { clearInterval(timer); }
+  function start() {
+    stop();
+    if (!paused && !document.hidden && !root.matches(':hover') && !root.contains(document.activeElement))
+      timer = setInterval(() => show(index + 1), 6500);
+  }
+  function label() {
+    pause.textContent = paused ? 'Reanudar' : 'Pausar';
+    pause.setAttribute('aria-label', paused ? 'Reanudar cambio automático' : 'Pausar cambio automático');
+  }
+  root.querySelector('[data-carousel-prev]').addEventListener('click', () => { show(index - 1); start(); });
+  root.querySelector('[data-carousel-next]').addEventListener('click', () => { show(index + 1); start(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); start(); }));
+  pause.addEventListener('click', () => { paused = !paused; label(); start(); });
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', () => setTimeout(start, 0));
+  document.addEventListener('visibilitychange', start);
+  motion.addEventListener('change', () => { paused = motion.matches; label(); start(); });
+  label(); start();
+})();

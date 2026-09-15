@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=store-v4">
+  <link rel="stylesheet" href="/styles.css?v=store-v5">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -86,7 +86,13 @@
       <div class="container">
         <nav class="shop-breadcrumb" aria-label="Ruta de compra"><a href="#inicio">Inicio</a><b>›</b><strong>Store Repuestos</strong><b>›</b><span id="shop-machine-breadcrumb">Selladoras de banda</span></nav>
         <div class="store-banner-grid">
-          <div class="store-banner"><span class="kicker">STORE REPUESTOS · MAQASSIST</span><h2>La pieza que necesitas.<br><em>Tu máquina en marcha.</em></h2><p>Encuentra componentes por familia, referencia y sistema. Prepara tu pedido y confirma cada detalle con nosotros.</p><a class="button primary" href="#catalogo-repuestos">Explorar repuestos <span>↓</span></a><small class="banner-caption">Imagen ilustrativa de componentes</small></div>
+          <div class="store-banner parts-carousel" role="region" aria-roledescription="carrusel" aria-label="Novedades y repuestos">
+<article class="parts-slide" role="group" aria-roledescription="diapositiva" aria-label="1 de 5"><span class="kicker">DESCUENTOS Y PROMOCIONES</span><h2>Más repuestos.<br><em>Más posibilidades.</em></h2><p>Consulta las promociones vigentes y cotiza los componentes que necesita tu equipo.</p><a class="button primary" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20%C2%BFqu%C3%A9%20promociones%20y%20descuentos%20tienen%20vigentes%20en%20repuestos%3F" target="_blank" rel="noopener">Consultar promociones <span>↗</span></a></article>
+<article class="parts-slide" hidden role="group" aria-roledescription="diapositiva" aria-label="2 de 5"><span class="kicker">SELLADO Y CORTE</span><h2>Un sello preciso.<br><em>Un corte limpio.</em></h2><p>Mordazas, cuchillas, resortes y resistencias. Cotiza según las medidas y la referencia de tu máquina.</p><a class="button primary" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20cotizar%20mordazas%2C%20cuchillas%20o%20repuestos%20de%20sellado." target="_blank" rel="noopener">Cotizar sellado y corte <span>↗</span></a></article>
+<article class="parts-slide" hidden role="group" aria-roledescription="diapositiva" aria-label="3 de 5"><span class="kicker">MOTORES Y TRANSMISIÓN</span><h2>Dale movimiento<br><em>a tu producción.</em></h2><p>Motores, variadores y rodamientos. Te ayudamos a identificar el componente adecuado para tu equipo.</p><a class="button primary" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20cotizar%20motores%2C%20variadores%20o%20rodamientos." target="_blank" rel="noopener">Cotizar componentes <span>↗</span></a></article>
+<article class="parts-slide" hidden role="group" aria-roledescription="diapositiva" aria-label="4 de 5"><span class="kicker">SENSORES Y CONTROL</span><h2>Detecta. Controla.<br><em>Produce.</em></h2><p>Fotoceldas y controladores para tu proceso. Confirma voltaje, señales y referencia con nuestro equipo.</p><a class="button primary" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20cotizar%20fotoceldas%20o%20controladores." target="_blank" rel="noopener">Consultar referencia <span>↗</span></a></article>
+<article class="parts-slide" hidden role="group" aria-roledescription="diapositiva" aria-label="5 de 5"><span class="kicker">CONSUMIBLES DE CODIFICADO</span><h2>Cada lote,<br><em>bien identificado.</em></h2><p>Cintas y tintas de codificado. Consulta opciones según tu codificador y el material de impresión.</p><a class="button primary" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20cotizar%20cintas%20o%20tintas%20de%20codificado." target="_blank" rel="noopener">Cotizar consumibles <span>↗</span></a></article>
+<div class="carousel-controls"><button type="button" data-carousel-prev aria-label="Anterior">←</button><div class="carousel-dots"><button type="button" data-carousel-index="0" aria-label="Ver descuentos y promociones" aria-pressed="true"></button><button type="button" data-carousel-index="1" aria-label="Ver sellado y corte" aria-pressed="false"></button><button type="button" data-carousel-index="2" aria-label="Ver motores y transmisión" aria-pressed="false"></button><button type="button" data-carousel-index="3" aria-label="Ver sensores y control" aria-pressed="false"></button><button type="button" data-carousel-index="4" aria-label="Ver consumibles de codificado" aria-pressed="false"></button></div><button type="button" data-carousel-next aria-label="Siguiente">→</button><button type="button" data-carousel-pause aria-label="Pausar cambio automático">Pausar</button></div><small class="banner-caption">Imagen ilustrativa de componentes</small></div>
           <aside class="store-help"><span class="kicker">¿QUÉ REPUESTO BUSCAS?</span><h3>Una foto puede ser el primer paso.</h3><p>Envíanos la pieza o la placa de tu equipo y te ayudamos a identificarla.</p><a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20identificar%20un%20repuesto" target="_blank" rel="noopener">Identificar mi repuesto ↗</a></aside>
         </div>
         <div class="store-promos">
@@ -281,6 +287,6 @@
     <div class="cart-body" id="cart-items"><div class="empty-cart"><strong>Tu carrito está vacío</strong><span>Agrega repuestos para preparar tu pedido.</span></div></div>
     <div class="cart-footer"><div class="cart-note"><span>Resumen estimado</span><strong>Precios pendientes de confirmación</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Continuar por WhatsApp <span>↗</span></button><small>Confirmaremos compatibilidad, disponibilidad y valor antes del pago.</small></div>
   </aside>
-  <script src="/script.js?v=store-v4"></script>
+  <script src="/script.js?v=store-v5"></script>
 </body>
 </html>
