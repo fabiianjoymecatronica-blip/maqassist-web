@@ -13,44 +13,89 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-const machineData = {
-  fr770: { name: 'FR-770', preventive: '$350.000', emergency: '$150.000' },
-  fr900: { name: 'FR-900', preventive: '$350.000', emergency: '$150.000' },
-  fr1000: { name: 'FR-1000', preventive: '$350.000', emergency: '$150.000' },
-  fr1300: { name: 'FR-1300', preventive: '$380.000', emergency: '$180.000' }
+const machineCatalog = {
+  selladora: {
+    label: 'Selladoras',
+    breadcrumb: 'Selladoras de banda',
+    image: '/assets/selladora-banda-continua.png',
+    imageAlt: 'Selladora de banda continua',
+    status: 'CATÁLOGO DE REPUESTOS',
+    description: 'Explora todos los repuestos o selecciona una referencia para filtrar compatibilidad.',
+    models: [
+      { id: 'fr770', name: 'FR-770' },
+      { id: 'fr900', name: 'FR-900' },
+      { id: 'fr1000', name: 'FR-1000' },
+      { id: 'fr1300', name: 'FR-1300' }
+    ]
+  },
+  empacadora290: {
+    label: 'Empacadora vertical',
+    breadcrumb: 'Empacadoras verticales 290',
+    image: '/assets/empacadora-vertical-290.png',
+    imageAlt: 'Empacadora vertical serie 290 para stick y sachet',
+    status: 'CATÁLOGO DE REPUESTOS',
+    description: 'Selecciona una referencia Stick o Sachet para buscar sus repuestos.',
+    models: [
+      { id: 'stick-polvos-290', name: 'Stick de polvos 290' },
+      { id: 'stick-liquidos-290', name: 'Stick líquidos 290' },
+      { id: 'stick-granos-290', name: 'Stick granos / volumétrica 290' },
+      { id: 'sachet-polvos-290', name: 'Sachet polvos 290' },
+      { id: 'sachet-liquidos-290', name: 'Sachet líquidos 290' },
+      { id: 'sachet-granos-290', name: 'Sachet granos / volumétrica 290' }
+    ]
+  }
 };
 
-let currentModel = machineData.fr770;
+let currentMachineKey = 'selladora';
+let currentMachine = machineCatalog[currentMachineKey];
+let currentModel = null;
 
-document.querySelectorAll('.model-button').forEach(button => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.model-button').forEach(item => item.classList.remove('active'));
-    button.classList.add('active');
-    currentModel = machineData[button.dataset.model];
-    document.getElementById('selected-model').textContent = currentModel.name;
-    document.getElementById('parts-model-name').textContent = currentModel.name;
-    document.getElementById('preventive-price').innerHTML = `${currentModel.preventive} <small>COP</small>`;
-    document.getElementById('emergency-price').innerHTML = `${currentModel.emergency} <small>COP</small>`;
-    document.getElementById('preventive-quote').dataset.price = currentModel.preventive;
-    document.getElementById('emergency-quote').dataset.price = currentModel.emergency;
-  });
-});
+function selectModel(modelId) {
+  currentModel = modelId === 'all' ? null : currentMachine.models.find(model => model.id === modelId) || null;
+  document.querySelectorAll('.model-button').forEach(button => button.classList.toggle('active', button.dataset.model === (currentModel?.id || 'all')));
+  const selection = currentModel ? currentModel.name : 'Todas las referencias';
+  document.getElementById('selected-model').textContent = selection;
+  document.getElementById('parts-model-name').textContent = `${currentMachine.label} · ${selection.toLowerCase()}`;
+  const identifyText = `Hola MaqAssist, necesito identificar un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Voy a enviar fotografía y placa del equipo.`;
+  document.getElementById('identify-part-link').href = `https://wa.me/573189324488?text=${encodeURIComponent(identifyText)}`;
+  const pendingText = `Hola MaqAssist, busco un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Quiero confirmar compatibilidad, precio y disponibilidad.`;
+  document.getElementById('machine-pending-link').href = `https://wa.me/573189324488?text=${encodeURIComponent(pendingText)}`;
+  filterParts();
+}
 
-document.querySelectorAll('.service-quote').forEach(link => {
-  link.addEventListener('click', event => {
-    event.preventDefault();
-    const text = `Hola MaqAssist, quiero solicitar ${link.dataset.service} para una selladora ${currentModel.name}. Precio publicado: ${link.dataset.price} COP.`;
-    window.open(`https://wa.me/573189324488?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
-  });
-});
+function renderMachine(machineKey) {
+  currentMachineKey = machineKey;
+  currentMachine = machineCatalog[currentMachineKey];
+  document.querySelectorAll('.category-button').forEach(button => button.classList.toggle('active', button.dataset.machine === currentMachineKey));
+  const activeCategoryButton = document.querySelector(`.category-button[data-machine="${currentMachineKey}"]`);
+  activeCategoryButton.insertAdjacentElement('afterend', document.getElementById('model-list'));
+  document.getElementById('shop-machine-breadcrumb').textContent = currentMachine.breadcrumb;
+  document.getElementById('machine-status').textContent = currentMachine.status;
+  document.getElementById('machine-type').textContent = currentMachine.label;
+  document.getElementById('machine-description').textContent = currentMachine.description;
+  document.getElementById('machine-image').src = currentMachine.image;
+  document.getElementById('machine-image').alt = currentMachine.imageAlt;
+  document.getElementById('machine-pending-panel').hidden = currentMachineKey === 'selladora';
+  document.getElementById('parts-search-input').placeholder = `Buscar repuestos para ${currentMachine.breadcrumb.toLowerCase()}…`;
 
-document.querySelectorAll('.part-quote').forEach(link => {
-  link.addEventListener('click', event => {
-    event.preventDefault();
-    const text = `Hola MaqAssist, necesito ${link.dataset.part} para una selladora de banda continua ${currentModel.name}. Quiero confirmar referencia, compatibilidad, precio y disponibilidad.`;
-    window.open(`https://wa.me/573189324488?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
-  });
-});
+  document.getElementById('model-list').innerHTML = `
+    <button class="model-button active" type="button" data-model="all">Todos los repuestos <span>→</span></button>
+    ${currentMachine.models.map(model => `<button class="model-button" type="button" data-model="${model.id}">${model.name} <span>→</span></button>`).join('')}
+  `;
+  document.querySelectorAll('.model-button').forEach(button => button.addEventListener('click', () => selectModel(button.dataset.model)));
+  document.getElementById('model-list').classList.add('open');
+  document.querySelectorAll('.category-button').forEach(button => button.setAttribute('aria-expanded', String(button.dataset.machine === currentMachineKey)));
+  selectModel('all');
+}
+
+document.querySelectorAll('.category-button').forEach(button => button.addEventListener('click', () => {
+  if (button.dataset.machine === currentMachineKey && document.getElementById('model-list').classList.contains('open')) {
+    document.getElementById('model-list').classList.remove('open');
+    button.setAttribute('aria-expanded', 'false');
+    return;
+  }
+  renderMachine(button.dataset.machine);
+}));
 
 let cart = [];
 try { cart = JSON.parse(localStorage.getItem('maqassist-cart')) || []; } catch (error) { cart = []; }
@@ -92,7 +137,7 @@ function renderCart() {
 }
 
 document.querySelectorAll('.add-to-cart').forEach(button => button.addEventListener('click', () => {
-  const model = currentModel.name;
+  const model = currentModel ? currentModel.name : `${currentMachine.label} — referencia por confirmar`;
   const existing = cart.find(item => item.name === button.dataset.name && item.model === model);
   if (existing) existing.quantity += 1;
   else cart.push({ name: button.dataset.name, store: button.dataset.store, model, quantity: 1 });
@@ -135,9 +180,12 @@ function filterParts() {
   const query = normalizeSearch(partsSearchInput.value);
   let visible = 0;
   partCards.forEach(card => {
+    const matchesMachine = card.dataset.machine === currentMachineKey;
+    const compatibleModels = (card.dataset.models || '').split(' ');
+    const matchesModel = !currentModel || compatibleModels.includes(currentModel.id);
     const matchesCategory = activePartFilter === 'all' || card.dataset.category === activePartFilter;
     const matchesText = !query || normalizeSearch(card.dataset.search).includes(query) || normalizeSearch(card.innerText).includes(query);
-    const show = matchesCategory && matchesText;
+    const show = matchesMachine && matchesModel && matchesCategory && matchesText;
     card.hidden = !show;
     if (show) visible += 1;
   });
@@ -153,6 +201,8 @@ document.querySelectorAll('.parts-filters button').forEach(button => button.addE
   activePartFilter = button.dataset.filter;
   filterParts();
 }));
+
+renderMachine('selladora');
 
 document.getElementById('hero-search-form').addEventListener('submit', event => {
   event.preventDefault();
