@@ -55,7 +55,7 @@ function selectModel(modelId) {
   document.querySelectorAll('.model-button').forEach(button => button.classList.toggle('active', button.dataset.model === (currentModel?.id || 'all')));
   const selection = currentModel ? currentModel.name : 'Todas las referencias';
   document.getElementById('selected-model').textContent = selection;
-  document.getElementById('parts-model-name').textContent = `${currentMachine.label} · ${selection.toLowerCase()}`;
+  document.getElementById('parts-model-name').textContent = `${currentMachine.label} · ${currentModel ? currentModel.name : 'todas las referencias'}`;
   const identifyText = `Hola MaqAssist, necesito identificar un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Voy a enviar fotografía y placa del equipo.`;
   document.getElementById('identify-part-link').href = `https://wa.me/573189324488?text=${encodeURIComponent(identifyText)}`;
   const pendingText = `Hola MaqAssist, busco un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Quiero confirmar compatibilidad, precio y disponibilidad.`;
