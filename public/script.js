@@ -54,7 +54,7 @@ function selectModel(modelId) {
   currentModel = modelId === 'all' ? null : currentMachine.models.find(model => model.id === modelId) || null;
   document.querySelectorAll('.model-button').forEach(button => button.classList.toggle('active', button.dataset.model === (currentModel?.id || 'all')));
   document.getElementById('machine-image').src = currentModel?.image || currentMachine.image;
-  document.getElementById('machine-image').alt = currentModel ? `Selladora ${currentModel.name} · imagen de referencia` : currentMachine.imageAlt;
+  document.getElementById('machine-image').alt = currentModel ? `${currentMachine.label} ${currentModel.name} · imagen de referencia` : currentMachine.imageAlt;
   const selection = currentModel ? currentModel.name : 'Todas las referencias';
   document.getElementById('selected-model').textContent = selection;
   document.getElementById('parts-model-name').textContent = `${currentMachine.label} · ${currentModel ? currentModel.name : 'todas las referencias'}`;
@@ -262,3 +262,11 @@ function updateStoreView() {
 }
 window.addEventListener('hashchange', updateStoreView);
 updateStoreView();
+
+document.querySelectorAll('[data-system]').forEach(link => link.addEventListener('click', () => {
+  renderMachine('selladora');
+  partsSearchInput.value = '';
+  activePartFilter = link.dataset.system;
+  document.querySelectorAll('.parts-filters button').forEach(button => button.classList.toggle('active', button.dataset.filter === activePartFilter));
+  filterParts();
+}));
