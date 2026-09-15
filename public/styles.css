@@ -189,3 +189,11 @@ main > section[hidden]{display:none!important}
 .selection-copy small{color:#597065;font-size:10px}
 @media(max-width:620px){.selection-preview{flex-direction:column;gap:16px;padding:20px 0 0;text-align:center}.selection-photo{width:min(100%,280px);height:180px}.selection-copy h3{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.selection-preview{animation:none}#repuestos .machine-sidebar{transition:none}}
+
+/* Machine line drawings, matching the MaqAssist palette */
+#repuestos .machine-sidebar,#repuestos .machine-sidebar.has-selection{background-color:#dff1e6;background-image:linear-gradient(90deg,#dff1e6ed,#dff1e6c9),url('/assets/selladora-linea.svg');background-position:center,right center;background-repeat:no-repeat;background-size:cover,480px;border-color:#a4cfb8}
+#repuestos .machine-sidebar[data-family="empacadora290"]{background-image:linear-gradient(90deg,#dff1e6ed,#dff1e6c9),url('/assets/empacadora-linea.svg')}
+#repuestos .selection-photo{background:linear-gradient(145deg,#c1e7d0,#e0f3e7);border:1px solid #aad4bc;box-shadow:none;width:300px;height:200px;padding:6px}
+#repuestos .selection-preview{border-top-color:#9fc9b1}
+#repuestos .selection-photo img{mix-blend-mode:multiply}
+@media(max-width:620px){#repuestos .selection-photo{width:min(100%,300px);height:190px}#repuestos .machine-sidebar{background-size:cover,340px}}

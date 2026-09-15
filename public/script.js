@@ -62,8 +62,8 @@ function selectModel(modelId) {
   document.querySelector('.machine-sidebar').classList.toggle('has-selection', Boolean(currentModel));
   if (currentModel) {
     const photo = document.getElementById('selection-photo');
-    photo.src = currentModel.image || currentMachine.image;
-    photo.alt = currentMachine.label + ' ' + currentModel.name + ' · imagen de referencia';
+    photo.src = currentMachineKey === 'selladora' ? '/assets/selladora-linea.svg' : '/assets/empacadora-linea.svg';
+    photo.alt = 'Ilustración 2D de ' + currentMachine.label;
     document.getElementById('selection-name').textContent = currentMachine.label + ' · ' + currentModel.name;
   }
   document.getElementById('machine-image').src = currentModel?.image || currentMachine.image;
@@ -81,6 +81,7 @@ function selectModel(modelId) {
 function renderMachine(machineKey) {
   currentMachineKey = machineKey;
   currentMachine = machineCatalog[currentMachineKey];
+  document.querySelector('.machine-sidebar').dataset.family = currentMachineKey;
   document.querySelectorAll('.category-button').forEach(button => button.classList.toggle('active', button.dataset.machine === currentMachineKey));
   const activeCategoryButton = document.querySelector(`.category-button[data-machine="${currentMachineKey}"]`);
   activeCategoryButton.insertAdjacentElement('afterend', document.getElementById('model-list'));
