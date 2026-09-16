@@ -86,6 +86,11 @@ let currentMachineKey = 'selladora';
 let currentMachine = machineCatalog[currentMachineKey];
 let currentModel = null;
 
+function routeName() {
+  const route = location.pathname.split('/').filter(Boolean)[0] || '';
+  return ['repuestos', 'maquinas', 'planes'].includes(route) ? route : '';
+}
+
 function selectModel(modelId) {
   currentModel = modelId === 'all' ? null : currentMachine.models.find(model => model.id === modelId) || null;
   document.querySelectorAll('.model-button').forEach(button => {
@@ -146,6 +151,7 @@ function renderMachine(machineKey) {
   document.getElementById('store-view-front').src = currentMachine.heroImage;
   document.getElementById('store-view-side').src = currentMachine.heroImage;
   document.getElementById('store-plan-machine-name').textContent = currentMachine.breadcrumb.toLowerCase();
+  document.getElementById('store-buy-machine').href = `/maquinas?categoria=${encodeURIComponent(currentMachineKey)}`;
 
   document.getElementById('model-list').innerHTML = `
     <button class="model-button active" type="button" data-model="all">Todos los repuestos <span>→</span></button>
@@ -269,14 +275,28 @@ document.querySelectorAll('.parts-filters button').forEach(button => button.addE
   filterParts();
 }));
 
-renderMachine('selladora');
+const requestedMachine = new URLSearchParams(location.search).get('categoria');
+renderMachine(machineCatalog[requestedMachine] ? requestedMachine : 'selladora');
+
+if (routeName() === 'maquinas') {
+  const selectedMachine = machineCatalog[requestedMachine];
+  document.getElementById('machine-store-selected').textContent = selectedMachine
+    ? `CONSULTA: ${selectedMachine.label.toUpperCase()}`
+    : 'TIENDA DE MÁQUINAS';
+}
+
+if (routeName() === 'repuestos') {
+  const searchQuery = new URLSearchParams(location.search).get('buscar');
+  if (searchQuery) {
+    partsSearchInput.value = searchQuery;
+    filterParts();
+  }
+}
 
 document.getElementById('hero-search-form').addEventListener('submit', event => {
   event.preventDefault();
-  partsSearchInput.value = heroSearchInput.value;
-  filterParts();
-  document.getElementById('repuestos').scrollIntoView({ behavior: 'smooth' });
-  setTimeout(() => partsSearchInput.focus(), 500);
+  const searchQuery = heroSearchInput.value.trim();
+  location.href = searchQuery ? `/repuestos?buscar=${encodeURIComponent(searchQuery)}` : '/repuestos';
 });
 
 const planRules = {
@@ -316,26 +336,39 @@ document.querySelectorAll('.period-options button').forEach(button => button.add
 
 updatePlan();
 
-// Store Repuestos is an exclusive catalog view; other sections remain accessible from navigation.
-function updateStoreView() {
-  const inStore = ['#repuestos', '#catalogo-repuestos'].includes(location.hash);
-  document.body.classList.toggle('store-view', inStore);
+// Las tiendas y los planes usan rutas propias y conservan una única base visual.
+function updatePageView() {
+  const route = routeName();
+  const legacyStore = !route && ['#repuestos', '#catalogo-repuestos'].includes(location.hash);
+  const page = route || (legacyStore ? 'repuestos' : '');
+  document.body.classList.toggle('store-view', page === 'repuestos');
+  document.body.classList.toggle('machines-view', page === 'maquinas');
+  document.body.classList.toggle('plans-view', page === 'planes');
   document.querySelectorAll('main > section').forEach(section => {
-    section.hidden = inStore && section.id !== 'repuestos';
+    section.hidden = Boolean(page) && section.id !== page;
   });
+  const pageTitles = {
+    repuestos: 'Tienda de Repuestos | MaqAssist',
+    maquinas: 'Tienda de Máquinas | MaqAssist',
+    planes: 'Planes de Mantenimiento | MaqAssist'
+  };
+  document.title = pageTitles[page] || 'MaqAssist | Acompañamiento técnico continuo';
 }
-window.addEventListener('hashchange', updateStoreView);
-updateStoreView();
+window.addEventListener('hashchange', updatePageView);
+window.addEventListener('popstate', updatePageView);
+updatePageView();
 
 document.getElementById('header-search-button').addEventListener('click', () => {
-  const inStore = document.body.classList.contains('store-view');
-  const input = inStore ? partsSearchInput : heroSearchInput;
-  input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  setTimeout(() => input.focus(), 450);
+  if (routeName() !== 'repuestos') {
+    location.href = '/repuestos';
+    return;
+  }
+  partsSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => partsSearchInput.focus(), 450);
 });
 
 function updateNavState() {
-  const key = (location.hash || '#inicio').replace('#', '');
+  const key = routeName() || (location.hash || '#inicio').replace('#', '');
   document.querySelectorAll('[data-nav]').forEach(link => {
     const active = link.dataset.nav === key || (key === 'catalogo-repuestos' && link.dataset.nav === 'repuestos');
     link.classList.toggle('active', active);
