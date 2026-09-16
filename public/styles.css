@@ -197,3 +197,89 @@ main > section[hidden]{display:none!important}
 #repuestos .selection-preview{border-top-color:#9fc9b1}
 #repuestos .selection-photo img{mix-blend-mode:multiply}
 @media(max-width:620px){#repuestos .selection-photo{width:min(100%,300px);height:190px}#repuestos .machine-sidebar{background-size:cover,340px}}
+
+/* =========================================================
+   IDENTIDAD VISUAL OFICIAL MAQASSIST
+   Verde medio muestreado del logo definitivo: RGB(6,138,78)
+   ========================================================= */
+:root{
+  --maq-green-primary:#068A4E;
+  --maq-green-hover:#05713F;
+  --maq-green-soft:#DDEFE6;
+  --maq-green-pale:#F3FAF7;
+  --maq-green-border:#B9DDCB;
+  --maq-green-background:#F7FCF9;
+  --maq-charcoal:#08131B;
+  --maq-gray:#5E6A70;
+  --maq-line:#D9E2E5;
+  --ink:var(--maq-charcoal);
+  --ink2:#1D2A31;
+  --green:var(--maq-green-primary);
+  --green2:var(--maq-green-hover);
+  --mist:var(--maq-green-pale);
+  --muted:var(--maq-gray);
+  --line:var(--maq-line);
+}
+body{background:#fff;color:var(--maq-charcoal)}
+.site-header{background:rgba(255,255,255,.97);border-color:var(--maq-line);box-shadow:0 5px 24px rgba(8,19,27,.055)}
+.brand img{width:225px;max-height:61px;object-fit:contain}
+.main-nav{color:#26343B}.main-nav a:hover{color:var(--maq-green-primary)}
+.nav-cta,.cart-button{background:var(--maq-green-primary)!important;border-color:var(--maq-green-primary)!important;color:#fff!important}
+.cart-button span{color:var(--maq-charcoal)}
+.primary{background:var(--maq-green-primary);color:#fff}.primary:hover{background:var(--maq-green-hover)}
+.secondary,.secondary-dark,.secondary-green{border-color:var(--maq-green-primary);color:var(--maq-green-hover)}
+.hero{background:linear-gradient(112deg,#fff 0%,#fff 61%,var(--maq-green-pale) 100%);color:var(--maq-charcoal)}
+.hero:before{background:radial-gradient(circle at 55% 48%,rgba(6,138,78,.09),transparent 52%)}
+.hero-grid{background-image:linear-gradient(rgba(6,138,78,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(6,138,78,.05) 1px,transparent 1px)}
+.hero-machine{opacity:.38}.machine-ring{border-color:var(--maq-green-primary)}.ring-two{border-color:var(--maq-green-border)}
+.machine-center{background:#fffffff0;border-color:var(--maq-green-border);padding:34px}.machine-center img{width:100%;height:auto}
+.trust-strip{background:var(--maq-green-soft)}
+.solution-primary b,.period-options button.active,.popular{background:var(--maq-green-primary);color:#fff}
+.section:nth-of-type(even){background:var(--maq-green-background)}
+.services,.about,.marketplace{background:#fff}
+.sectors,.machine-store,.plans{background:var(--maq-green-background);color:var(--maq-charcoal)}
+.service-card,.service-card.featured{background:#fff;color:var(--maq-charcoal);border-color:var(--maq-line)}
+.service-card.featured{border-top:4px solid var(--maq-green-primary)}
+.featured p,.service-card p{color:var(--maq-gray)}.service-card ul,.featured ul{color:var(--maq-gray)}
+.service-icon,.featured .service-icon{background:var(--maq-green-soft);color:var(--maq-green-primary)}
+.general-plans article,.plan-card,.plan-card.recommended,.plan-configurator,.config-panel,.coverage-panel{background:#fff;color:var(--maq-charcoal);border-color:var(--maq-line)}
+.general-plans article:hover,.plan-card:hover{border-color:var(--maq-green-primary);box-shadow:0 14px 34px rgba(6,138,78,.08)}
+.coverage-stats,.coverage-stats div,.coverage-list li,.quantity-control,.quantity-control input,.period-options button,.machines-badge{border-color:var(--maq-line)}
+.about-visual{background:linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),linear-gradient(var(--maq-green-border) 1px,transparent 1px),linear-gradient(90deg,var(--maq-green-border) 1px,transparent 1px),var(--maq-green-soft);background-size:auto,34px 34px,34px 34px,auto;border:1px solid var(--maq-green-border)}
+.about-visual:after{border-color:var(--maq-green-primary);box-shadow:0 0 0 38px rgba(6,138,78,.045),0 0 0 76px rgba(6,138,78,.025)}
+.big-mark{color:var(--maq-green-primary)}
+.cta-box{background:var(--maq-green-soft);border:1px solid var(--maq-green-border)}
+.cta-box .kicker{color:var(--maq-green-hover)}.cta-box .button.white{background:var(--maq-green-primary);color:#fff}
+footer{background:#fff;color:var(--maq-charcoal);border-top:1px solid var(--maq-line);padding-top:58px}
+.footer-brand img{width:225px;height:auto}.footer-brand p,.footer-grid>div:not(:first-child),.footer-bottom{color:var(--maq-gray)}
+.footer-grid h3{color:var(--maq-green-primary)}.footer-grid a:hover{color:var(--maq-green-primary)}
+.footer-bottom{border-color:var(--maq-line)}
+.whatsapp-float{background:var(--maq-green-primary);color:#fff}
+
+/* Store Repuestos: superficies claras y acentos del logo. */
+#repuestos{background:repeating-linear-gradient(135deg,transparent 0 45px,rgba(6,138,78,.025) 45px 46px),#fff}
+#repuestos .store-banner{color:var(--maq-charcoal);background:linear-gradient(90deg,#fffffff7 0%,#f3faf7f1 48%,#f3faf754 100%),url('/assets/store-parts-banner.jpg') center/cover;border:1px solid var(--maq-green-border)}
+#repuestos .store-banner h2{color:var(--maq-charcoal)}
+#repuestos .store-banner em,#repuestos .store-banner .kicker{color:var(--maq-green-primary)}
+#repuestos .store-banner p{color:var(--maq-gray)}
+#repuestos .banner-caption{color:#46545B}
+#repuestos .store-help{background:var(--maq-green-soft);color:var(--maq-charcoal);border:1px solid var(--maq-green-border)}
+#repuestos .store-help:before{color:rgba(6,138,78,.12)}
+#repuestos .store-help h3,#repuestos .store-help p,#repuestos .store-help .kicker,#repuestos .store-help a{color:var(--maq-charcoal)}
+.seal-promo,.heat-promo{background:var(--maq-green-pale);color:var(--maq-charcoal);border:1px solid var(--maq-green-border)}
+.heat-promo .kicker,.store-promo .kicker{color:var(--maq-green-primary)}
+.promo-art{color:var(--maq-green-primary);opacity:.16}
+.carousel-controls button{border-color:var(--maq-green-border);background:#fff;color:var(--maq-green-primary)}
+.carousel-controls button:hover,.carousel-controls button:focus-visible,.carousel-dots button[aria-pressed="true"]{background:var(--maq-green-primary);border-color:var(--maq-green-primary);color:#fff;outline-color:var(--maq-green-border)}
+#repuestos .machine-sidebar,#repuestos .machine-sidebar.has-selection{background-color:var(--maq-green-pale);background-image:linear-gradient(90deg,#f3faf7f2,#f3faf7d1),url('/assets/selladora-linea.svg');border-color:var(--maq-green-border)}
+#repuestos .machine-sidebar[data-family="empacadora290"]{background-image:linear-gradient(90deg,#f3faf7f2,#f3faf7d1),url('/assets/empacadora-linea.svg')}
+#repuestos .category-button{background:#fff;color:var(--maq-charcoal);border:1px solid var(--maq-line)}
+#repuestos .category-button.active,#repuestos .category-list .model-button.active,#repuestos .parts-filters button.active,#repuestos .parts-filters button:hover{background:var(--maq-green-primary);border-color:var(--maq-green-primary);color:#fff}
+#repuestos .selection-photo{background:#fff;border-color:var(--maq-green-border)}
+#repuestos .selection-preview{border-color:var(--maq-green-border)}
+#repuestos .selection-copy h3{color:var(--maq-charcoal)}
+#repuestos .part-card:hover{border-color:var(--maq-green-primary);box-shadow:0 10px 28px rgba(6,138,78,.09)}
+#repuestos .buy-button{background:var(--maq-green-primary);color:#fff}#repuestos .buy-button:hover{background:var(--maq-green-hover)}
+#repuestos .store-plan-suggestion{background:linear-gradient(90deg,#f3faf7f5,#f3faf7df),url('/assets/store-parts-banner.jpg') center/cover;border-color:var(--maq-green-border)}
+@media(max-width:900px){.main-nav.open{background:#fff}.brand img{width:205px}}
+@media(max-width:620px){.brand img{width:185px}.footer-brand img{width:215px}.machine-center{padding:20px}}
