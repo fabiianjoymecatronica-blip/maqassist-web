@@ -17,6 +17,12 @@ const machineCatalog = {
   selladora: {
     label: 'Selladoras',
     breadcrumb: 'Selladoras de banda',
+    heroCategory: 'SELLADORAS DE BANDA CONTINUA',
+    heroTitle: 'Repuestos para|selladoras de banda',
+    heroDescription: 'Selecciona la referencia de tu equipo y encuentra los repuestos disponibles con acompañamiento técnico.',
+    heroImage: '/assets/selladora-linea.svg',
+    heroAlt: 'Ilustración técnica 2D de selladora de banda continua',
+    benefits: ['Identificación por referencia', 'Compatibilidad por confirmar', 'Asesoría técnica especializada'],
     image: '/assets/selladora-banda-continua.png',
     imageAlt: 'Selladora de banda continua',
     status: 'CATÁLOGO DE REPUESTOS',
@@ -31,6 +37,12 @@ const machineCatalog = {
   empacadora290: {
     label: 'Empacadora vertical',
     breadcrumb: 'Empacadoras verticales 290',
+    heroCategory: 'EMPACADORAS VERTICALES',
+    heroTitle: 'Repuestos para|empacadoras verticales',
+    heroDescription: 'Selecciona una referencia Stick o Sachet para preparar la búsqueda de sus repuestos.',
+    heroImage: '/assets/empacadora-linea.svg',
+    heroAlt: 'Ilustración técnica 2D de empacadora vertical',
+    benefits: ['Selección por formato', 'Identificación por placa', 'Asesoría técnica especializada'],
     image: '/assets/empacadora-vertical-290.png',
     imageAlt: 'Empacadora vertical serie 290 para stick y sachet',
     status: 'CATÁLOGO DE REPUESTOS',
@@ -43,6 +55,30 @@ const machineCatalog = {
       { id: 'sachet-liquidos-290', name: 'Sachet líquidos 290' },
       { id: 'sachet-granos-290', name: 'Sachet granos / volumétrica 290' }
     ]
+  },
+  flowpack: {
+    label: 'Flow Pack', breadcrumb: 'Flow Pack', heroCategory: 'MÁQUINAS FLOW PACK', heroTitle: 'Repuestos para|máquinas Flow Pack',
+    heroDescription: 'La estructura está preparada para incorporar referencias, fotografías reales y compatibilidades confirmadas.',
+    heroImage: '/assets/maquina-tecnica-placeholder.svg', heroAlt: 'Espacio preparado para ilustración técnica 2D de Flow Pack',
+    benefits: ['Catálogo en preparación', 'Identificación por fotografía', 'Soporte técnico'], image: '/assets/maquina-tecnica-placeholder.svg', imageAlt: 'Flow Pack, imagen en preparación', status: 'CONTENIDO EN PREPARACIÓN', description: 'Envíanos la placa y fotografías del equipo para ayudarte a identificar el repuesto.', models: []
+  },
+  codificadora: {
+    label: 'Codificadoras', breadcrumb: 'Codificadoras', heroCategory: 'SISTEMAS DE CODIFICACIÓN', heroTitle: 'Repuestos para|codificadoras',
+    heroDescription: 'Próximamente integraremos aquí las fotografías reales de consumibles y componentes ya suministrados.',
+    heroImage: '/assets/maquina-tecnica-placeholder.svg', heroAlt: 'Espacio preparado para ilustración técnica 2D de codificadora',
+    benefits: ['Consumibles por referencia', 'Identificación del equipo', 'Soporte técnico'], image: '/assets/maquina-tecnica-placeholder.svg', imageAlt: 'Codificadora, imagen en preparación', status: 'CONTENIDO EN PREPARACIÓN', description: 'El catálogo recibirá cartuchos, encoder, sensor, soporte y banda cuando carguemos sus fotografías reales.', models: []
+  },
+  dosificadora: {
+    label: 'Dosificadoras', breadcrumb: 'Dosificadoras', heroCategory: 'SISTEMAS DE DOSIFICACIÓN', heroTitle: 'Repuestos para|dosificadoras',
+    heroDescription: 'Esta categoría queda lista para organizar componentes por tecnología, referencia y compatibilidad.',
+    heroImage: '/assets/maquina-tecnica-placeholder.svg', heroAlt: 'Espacio preparado para ilustración técnica 2D de dosificadora',
+    benefits: ['Catálogo escalable', 'Compatibilidad por confirmar', 'Asesoría técnica'], image: '/assets/maquina-tecnica-placeholder.svg', imageAlt: 'Dosificadora, imagen en preparación', status: 'CONTENIDO EN PREPARACIÓN', description: 'La información técnica se añadirá únicamente cuando esté confirmada.', models: []
+  },
+  otras: {
+    label: 'Otras máquinas', breadcrumb: 'Otras máquinas', heroCategory: 'OTRAS MÁQUINAS', heroTitle: 'Encuentra repuestos para|otra máquina',
+    heroDescription: 'Consulta una categoría que aún no esté publicada enviando la placa y fotografías del equipo.',
+    heroImage: '/assets/maquina-tecnica-placeholder.svg', heroAlt: 'Ilustración técnica genérica de maquinaria industrial',
+    benefits: ['Consulta personalizada', 'Identificación por placa', 'Cobertura multimarca'], image: '/assets/maquina-tecnica-placeholder.svg', imageAlt: 'Maquinaria industrial genérica', status: 'CONSULTA PERSONALIZADA', description: 'Envíanos información del equipo y revisaremos tu necesidad.', models: []
   }
 };
 
@@ -57,12 +93,14 @@ function selectModel(modelId) {
     button.classList.toggle('active', selected);
     button.setAttribute('aria-pressed', String(selected));
   });
+  const modelSelect = document.getElementById('store-model-select');
+  if (modelSelect) modelSelect.value = currentModel?.id || 'all';
   const preview = document.getElementById('selection-preview');
   preview.hidden = !currentModel;
   document.querySelector('.machine-sidebar').classList.toggle('has-selection', Boolean(currentModel));
   if (currentModel) {
     const photo = document.getElementById('selection-photo');
-    photo.src = currentMachineKey === 'selladora' ? '/assets/selladora-linea.svg' : '/assets/empacadora-linea.svg';
+    photo.src = currentMachine.heroImage;
     photo.alt = 'Ilustración 2D de ' + currentMachine.label;
     document.getElementById('selection-name').textContent = currentMachine.label + ' · ' + currentModel.name;
   }
@@ -84,7 +122,7 @@ function renderMachine(machineKey) {
   document.querySelector('.machine-sidebar').dataset.family = currentMachineKey;
   document.querySelectorAll('.category-button').forEach(button => button.classList.toggle('active', button.dataset.machine === currentMachineKey));
   const activeCategoryButton = document.querySelector(`.category-button[data-machine="${currentMachineKey}"]`);
-  activeCategoryButton.insertAdjacentElement('afterend', document.getElementById('model-list'));
+  document.querySelector('.category-list').appendChild(document.getElementById('model-list'));
   document.getElementById('shop-machine-breadcrumb').textContent = currentMachine.breadcrumb;
   document.getElementById('machine-status').textContent = currentMachine.status;
   document.getElementById('machine-type').textContent = currentMachine.label;
@@ -94,25 +132,37 @@ function renderMachine(machineKey) {
   document.getElementById('machine-pending-panel').hidden = currentMachineKey === 'selladora';
   document.getElementById('parts-search-input').placeholder = `Buscar repuestos para ${currentMachine.breadcrumb.toLowerCase()}…`;
 
+  const heroTitle = currentMachine.heroTitle.split('|');
+  document.getElementById('technical-store-hero').dataset.family = currentMachineKey;
+  document.getElementById('store-hero-category').textContent = currentMachine.heroCategory;
+  document.getElementById('store-hero-title').innerHTML = `${heroTitle[0]}<br><em>${heroTitle[1]}</em>`;
+  document.getElementById('store-hero-description').textContent = currentMachine.heroDescription;
+  document.getElementById('store-hero-benefits').innerHTML = currentMachine.benefits.map(item => `<li>${item}</li>`).join('');
+  document.getElementById('store-callout-one').textContent = currentMachine.benefits[0];
+  document.getElementById('store-callout-two').textContent = currentMachine.benefits[1];
+  const heroMachine = document.getElementById('store-hero-machine');
+  heroMachine.src = currentMachine.heroImage;
+  heroMachine.alt = currentMachine.heroAlt;
+  document.getElementById('store-view-front').src = currentMachine.heroImage;
+  document.getElementById('store-view-side').src = currentMachine.heroImage;
+  document.getElementById('store-plan-machine-name').textContent = currentMachine.breadcrumb.toLowerCase();
+
   document.getElementById('model-list').innerHTML = `
     <button class="model-button active" type="button" data-model="all">Todos los repuestos <span>→</span></button>
     ${currentMachine.models.map(model => `<button class="model-button" type="button" data-model="${model.id}">${model.name} <span>→</span></button>`).join('')}
   `;
+  const modelSelect = document.getElementById('store-model-select');
+  modelSelect.innerHTML = `<option value="all">Todas las referencias</option>${currentMachine.models.map(model => `<option value="${model.id}">${model.name}</option>`).join('')}`;
+  modelSelect.disabled = currentMachine.models.length === 0;
   document.querySelectorAll('.model-button').forEach(button => button.addEventListener('click', () => selectModel(button.dataset.model)));
   document.getElementById('model-list').classList.add('open');
   document.querySelectorAll('.category-button').forEach(button => button.setAttribute('aria-expanded', String(button.dataset.machine === currentMachineKey)));
   selectModel('all');
 }
 
-document.querySelectorAll('.category-button').forEach(button => button.addEventListener('click', () => {
-  if (button.dataset.machine === currentMachineKey && document.getElementById('model-list').classList.contains('open')) {
-    selectModel('all');
-    document.getElementById('model-list').classList.remove('open');
-    button.setAttribute('aria-expanded', 'false');
-    return;
-  }
-  renderMachine(button.dataset.machine);
-}));
+document.querySelectorAll('.category-button').forEach(button => button.addEventListener('click', () => renderMachine(button.dataset.machine)));
+
+document.getElementById('store-model-select').addEventListener('change', event => selectModel(event.target.value));
 
 let cart = [];
 try { cart = JSON.parse(localStorage.getItem('maqassist-cart')) || []; } catch (error) { cart = []; }
@@ -276,6 +326,33 @@ function updateStoreView() {
 }
 window.addEventListener('hashchange', updateStoreView);
 updateStoreView();
+
+document.getElementById('header-search-button').addEventListener('click', () => {
+  const inStore = document.body.classList.contains('store-view');
+  const input = inStore ? partsSearchInput : heroSearchInput;
+  input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => input.focus(), 450);
+});
+
+function updateNavState() {
+  const key = (location.hash || '#inicio').replace('#', '');
+  document.querySelectorAll('[data-nav]').forEach(link => {
+    const active = link.dataset.nav === key || (key === 'catalogo-repuestos' && link.dataset.nav === 'repuestos');
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
+  });
+}
+window.addEventListener('hashchange', updateNavState);
+updateNavState();
+
+document.getElementById('contact-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const name = document.getElementById('contact-name').value.trim();
+  const company = document.getElementById('contact-company').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+  const text = `Hola MaqAssist, soy ${name}${company ? ` de ${company}` : ''}. ${message}`;
+  window.open(`https://wa.me/573189324488?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+});
 
 document.querySelectorAll('[data-system]').forEach(link => link.addEventListener('click', () => {
   renderMachine('selladora');

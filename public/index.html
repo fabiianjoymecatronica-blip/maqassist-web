@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=brand-v1">
+  <link rel="stylesheet" href="/styles.css?v=structure-v1">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -21,12 +21,13 @@
         <span></span><span></span><span></span>
       </button>
       <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
-        <a href="#repuestos">Store Repuestos</a>
-        <a href="#planes">Store Planes</a>
-        <a href="#maquinas">Store Máquinas</a>
-        <a href="#sectores">Sectores</a>
-        <a href="#nosotros">Nosotros</a>
-        <button class="cart-button" id="open-cart" type="button" aria-label="Abrir carrito">Carrito <span id="cart-count">0</span></button>
+        <a href="#inicio" data-nav="inicio">Inicio</a>
+        <a href="#repuestos" data-nav="repuestos">Tienda de Repuestos</a>
+        <a href="#planes" data-nav="planes">Planes de Mantenimiento</a>
+        <a href="#maquinas" data-nav="maquinas">Tienda de Máquinas</a>
+        <a href="#soporte" data-nav="soporte">Soporte</a>
+        <a href="#contacto" data-nav="contacto">Contacto</a>
+        <div class="nav-tools"><button class="header-search-button" id="header-search-button" type="button" aria-label="Buscar repuestos">⌕</button><button class="cart-button" id="open-cart" type="button" aria-label="Abrir carrito">Carrito <span id="cart-count">0</span></button><a class="header-whatsapp" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20asesor%C3%ADa" target="_blank" rel="noopener">WhatsApp</a></div>
       </nav>
     </div>
   </header>
@@ -85,6 +86,26 @@
     <section class="section marketplace" id="repuestos">
       <div class="container">
         <nav class="shop-breadcrumb" aria-label="Ruta de compra"><a href="#inicio">Inicio</a><b>›</b><strong>Store Repuestos</strong><b>›</b><span id="shop-machine-breadcrumb">Selladoras de banda</span></nav>
+        <section class="technical-store-hero" id="technical-store-hero" data-family="selladora" aria-labelledby="store-hero-title">
+          <div class="technical-grid" aria-hidden="true"></div>
+          <div class="technical-copy">
+            <span class="kicker" id="store-hero-category">SELLADORAS DE BANDA CONTINUA</span>
+            <h2 id="store-hero-title">Repuestos para<br><em>selladoras de banda</em></h2>
+            <p id="store-hero-description">Selecciona la referencia de tu equipo y encuentra los repuestos disponibles con acompañamiento técnico.</p>
+            <ul class="technical-benefits" id="store-hero-benefits"><li>Identificación por referencia</li><li>Compatibilidad por confirmar</li><li>Asesoría técnica especializada</li></ul>
+            <div class="technical-actions"><a class="button primary" id="store-buy-machine" href="#maquinas">Comprar máquina <span>→</span></a><a class="button secondary" id="store-view-plans" href="#planes">Ver planes <span>→</span></a></div>
+          </div>
+          <div class="technical-machine-stage">
+            <span class="technical-label label-one">VISTA GENERAL</span>
+            <img id="store-hero-machine" src="/assets/selladora-linea.svg" alt="Ilustración técnica 2D de selladora de banda continua">
+            <span class="callout callout-one" id="store-callout-one">IDENTIFICACIÓN POR REFERENCIA</span><span class="callout callout-two" id="store-callout-two">COMPATIBILIDAD POR CONFIRMAR</span>
+          </div>
+          <aside class="technical-views" aria-label="Vistas técnicas de la máquina">
+            <div><span>VISTA TÉCNICA</span><img id="store-view-front" src="/assets/selladora-linea.svg" alt="Vista técnica ilustrativa de referencia"></div>
+            <div><span>DETALLE DE REFERENCIA</span><img id="store-view-side" src="/assets/selladora-linea.svg" alt="Detalle técnico ilustrativo de referencia"></div>
+            <small>Vistas ilustrativas sin cotas. Confirma la placa y referencia de tu equipo.</small>
+          </aside>
+        </section>
         <div class="store-banner-grid">
           <div class="store-banner parts-carousel" role="region" aria-roledescription="carrusel" aria-label="Novedades y repuestos">
 <article class="parts-slide" role="group" aria-roledescription="diapositiva" aria-label="1 de 5"><span class="kicker">DESCUENTOS Y PROMOCIONES</span><h2>Más repuestos.<br><em>Más posibilidades.</em></h2><p>Consulta las promociones vigentes y cotiza los componentes que necesita tu equipo.</p><a class="button primary" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20%C2%BFqu%C3%A9%20promociones%20y%20descuentos%20tienen%20vigentes%20en%20repuestos%3F" target="_blank" rel="noopener">Consultar promociones <span>↗</span></a></article>
@@ -102,11 +123,15 @@
         <div class="parts-searchbar" id="catalogo-repuestos"><span>⌕</span><input id="parts-search-input" aria-label="Buscar repuestos en el catálogo" type="search" placeholder="Buscar dentro de repuestos para selladoras…"><button id="clear-parts-search" type="button">Limpiar</button></div>
         <div class="market-shell">
           <aside class="machine-sidebar">
-            <span class="selector-label">EXPLORA POR MÁQUINA</span>
+            <div class="machine-selector-heading"><span class="gear-icon" aria-hidden="true">⚙</span><div><span class="selector-label">SELECCIONA TU MÁQUINA</span><p>Selecciona una familia para transformar el catálogo.</p></div></div>
             <div class="category-list">
-              <button class="category-button active" type="button" data-machine="selladora" aria-expanded="true"><span>▰</span><strong>Selladoras</strong><b>⌄</b></button>
+              <button class="category-button active" type="button" data-machine="selladora" aria-expanded="true"><span class="category-art"><img src="/assets/selladora-linea.svg" alt=""></span><strong>Selladora de banda continua</strong><b>→</b></button>
               <div class="model-list open" id="model-list" role="list" aria-label="Referencias de selladoras"></div>
-              <button class="category-button" type="button" data-machine="empacadora290" aria-expanded="false"><span>▥</span><strong>Empacadoras verticales 290</strong><b>⌄</b></button>
+              <button class="category-button" type="button" data-machine="flowpack" aria-expanded="false"><span class="category-art placeholder-art">FP</span><strong>Flow Pack</strong><b>→</b></button>
+              <button class="category-button" type="button" data-machine="codificadora" aria-expanded="false"><span class="category-art placeholder-art">CI</span><strong>Codificadoras</strong><b>→</b></button>
+              <button class="category-button" type="button" data-machine="dosificadora" aria-expanded="false"><span class="category-art placeholder-art">DO</span><strong>Dosificadoras</strong><b>→</b></button>
+              <button class="category-button" type="button" data-machine="empacadora290" aria-expanded="false"><span class="category-art"><img src="/assets/empacadora-linea.svg" alt=""></span><strong>Empacadoras verticales</strong><b>→</b></button>
+              <button class="category-button" type="button" data-machine="otras" aria-expanded="false"><span class="category-art placeholder-art">+</span><strong>Otras máquinas</strong><b>→</b></button>
             </div>
             <div class="selection-preview" id="selection-preview" hidden><div class="selection-photo"><img id="selection-photo" alt=""></div><div class="selection-copy" aria-live="polite"><span class="kicker">MÁQUINA SELECCIONADA</span><h3 id="selection-name"></h3><p>Estás consultando repuestos para esta referencia.</p><small>Ilustración de la familia de máquinas · confirma la placa de tu equipo.</small></div></div>
             <div class="future-machine-list"><button type="button" disabled>Molinos <span>Próximamente</span></button><button type="button" disabled>Compresores <span>Próximamente</span></button></div>
@@ -114,14 +139,14 @@
           </aside>
           <div class="machine-detail">
             <div class="machine-title-row">
-              <div><span class="availability-tag" id="machine-status">CATÁLOGO DE REPUESTOS</span><h3><span id="machine-type">Selladoras</span> <span id="selected-model">Todas las referencias</span></h3><p id="machine-description">Explora todos los repuestos o selecciona una referencia para filtrar compatibilidad.</p></div>
+              <div><span class="availability-tag" id="machine-status">CATÁLOGO DE REPUESTOS</span><h3><span id="machine-type">Selladoras</span> <span id="selected-model">Todas las referencias</span></h3><p id="machine-description">Explora todos los repuestos o selecciona una referencia para filtrar compatibilidad.</p><label class="model-reference-label" for="store-model-select">Modelo de referencia:<select id="store-model-select"><option value="all">Todas las referencias</option></select></label></div>
               <div class="machine-photo"><img id="machine-image" src="/assets/selladora-banda-continua.png" alt="Selladora de banda continua FR"></div>
             </div>
             <div class="machine-pending-panel" id="machine-pending-panel" hidden><strong>Repuestos en preparación</strong><span>Estamos cargando los repuestos de esta familia. Puedes enviarnos una fotografía o la placa para identificar el componente.</span><a id="machine-pending-link" href="#">Consultar repuesto por WhatsApp →</a></div>
             <div class="parts-section">
               <div class="parts-heading"><div><span class="kicker">2. Elige los repuestos</span><h3>Repuestos para <span id="parts-model-name">Selladoras · todas las referencias</span></h3><p>Filtra por sistema, revisa la descripción y agrega los productos al carrito.</p></div><span class="parts-count"><b id="visible-parts-count">4</b> en catálogo</span></div>
               <div class="parts-filters" aria-label="Filtrar repuestos"><button class="active" type="button" data-filter="all">Todos</button><button type="button" data-filter="sellado">Sellado</button><button type="button" data-filter="calentamiento">Calentamiento</button><button type="button" data-filter="temperatura">Temperatura</button><button type="button" data-filter="transmision">Transmisión</button></div>
-              <p class="catalog-illustration-note">Ilustraciones por tipo de componente. Confirmamos medidas y referencia antes de tu compra.</p><div class="parts-grid">
+              <p class="catalog-illustration-note">Imágenes provisionales por tipo de componente. Se reemplazarán por fotografías reales limpias a medida que alimentemos el catálogo.</p><div class="parts-grid">
                 <article class="part-card" data-machine="selladora" data-models="fr770 fr900 fr1000 fr1300" data-category="sellado" data-search="cintas teflon sellado banda"><div class="part-visual"><svg viewBox="0 0 260 180" aria-hidden="true"><ellipse cx="130" cy="85" rx="77" ry="35" fill="none" stroke="#92733f" stroke-width="20"/><path d="M53 85v26c0 20 35 35 77 35s77-15 77-35V85" fill="none" stroke="#b19259" stroke-width="14"/></svg></div><span>Sellado</span><h4>Cintas de teflón</h4><p>Bandas y cintas resistentes a temperatura para el sistema de sellado.</p><small class="compatibility">Referencia exacta por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Cintas de teflón" data-store="Repuestos">Agregar al carrito</button></article>
                 <article class="part-card" data-machine="selladora" data-models="fr770 fr900 fr1000 fr1300" data-category="calentamiento" data-search="resistencias calentamiento calor sellado"><div class="part-visual"><svg viewBox="0 0 260 180" aria-hidden="true"><path d="M35 138Q15 110 65 95M45 150Q20 125 80 112" fill="none" stroke="#ae543e" stroke-width="6"/><path d="M65 95L196 45L210 70L80 120Z" fill="#b6c3be" stroke="#51665b" stroke-width="3"/><path d="M82 98L194 56" stroke="white" stroke-width="5"/></svg></div><span>Calentamiento</span><h4>Resistencias</h4><p>Elementos calefactores para mordazas y bloques de sellado.</p><small class="compatibility">Referencia exacta por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Resistencias" data-store="Repuestos">Agregar al carrito</button></article>
                 <article class="part-card" data-machine="selladora" data-models="fr770 fr900 fr1000 fr1300" data-category="temperatura" data-search="termocuplas termopar sensor temperatura"><div class="part-visual"><svg viewBox="0 0 260 180" aria-hidden="true"><path d="M120 109c-95-100-126 62-25 30s68-102 4-85-65 72-5 65" fill="none" stroke="#85958e" stroke-width="6"/><path d="M121 110l87-49" stroke="#42574c" stroke-width="13"/><path d="M207 61l27-16" stroke="#9baea3" stroke-width="7"/></svg></div><span>Temperatura</span><h4>Termocuplas</h4><p>Sensores para medición y control estable de temperatura.</p><small class="compatibility">Referencia exacta por confirmar</small><strong class="pending-price">Precio por confirmar</strong><button class="buy-button add-to-cart" type="button" data-name="Termocuplas" data-store="Repuestos">Agregar al carrito</button></article>
@@ -132,7 +157,8 @@
             </div>
           </div>
         </div>
-        <aside class="store-plan-suggestion"><div><span class="kicker">CUIDA TU EQUIPO A LARGO PLAZO</span><h3>El repuesto resuelve. El mantenimiento previene.</h3><p>Conoce nuestros planes para acompañar el cuidado de tu maquinaria.</p></div><a class="button primary" href="#planes">Explorar planes de mantenimiento ↗</a></aside>
+        <aside class="store-plan-suggestion"><div><span class="kicker">PLANES DE MANTENIMIENTO PARA TU MÁQUINA</span><h3>El repuesto resuelve. El mantenimiento previene.</h3><p>Conoce los planes existentes para <strong id="store-plan-machine-name">selladoras</strong> y solicita una cobertura adaptada a tu operación.</p></div><a class="button primary" href="#planes">Explorar planes de mantenimiento ↗</a></aside>
+        <section class="store-benefits" aria-label="Beneficios MaqAssist"><article><span>▰</span><div><strong>Envíos rápidos</strong><small>A todo Colombia</small></div></article><article><span>◇</span><div><strong>Compra acompañada</strong><small>Compatibilidad por confirmar</small></div></article><article><span>▭</span><div><strong>Múltiples medios de pago</strong><small>Según confirmación comercial</small></div></article><article><span>◉</span><div><strong>Asesoría técnica</strong><small>Antes y después de tu compra</small></div></article></section>
       </div>
     </section>
 
@@ -270,6 +296,13 @@
         <a class="button white" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20tengo%20una%20falla%20en%20un%20equipo" target="_blank" rel="noopener">Escribir por WhatsApp <span>↗</span></a>
       </div>
     </section>
+
+    <section class="section support-contact" id="soporte">
+      <div class="container support-contact-grid">
+        <div class="support-panel"><span class="kicker">SOPORTE TÉCNICO</span><h2>Acompañamiento para identificar, mantener y recuperar tus equipos.</h2><p>Envíanos la placa, la referencia y fotografías claras de la máquina o del componente. Te orientaremos con la información disponible.</p><div class="support-path"><span>1</span><strong>Identifica la máquina</strong><span>2</span><strong>Describe la necesidad</strong><span>3</span><strong>Recibe orientación</strong></div><a class="button primary" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20soporte%20t%C3%A9cnico" target="_blank" rel="noopener">Solicitar soporte por WhatsApp →</a></div>
+        <div class="contact-panel" id="contacto"><span class="kicker">CONTACTO</span><h2>Cuéntanos qué necesitas</h2><form id="contact-form"><label>Nombre<input id="contact-name" type="text" required autocomplete="name"></label><label>Empresa<input id="contact-company" type="text" autocomplete="organization"></label><label>Máquina o necesidad<textarea id="contact-message" required rows="4"></textarea></label><button class="button primary" type="submit">Continuar por WhatsApp →</button></form></div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -288,6 +321,6 @@
     <div class="cart-body" id="cart-items"><div class="empty-cart"><strong>Tu carrito está vacío</strong><span>Agrega repuestos para preparar tu pedido.</span></div></div>
     <div class="cart-footer"><div class="cart-note"><span>Resumen estimado</span><strong>Precios pendientes de confirmación</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Continuar por WhatsApp <span>↗</span></button><small>Confirmaremos compatibilidad, disponibilidad y valor antes del pago.</small></div>
   </aside>
-  <script src="/script.js?v=brand-v1"></script>
+  <script src="/script.js?v=structure-v1"></script>
 </body>
 </html>
