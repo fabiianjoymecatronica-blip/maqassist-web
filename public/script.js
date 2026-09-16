@@ -20,11 +20,15 @@ const machineCatalog = {
     heroCategory: 'SELLADORAS DE BANDA CONTINUA',
     heroTitle: 'Repuestos para|selladoras de banda',
     heroDescription: 'Selecciona la referencia de tu equipo y encuentra los repuestos disponibles con acompañamiento técnico.',
-    heroImage: '/assets/selladora-linea.svg',
-    heroAlt: 'Ilustración técnica 2D de selladora de banda continua',
+    heroImage: '/assets/selladoras/selladora-maqassist-transparente.png',
+    heroAlt: 'Selladora continua industrial MaqAssist',
+    viewFront: '/assets/selladoras/selladora-panel-control.webp',
+    viewFrontLabel: 'PANEL DE CONTROL',
+    viewSide: '/assets/selladoras/selladora-sistema-sellado.webp',
+    viewSideLabel: 'SISTEMA DE SELLADO',
     benefits: ['Identificación por referencia', 'Compatibilidad por confirmar', 'Asesoría técnica especializada'],
-    image: '/assets/selladora-banda-continua.png',
-    imageAlt: 'Selladora de banda continua',
+    image: '/assets/selladoras/selladora-maqassist-principal.webp',
+    imageAlt: 'Selladora continua industrial MaqAssist, imagen de referencia',
     status: 'CATÁLOGO DE REPUESTOS',
     description: 'Explora todos los repuestos o selecciona una referencia para filtrar compatibilidad.',
     models: [
@@ -106,7 +110,7 @@ function selectModel(modelId) {
   if (currentModel) {
     const photo = document.getElementById('selection-photo');
     photo.src = currentMachine.heroImage;
-    photo.alt = 'Ilustración 2D de ' + currentMachine.label;
+    photo.alt = 'Vista de referencia de ' + currentMachine.label;
     document.getElementById('selection-name').textContent = currentMachine.label + ' · ' + currentModel.name;
   }
   document.getElementById('machine-image').src = currentModel?.image || currentMachine.image;
@@ -148,8 +152,10 @@ function renderMachine(machineKey) {
   const heroMachine = document.getElementById('store-hero-machine');
   heroMachine.src = currentMachine.heroImage;
   heroMachine.alt = currentMachine.heroAlt;
-  document.getElementById('store-view-front').src = currentMachine.heroImage;
-  document.getElementById('store-view-side').src = currentMachine.heroImage;
+  document.getElementById('store-view-front').src = currentMachine.viewFront || currentMachine.heroImage;
+  document.getElementById('store-view-front-label').textContent = currentMachine.viewFrontLabel || 'VISTA TÉCNICA';
+  document.getElementById('store-view-side').src = currentMachine.viewSide || currentMachine.heroImage;
+  document.getElementById('store-view-side-label').textContent = currentMachine.viewSideLabel || 'DETALLE DE REFERENCIA';
   document.getElementById('store-plan-machine-name').textContent = currentMachine.breadcrumb.toLowerCase();
   document.getElementById('store-buy-machine').href = `/maquinas?categoria=${encodeURIComponent(currentMachineKey)}`;
 

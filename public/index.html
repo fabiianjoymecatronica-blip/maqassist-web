@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=routes-v2">
+  <link rel="stylesheet" href="/styles.css?v=selladoras-v1">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -97,12 +97,12 @@
           </div>
           <div class="technical-machine-stage">
             <span class="technical-label label-one">VISTA GENERAL</span>
-            <img id="store-hero-machine" src="/assets/selladora-linea.svg" alt="Ilustración técnica 2D de selladora de banda continua">
+            <img id="store-hero-machine" src="/assets/selladoras/selladora-maqassist-transparente.png" alt="Selladora continua industrial MaqAssist">
             <span class="callout callout-one" id="store-callout-one">IDENTIFICACIÓN POR REFERENCIA</span><span class="callout callout-two" id="store-callout-two">COMPATIBILIDAD POR CONFIRMAR</span>
           </div>
           <aside class="technical-views" aria-label="Vistas técnicas de la máquina">
-            <div><span>VISTA TÉCNICA</span><img id="store-view-front" src="/assets/selladora-linea.svg" alt="Vista técnica ilustrativa de referencia"></div>
-            <div><span>DETALLE DE REFERENCIA</span><img id="store-view-side" src="/assets/selladora-linea.svg" alt="Detalle técnico ilustrativo de referencia"></div>
+            <div><span id="store-view-front-label">PANEL DE CONTROL</span><img id="store-view-front" src="/assets/selladoras/selladora-panel-control.webp" alt="Detalle del panel de control de la selladora"></div>
+            <div><span id="store-view-side-label">SISTEMA DE SELLADO</span><img id="store-view-side" src="/assets/selladoras/selladora-sistema-sellado.webp" alt="Detalle del sistema de sellado y arrastre"></div>
             <small>Vistas ilustrativas sin cotas. Confirma la placa y referencia de tu equipo.</small>
           </aside>
         </section>
@@ -125,7 +125,7 @@
           <aside class="machine-sidebar">
             <div class="machine-selector-heading"><span class="gear-icon" aria-hidden="true">⚙</span><div><span class="selector-label">SELECCIONA TU MÁQUINA</span><p>Selecciona una familia para transformar el catálogo.</p></div></div>
             <div class="category-list">
-              <button class="category-button active" type="button" data-machine="selladora" aria-expanded="true"><span class="category-art"><img src="/assets/selladora-linea.svg" alt=""></span><strong>Selladora de banda continua</strong><b>→</b></button>
+              <button class="category-button active" type="button" data-machine="selladora" aria-expanded="true"><span class="category-art"><img src="/assets/selladoras/selladora-miniatura.webp" alt=""></span><strong>Selladora de banda continua</strong><b>→</b></button>
               <div class="model-list open" id="model-list" role="list" aria-label="Referencias de selladoras"></div>
               <button class="category-button" type="button" data-machine="flowpack" aria-expanded="false"><span class="category-art placeholder-art">FP</span><strong>Flow Pack</strong><b>→</b></button>
               <button class="category-button" type="button" data-machine="codificadora" aria-expanded="false"><span class="category-art placeholder-art">CI</span><strong>Codificadoras</strong><b>→</b></button>
@@ -140,7 +140,7 @@
           <div class="machine-detail">
             <div class="machine-title-row">
               <div><span class="availability-tag" id="machine-status">CATÁLOGO DE REPUESTOS</span><h3><span id="machine-type">Selladoras</span> <span id="selected-model">Todas las referencias</span></h3><p id="machine-description">Explora todos los repuestos o selecciona una referencia para filtrar compatibilidad.</p><label class="model-reference-label" for="store-model-select">Modelo de referencia:<select id="store-model-select"><option value="all">Todas las referencias</option></select></label></div>
-              <div class="machine-photo"><img id="machine-image" src="/assets/selladora-banda-continua.png" alt="Selladora de banda continua FR"></div>
+              <div class="machine-photo"><img id="machine-image" src="/assets/selladoras/selladora-maqassist-principal.webp" alt="Selladora continua industrial MaqAssist"></div>
             </div>
             <div class="machine-pending-panel" id="machine-pending-panel" hidden><strong>Repuestos en preparación</strong><span>Estamos cargando los repuestos de esta familia. Puedes enviarnos una fotografía o la placa para identificar el componente.</span><a id="machine-pending-link" href="#">Consultar repuesto por WhatsApp →</a></div>
             <div class="parts-section">
@@ -321,6 +321,6 @@
     <div class="cart-body" id="cart-items"><div class="empty-cart"><strong>Tu carrito está vacío</strong><span>Agrega repuestos para preparar tu pedido.</span></div></div>
     <div class="cart-footer"><div class="cart-note"><span>Resumen estimado</span><strong>Precios pendientes de confirmación</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Continuar por WhatsApp <span>↗</span></button><small>Confirmaremos compatibilidad, disponibilidad y valor antes del pago.</small></div>
   </aside>
-  <script src="/script.js?v=routes-v2"></script>
+  <script src="/script.js?v=selladoras-v1"></script>
 </body>
 </html>
