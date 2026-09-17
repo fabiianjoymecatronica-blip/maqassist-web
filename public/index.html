@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=selladoras-completa-v2">
+  <link rel="stylesheet" href="/styles.css?v=home-independiente-v1">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -22,17 +22,107 @@
       </button>
       <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="/" data-nav="inicio">Inicio</a>
-        <a href="/repuestos" data-nav="repuestos">Tienda de Repuestos</a>
-        <a href="/planes" data-nav="planes">Planes de Mantenimiento</a>
-        <a href="/maquinas" data-nav="maquinas">Tienda de Máquinas</a>
-        <a href="/#soporte" data-nav="soporte">Soporte</a>
-        <a href="/#contacto" data-nav="contacto">Contacto</a>
+        <a href="/repuestos" data-nav="repuestos">Repuestos</a>
+        <a href="/maquinas" data-nav="maquinas">Máquinas</a>
+        <a href="/planes" data-nav="planes">Planes</a>
+        <a href="/nosotros" data-nav="nosotros">Nosotros</a>
+        <a href="/contacto" data-nav="contacto">Contacto</a>
         <div class="nav-tools"><button class="header-search-button" id="header-search-button" type="button" aria-label="Buscar repuestos">⌕</button><button class="cart-button" id="open-cart" type="button" aria-label="Abrir carrito">Carrito <span id="cart-count">0</span></button><a class="header-whatsapp" href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20asesor%C3%ADa" target="_blank" rel="noopener">WhatsApp</a></div>
       </nav>
     </div>
   </header>
 
   <main>
+    <section class="homepage" id="home">
+      <div class="home-hero">
+        <div class="home-blueprint" aria-hidden="true"></div>
+        <div class="container home-hero-layout">
+          <div class="home-hero-copy">
+            <span class="home-kicker">EQUIPOS EN MOVIMIENTO</span>
+            <h1>Repuestos que mantienen <em>tu producción</em></h1>
+            <p>Todo lo que necesitas para selladoras de banda continua y más equipos de empaque industrial.</p>
+            <div class="home-benefits" aria-label="Beneficios MaqAssist">
+              <span><b>▣</b> Envíos a Colombia</span>
+              <span><b>◇</b> Repuestos técnicos</span>
+              <span><b>◉</b> Asesoría especializada</span>
+              <span><b>⚙</b> Soporte posventa</span>
+            </div>
+            <a class="home-button" href="/repuestos"><span>▱</span> Explorar repuestos <b>→</b></a>
+          </div>
+          <div class="home-machine-stage">
+            <div class="home-machine-note">Más que repuestos,<br><strong>soluciones en movimiento</strong></div>
+            <img src="/assets/selladoras/selladora-maqassist-original.png" alt="Selladora continua industrial MaqAssist completa">
+            <div class="home-machine-words" aria-hidden="true"><span>SELLA</span><span>CODIFICA</span><span>EMPAQUETA</span><span>PRODUCE</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container home-content">
+        <div class="home-destination-grid" aria-label="Tiendas y planes MaqAssist">
+          <a class="home-destination" href="/repuestos">
+            <span class="home-destination-icon">⚙</span><small>TIENDA DE</small><h2>Repuestos</h2>
+            <p>Encuentra el repuesto para cada máquina, con identificación y acompañamiento técnico.</p>
+            <strong>Ver repuestos →</strong>
+          </a>
+          <a class="home-destination home-destination-machine" href="/maquinas">
+            <span class="home-destination-icon">▤</span><small>TIENDA DE</small><h2>Máquinas</h2>
+            <p>Equipos confiables para tu línea de producción.</p>
+            <img src="/assets/selladoras/selladora-maqassist-original.png" alt="Selladora MaqAssist completa">
+            <strong>Ver máquinas →</strong>
+          </a>
+          <a class="home-destination home-destination-plan" href="/planes">
+            <span class="home-destination-icon">▦</span><small>PLANES DE</small><h2>Mantenimiento</h2>
+            <p>Mantén tus equipos en condiciones óptimas y evita paradas inesperadas.</p>
+            <strong>Ver planes →</strong>
+          </a>
+        </div>
+
+        <div class="home-section-heading"><h2>Explora por <em>categoría</em></h2><a href="/repuestos">Ver todos los repuestos →</a></div>
+        <div class="home-category-strip">
+          <a href="/repuestos?buscar=cintas"><span>◒</span><strong>Cintas</strong></a>
+          <a href="/repuestos?buscar=resistencias"><span>⌁</span><strong>Resistencias</strong></a>
+          <a href="/repuestos?buscar=termocuplas"><span>∿</span><strong>Termocuplas</strong></a>
+          <a href="/repuestos?buscar=motores"><span>◉</span><strong>Motores</strong></a>
+          <a href="/repuestos?buscar=variadores"><span>▥</span><strong>Variadores</strong></a>
+          <a href="/repuestos?buscar=sensores"><span>●</span><strong>Sensores</strong></a>
+          <a href="/repuestos?buscar=rodamientos"><span>◎</span><strong>Rodamientos</strong></a>
+          <a href="/repuestos?buscar=cuchillas"><span>◢</span><strong>Cuchillas</strong></a>
+          <a href="/repuestos?buscar=accesorios"><span>⚙</span><strong>Accesorios</strong></a>
+        </div>
+      </div>
+
+      <section class="home-parts-callout">
+        <div class="container home-parts-callout-grid">
+          <div><span>REPUESTOS QUE HACEN LA DIFERENCIA</span><h2>Pequeñas piezas,<br><em>grandes resultados</em></h2><p>Componentes para mantener tu producción en movimiento.</p><a href="/repuestos">Ir a la tienda de repuestos →</a></div>
+          <div class="home-bearing" aria-hidden="true"><i></i><b>⚙</b></div>
+          <ul><li>Calidad técnica</li><li>Catálogo en crecimiento</li><li>Envíos a Colombia</li><li>Soporte especializado</li></ul>
+        </div>
+      </section>
+
+      <div class="container home-trust-row" aria-label="Compromisos MaqAssist">
+        <div><b>▣</b><span><strong>Catálogo organizado</strong><small>Por máquina y referencia</small></span></div>
+        <div><b>▤</b><span><strong>Equipos industriales</strong><small>Para líneas de producción</small></span></div>
+        <div><b>◉</b><span><strong>Atención nacional</strong><small>Acompañamiento en Colombia</small></span></div>
+        <div><b>◇</b><span><strong>Compromiso técnico</strong><small>Antes y después de la compra</small></span></div>
+      </div>
+
+      <section class="container home-machine-categories">
+        <div class="home-section-heading"><h2>Nuestras máquinas <em>por categoría</em></h2><a href="/maquinas">Ver todas las máquinas →</a></div>
+        <div class="home-machine-grid">
+          <a href="/maquinas?categoria=selladora"><div><img src="/assets/selladoras/selladora-maqassist-original.png" alt="Selladora de banda continua MaqAssist completa"></div><strong>Selladoras de banda continua</strong><b>→</b></a>
+          <a href="/maquinas?categoria=codificadora"><div><img src="/assets/maquina-tecnica-placeholder.svg" alt="Codificadoras de tinta"></div><strong>Codificadoras de tinta</strong><b>→</b></a>
+          <a href="/maquinas?categoria=flowpack"><div><img src="/assets/maquina-tecnica-placeholder.svg" alt="Empacadoras Flow Pack"></div><strong>Empacadoras Flow Pack</strong><b>→</b></a>
+          <a href="/maquinas?categoria=empacadora290"><div><img src="/assets/empacadora-vertical-290.png" alt="Empacadora vertical serie 290"></div><strong>Empacadoras verticales</strong><b>→</b></a>
+          <a href="/maquinas?categoria=dosificadora"><div><img src="/assets/maquina-tecnica-placeholder.svg" alt="Dosificadoras y llenadoras"></div><strong>Dosificadoras y llenadoras</strong><b>→</b></a>
+        </div>
+      </section>
+
+      <section class="home-technologies">
+        <div class="container"><span>Tecnologías industriales que atendemos</span><div><b>INOVANCE</b><b>DELTA</b><b>OMRON</b><b>Panasonic</b><b>Autonics</b><b>CHINT</b><b>Schneider</b><b>SIEMENS</b></div></div>
+      </section>
+      <section class="home-advice"><div class="container"><div><h2>¿Necesitas una asesoría personalizada?</h2><p>Nuestro equipo está listo para ayudarte a encontrar la mejor solución.</p></div><a href="https://wa.me/573189324488?text=Hola%20MaqAssist%2C%20necesito%20una%20asesor%C3%ADa%20personalizada" target="_blank" rel="noopener">◉ Escríbenos por WhatsApp →</a></div></section>
+    </section>
+
     <section class="hero">
       <div class="hero-grid"></div>
       <div class="container hero-content">
@@ -308,7 +398,7 @@
   <footer>
     <div class="container footer-grid">
       <div class="footer-brand"><img src="/assets/maqassist-logo-real-2026.png" alt="MaqAssist · Acompañamiento técnico continuo"><p>Soluciones que mantienen tu industria en movimiento.</p></div>
-      <div><h3>Servicios</h3><a href="/#servicios">Mantenimiento</a><a href="/repuestos">Repuestos</a><a href="/maquinas">Maquinaria</a><a href="/planes">Planes Care</a></div>
+      <div><h3>Navegación</h3><a href="/repuestos">Repuestos</a><a href="/maquinas">Máquinas</a><a href="/planes">Planes</a><a href="/nosotros">Nosotros</a><a href="/contacto">Contacto</a></div>
       <div><h3>Contacto</h3><a href="tel:+573189324488">+57 318 932 4488</a><a href="mailto:maqassist.ceo@gmail.com">maqassist.ceo@gmail.com</a><span>Atención en toda Colombia</span></div>
     </div>
     <div class="container footer-bottom"><span>© <span id="year"></span> MaqAssist. Todos los derechos reservados.</span><span>Acompañamiento técnico continuo</span></div>
@@ -321,6 +411,6 @@
     <div class="cart-body" id="cart-items"><div class="empty-cart"><strong>Tu carrito está vacío</strong><span>Agrega repuestos para preparar tu pedido.</span></div></div>
     <div class="cart-footer"><div class="cart-note"><span>Resumen estimado</span><strong>Precios pendientes de confirmación</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Continuar por WhatsApp <span>↗</span></button><small>Confirmaremos compatibilidad, disponibilidad y valor antes del pago.</small></div>
   </aside>
-  <script src="/script.js?v=selladoras-completa-v2"></script>
+  <script src="/script.js?v=home-independiente-v1"></script>
 </body>
 </html>

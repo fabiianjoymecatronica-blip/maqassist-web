@@ -92,7 +92,7 @@ let currentModel = null;
 
 function routeName() {
   const route = location.pathname.split('/').filter(Boolean)[0] || '';
-  return ['repuestos', 'maquinas', 'planes'].includes(route) ? route : '';
+  return ['repuestos', 'maquinas', 'planes', 'nosotros', 'contacto', 'soporte'].includes(route) ? route : '';
 }
 
 function selectModel(modelId) {
@@ -342,21 +342,30 @@ document.querySelectorAll('.period-options button').forEach(button => button.add
 
 updatePlan();
 
-// Las tiendas y los planes usan rutas propias y conservan una única base visual.
+// Cada pantalla principal usa una ruta propia; la portada ya no funciona como página larga.
 function updatePageView() {
   const route = routeName();
   const legacyStore = !route && ['#repuestos', '#catalogo-repuestos'].includes(location.hash);
-  const page = route || (legacyStore ? 'repuestos' : '');
+  const legacyPage = !route && location.hash === '#contacto' ? 'contacto' : (!route && location.hash === '#soporte' ? 'soporte' : '');
+  const page = route || (legacyStore ? 'repuestos' : legacyPage) || 'home';
+  const sectionForPage = { contacto: 'soporte', soporte: 'soporte' }[page] || page;
+  document.body.classList.toggle('home-view', page === 'home');
   document.body.classList.toggle('store-view', page === 'repuestos');
   document.body.classList.toggle('machines-view', page === 'maquinas');
   document.body.classList.toggle('plans-view', page === 'planes');
+  document.body.classList.toggle('about-view', page === 'nosotros');
+  document.body.classList.toggle('contact-view', page === 'contacto');
+  document.body.classList.toggle('support-view', page === 'soporte');
   document.querySelectorAll('main > section').forEach(section => {
-    section.hidden = Boolean(page) && section.id !== page;
+    section.hidden = section.id !== sectionForPage;
   });
   const pageTitles = {
     repuestos: 'Tienda de Repuestos | MaqAssist',
     maquinas: 'Tienda de Máquinas | MaqAssist',
-    planes: 'Planes de Mantenimiento | MaqAssist'
+    planes: 'Planes de Mantenimiento | MaqAssist',
+    nosotros: 'Nosotros | MaqAssist',
+    contacto: 'Contacto | MaqAssist',
+    soporte: 'Soporte técnico | MaqAssist'
   };
   document.title = pageTitles[page] || 'MaqAssist | Acompañamiento técnico continuo';
 }
@@ -374,7 +383,8 @@ document.getElementById('header-search-button').addEventListener('click', () => 
 });
 
 function updateNavState() {
-  const key = routeName() || (location.hash || '#inicio').replace('#', '');
+  const route = routeName();
+  const key = route || (location.hash === '#contacto' ? 'contacto' : location.hash === '#soporte' ? 'soporte' : location.hash === '#repuestos' || location.hash === '#catalogo-repuestos' ? 'repuestos' : 'inicio');
   document.querySelectorAll('[data-nav]').forEach(link => {
     const active = link.dataset.nav === key || (key === 'catalogo-repuestos' && link.dataset.nav === 'repuestos');
     link.classList.toggle('active', active);
