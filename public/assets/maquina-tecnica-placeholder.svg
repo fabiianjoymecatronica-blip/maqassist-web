@@ -5,12 +5,12 @@
     <rect x="180" y="120" width="150" height="116" rx="5" fill="#F7FAFB"/>
     <path d="M255 120v116m-75-58h150" stroke="#9BA8AD"/>
     <rect x="350" y="120" width="62" height="48" rx="4" fill="#14212A"/>
-    <path d="M362 144h35" stroke="#39C525"/>
-    <circle cx="367" cy="194" r="9" fill="#39C525"/>
+    <path d="M362 144h35" stroke="#2E9E1E"/>
+    <circle cx="367" cy="194" r="9" fill="#2E9E1E"/>
     <circle cx="395" cy="194" r="9" fill="#E84B3C"/>
-    <path d="M180 285v25m230-25v25M126 70h360M126 65v10m360-10v10" stroke="#39C525" stroke-dasharray="6 7"/>
-    <path d="M110 95v190m-5-190h10m-10 190h10" stroke="#39C525" stroke-dasharray="6 7"/>
+    <path d="M180 285v25m230-25v25M126 70h360M126 65v10m360-10v10" stroke="#2E9E1E" stroke-dasharray="6 7"/>
+    <path d="M110 95v190m-5-190h10m-10 190h10" stroke="#2E9E1E" stroke-dasharray="6 7"/>
     <circle cx="295" cy="180" r="44" stroke="#B4C0C5"/>
-    <path d="M295 148v64m-32-32h64" stroke="#39C525"/>
+    <path d="M295 148v64m-32-32h64" stroke="#2E9E1E"/>
   </g>
 </svg>
