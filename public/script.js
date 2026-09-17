@@ -20,22 +20,22 @@ const machineCatalog = {
     heroCategory: 'SELLADORAS DE BANDA CONTINUA',
     heroTitle: 'Repuestos para|selladoras de banda',
     heroDescription: 'Selecciona la referencia de tu equipo y encuentra los repuestos disponibles con acompañamiento técnico.',
-    heroImage: '/assets/selladoras/selladora-maqassist-original.png',
+    heroImage: '/assets/selladoras/selladora-continua-transparente.webp',
     heroAlt: 'Selladora continua industrial MaqAssist',
-    viewFront: '/assets/selladoras/selladora-maqassist-original.png',
+    viewFront: '/assets/selladoras/selladora-continua-transparente.webp',
     viewFrontLabel: 'VISTA COMPLETA',
-    viewSide: '/assets/selladoras/selladora-maqassist-original.png',
+    viewSide: '/assets/selladoras/selladora-continua-transparente.webp',
     viewSideLabel: 'IMAGEN DE REFERENCIA',
     benefits: ['Identificación por referencia', 'Compatibilidad por confirmar', 'Asesoría técnica especializada'],
-    image: '/assets/selladoras/selladora-maqassist-original.png',
+    image: '/assets/selladoras/selladora-continua-transparente.webp',
     imageAlt: 'Selladora continua industrial MaqAssist, imagen de referencia',
     status: 'CATÁLOGO DE REPUESTOS',
     description: 'Explora todos los repuestos o selecciona una referencia para filtrar compatibilidad.',
     models: [
-      { id: 'fr770', name: 'FR-770', image: '/assets/selladora-fr770.png' },
-      { id: 'fr900', name: 'FR-900', image: '/assets/selladora-fr900.png' },
-      { id: 'fr1000', name: 'FR-1000', image: '/assets/selladora-fr1000.png' },
-      { id: 'fr1300', name: 'FR-1300', image: '/assets/selladora-fr1300.png' }
+      { id: 'fr770', name: 'FR-770', image: '/assets/selladoras/selladora-continua-transparente.webp' },
+      { id: 'fr900', name: 'FR-900', image: '/assets/selladoras/selladora-continua-transparente.webp' },
+      { id: 'fr1000', name: 'FR-1000', image: '/assets/selladoras/selladora-continua-transparente.webp' },
+      { id: 'fr1300', name: 'FR-1300', image: '/assets/selladoras/selladora-continua-transparente.webp' }
     ]
   },
   empacadora290: {
