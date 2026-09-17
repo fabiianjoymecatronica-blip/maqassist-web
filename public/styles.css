@@ -365,3 +365,41 @@ footer{background:#fff;color:var(--maq-charcoal);border-top:1px solid var(--maq-
 
 @media(max-width:1080px){.home-hero-layout{grid-template-columns:1fr 1fr}.home-machine-stage>img{height:405px}.home-machine-note{display:none}.home-category-strip{grid-template-columns:repeat(5,1fr)}.home-machine-grid{grid-template-columns:repeat(3,1fr)}.home-parts-callout-grid{grid-template-columns:1fr .7fr}.home-parts-callout ul{display:none}.home-trust-row{grid-template-columns:repeat(2,1fr)}.home-trust-row>div:nth-child(2){border-right:0}.home-trust-row>div:nth-child(-n+2){border-bottom:1px solid var(--maq-line)}}
 @media(max-width:760px){.homepage{padding-top:78px}.home-hero{min-height:auto}.home-hero-layout{grid-template-columns:1fr;min-height:0}.home-hero-copy{padding:45px 0 5px}.home-hero-copy h1{font-size:49px}.home-benefits{display:grid;grid-template-columns:1fr 1fr}.home-machine-stage{min-height:350px;padding:10px 0 25px}.home-machine-stage>img{height:330px}.home-machine-words{display:none}.home-blueprint:after{right:-260px;top:280px}.home-destination-grid{grid-template-columns:1fr}.home-destination{min-height:205px}.home-category-strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.home-category-strip a{flex:0 0 118px;scroll-snap-align:start}.home-parts-callout-grid{grid-template-columns:1fr}.home-parts-callout-grid>div:first-child{padding:38px 0}.home-bearing{display:none}.home-trust-row{grid-template-columns:1fr}.home-trust-row>div{border-right:0;border-bottom:1px solid var(--maq-line)!important}.home-machine-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.home-machine-grid>a{flex:0 0 230px;scroll-snap-align:start}.home-technologies .container>div{justify-content:flex-start}.home-advice .container{align-items:flex-start;flex-direction:column}.home-advice a{width:100%;text-align:center}.home-section-heading{align-items:flex-start;flex-direction:column}.home-destination-machine img{height:95px}.about-view #nosotros,.contact-view #soporte,.support-view #soporte{padding-top:115px}}
+
+/* La selladora oficial siempre se muestra completa, sin recorte ni deformación. */
+img[src*="selladora-maqassist-original"]{
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:none!important;
+}
+.home-machine-stage{padding:72px 18px 35px}
+.home-machine-stage:before{
+  content:"";position:absolute;z-index:1;inset:68px 12px 30px;
+  background-color:rgba(255,255,255,.96);
+  background-image:linear-gradient(rgba(44,154,65,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(44,154,65,.07) 1px,transparent 1px);
+  background-size:28px 28px;border:1px solid var(--maq-green-border);border-radius:14px;
+  box-shadow:0 24px 50px rgba(8,19,27,.09)
+}
+.home-machine-stage>img{
+  width:min(100%,760px)!important;height:auto!important;max-height:475px!important;
+  aspect-ratio:3/2;padding:14px;background:#fff;border-radius:11px
+}
+.home-destination-machine img{padding:4px;background:#fff}
+.home-machine-grid img[src*="selladora-maqassist-original"]{padding:5px;background:#fff}
+#technical-store-hero[data-family="selladora"] .technical-machine-stage{padding:26px 18px}
+#technical-store-hero[data-family="selladora"] .technical-machine-stage>img{
+  display:block;width:min(100%,660px)!important;height:auto!important;max-height:none!important;
+  aspect-ratio:3/2;padding:12px!important;background:#fff!important;border:1px solid var(--maq-green-border)!important;
+  border-radius:12px!important
+}
+#technical-store-hero[data-family="selladora"] .technical-views img,
+.category-button[data-machine="selladora"] .category-art img,
+#repuestos .machine-photo img[src*="selladora-maqassist-original"],
+#repuestos .selection-photo img[src*="selladora-maqassist-original"]{padding:3px;background:#fff}
+@media(max-width:760px){
+  .home-machine-stage{min-height:0;padding:48px 0 25px}
+  .home-machine-stage:before{inset:38px 0 18px}
+  .home-machine-stage>img{width:100%!important;height:auto!important;max-height:none!important;padding:8px}
+  #technical-store-hero[data-family="selladora"] .technical-machine-stage{min-height:0;padding:18px 12px}
+  #technical-store-hero[data-family="selladora"] .technical-machine-stage>img{width:100%!important;height:auto!important;max-height:none!important}
+}
