@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=contenedor-tecnico-v1">
+  <link rel="stylesheet" href="/styles.css?v=contenedor-integrado-v2">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -176,21 +176,20 @@
     <section class="section marketplace" id="repuestos">
       <div class="container">
         <nav class="shop-breadcrumb" aria-label="Ruta de compra"><a href="/">Inicio</a><b>›</b><strong>Tienda de Repuestos</strong><b>›</b><span id="shop-machine-breadcrumb">Selladoras de banda</span></nav>
-        <section class="technical-store-hero" id="technical-store-hero" data-family="selladora" aria-labelledby="store-hero-title">
-          <div class="technical-grid" aria-hidden="true"></div>
-          <div class="technical-copy">
+        <section class="store-showcase" id="technical-store-hero" data-family="selladora" aria-labelledby="store-hero-title">
+          <div class="store-showcase-grid" aria-hidden="true"></div>
+          <div class="store-showcase-copy">
             <span class="kicker" id="store-hero-category">SELLADORAS DE BANDA CONTINUA</span>
             <h2 id="store-hero-title">Repuestos para<br><em>selladoras de banda</em></h2>
             <p id="store-hero-description">Selecciona la referencia de tu equipo y encuentra los repuestos disponibles con acompañamiento técnico.</p>
-            <ul class="technical-benefits" id="store-hero-benefits"><li>Identificación por referencia</li><li>Compatibilidad por confirmar</li><li>Asesoría técnica especializada</li></ul>
-            <div class="technical-actions"><a class="button primary" id="store-buy-machine" href="/maquinas">Comprar máquina <span>→</span></a><a class="button secondary" id="store-view-plans" href="/planes">Ver planes <span>→</span></a></div>
+            <ul class="store-showcase-benefits" id="store-hero-benefits"><li>Identificación por referencia</li><li>Compatibilidad por confirmar</li><li>Asesoría técnica especializada</li></ul>
+            <div class="store-showcase-actions"><a class="button primary" id="store-buy-machine" href="/maquinas">Comprar máquina <span>→</span></a><a class="button secondary" id="store-view-plans" href="/planes">Ver planes <span>→</span></a></div>
           </div>
-          <div class="technical-machine-stage">
-            <span class="technical-label label-one">VISTA GENERAL</span>
+          <div class="store-showcase-machine">
             <img id="store-hero-machine" src="/assets/selladoras/selladora-continua-transparente.webp" alt="Selladora continua industrial MaqAssist completa">
-            <span class="callout callout-one" id="store-callout-one">IDENTIFICACIÓN POR REFERENCIA</span><span class="callout callout-two" id="store-callout-two">COMPATIBILIDAD POR CONFIRMAR</span>
+            <span class="store-showcase-callout" id="store-callout-one">IDENTIFICACIÓN POR REFERENCIA</span><span class="store-showcase-callout" id="store-callout-two">COMPATIBILIDAD POR CONFIRMAR</span>
           </div>
-          <aside class="technical-views" aria-label="Vistas técnicas de la máquina">
+          <aside class="store-showcase-views" aria-label="Vistas técnicas de la máquina">
             <div><span id="store-view-front-label">VISTA COMPLETA</span><img id="store-view-front" src="/assets/selladoras/selladora-continua-transparente.webp" alt="Vista completa de la selladora MaqAssist"></div>
             <div><span id="store-view-side-label">IMAGEN DE REFERENCIA</span><img id="store-view-side" src="/assets/selladoras/selladora-continua-transparente.webp" alt="Imagen completa de referencia de la selladora MaqAssist"></div>
             <small>Vistas ilustrativas sin cotas. Confirma la placa y referencia de tu equipo.</small>
@@ -411,6 +410,6 @@
     <div class="cart-body" id="cart-items"><div class="empty-cart"><strong>Tu carrito está vacío</strong><span>Agrega repuestos para preparar tu pedido.</span></div></div>
     <div class="cart-footer"><div class="cart-note"><span>Resumen estimado</span><strong>Precios pendientes de confirmación</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Continuar por WhatsApp <span>↗</span></button><small>Confirmaremos compatibilidad, disponibilidad y valor antes del pago.</small></div>
   </aside>
-  <script src="/script.js?v=contenedor-tecnico-v1"></script>
+  <script src="/script.js?v=contenedor-integrado-v2"></script>
 </body>
 </html>
