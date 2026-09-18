@@ -960,3 +960,61 @@ img[src*="selladora-continua-transparente"]{
 @media(max-width:780px){
   .store-showcase:before{right:-38%;top:auto;bottom:-8%;width:105%;height:45%}
 }
+
+/* Integración específica de la imagen de codificadoras. */
+#technical-store-hero[data-family="codificadora"]{
+  grid-template-columns:minmax(350px,.74fr) minmax(0,1.46fr);
+}
+#technical-store-hero[data-family="codificadora"] .store-showcase-machine{
+  min-height:560px;
+  padding:46px 10px 44px 0;
+  overflow:visible;
+}
+#technical-store-hero[data-family="codificadora"] .store-showcase-machine:before{
+  z-index:-2;
+  inset:30px -3% 30px 2%;
+  width:auto;
+  height:auto;
+  border-radius:28px;
+  opacity:.17;
+  background-image:url('/assets/codificadoras/codificadoras-contenedor-v2.png');
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  filter:blur(22px) saturate(.8);
+  transform:scale(1.025);
+}
+#technical-store-hero[data-family="codificadora"] .store-showcase-machine>img{
+  width:100%!important;
+  max-width:900px!important;
+  max-height:475px!important;
+  object-fit:contain!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:18px!important;
+  background:transparent!important;
+  mix-blend-mode:multiply;
+  filter:saturate(.92) contrast(1.035) drop-shadow(0 20px 20px rgba(13,51,29,.10));
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 100%);
+}
+#technical-store-hero[data-family="codificadora"] .store-showcase-machine:after{
+  right:6%;
+  bottom:21px;
+}
+
+@media(max-width:1050px){
+  #technical-store-hero[data-family="codificadora"]{grid-template-columns:.86fr 1.14fr}
+  #technical-store-hero[data-family="codificadora"] .store-showcase-machine{min-height:520px;padding-left:0}
+}
+@media(max-width:780px){
+  #technical-store-hero[data-family="codificadora"]{grid-template-columns:1fr}
+  #technical-store-hero[data-family="codificadora"] .store-showcase-machine{min-height:315px;padding:18px 10px 46px}
+  #technical-store-hero[data-family="codificadora"] .store-showcase-machine:before{inset:5px -4% 30px}
+  #technical-store-hero[data-family="codificadora"] .store-showcase-machine>img{
+    width:100%!important;
+    max-height:none!important;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 100%);
+    mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 100%);
+  }
+}
