@@ -63,8 +63,8 @@ const machineCatalog = {
   flowpack: {
     label: 'Flow Pack', breadcrumb: 'Flow Pack', heroCategory: 'MÁQUINAS FLOW PACK', heroTitle: 'Repuestos para|máquinas Flow Pack',
     heroDescription: 'La estructura está preparada para incorporar referencias, fotografías reales y compatibilidades confirmadas.',
-    heroImage: '/assets/maquina-tecnica-placeholder.svg', heroAlt: 'Espacio preparado para ilustración técnica 2D de Flow Pack',
-    benefits: ['Catálogo en preparación', 'Identificación por fotografía', 'Soporte técnico'], image: '/assets/maquina-tecnica-placeholder.svg', imageAlt: 'Flow Pack, imagen en preparación', status: 'CONTENIDO EN PREPARACIÓN', description: 'Envíanos la placa y fotografías del equipo para ayudarte a identificar el repuesto.', models: []
+    heroImage: '/assets/flowpack/flowpack-tecnica-v1.webp', heroAlt: 'Máquina Flow Pack completa en ilustración técnica 2D',
+    benefits: ['Catálogo en preparación', 'Identificación por fotografía', 'Soporte técnico'], image: '/assets/flowpack/flowpack-tecnica-v1.webp', imageAlt: 'Máquina Flow Pack completa, imagen técnica de referencia', status: 'CONTENIDO EN PREPARACIÓN', description: 'Envíanos la placa y fotografías del equipo para ayudarte a identificar el repuesto.', models: []
   },
   codificadora: {
     label: 'Codificadoras', breadcrumb: 'Codificadoras', heroCategory: 'SISTEMAS DE CODIFICACIÓN', heroTitle: 'Repuestos para|codificadoras',
