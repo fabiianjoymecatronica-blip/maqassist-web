@@ -961,60 +961,34 @@ img[src*="selladora-continua-transparente"]{
   .store-showcase:before{right:-38%;top:auto;bottom:-8%;width:105%;height:45%}
 }
 
-/* Integración específica de la imagen de codificadoras. */
+/* Codificadoras: máquinas aisladas sobre el mismo plano técnico del contenedor. */
 #technical-store-hero[data-family="codificadora"]{
-  grid-template-columns:minmax(350px,.74fr) minmax(0,1.46fr);
+  grid-template-columns:minmax(330px,.85fr) minmax(0,1.35fr);
 }
 #technical-store-hero[data-family="codificadora"] .store-showcase-machine{
-  min-height:560px;
-  padding:46px 10px 44px 0;
-  overflow:visible;
+  min-height:500px;
+  padding:42px 24px 58px 8px;
 }
 #technical-store-hero[data-family="codificadora"] .store-showcase-machine:before{
-  z-index:-2;
-  inset:30px -3% 30px 2%;
-  width:auto;
-  height:auto;
-  border-radius:28px;
-  opacity:.17;
-  background-image:url('/assets/codificadoras/codificadoras-contenedor-v2.png');
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  filter:blur(22px) saturate(.8);
-  transform:scale(1.025);
+  content:none;
 }
 #technical-store-hero[data-family="codificadora"] .store-showcase-machine>img{
   width:100%!important;
-  max-width:900px!important;
-  max-height:475px!important;
+  max-width:960px!important;
+  max-height:none!important;
+  height:auto!important;
   object-fit:contain!important;
-  padding:0!important;
-  border:0!important;
-  border-radius:18px!important;
-  background:transparent!important;
-  mix-blend-mode:multiply;
-  filter:saturate(.92) contrast(1.035) drop-shadow(0 20px 20px rgba(13,51,29,.10));
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 100%);
-  mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 100%);
+  border-radius:0!important;
+  mix-blend-mode:normal;
+  filter:drop-shadow(0 16px 12px rgba(21,43,29,.13));
+  -webkit-mask-image:none;
+  mask-image:none;
 }
-#technical-store-hero[data-family="codificadora"] .store-showcase-machine:after{
-  right:6%;
-  bottom:21px;
-}
-
 @media(max-width:1050px){
-  #technical-store-hero[data-family="codificadora"]{grid-template-columns:.86fr 1.14fr}
-  #technical-store-hero[data-family="codificadora"] .store-showcase-machine{min-height:520px;padding-left:0}
+  #technical-store-hero[data-family="codificadora"]{grid-template-columns:minmax(300px,.9fr) minmax(0,1.1fr)}
+  #technical-store-hero[data-family="codificadora"] .store-showcase-machine{padding:32px 18px 52px 0}
 }
 @media(max-width:780px){
-  #technical-store-hero[data-family="codificadora"]{grid-template-columns:1fr}
-  #technical-store-hero[data-family="codificadora"] .store-showcase-machine{min-height:315px;padding:18px 10px 46px}
-  #technical-store-hero[data-family="codificadora"] .store-showcase-machine:before{inset:5px -4% 30px}
-  #technical-store-hero[data-family="codificadora"] .store-showcase-machine>img{
-    width:100%!important;
-    max-height:none!important;
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 100%);
-    mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 100%);
-  }
+  #technical-store-hero[data-family="codificadora"]{grid-template-columns:minmax(0,1fr)}
+  #technical-store-hero[data-family="codificadora"] .store-showcase-machine{min-height:0;padding:30px 18px 58px}
 }

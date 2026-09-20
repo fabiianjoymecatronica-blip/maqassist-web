@@ -69,7 +69,7 @@ const machineCatalog = {
   codificadora: {
     label: 'Codificadoras', breadcrumb: 'Codificadoras', heroCategory: 'SISTEMAS DE CODIFICACIÓN', heroTitle: 'Repuestos para|codificadoras',
     heroDescription: 'Próximamente integraremos aquí las fotografías reales de consumibles y componentes ya suministrados.',
-    heroImage: '/assets/codificadoras/codificadoras-contenedor-v2.png', heroAlt: 'Codificadoras industriales y sus principales repuestos',
+    heroImage: '/assets/codificadoras/codificadoras-aisladas-v3.webp', heroAlt: 'Codificadora portátil, codificadora de cinta térmica y codificadora en línea',
     benefits: ['Consumibles por referencia', 'Identificación del equipo', 'Soporte técnico'], image: '/assets/codificadoras/codificadoras-contenedor-v2.png', imageAlt: 'Codificadoras industriales, consumibles y componentes de referencia', status: 'CONTENIDO EN PREPARACIÓN', description: 'El catálogo recibirá cartuchos, encoder, sensor, soporte y banda cuando carguemos sus fotografías reales.', models: []
   },
   dosificadora: {
