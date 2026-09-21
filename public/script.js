@@ -73,10 +73,10 @@ const machineCatalog = {
     benefits: ['Consumibles por referencia', 'Identificación del equipo', 'Soporte técnico'], image: '/assets/codificadoras/codificadoras-contenedor-v2.png', imageAlt: 'Codificadoras industriales, consumibles y componentes de referencia', status: 'CONTENIDO EN PREPARACIÓN', description: 'El catálogo recibirá cartuchos, encoder, sensor, soporte y banda cuando carguemos sus fotografías reales.', models: []
   },
   dosificadora: {
-    label: 'Dosificadoras', breadcrumb: 'Dosificadoras', heroCategory: 'SISTEMAS DE DOSIFICACIÓN', heroTitle: 'Repuestos para|dosificadoras',
-    heroDescription: 'Esta categoría queda lista para organizar componentes por tecnología, referencia y compatibilidad.',
-    heroImage: '/assets/maquina-tecnica-placeholder.svg', heroAlt: 'Espacio preparado para ilustración técnica 2D de dosificadora',
-    benefits: ['Catálogo escalable', 'Compatibilidad por confirmar', 'Asesoría técnica'], image: '/assets/maquina-tecnica-placeholder.svg', imageAlt: 'Dosificadora, imagen en preparación', status: 'CONTENIDO EN PREPARACIÓN', description: 'La información técnica se añadirá únicamente cuando esté confirmada.', models: []
+    label: 'Dosificadoras', breadcrumb: 'Dosificadoras', heroCategory: 'DOSIFICADORAS Y LLENADORAS', heroTitle: 'Repuestos para|dosificadoras y llenadoras',
+    heroDescription: 'Componentes y repuestos para mantener tu proceso de dosificación y llenado en máximo rendimiento.',
+    heroImage: '/assets/dosificadoras/dosificadoras-llenadoras-tecnicas-v1.webp', heroAlt: 'Dosificadora de pistón con tolva y llenadora automática en ilustración técnica',
+    benefits: ['Catálogo escalable', 'Compatibilidad por confirmar', 'Asesoría técnica'], image: '/assets/dosificadoras/dosificadoras-llenadoras-tecnicas-v1.webp', imageAlt: 'Dosificadora y llenadora completas, ilustración de referencia', status: 'CONTENIDO EN PREPARACIÓN', description: 'La información técnica se añadirá únicamente cuando esté confirmada.', models: []
   },
   otras: {
     label: 'Otras máquinas', breadcrumb: 'Otras máquinas', heroCategory: 'OTRAS MÁQUINAS', heroTitle: 'Encuentra repuestos para|otra máquina',
