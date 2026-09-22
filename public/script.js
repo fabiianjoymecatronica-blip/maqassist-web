@@ -78,6 +78,15 @@ const machineCatalog = {
     heroImage: '/assets/dosificadoras/dosificadoras-llenadoras-tecnicas-v1.webp', heroAlt: 'Dosificadora de pistón con tolva y llenadora automática en ilustración técnica',
     benefits: ['Catálogo escalable', 'Compatibilidad por confirmar', 'Asesoría técnica'], image: '/assets/dosificadoras/dosificadoras-llenadoras-tecnicas-v1.webp', imageAlt: 'Dosificadora y llenadora completas, ilustración de referencia', status: 'CONTENIDO EN PREPARACIÓN', description: 'La información técnica se añadirá únicamente cuando esté confirmada.', models: []
   },
+  compresor: {
+    label: 'Compresores', breadcrumb: 'Compresores', heroCategory: 'COMPRESORES DE AIRE INDUSTRIAL',
+    heroTitle: 'Repuestos para|compresores',
+    heroDescription: 'Componentes y repuestos para mantener tu sistema de aire comprimido en máximo rendimiento.',
+    heroImage: '/assets/compresores/compresores-tecnicos-v1.webp', heroAlt: 'Tres compresores de aire industriales completos en ilustración técnica',
+    benefits: ['Identificación por referencia', 'Compatibilidad por confirmar', 'Asesoría técnica especializada'],
+    image: '/assets/compresores/compresores-tecnicos-v1.webp', imageAlt: 'Compresores de tornillo y de pistón, ilustración de referencia',
+    status: 'CONTENIDO EN PREPARACIÓN', description: 'Envíanos la placa y fotografías de tu compresor para identificar sus repuestos.', models: []
+  },
   otras: {
     label: 'Otras máquinas', breadcrumb: 'Otras máquinas', heroCategory: 'OTRAS MÁQUINAS', heroTitle: 'Encuentra repuestos para|otra máquina',
     heroDescription: 'Consulta una categoría que aún no esté publicada enviando la placa y fotografías del equipo.',
