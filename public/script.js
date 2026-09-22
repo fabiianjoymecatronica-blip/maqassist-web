@@ -293,11 +293,24 @@ document.querySelectorAll('.parts-filters button').forEach(button => button.addE
 const requestedMachine = new URLSearchParams(location.search).get('categoria');
 renderMachine(machineCatalog[requestedMachine] ? requestedMachine : 'selladora');
 
+function awoWhatsAppUrl(equipment = 'Asesoría para mi producción') {
+  const message = `¿Qué máquina o equipo AWO requiere tu producción?\nHola MaqAssist, vengo de la tienda de máquinas AWO.\nEquipo de interés: ${equipment}\nQuiero conocer las opciones, disponibilidad y cotización.`;
+  return `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
+}
 if (routeName() === 'maquinas') {
   const selectedMachine = machineCatalog[requestedMachine];
+  const equipment = selectedMachine ? selectedMachine.label : 'Asesoría para mi producción';
   document.getElementById('machine-store-selected').textContent = selectedMachine
-    ? `CONSULTA: ${selectedMachine.label.toUpperCase()}`
-    : 'TIENDA DE MÁQUINAS';
+    ? `MÁQUINAS AWO · ${selectedMachine.label.toUpperCase()}` : 'MÁQUINAS INDUSTRIALES';
+  document.querySelectorAll('[data-awo-category]').forEach(card => {
+    card.classList.toggle('awo-selected', card.dataset.awoCategory === requestedMachine);
+  });
+  document.querySelectorAll('[data-awo-quote]').forEach(link => {
+    link.href = awoWhatsAppUrl(link.dataset.awoQuote === 'Asesoría para mi producción' ? equipment : link.dataset.awoQuote);
+  });
+  document.querySelectorAll('.header-whatsapp, .whatsapp-float, footer a[href*="wa.me"]').forEach(link => {
+    link.href = awoWhatsAppUrl(equipment);
+  });
 }
 
 if (routeName() === 'repuestos') {
