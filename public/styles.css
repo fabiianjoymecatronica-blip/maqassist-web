@@ -1055,3 +1055,41 @@ img[src*="selladora-continua-transparente"]{
 @media(max-width:1000px){.awo-stock-grid{gap:12px}.awo-card{padding:16px}.awo-import-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.awo-label{display:none}.awo-hero-copy{padding-left:24px}.awo-advice{align-items:flex-start;flex-direction:column}}
 @media(max-width:700px){.awo-hero{grid-template-columns:minmax(0,1fr)}.awo-hero-copy{padding:30px 24px 12px}.awo-hero h1{font-size:32px}.awo-hero h1 .awo-wordmark{font-size:96px}.awo-hero-art{padding:44px 16px 45px}.awo-art-caption{top:14px}.awo-art-foot{font-size:7px;bottom:18px}.awo-stock-grid{grid-template-columns:minmax(0,1fr)}.awo-card>img{height:210px}.awo-benefits{gap:15px;margin-bottom:30px}.awo-import-section{padding:24px 14px}.awo-import-card>img{height:120px}.awo-import-card h3{font-size:16px}.awo-import-card{padding:12px}.awo-advice{padding:24px}.awo-heading h2{font-size:27px}}
 @media(max-width:380px){.awo-import-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Recortes visuales exactos de la plantilla: sin regenerar logotipo ni productos. */
+.awo-source{display:block;position:relative;flex-shrink:0;background-image:url('/assets/awo/plantilla-original.jpeg');background-repeat:no-repeat;overflow:hidden}
+.awo-source-logo{aspect-ratio:307/83;background-size:333.55048860% 1850.60240964%;background-position:5.85774059% 10.39229181%;}
+.awo-source-hero{aspect-ratio:622/418;background-size:164.63022508% 367.46411483%;background-position:100.00000000% 5.90339893%;}
+.awo-source-selladora{aspect-ratio:294/175;background-size:348.29931973% 877.71428571%;background-position:5.47945205% 47.17119765%;}
+.awo-source-codificadora{aspect-ratio:295/175;background-size:347.11864407% 877.71428571%;background-position:50.20576132% 47.17119765%;}
+.awo-source-compresor{aspect-ratio:288/175;background-size:355.55555556% 877.71428571%;background-position:94.56521739% 47.17119765%;}
+.awo-source-flowpack{aspect-ratio:208/97;background-size:492.30769231% 1583.50515464%;background-position:5.26960784% 74.35719249%;}
+.awo-source-empacadora290{aspect-ratio:207/97;background-size:494.68599034% 1583.50515464%;background-position:35.25091799% 74.35719249%;}
+.awo-source-dosificadora{aspect-ratio:209/97;background-size:489.95215311% 1583.50515464%;background-position:65.15337423% 74.35719249%;}
+.awo-source-otras{aspect-ratio:208/97;background-size:492.30769231% 1583.50515464%;background-position:95.09803922% 74.35719249%;}
+.awo-source-handshake{aspect-ratio:330/84;background-size:310.30303030% 1828.57142857%;background-position:0.00000000% 88.08539945%;}
+
+#maquinas .awo-source-logo{width:100%;max-width:310px;margin:7px 0 12px;mix-blend-mode:multiply}
+#maquinas .awo-brand-footer .awo-source-logo{width:145px;margin:0}
+#maquinas .awo-hero{border:0;border-radius:0;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);background:#fff;gap:0}
+#maquinas .awo-hero:before,#maquinas .awo-hero:after{content:none}
+#maquinas .awo-hero-copy{padding:30px 14px 28px 0}
+#maquinas .awo-hero h1{font-size:36px;margin:14px 0}
+#maquinas .awo-hero h1 em{font-size:30px}
+#maquinas .awo-hero-art{padding:0;align-self:center}
+#maquinas .awo-source-hero{width:100%}
+#maquinas .awo-benefits{border:0;border-radius:0;background:#063e2c;color:#fff;margin:0 0 36px;padding:25px 22px}
+#maquinas .awo-heading h2{text-transform:uppercase;font-size:30px}
+#maquinas .awo-card{border-color:#e2e8e4;border-radius:7px;padding:12px 16px 18px}
+#maquinas .awo-stock-grid .awo-card>.awo-source{width:calc(100% + 8px);margin:0 -4px 10px}
+#maquinas .awo-import-card>.awo-source{width:100%;margin:14px 0 6px}
+#maquinas .awo-card h3{font-size:18px}
+#maquinas .awo-card>small{font-size:9px}
+#maquinas .awo-import-section{border-radius:0;padding:30px 18px;background:var(--maq-green-pale)}
+#maquinas .awo-advice{border-radius:0;padding:0 20px 0 0;gap:24px;overflow:hidden}
+#maquinas .awo-source-handshake{width:23%;align-self:stretch;aspect-ratio:auto;background-size:auto 1828.57143%;background-position:0 88.08540%;min-height:120px}
+#maquinas .awo-advice>div{flex:1;padding:20px 0}
+#maquinas .awo-advice h2{font-size:22px}
+.awo-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:1000px){#maquinas .awo-advice{flex-direction:row;flex-wrap:wrap;padding:20px}#maquinas .awo-source-handshake{width:28%;align-self:center;aspect-ratio:330/84;min-height:0;background-size:310.30303030% 1828.57142857%;background-position:0% 88.08539945%}#maquinas .awo-advice>.button{margin-left:auto}#maquinas .awo-hero h1{font-size:29px}#maquinas .awo-hero h1 em{font-size:24px}}
+@media(max-width:700px){#maquinas .awo-hero{grid-template-columns:minmax(0,1fr)}#maquinas .awo-hero-copy{padding:24px 8px}#maquinas .awo-source-logo{max-width:260px}#maquinas .awo-hero-art{margin-bottom:20px}#maquinas .awo-benefits{font-size:10px;padding:20px 16px}#maquinas .awo-heading h2{font-size:25px}#maquinas .awo-source-handshake{width:100%;max-width:330px}#maquinas .awo-advice{display:block;padding:18px}#maquinas .awo-advice>.button{margin:0}#maquinas .awo-card h3{font-size:18px}}
