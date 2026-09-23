@@ -1093,3 +1093,15 @@ img[src*="selladora-continua-transparente"]{
 .awo-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
 @media(max-width:1000px){#maquinas .awo-advice{flex-direction:row;flex-wrap:wrap;padding:20px}#maquinas .awo-source-handshake{width:28%;align-self:center;aspect-ratio:330/84;min-height:0;background-size:310.30303030% 1828.57142857%;background-position:0% 88.08539945%}#maquinas .awo-advice>.button{margin-left:auto}#maquinas .awo-hero h1{font-size:29px}#maquinas .awo-hero h1 em{font-size:24px}}
 @media(max-width:700px){#maquinas .awo-hero{grid-template-columns:minmax(0,1fr)}#maquinas .awo-hero-copy{padding:24px 8px}#maquinas .awo-source-logo{max-width:260px}#maquinas .awo-hero-art{margin-bottom:20px}#maquinas .awo-benefits{font-size:10px;padding:20px 16px}#maquinas .awo-heading h2{font-size:25px}#maquinas .awo-source-handshake{width:100%;max-width:330px}#maquinas .awo-advice{display:block;padding:18px}#maquinas .awo-advice>.button{margin:0}#maquinas .awo-card h3{font-size:18px}}
+
+/* Official AWO Group artwork, unchanged; frame excludes only outer blank margins. */
+.awo-group-logo{
+  display:block;flex-shrink:0;width:180px;aspect-ratio:750/340;
+  background-image:url('/assets/awo/awo-group-original.png');
+  background-repeat:no-repeat;background-size:170.666667% 250.882353%;
+  background-position:52.830189% 47.758285%;
+}
+.brand .awo-group-logo{width:145px}
+.footer-brand .awo-group-logo{width:205px;max-width:100%}
+.machine-center .awo-group-logo{width:240px;max-width:100%}
+@media(max-width:620px){.brand .awo-group-logo{width:130px}.footer-brand .awo-group-logo{width:185px}}
