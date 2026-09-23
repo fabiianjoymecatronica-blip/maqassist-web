@@ -1095,21 +1095,16 @@ img[src*="selladora-continua-transparente"]{
 @media(max-width:700px){#maquinas .awo-hero{grid-template-columns:minmax(0,1fr)}#maquinas .awo-hero-copy{padding:24px 8px}#maquinas .awo-source-logo{max-width:260px}#maquinas .awo-hero-art{margin-bottom:20px}#maquinas .awo-benefits{font-size:10px;padding:20px 16px}#maquinas .awo-heading h2{font-size:25px}#maquinas .awo-source-handshake{width:100%;max-width:330px}#maquinas .awo-advice{display:block;padding:18px}#maquinas .awo-advice>.button{margin:0}#maquinas .awo-card h3{font-size:18px}}
 
 
-/* AWO Group: original artwork framed with clear space, no distortion or recoloring. */
-.awo-group-logo{
- display:block;flex-shrink:0;width:180px;aspect-ratio:1510/550;
- background-image:url('/assets/awo/awo-group-final.png');
- background-repeat:no-repeat;background-size:138.344371% 136.909091%;
- background-position:46.632124% 56.650246%;mix-blend-mode:multiply;
-}
-.brand{display:flex;align-items:center}
-.brand .awo-group-logo{width:174px}
-.footer-brand .awo-group-logo{width:210px;max-width:100%;margin-bottom:16px}
-.machine-center .awo-group-logo{width:240px;max-width:100%}
+
+/* Original logo in a proportional SVG viewport; only surrounding whitespace is excluded. */
+.awo-group-logo{display:block;flex-shrink:0;width:180px;height:auto;aspect-ratio:1510/550;overflow:hidden;mix-blend-mode:multiply}
+.site-header{background:#fff}
+.brand{display:flex;align-items:center;justify-content:flex-start;line-height:1;align-self:center}
+.brand .awo-group-logo{width:184px}
+.brand:focus-visible{outline:2px solid var(--maq-green-primary);outline-offset:4px;border-radius:3px}
+.footer-brand .awo-group-logo{width:220px;max-width:100%;margin-bottom:20px}
+.machine-center .awo-group-logo{width:260px;max-width:100%}
 #maquinas .awo-hero-copy .awo-group-logo{width:280px;max-width:100%;margin:12px 0 18px}
-#maquinas .awo-brand-footer .awo-group-logo{width:160px}
-@media(max-width:620px){
- .brand .awo-group-logo{width:148px}
- .footer-brand .awo-group-logo{width:190px}
- #maquinas .awo-hero-copy .awo-group-logo{width:240px}
-}
+#maquinas .awo-brand-footer .awo-group-logo{width:170px}
+@media(max-width:900px){.brand .awo-group-logo{width:166px}}
+@media(max-width:620px){.brand .awo-group-logo{width:152px}.footer-brand .awo-group-logo{width:200px}#maquinas .awo-hero-copy .awo-group-logo{width:240px}}
