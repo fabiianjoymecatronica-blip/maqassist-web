@@ -33,4 +33,4 @@ http.createServer((req, res) => {
     }
     res.writeHead(200, { "Content-Type": types[path.extname(filePath)] || "application/octet-stream" }).end(data);
   });
-}).listen(port, () => console.log(`MaqAssist disponible en puerto ${port}`));
+}).listen(port, () => console.log(`AWO Group disponible en puerto ${port}`));

@@ -1,8 +1,8 @@
 {
-  "name": "maqassist-web",
+  "name": "awo-group-web",
   "version": "1.0.0",
   "private": true,
-  "description": "Sitio web corporativo de MaqAssist",
+  "description": "Sitio web corporativo de AWO Group",
   "scripts": {
     "start": "node server.js"
   },

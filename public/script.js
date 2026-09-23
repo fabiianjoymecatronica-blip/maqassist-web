@@ -21,14 +21,14 @@ const machineCatalog = {
     heroTitle: 'Repuestos para|selladoras de banda',
     heroDescription: 'Selecciona la referencia de tu equipo y encuentra los repuestos disponibles con acompañamiento técnico.',
     heroImage: '/assets/selladoras/selladora-continua-transparente.webp',
-    heroAlt: 'Selladora continua industrial MaqAssist',
+    heroAlt: 'Selladora continua industrial AWO Group',
     viewFront: '/assets/selladoras/selladora-continua-transparente.webp',
     viewFrontLabel: 'VISTA COMPLETA',
     viewSide: '/assets/selladoras/selladora-continua-transparente.webp',
     viewSideLabel: 'IMAGEN DE REFERENCIA',
     benefits: ['Identificación por referencia', 'Compatibilidad por confirmar', 'Asesoría técnica especializada'],
     image: '/assets/selladoras/selladora-continua-transparente.webp',
-    imageAlt: 'Selladora continua industrial MaqAssist, imagen de referencia',
+    imageAlt: 'Selladora continua industrial AWO Group, imagen de referencia',
     status: 'CATÁLOGO DE REPUESTOS',
     description: 'Explora todos los repuestos o selecciona una referencia para filtrar compatibilidad.',
     models: [
@@ -127,9 +127,9 @@ function selectModel(modelId) {
   const selection = currentModel ? currentModel.name : 'Todas las referencias';
   document.getElementById('selected-model').textContent = selection;
   document.getElementById('parts-model-name').textContent = `${currentMachine.label} · ${currentModel ? currentModel.name : 'todas las referencias'}`;
-  const identifyText = `Hola MaqAssist, necesito identificar un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Voy a enviar fotografía y placa del equipo.`;
+  const identifyText = `Hola AWO Group, necesito identificar un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Voy a enviar fotografía y placa del equipo.`;
   document.getElementById('identify-part-link').href = `https://wa.me/573189324488?text=${encodeURIComponent(identifyText)}`;
-  const pendingText = `Hola MaqAssist, busco un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Quiero confirmar compatibilidad, precio y disponibilidad.`;
+  const pendingText = `Hola AWO Group, busco un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Quiero confirmar compatibilidad, precio y disponibilidad.`;
   document.getElementById('machine-pending-link').href = `https://wa.me/573189324488?text=${encodeURIComponent(pendingText)}`;
   filterParts();
 }
@@ -186,7 +186,7 @@ document.querySelectorAll('.category-button').forEach(button => button.addEventL
 document.getElementById('store-model-select').addEventListener('change', event => selectModel(event.target.value));
 
 let cart = [];
-try { cart = JSON.parse(localStorage.getItem('maqassist-cart')) || []; } catch (error) { cart = []; }
+try { cart = JSON.parse(localStorage.getItem('awo-group-cart')) || []; } catch (error) { cart = []; }
 const cartDrawer = document.getElementById('cart-drawer');
 const cartOverlay = document.getElementById('cart-overlay');
 const cartItems = document.getElementById('cart-items');
@@ -208,7 +208,7 @@ function closeCart() {
 }
 
 function renderCart() {
-  localStorage.setItem('maqassist-cart', JSON.stringify(cart));
+  localStorage.setItem('awo-group-cart', JSON.stringify(cart));
   const quantity = cart.reduce((total, item) => total + item.quantity, 0);
   cartCount.textContent = quantity;
   checkoutCart.disabled = cart.length === 0;
@@ -249,7 +249,7 @@ cartOverlay.addEventListener('click', closeCart);
 checkoutCart.addEventListener('click', () => {
   if (!cart.length) return;
   const lines = cart.map(item => `• ${item.quantity} x ${item.name} para ${item.model}`).join('\n');
-  const message = `Hola MaqAssist, quiero confirmar este pedido de repuestos:\n${lines}\nPor favor confirmen compatibilidad, disponibilidad y precio.`;
+  const message = `Hola AWO Group, quiero confirmar este pedido de repuestos:\n${lines}\nPor favor confirmen compatibilidad, disponibilidad y precio.`;
   window.open(`https://wa.me/573189324488?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
 });
 
@@ -294,7 +294,7 @@ const requestedMachine = new URLSearchParams(location.search).get('categoria');
 renderMachine(machineCatalog[requestedMachine] ? requestedMachine : 'selladora');
 
 function awoWhatsAppUrl(equipment = 'Asesoría para mi producción') {
-  const message = `¿Qué máquina o equipo AWO requiere tu producción?\nHola MaqAssist, vengo de la tienda de máquinas AWO.\nEquipo de interés: ${equipment}\nQuiero conocer las opciones, disponibilidad y cotización.`;
+  const message = `¿Qué máquina o equipo AWO requiere tu producción?\nHola AWO Group, vengo de la tienda de máquinas AWO.\nEquipo de interés: ${equipment}\nQuiero conocer las opciones, disponibilidad y cotización.`;
   return `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
 }
 if (routeName() === 'maquinas') {
@@ -348,7 +348,7 @@ function updatePlan() {
   document.getElementById('emergency-included').textContent = rule.emergencies * count;
   document.getElementById('emergency-condition').textContent = rule.condition;
   document.getElementById('response-level').textContent = rule.response;
-  const message = `Hola MaqAssist, quiero cotizar un Plan Care de ${selectedMonths} meses para ${count} ${count === 1 ? 'máquina' : 'máquinas'}. Incluye ${rule.preventive * count} mantenimientos preventivos, ${rule.inspections * count} inspecciones y ${rule.emergencies * count} urgencias incluidas.`;
+  const message = `Hola AWO Group, quiero cotizar un Plan Care de ${selectedMonths} meses para ${count} ${count === 1 ? 'máquina' : 'máquinas'}. Incluye ${rule.preventive * count} mantenimientos preventivos, ${rule.inspections * count} inspecciones y ${rule.emergencies * count} urgencias incluidas.`;
   document.getElementById('plan-quote').href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
 }
 
@@ -382,14 +382,14 @@ function updatePageView() {
     section.hidden = section.id !== sectionForPage;
   });
   const pageTitles = {
-    repuestos: 'Tienda de Repuestos | MaqAssist',
-    maquinas: 'Tienda de Máquinas | MaqAssist',
-    planes: 'Planes de Mantenimiento | MaqAssist',
-    nosotros: 'Nosotros | MaqAssist',
-    contacto: 'Contacto | MaqAssist',
-    soporte: 'Soporte técnico | MaqAssist'
+    repuestos: 'Tienda de Repuestos | AWO Group',
+    maquinas: 'Tienda de Máquinas | AWO Group',
+    planes: 'Planes de Mantenimiento | AWO Group',
+    nosotros: 'Nosotros | AWO Group',
+    contacto: 'Contacto | AWO Group',
+    soporte: 'Soporte técnico | AWO Group'
   };
-  document.title = pageTitles[page] || 'MaqAssist | Acompañamiento técnico continuo';
+  document.title = pageTitles[page] || 'AWO Group | Acompañamiento técnico continuo';
 }
 window.addEventListener('hashchange', updatePageView);
 window.addEventListener('popstate', updatePageView);
@@ -421,7 +421,7 @@ document.getElementById('contact-form').addEventListener('submit', event => {
   const name = document.getElementById('contact-name').value.trim();
   const company = document.getElementById('contact-company').value.trim();
   const message = document.getElementById('contact-message').value.trim();
-  const text = `Hola MaqAssist, soy ${name}${company ? ` de ${company}` : ''}. ${message}`;
+  const text = `Hola AWO Group, soy ${name}${company ? ` de ${company}` : ''}. ${message}`;
   window.open(`https://wa.me/573189324488?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
 });
 

@@ -20,8 +20,8 @@
   filter:drop-shadow(0 10px 24px rgba(0,143,75,.16));
 }
 
-.hero-machine .ring-one{animation:maqassist-ring-spin 22s linear infinite}
-.hero-machine .ring-two{animation:maqassist-ring-spin-reverse 16s linear infinite}
+.hero-machine .ring-one{animation:awo-group-ring-spin 22s linear infinite}
+.hero-machine .ring-two{animation:awo-group-ring-spin-reverse 16s linear infinite}
 .hero-machine .machine-center{
   inset:172px 92px 142px 122px;
   border:1px solid rgba(46,158,30,.2);
@@ -29,15 +29,15 @@
   background:rgba(255,255,255,.82);
   box-shadow:0 20px 55px rgba(22,32,27,.12);
   backdrop-filter:blur(8px);
-  animation:maqassist-logo-float 4s ease-in-out infinite;
+  animation:awo-group-logo-float 4s ease-in-out infinite;
 }
 
-@keyframes maqassist-logo-float{
+@keyframes awo-group-logo-float{
   0%,100%{transform:translate3d(0,0,0) rotate(-1deg)}
   50%{transform:translate3d(0,-14px,0) rotate(1deg)}
 }
-@keyframes maqassist-ring-spin{to{transform:rotate(360deg)}}
-@keyframes maqassist-ring-spin-reverse{to{transform:rotate(-360deg)}}
+@keyframes awo-group-ring-spin{to{transform:rotate(360deg)}}
+@keyframes awo-group-ring-spin-reverse{to{transform:rotate(-360deg)}}
 
 @media(max-width:900px){
   .hero-machine .machine-center{inset:172px 92px 142px 122px}
@@ -94,7 +94,7 @@ main{display:flex;flex-direction:column}.hero{order:1}.trust-strip{order:2}.mark
 .category-list .model-button{width:100%;padding:12px 9px;font-size:11px;text-align:left}
 .category-list .model-button.active{padding-left:11px!important}
 .parts-section{margin-top:26px}
-/* Store Repuestos: catalog presentation in MaqAssist colors. */
+/* Store Repuestos: catalog presentation in AWO Group colors. */
 main > section[hidden]{display:none!important}
 #repuestos{background:#f6f8f7;scroll-margin-top:95px;padding-top:40px}
 #catalogo-repuestos{scroll-margin-top:110px}
@@ -190,7 +190,7 @@ main > section[hidden]{display:none!important}
 @media(max-width:620px){.selection-preview{flex-direction:column;gap:16px;padding:20px 0 0;text-align:center}.selection-photo{width:min(100%,280px);height:180px}.selection-copy h3{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.selection-preview{animation:none}#repuestos .machine-sidebar{transition:none}}
 
-/* Machine line drawings, matching the MaqAssist palette */
+/* Machine line drawings, matching the AWO Group palette */
 #repuestos .machine-sidebar,#repuestos .machine-sidebar.has-selection{background-color:#dff1e6;background-image:linear-gradient(90deg,#dff1e6ed,#dff1e6c9),url('/assets/selladora-linea.svg');background-position:center,right center;background-repeat:no-repeat;background-size:cover,480px;border-color:#a4cfb8}
 #repuestos .machine-sidebar[data-family="empacadora290"]{background-image:linear-gradient(90deg,#dff1e6ed,#dff1e6c9),url('/assets/empacadora-linea.svg')}
 #repuestos .selection-photo{background:linear-gradient(145deg,#c1e7d0,#e0f3e7);border:1px solid #aad4bc;box-shadow:none;width:300px;height:200px;padding:6px}
@@ -199,7 +199,7 @@ main > section[hidden]{display:none!important}
 @media(max-width:620px){#repuestos .selection-photo{width:min(100%,300px);height:190px}#repuestos .machine-sidebar{background-size:cover,340px}}
 
 /* =========================================================
-   IDENTIDAD VISUAL OFICIAL MAQASSIST
+   IDENTIDAD VISUAL OFICIAL AWO Group
    Verde medio muestreado del logo definitivo: RGB(46,158,30) · #2E9E1E
    ========================================================= */
 :root{
@@ -285,7 +285,7 @@ footer{background:#fff;color:var(--maq-charcoal);border-top:1px solid var(--maq-
 @media(max-width:620px){.brand img{width:185px}.footer-brand img{width:215px}.machine-center{padding:20px}}
 
 /* =========================================================
-   ESTRUCTURA TÉCNICA MAQASSIST · BOCETO DEFINITIVO
+   ESTRUCTURA TÉCNICA AWO Group · BOCETO DEFINITIVO
    ========================================================= */
 :root{--max:1280px}
 .nav-wrap{height:78px;gap:24px}.brand{flex:0 0 auto}.brand img{width:205px}
@@ -1002,7 +1002,7 @@ img[src*="selladora-continua-transparente"]{
   #technical-store-hero:is([data-family="dosificadora"],[data-family="empacadora290"]) .store-showcase-copy h2{font-size:36px}
 }
 
-/* Tienda de máquinas AWO: identidad de producto y respaldo MaqAssist. */
+/* Tienda de máquinas AWO: identidad de producto y respaldo AWO Group. */
 #maquinas.awo-store{background:#fff;padding:30px 0 0;color:var(--maq-charcoal)}
 .awo-hero{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(310px,.85fr) minmax(0,1.35fr);border:1px solid var(--maq-green-border);border-radius:24px;overflow:hidden;background:linear-gradient(105deg,#fff 25%,var(--maq-green-pale));}
 .awo-hero:before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(#2e9e1e09 1px,transparent 1px),linear-gradient(90deg,#2e9e1e09 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(90deg,transparent,#000)}
