@@ -101,7 +101,7 @@ let currentModel = null;
 
 function routeName() {
   const route = location.pathname.split('/').filter(Boolean)[0] || '';
-  return ['repuestos', 'maquinas', 'planes', 'nosotros', 'contacto', 'soporte'].includes(route) ? route : '';
+  return ['repuestos', 'maquinas', 'planes', 'servicios', 'nosotros', 'contacto', 'soporte'].includes(route) ? route : '';
 }
 
 function selectModel(modelId) {
@@ -387,7 +387,8 @@ function updatePageView() {
     planes: 'Planes de Mantenimiento | AWO Group',
     nosotros: 'Nosotros | AWO Group',
     contacto: 'Contacto | AWO Group',
-    soporte: 'Soporte técnico | AWO Group'
+    soporte: 'Soporte técnico | AWO Group',
+    servicios: 'Servicios industriales | AWO Group'
   };
   document.title = pageTitles[page] || 'AWO Group | Acompañamiento técnico continuo';
 }
