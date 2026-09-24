@@ -1376,8 +1376,10 @@ body{color:var(--awo-black);font-size:16px}
 
 /* Portada VDCM 10: información y jerarquía del boceto integradas al carrusel actual. */
 .awo-hero-slider{height:710px}
-.awo-compressor-slide{background:#F8FCF7 url('/assets/awo/industrial-verde-hero.webp') center center/cover no-repeat}
-.awo-compressor-slide:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.86) 37%,rgba(255,255,255,.02) 69%);pointer-events:none}
+.awo-compressor-slide{background:#E9F9E4}
+.awo-compressor-slide:before,.awo-compressor-slide:after{content:"";position:absolute;inset:0;pointer-events:none}
+.awo-compressor-slide:before{background:#C9EFC0;clip-path:polygon(43% 0,100% 0,100% 100%,68% 100%)}
+.awo-compressor-slide:after{background:#A8E599;clip-path:polygon(100% 16%,100% 100%,59% 100%)}
 .awo-compressor-slide .awo-home-hero-layout{min-height:710px;z-index:1;align-items:flex-start}
 .awo-compressor-slide .awo-home-copy{width:57%;padding:50px 0 80px 0}
 .awo-compressor-slide .awo-eyebrow{letter-spacing:.04em;font-size:15px;color:var(--awo-green-deep);gap:9px}
@@ -1408,4 +1410,16 @@ body{color:var(--awo-black);font-size:16px}
 @media(max-width:1120px){.awo-compressor-slide .awo-home-copy{width:59%}.awo-compressor-slide .awo-home-copy h1{font-size:clamp(40px,4.5vw,54px)}.awo-compressor-slide .awo-compressor-art{right:12px;width:51%}.awo-compressor-highlights{width:142px;right:0}.awo-compressor-highlights strong{font-size:10px}.awo-compressor-highlights span{width:36px;height:36px;flex-basis:36px;font-size:22px}.awo-compressor-slide .awo-home-button{font-size:13px}}
 @media(max-width:760px){.awo-hero-slider{height:960px}.awo-compressor-slide .awo-home-hero-layout{height:auto;min-height:0;padding:18px 0 65px}.awo-compressor-slide .awo-home-copy{width:100%;padding:26px 0 0}.awo-compressor-slide .awo-home-copy h1{font-size:clamp(39px,8vw,56px);margin:18px 0}.awo-compressor-slide .awo-home-copy>p{font-size:16px;max-width:100%}.awo-compressor-components{margin:24px 0;max-width:none}.awo-compressor-slide .awo-home-actions{width:100%;grid-template-columns:repeat(3,minmax(0,1fr))}.awo-compressor-slide .awo-home-button{height:auto;min-height:64px;padding:10px;font-size:12px}.awo-compressor-slide .awo-compressor-art{top:auto;right:auto;width:100%;height:auto;min-height:0;margin:16px auto 0}.awo-compressor-slide .awo-compressor-art img{max-height:370px}.awo-compressor-highlights{position:relative;top:auto;right:auto;width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:8px}.awo-compressor-highlights>div{min-height:61px;padding:6px;gap:5px}.awo-compressor-highlights span{width:30px;height:30px;flex-basis:30px;font-size:19px}.awo-compressor-highlights strong{font-size:9px}}
 @media(max-width:480px){.awo-compressor-slide .awo-eyebrow{font-size:12px;gap:6px}.awo-compressor-slide .awo-eyebrow:before{width:24px}.awo-compressor-slide .awo-home-copy h1{font-size:clamp(35px,9vw,43px)}.awo-compressor-slide .awo-home-copy>p{font-size:14px;line-height:1.45}.awo-compressor-components{gap:0;margin:19px 0}.awo-compressor-components>div{padding:0 5px;min-height:80px}.awo-compressor-components strong,.awo-compressor-components svg{height:32px;margin-bottom:6px}.awo-compressor-components svg{width:31px}.awo-compressor-components .awo-component-brand{font-size:14px}.awo-compressor-components .awo-component-skf{font-size:23px}.awo-compressor-components span{font-size:10px}.awo-compressor-slide .awo-home-actions{display:grid;grid-template-columns:1fr 1fr}.awo-compressor-slide .awo-home-button{font-size:12px;padding:9px 10px;min-height:58px}.awo-compressor-slide .awo-home-button:first-child{grid-column:1/-1}.awo-compressor-slide .awo-compressor-art img{max-height:300px}.awo-compressor-highlights{grid-template-columns:1fr 1fr}.awo-compressor-highlights>div:last-child{grid-column:1/-1;min-height:45px}.awo-compressor-highlights>div{min-height:52px}}
-@media(max-width:760px){.awo-compressor-slide{background-position:42% center}.awo-compressor-slide:before{background:linear-gradient(180deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.94) 53%,rgba(255,255,255,.48) 100%)}}
+@media(max-width:760px){.awo-compressor-slide:before{clip-path:polygon(0 68%,100% 39%,100% 100%,0 100%)}.awo-compressor-slide:after{clip-path:polygon(100% 60%,100% 100%,18% 100%)}}
+
+/* Barra superior blanca y neutra, incluida la navegación móvil. */
+.site-header,.home-view .site-header{background:#fff;border-bottom:1px solid #E5E9E6;box-shadow:0 3px 16px rgba(18,30,21,.07)}
+.site-header .main-nav,.site-header .main-nav.open{background:#fff;color:#171D17}
+.site-header .main-nav>a:hover,.site-header .main-nav>a.active{color:#171D17}
+.site-header .main-nav>a:after{background:#171D17}
+.site-header .awo-header-search{background:#fff;border-color:#DDE3DF}
+.site-header .header-search-button,.site-header .header-search-button:hover{background:#fff;border:0;color:#171D17}
+.site-header .header-whatsapp{background:#fff;color:#171D17!important;border:1px solid #DDE3DF;border-radius:4px}
+.site-header .header-whatsapp:hover{background:#F5F7F5}
+.site-header .cart-count-badge{background:#171D17;color:#fff}
+.site-header .menu-toggle span{background:#171D17}
