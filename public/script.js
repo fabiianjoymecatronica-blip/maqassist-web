@@ -26,7 +26,7 @@ const machineCatalog = {
     viewFrontLabel: 'VISTA COMPLETA',
     viewSide: '/assets/selladoras/selladora-continua-transparente.webp',
     viewSideLabel: 'IMAGEN DE REFERENCIA',
-    benefits: ['Identificación por referencia', 'Compatibilidad por confirmar', 'Asesoría técnica especializada'],
+    benefits: ['Identificación por referencia', 'Validamos la compatibilidad antes del despacho', 'Asesoría técnica especializada'],
     image: '/assets/selladoras/selladora-continua-transparente.webp',
     imageAlt: 'Selladora continua industrial AWO Group, imagen de referencia',
     status: 'CATÁLOGO DE REPUESTOS',
@@ -76,14 +76,14 @@ const machineCatalog = {
     label: 'Dosificadoras', breadcrumb: 'Dosificadoras', heroCategory: 'DOSIFICADORAS Y LLENADORAS', heroTitle: 'Repuestos para|dosificadoras y llenadoras',
     heroDescription: 'Componentes y repuestos para mantener tu proceso de dosificación y llenado en máximo rendimiento.',
     heroImage: '/assets/dosificadoras/dosificadoras-llenadoras-tecnicas-v1.webp', heroAlt: 'Dosificadora de pistón con tolva y llenadora automática en ilustración técnica',
-    benefits: ['Catálogo escalable', 'Compatibilidad por confirmar', 'Asesoría técnica'], image: '/assets/dosificadoras/dosificadoras-llenadoras-tecnicas-v1.webp', imageAlt: 'Dosificadora y llenadora completas, ilustración de referencia', status: 'CONTENIDO EN PREPARACIÓN', description: 'La información técnica se añadirá únicamente cuando esté confirmada.', models: []
+    benefits: ['Catálogo escalable', 'Validamos la compatibilidad antes del despacho', 'Asesoría técnica'], image: '/assets/dosificadoras/dosificadoras-llenadoras-tecnicas-v1.webp', imageAlt: 'Dosificadora y llenadora completas, ilustración de referencia', status: 'CONTENIDO EN PREPARACIÓN', description: 'La información técnica se añadirá únicamente cuando esté confirmada.', models: []
   },
   compresor: {
     label: 'Compresores', breadcrumb: 'Compresores', heroCategory: 'COMPRESORES DE AIRE INDUSTRIAL',
     heroTitle: 'Repuestos para|compresores',
     heroDescription: 'Componentes y repuestos para mantener tu sistema de aire comprimido en máximo rendimiento.',
     heroImage: '/assets/compresores/compresores-tecnicos-v1.webp', heroAlt: 'Tres compresores de aire industriales completos en ilustración técnica',
-    benefits: ['Identificación por referencia', 'Compatibilidad por confirmar', 'Asesoría técnica especializada'],
+    benefits: ['Identificación por referencia', 'Validamos la compatibilidad antes del despacho', 'Asesoría técnica especializada'],
     image: '/assets/compresores/compresores-tecnicos-v1.webp', imageAlt: 'Compresores de tornillo y de pistón, ilustración de referencia',
     status: 'CONTENIDO EN PREPARACIÓN', description: 'Envíanos la placa y fotografías de tu compresor para identificar sus repuestos.', models: []
   },
@@ -166,8 +166,7 @@ function renderMachine(machineKey) {
   document.getElementById('store-view-front-label').textContent = currentMachine.viewFrontLabel || 'VISTA TÉCNICA';
   document.getElementById('store-view-side').src = currentMachine.viewSide || currentMachine.heroImage;
   document.getElementById('store-view-side-label').textContent = currentMachine.viewSideLabel || 'DETALLE DE REFERENCIA';
-  document.getElementById('store-plan-machine-name').textContent = currentMachine.breadcrumb.toLowerCase();
-  document.getElementById('store-buy-machine').href = `/maquinas?categoria=${encodeURIComponent(currentMachineKey)}`;
+  document.getElementById('store-view-plans').href = `https://wa.me/573189324488?text=${encodeURIComponent(`Hola AWO Group, tengo una foto o placa de mi equipo ${currentMachine.breadcrumb} y necesito identificar un repuesto.`)}`;
 
   document.getElementById('model-list').innerHTML = `
     <button class="model-button active" type="button" data-model="all">Todos los repuestos <span>→</span></button>
@@ -214,13 +213,13 @@ function renderCart() {
   cartCount.textContent = quantity;
   checkoutCart.disabled = cart.length === 0;
   if (!cart.length) {
-    cartItems.innerHTML = '<div class="empty-cart"><strong>Tu carrito está vacío</strong><span>Agrega repuestos para preparar tu pedido.</span></div>';
+    cartItems.innerHTML = '<div class="empty-cart"><strong>Tu solicitud está vacía</strong><span>Agrega repuestos para preparar tu cotización.</span></div>';
     return;
   }
   cartItems.innerHTML = cart.map((item, index) => `
     <article class="cart-item">
       <div class="cart-item-icon">${item.name.charAt(0)}</div>
-      <div class="cart-item-info"><span>${item.store}</span><strong>${item.name}</strong><small>Compatible con ${item.model}</small><b>Precio por confirmar</b></div>
+      <div class="cart-item-info"><span>${item.store}</span><strong>${item.name}</strong><small>Equipo: ${item.model}</small><b>Validamos la compatibilidad antes del despacho</b></div>
       <div class="cart-item-actions"><button type="button" data-cart-action="plus" data-index="${index}">+</button><span>${item.quantity}</span><button type="button" data-cart-action="minus" data-index="${index}">−</button><button class="remove-item" type="button" data-cart-action="remove" data-index="${index}">×</button></div>
     </article>`).join('');
 }
@@ -250,7 +249,7 @@ cartOverlay.addEventListener('click', closeCart);
 checkoutCart.addEventListener('click', () => {
   if (!cart.length) return;
   const lines = cart.map(item => `• ${item.quantity} x ${item.name} para ${item.model}`).join('\n');
-  const message = `Hola AWO Group, quiero confirmar este pedido de repuestos:\n${lines}\nPor favor confirmen compatibilidad, disponibilidad y precio.`;
+  const message = `Hola AWO Group, solicito una cotización de estos repuestos:\n${lines}\nPor favor validen compatibilidad, disponibilidad y precio antes del despacho.`;
   window.open(`https://wa.me/573189324488?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
 });
 
@@ -405,6 +404,11 @@ window.addEventListener('popstate', updatePageView);
 updatePageView();
 
 document.getElementById('header-search-button').addEventListener('click', () => {
+  const query = document.getElementById('awo-header-query').value.trim();
+  if (query) {
+    location.href = `/repuestos?buscar=${encodeURIComponent(query)}`;
+    return;
+  }
   if (routeName() !== 'repuestos') {
     location.href = '/repuestos';
     return;
@@ -481,7 +485,7 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
 // La portada alterna los equipos destacados; los controles permiten detener o cambiar la presentación.
 (() => {
   const slider = document.getElementById('awo-hero-slider');
-  if (!slider) return;
+  if (!slider || !document.getElementById('awo-hero-pause')) return;
   const slides = [...slider.querySelectorAll('[data-hero-slide]')];
   const dots = [...document.querySelectorAll('[data-hero-dot]')];
   const pause = document.getElementById('awo-hero-pause');

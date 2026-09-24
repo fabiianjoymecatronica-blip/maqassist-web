@@ -1628,3 +1628,186 @@ body[data-machine-family="otras"]{--brand-accent:var(--awo-neutral);--brand-stro
   .awo-hero-slide .awo-sealer-art{top:auto;right:auto;width:100%;height:auto;max-height:none;margin:12px 0 0;transform:none}
   .awo-hero-slide .awo-sealer-art img{height:auto;max-height:none}
 }
+
+/* Nueva estructura AWO: superficies claras, negro y un único acento verde. */
+:root{
+  --max:1380px;
+  --awo-blue:var(--awo-green);--awo-blue-deep:var(--awo-green-deep);--awo-blue-soft:var(--awo-green-soft);--awo-blue-border:var(--awo-green-border);
+  --awo-orange:var(--awo-green);--awo-orange-deep:var(--awo-green-deep);--awo-orange-soft:var(--awo-green-soft);--awo-orange-border:var(--awo-green-border);
+  --awo-yellow:var(--awo-green);--awo-yellow-deep:var(--awo-green-deep);--awo-yellow-soft:var(--awo-green-soft);--awo-yellow-border:var(--awo-green-border);
+  --awo-red:var(--awo-green);--awo-red-deep:var(--awo-green-deep);--awo-red-soft:var(--awo-green-soft);--awo-red-border:var(--awo-green-border);
+}
+body{background:#F8FAF8;color:var(--awo-ink)}
+.awo-utility-bar{height:28px;border-bottom:1px solid #EDF0ED;background:#F8FAF8;color:#444C45;font-size:11px}
+.awo-utility-bar .container{height:100%;display:flex;justify-content:flex-end;align-items:center;gap:12px}
+.site-header,.home-view .site-header{background:#fff;box-shadow:0 3px 16px rgba(17,34,22,.055)}
+.site-header .nav-wrap{height:76px}
+.site-header .brand .awo-group-logo{width:158px}
+.site-header .brand-tagline{font-size:10px;letter-spacing:.03em;color:#303A32}
+.site-header .main-nav{font-size:13px;gap:18px}
+.site-header .main-nav>a{padding-top:23px;padding-bottom:20px;color:var(--awo-ink)}
+.site-header .main-nav>a.active:after{background:var(--awo-green)}
+.site-header .nav-tools{gap:10px}
+.site-header .header-whatsapp{background:var(--awo-ink);color:#fff!important;border:0;border-radius:6px;padding-inline:17px}
+.site-header .header-whatsapp:hover{background:#344038;color:#fff!important}
+.site-header .cart-count-badge{background:var(--awo-green-deep)}
+.site-header .awo-header-search{border-color:#DDE5DD}
+.awo-home{padding-top:116px;background:#F8FAF8}
+.awo-home-hero{width:min(var(--max),calc(100% - 40px));min-height:0;margin:0 auto 12px;border:1px solid #D7E9D6;border-radius:24px;overflow:hidden;box-shadow:0 15px 40px rgba(31,76,36,.055)}
+.awo-home-grid{z-index:1;opacity:.4;background-image:linear-gradient(rgba(57,197,37,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(57,197,37,.09) 1px,transparent 1px);background-size:28px 28px;mask-image:none;pointer-events:none}
+.awo-hero-slider{height:515px}
+.awo-compressor-slide{background:linear-gradient(100deg,#fff 0%,#F9FEF8 52%,#EAF9E8 100%)}
+.awo-compressor-slide:before{background:none;clip-path:none}
+.awo-compressor-slide:after{background:radial-gradient(circle at 77% 46%,rgba(57,197,37,.14),transparent 42%);clip-path:none}
+.awo-compressor-slide .awo-home-hero-layout{height:100%;min-height:515px;align-items:center;z-index:2}
+.awo-compressor-slide .awo-home-copy{width:55%;padding:30px 0 34px}
+.awo-compressor-slide .awo-eyebrow{font-size:12px;color:var(--awo-green-deep)}
+.awo-compressor-slide .awo-home-copy h1{max-width:650px;margin:16px 0 15px;font-size:clamp(39px,3.6vw,54px);letter-spacing:-.045em;line-height:1.04}
+.awo-compressor-slide .awo-home-copy>p{max-width:555px;font-size:15px;line-height:1.5}
+.awo-compressor-components{max-width:555px;margin:17px 0 20px}
+.awo-compressor-components>div{min-height:75px;padding:0 10px}
+.awo-compressor-components strong,.awo-compressor-components svg{height:30px;margin-bottom:5px}
+.awo-compressor-components svg{width:31px}
+.awo-compressor-components .awo-component-brand{font-size:20px;color:var(--awo-green-deep)}
+.awo-compressor-components .awo-component-skf{font-size:26px}
+.awo-compressor-components span{font-size:11px}
+.awo-compressor-slide .awo-home-actions{width:min(610px,100%);grid-template-columns:1.1fr 1fr 1fr;gap:8px}
+.awo-compressor-slide .awo-home-button{height:51px;min-height:51px;padding:8px 12px;font-size:12px;box-shadow:none}
+.awo-compressor-slide .awo-home-button.filled{background:#17191B;border-color:#17191B}
+.awo-compressor-slide .awo-home-button.filled:hover{background:#303A32}
+.awo-compressor-slide .awo-compressor-art{top:5%;right:1%;width:47%;height:90%;z-index:2}
+.awo-compressor-slide .awo-compressor-art img{max-height:480px;filter:drop-shadow(0 24px 16px rgba(18,45,20,.18))}
+.awo-home-benefit-strip{height:auto;min-height:70px;margin:15px auto;background:transparent;border:0}
+.awo-home-benefit-strip>div{border-color:#DCE8DC}
+.awo-find-panel,.awo-select-panel{padding:18px 22px;background:#fff;border:1px solid #E1E8E1;border-radius:16px;box-shadow:0 7px 25px rgba(23,45,24,.035);margin-bottom:12px}
+.awo-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:12px}
+.awo-panel-heading h2{margin:0;color:var(--awo-ink);font-size:20px;line-height:1.18;letter-spacing:-.025em}
+.awo-panel-heading p{margin:4px 0 0;color:var(--awo-copy);font-size:12px}
+.awo-panel-heading>a{color:var(--awo-green-deep);font-size:12px;font-weight:800;white-space:nowrap}
+.awo-find-actions{display:grid;grid-template-columns:minmax(0,1.7fr) auto minmax(280px,.8fr);gap:18px;align-items:center}
+.awo-find-actions form{height:54px;display:flex;border:1px solid #D6E0D6;border-radius:7px;overflow:hidden}
+.awo-find-actions input{flex:1;min-width:0;padding:0 18px;border:0;outline:0;font:500 13px Manrope,Arial,sans-serif}
+.awo-find-actions input:focus-visible{box-shadow:inset 0 0 0 2px var(--awo-green)}
+.awo-find-actions form button{width:58px;border:0;background:var(--awo-green-deep);color:#fff;font-size:29px;cursor:pointer}
+.awo-find-divider{color:#70757A;font-size:12px}
+.awo-find-actions>a{min-height:54px;display:flex;align-items:center;gap:11px;padding:6px 12px;border:1px dashed #C7D8C8;border-radius:7px}
+.awo-find-actions>a>span:first-child{font-size:26px;color:var(--awo-green-deep)}
+.awo-find-actions>a>span:nth-child(2){display:flex;flex-direction:column}
+.awo-find-actions>a strong{font-size:12px;line-height:1.4}
+.awo-find-actions>a small{color:var(--awo-copy);font-size:10px}
+.awo-find-actions>a b{margin-left:auto;color:var(--awo-green-deep)}
+.awo-select-grid,.awo-preview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.awo-select-grid>a{min-width:0;min-height:91px;display:flex;align-items:center;gap:10px;padding:8px;border:1px solid #DFE6DF;border-radius:8px;background:#fff}
+.awo-select-grid>a:hover,.awo-select-grid>a:focus-visible{border-color:var(--awo-green);background:#F7FFF5}
+.awo-select-grid img{width:100px;height:70px;object-fit:contain;flex:0 0 100px}
+.awo-select-grid span{min-width:0;display:flex;flex-direction:column}
+.awo-select-grid strong{font-size:13px;line-height:1.2}
+.awo-select-grid small{color:var(--awo-copy);font-size:10px;line-height:1.35}
+.awo-select-grid b{color:var(--awo-green-deep);margin-left:auto}
+.awo-preview-panel{padding:7px 0 25px}
+.awo-preview-panel .awo-panel-heading{padding:0 5px}
+.awo-preview-panel .awo-eyebrow{font-size:10px;letter-spacing:.12em}
+.awo-preview-panel .awo-eyebrow:before{display:none}
+.awo-preview-panel h2{font-size:24px}
+.awo-preview-grid>a{min-height:182px;padding:16px;background:#fff;border:1px solid #E1E8E1;border-radius:9px;display:flex;flex-direction:column}
+.awo-preview-grid>a:hover{border-color:var(--awo-green)}
+.awo-preview-visual{height:58px;display:grid;place-items:center;font-size:37px;color:var(--awo-green-deep)}
+.awo-preview-visual svg{width:100%;height:100%;max-width:150px}
+.awo-preview-grid strong{font-size:14px}
+.awo-preview-grid small{font-size:11px;color:var(--awo-copy);line-height:1.4}
+.awo-preview-grid b{margin-top:auto;padding:8px 10px;border-radius:5px;background:var(--awo-ink);color:#fff;font-size:10px;text-align:center}
+.awo-home-lines,.awo-home-sectors{padding-top:30px;padding-bottom:25px}
+.awo-machine-card,.awo-sector-cards>a{border-color:#DEE9DE;background:#fff}
+.awo-machine-card>img{background:#F7FCF7}
+.awo-card-copy strong,.awo-card-copy strong span{color:var(--awo-green-deep)}
+.awo-home-cta{background:#EFF9ED}
+
+/* El mismo sistema de paneles continúa en catálogo, máquinas y servicios. */
+#repuestos,#maquinas,.services,.plans,.about,.support-contact{background:#F8FAF8}
+#repuestos{padding-top:130px}
+#maquinas,.services,.plans,.about,.support-contact{padding-top:145px}
+#repuestos .store-showcase,#maquinas .awo-hero{background:linear-gradient(110deg,#fff,#F0FAEE);border:1px solid #D7E9D6;border-radius:22px;box-shadow:0 14px 36px rgba(28,67,28,.06)}
+#repuestos .store-showcase:before,#repuestos .store-showcase:after{display:none}
+#repuestos .store-showcase-grid{opacity:.35}
+#repuestos .store-showcase-copy h2 em,#maquinas .awo-heading h2 em{color:var(--awo-green-deep)}
+#repuestos .store-showcase-benefits li:before{background:var(--awo-green-deep)}
+#repuestos .store-showcase-actions .button.primary,#maquinas .awo-hero .button.primary{background:var(--awo-ink);border-color:var(--awo-ink);color:#fff}
+#repuestos .store-showcase-actions .secondary{color:var(--awo-green-deep);border-color:var(--awo-green-border)}
+#repuestos .machine-sidebar,#repuestos .machine-title-row,#repuestos .part-card,#maquinas .awo-card,.services .service-card,.plans .general-plans article,.plans .config-panel,.plans .coverage-panel,.support-panel,.contact-panel{border:1px solid #DEE8DE;border-radius:12px;background:#fff;box-shadow:0 8px 26px rgba(19,49,25,.035)}
+#repuestos .category-button.active,#repuestos .category-button:hover{border-color:var(--awo-green)!important;background:#F4FFF1!important;color:var(--awo-ink)!important}
+#repuestos .category-button b{background:var(--awo-green-deep)}
+#repuestos .parts-filters button.active,#repuestos .buy-button,#maquinas .awo-card .button.primary{background:var(--awo-ink);border-color:var(--awo-ink);color:#fff}
+#repuestos .parts-searchbar{border-radius:8px}
+#maquinas .awo-import-section{background:#F3FAF2;border-radius:16px}
+.service-card[data-brand-family="automatizacion"]{background:#F5FCF3;border-color:var(--awo-green-border)}
+.service-card[data-brand-family="automatizacion"] .number,.service-card[data-brand-family="automatizacion"] .service-icon,.service-card[data-brand-family="automatizacion"] a{color:var(--awo-green-deep)}
+
+@media(max-width:1120px){
+  .site-header .main-nav,.site-header .main-nav.open{top:104px}
+  .awo-compressor-slide .awo-home-copy{width:55%}
+  .awo-compressor-slide .awo-compressor-art{right:0;width:45%}
+  .awo-select-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .awo-utility-bar{display:none}
+  .site-header .nav-wrap{height:70px}
+  .site-header .main-nav,.site-header .main-nav.open{top:70px}
+  .awo-home{padding-top:82px}
+  .awo-home-hero{width:calc(100% - 28px);border-radius:18px}
+  .awo-hero-slider{height:auto;overflow:visible}
+  .awo-hero-slide{position:relative;inset:auto;opacity:1;visibility:visible}
+  .awo-compressor-slide .awo-home-hero-layout{min-height:0;height:auto;padding-top:10px;padding-bottom:25px}
+  .awo-compressor-slide .awo-home-copy{width:100%;padding:22px 0 0}
+  .awo-compressor-slide .awo-home-copy h1{font-size:clamp(35px,8vw,48px)}
+  .awo-compressor-slide .awo-home-copy>p{font-size:14px}
+  .awo-compressor-slide .awo-home-actions{width:100%;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .awo-compressor-slide .awo-home-button{min-height:55px;height:auto;font-size:11px}
+  .awo-compressor-slide .awo-compressor-art{position:relative;top:auto;right:auto;width:100%;height:auto;min-height:0;margin:12px auto 0}
+  .awo-compressor-slide .awo-compressor-art img{width:100%;max-height:370px}
+  .awo-find-panel,.awo-select-panel{padding:17px}
+  .awo-find-actions{grid-template-columns:1fr;gap:8px}
+  .awo-find-divider{display:none}
+  .awo-preview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #repuestos{padding-top:105px}
+  #maquinas,.services,.plans,.about,.support-contact{padding-top:105px}
+}
+@media(max-width:520px){
+  .awo-compressor-slide .awo-home-copy h1{font-size:35px}
+  .awo-compressor-components{margin:14px 0}
+  .awo-compressor-slide .awo-home-actions{grid-template-columns:1fr 1fr}
+  .awo-compressor-slide .awo-home-button:first-child{grid-column:1/-1}
+  .awo-select-grid{grid-template-columns:1fr}
+  .awo-select-grid>a{min-height:75px}
+  .awo-select-grid img{width:90px;height:60px;flex-basis:90px}
+  .awo-preview-panel .awo-panel-heading{align-items:flex-start;flex-direction:column}
+  .awo-preview-grid{gap:8px}
+  .awo-preview-grid>a{padding:11px;min-height:170px}
+  .awo-preview-grid strong{font-size:12px}
+  .awo-preview-grid small{font-size:10px}
+}
+
+/* Sistema AWO: carbón, blanco, gris técnico y un solo verde. */
+:root{--ink:#151719;--ink2:#151719;--green:#39C525;--green2:#187A1B;--mist:#F4F7F3;--line:#DDE3DD;--awo-ink:#151719;--awo-green:#39C525;--awo-green-deep:#187A1B;--awo-neutral-soft:#F4F7F3;--awo-line:#DDE3DD}
+body{background:#F4F7F3;font-size:16px;font-weight:400}
+.awo-home,#repuestos,#maquinas,.services,.plans,.about,.support-contact{background:#F4F7F3}
+.awo-utility-bar{background:#F4F7F3;font-size:12px}
+.site-header .main-nav{font-size:16px;font-weight:600}
+.site-header .brand-tagline{font-size:12px}
+.awo-panel-heading p,.awo-find-actions input,.awo-find-actions>a strong,.awo-select-grid strong,.awo-preview-grid strong,.awo-preview-grid small,.awo-compressor-slide .awo-home-copy>p{font-size:16px}
+.awo-panel-heading>a,.awo-find-actions>a small,.awo-select-grid small,.awo-compressor-components span{font-size:13px}
+.awo-compressor-slide .awo-home-button,.awo-preview-grid b,.awo-find-actions form button{font-size:15px;font-weight:700}
+.awo-find-actions form button{font-size:29px;background:#39C525;color:#151719}
+.awo-preview-visual{height:90px;background:#fff;overflow:hidden}
+.awo-preview-visual img{display:block;width:100%;height:100%;object-fit:contain}
+#repuestos .part-visual{height:145px;background:#fff;overflow:hidden}
+#repuestos .part-visual img{display:block;width:100%;height:100%;object-fit:contain}
+#repuestos .part-card p,#repuestos .parts-heading p,#repuestos .parts-request span{font-size:16px}
+#repuestos .part-card h4{font-size:19px}
+#repuestos .part-card .compatibility{font-size:13px;color:#187A1B}
+#repuestos .category-button b{background:#39C525;color:#151719}
+#repuestos .store-showcase-benefits li:before{background:#39C525;color:#151719}
+#repuestos .store-showcase-actions .secondary{background:#fff;color:#151719;border:1px solid #151719}
+.button.primary,.awo-preview-grid b{background:#151719;color:#fff}
+.awo-home-cta{background:#EAF4E8}
+@media(max-width:760px){.awo-compressor-slide .awo-home-copy>p{font-size:16px}.awo-compressor-slide .awo-home-button{font-size:14px}}
+@media(max-width:520px){.awo-preview-grid strong,.awo-preview-grid small{font-size:16px}}
