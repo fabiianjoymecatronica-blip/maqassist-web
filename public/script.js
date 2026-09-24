@@ -469,3 +469,56 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   motion.addEventListener('change', () => { paused = motion.matches; label(); start(); });
   label(); start();
 })();
+
+// La portada destaca primero el compresor; los controles permiten detener o cambiar la presentación.
+(() => {
+  const slider = document.getElementById('awo-hero-slider');
+  if (!slider) return;
+  const slides = [...slider.querySelectorAll('[data-hero-slide]')];
+  const dots = [...document.querySelectorAll('[data-hero-dot]')];
+  const pause = document.getElementById('awo-hero-pause');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let index = 0;
+  let paused = false;
+  let timer;
+  const measure = () => {
+    if (window.innerWidth > 760) { slider.style.height = ''; return; }
+    const layout = slides[index].querySelector('.awo-home-hero-layout');
+    slider.style.height = `${Math.ceil(layout.getBoundingClientRect().height) + 28}px`;
+  };
+  const show = next => {
+    index = (next + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      const active = i === index;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+      slide.querySelectorAll('a').forEach(link => { link.tabIndex = active ? 0 : -1; });
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === index);
+      if (i === index) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+    requestAnimationFrame(measure);
+  };
+  const schedule = () => {
+    clearInterval(timer);
+    if (!paused && !reducedMotion.matches) {
+      timer = setInterval(() => {
+        if (!document.hidden && !slider.matches(':hover') && !slider.matches(':focus-within')) show(index + 1);
+      }, 9000);
+    }
+  };
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); schedule(); }));
+  pause.addEventListener('click', () => {
+    paused = !paused;
+    pause.setAttribute('aria-pressed', String(paused));
+    pause.textContent = paused ? 'Reanudar movimiento' : 'Pausar movimiento';
+    schedule();
+  });
+  reducedMotion.addEventListener('change', schedule);
+  window.addEventListener('resize', measure);
+  slides[0].querySelector('img').addEventListener('load', measure);
+  show(0);
+  schedule();
+})();
