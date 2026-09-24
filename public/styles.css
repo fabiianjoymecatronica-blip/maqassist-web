@@ -1587,3 +1587,44 @@ body[data-machine-family="otras"]{--brand-accent:var(--awo-neutral);--brand-stro
 .availability>span{background:var(--awo-neutral);box-shadow:0 0 0 6px rgba(112,117,122,.15)}
 .support-path span{background:var(--awo-neutral-soft);color:var(--awo-neutral)}
 .contact-panel input:focus,.contact-panel textarea:focus{outline-color:#D8DADD;border-color:var(--awo-neutral)}
+
+/* Selladora en portada: imagen centrada y fondo de empaque más integrado. */
+.awo-hero-slide:not(.awo-compressor-slide){
+  isolation:isolate;
+  background:linear-gradient(112deg,#fff 0%,#fff 42%,#FFFCF8 68%,#FFF8F0 100%);
+}
+.awo-hero-slide:not(.awo-compressor-slide):before,
+.awo-hero-slide:not(.awo-compressor-slide):after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+}
+.awo-hero-slide:not(.awo-compressor-slide):before{
+  background:linear-gradient(135deg,#FFF2E3,#FCE6D0);
+  clip-path:polygon(73% 0,100% 0,100% 100%,92% 100%,66% 45%);
+  opacity:.8;
+}
+.awo-hero-slide:not(.awo-compressor-slide):after{
+  background:linear-gradient(135deg,#EFFBEA,#DDF3D4);
+  clip-path:polygon(100% 57%,100% 100%,79% 100%);
+  opacity:.85;
+}
+.awo-hero-slide:not(.awo-compressor-slide) .awo-home-hero-layout{z-index:1}
+.awo-hero-slide:not(.awo-compressor-slide) .awo-home-copy{z-index:3}
+.awo-hero-slide .awo-sealer-art{
+  top:50%;right:1%;width:59%;height:78%;max-height:540px;
+  transform:translateY(-50%);z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible;
+}
+.awo-hero-slide .awo-sealer-art img{
+  display:block;width:100%;height:100%;max-height:none;
+  object-fit:contain;object-position:center;filter:drop-shadow(0 24px 20px rgba(24,32,27,.16));
+}
+.awo-hero-slide.is-active .awo-sealer-art img{animation:awo-equipment-reveal 9s ease-in-out infinite alternate}
+@media(max-width:1050px){.awo-hero-slide .awo-sealer-art{width:55%;right:0}}
+@media(max-width:760px){
+  .awo-hero-slide:not(.awo-compressor-slide){background:linear-gradient(160deg,#fff 0%,#FFFCF8 58%,#FFF4E7 100%)}
+  .awo-hero-slide:not(.awo-compressor-slide):before{clip-path:polygon(0 65%,100% 42%,100% 100%,0 100%)}
+  .awo-hero-slide:not(.awo-compressor-slide):after{clip-path:polygon(100% 72%,100% 100%,36% 100%)}
+  .awo-hero-slide .awo-sealer-art{top:auto;right:auto;width:100%;height:auto;max-height:none;margin:12px 0 0;transform:none}
+  .awo-hero-slide .awo-sealer-art img{height:auto;max-height:none}
+}
