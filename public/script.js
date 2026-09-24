@@ -381,6 +381,9 @@ function updatePageView() {
   document.querySelectorAll('main > section').forEach(section => {
     section.hidden = section.id !== sectionForPage;
   });
+  if (page === 'maquinas' && ['#selladora-inkjet', '#compresor-awo'].includes(location.hash)) {
+    requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView({ block: 'start' }));
+  }
   const pageTitles = {
     repuestos: 'Tienda de Repuestos | AWO Group',
     maquinas: 'Tienda de Máquinas | AWO Group',
@@ -470,7 +473,7 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   label(); start();
 })();
 
-// La portada destaca primero el compresor; los controles permiten detener o cambiar la presentación.
+// La portada alterna los equipos destacados; los controles permiten detener o cambiar la presentación.
 (() => {
   const slider = document.getElementById('awo-hero-slider');
   if (!slider) return;
@@ -518,7 +521,7 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   });
   reducedMotion.addEventListener('change', schedule);
   window.addEventListener('resize', measure);
-  slides[0].querySelector('img').addEventListener('load', measure);
+  slides.forEach(slide => slide.querySelector('img').addEventListener('load', measure));
   show(0);
   schedule();
 })();
