@@ -1555,3 +1555,35 @@ body[data-machine-family="otras"]{--brand-accent:var(--awo-neutral);--brand-stro
 
 @media(max-width:900px){.site-header .main-nav{background:#fff;border-top:1px solid #E5E7E8}}
 @media(max-width:760px){.awo-compressor-slide:before{background:#D7F1D0}.awo-compressor-slide:after{background:#B7E7AA}}
+
+/* Armoniza las reglas heredadas: verde para compresores y gris para servicio. */
+:root{
+  --ink:var(--awo-ink);
+  --ink2:var(--awo-ink);
+  --green:var(--awo-green);
+  --green2:var(--awo-neutral);
+  --mist:var(--awo-neutral-soft);
+  --muted:var(--awo-copy);
+  --maq-green-primary:var(--awo-green);
+  --maq-green-hover:var(--awo-neutral);
+  --maq-green-soft:var(--awo-neutral-soft);
+  --maq-green-pale:var(--awo-neutral-soft);
+  --maq-green-border:#D8DADD;
+  --maq-green-background:#F7F8F7;
+  --maq-charcoal:var(--awo-ink);
+  --maq-gray:var(--awo-copy);
+  --maq-line:#DDE0E1;
+}
+.services .service-card.featured{background:#fff;color:var(--awo-ink);border-color:#DDE0E1}
+.services .service-card.featured p,.services .service-card ul{color:var(--awo-copy)}
+.services .service-card.featured .service-icon{background:var(--awo-neutral-soft);color:var(--awo-neutral)}
+.plans .plan-label,.plans .general-plans article>span,.plans .general-plans li:before,.plans .general-plans a,.plans .plans-subtitle>span,.plans .coverage-list li>span,.plans .config-panel label{color:var(--awo-neutral)}
+.plans .plans-subtitle>span,.plans .machines-badge{background:var(--awo-neutral-soft);border-color:#D8DADD}
+.plans .plan-card.recommended,.plans .plan-configurator,.plans .plan-card{border-color:#D8DADD}
+.plans .period-options button.active,.plans .popular{background:var(--awo-neutral);border-color:var(--awo-neutral);color:#fff}
+.about-visual{background:var(--awo-neutral-soft);border:1px solid #D8DADD}
+.about-visual:after{border-color:#BFC3C6;box-shadow:0 0 80px rgba(112,117,122,.1)}
+.big-mark{color:var(--awo-neutral)}
+.availability>span{background:var(--awo-neutral);box-shadow:0 0 0 6px rgba(112,117,122,.15)}
+.support-path span{background:var(--awo-neutral-soft);color:var(--awo-neutral)}
+.contact-panel input:focus,.contact-panel textarea:focus{outline-color:#D8DADD;border-color:var(--awo-neutral)}
