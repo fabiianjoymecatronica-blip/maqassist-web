@@ -382,6 +382,7 @@ function updatePageView() {
     section.hidden = section.id !== sectionForPage;
   });
   if (page === 'maquinas' && ['#selladora-inkjet', '#compresor-awo'].includes(location.hash)) {
+    if (location.hash === '#compresor-awo') document.querySelector('#compresor-awo details').open = true;
     requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView({ block: 'start' }));
   }
   const pageTitles = {
