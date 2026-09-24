@@ -1245,3 +1245,48 @@ img[src*="selladora-continua-transparente"]{
  .awo-sector-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
  .awo-home-footer .footer-grid{grid-template-columns:1fr 1fr}
 }
+
+/* Refinamiento AWO: escala natural de fotografía, marca y lectura. */
+.home-view .site-header{background:rgba(255,255,255,.97);box-shadow:0 2px 18px rgba(17,31,23,.06)}
+.brand .awo-group-logo{display:block;width:145px;height:auto;object-fit:contain}
+.awo-home-hero{height:auto;min-height:570px;background:#fff}
+.awo-home-grid{opacity:.7}
+.awo-home-hero-layout{min-height:570px}
+.awo-home-copy{width:43%;padding:38px 0;z-index:3}
+.awo-home-copy h1{font-size:clamp(42px,4.3vw,67px);line-height:1.04}
+.awo-home-copy>p{font-size:17px;line-height:1.55;max-width:420px}
+.awo-home-benefits span{font-size:13px;line-height:1.4}
+.awo-home-benefits img,.awo-home-benefit-strip img{width:35px;height:35px}
+.awo-home-art{right:-3%;width:61%;height:100%}
+.awo-home-art img{width:100%;height:auto;max-height:100%;object-fit:contain;object-position:center}
+.awo-home-lines,.awo-home-sectors{padding-top:48px;padding-bottom:30px}
+.awo-home-section-heading{margin-bottom:22px}
+.awo-home-section-heading h2{font-size:clamp(28px,3vw,40px)}
+.awo-machine-cards{gap:20px}
+.awo-machine-card{border-radius:12px;box-shadow:0 8px 26px rgba(14,44,25,.06)}
+.awo-machine-card>img{height:185px;object-fit:contain;background:#f7faf8;padding:12px}
+.awo-card-copy{padding:18px 20px 21px}
+.awo-card-copy h3{font-size:17px}
+.awo-card-copy p{font-size:14px;line-height:1.5;min-height:64px}
+.awo-sector-cards>a{min-height:110px;font-size:13px}
+.awo-home-cta p{font-size:14px}
+.awo-home-button:focus-visible,.awo-machine-card:focus-visible,.main-nav a:focus-visible{outline:3px solid #2e9e1e;outline-offset:3px}
+@media(max-width:1100px){.awo-home-copy{width:47%}.awo-home-art{width:56%}.awo-machine-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.awo-sector-cards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:760px){.awo-home-hero-layout{min-height:0;display:flex;flex-direction:column;align-items:stretch}.awo-home-copy{width:100%;padding:32px 0 8px}.awo-home-copy h1{font-size:clamp(38px,9vw,54px)}.awo-home-copy>p{font-size:16px}.awo-home-benefits span{font-size:12px}.awo-home-art{position:relative;right:auto;width:100%;height:auto;margin:8px auto 0}.awo-home-art img{max-height:none}.awo-home-lines,.awo-home-sectors{padding-top:34px;padding-bottom:24px}.awo-home-benefit-strip>div{font-size:12px}}
+@media(max-width:520px){.awo-machine-cards{grid-template-columns:1fr}.awo-machine-card>img{height:210px}.awo-sector-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.awo-home-benefits{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.awo-home-benefits>div{flex-direction:row;align-items:center}.awo-home-actions{gap:8px}.awo-home-button{padding:0 12px;font-size:12px}.awo-home-cta a{margin-left:0;flex-basis:100%}}
+
+/* El logo nuevo usa su proporción real en todas las páginas. */
+.awo-group-logo{aspect-ratio:1902/827;object-fit:contain;mix-blend-mode:normal}
+
+/* Aplicación uniforme del logo AWO en encabezado, catálogo y pie. */
+.site-header .brand{gap:12px;min-width:0}
+.site-header .brand .awo-group-logo{width:clamp(148px,12vw,175px);max-width:none;height:auto;display:block}
+.site-header .brand-tagline{font-size:10px;line-height:1.35;letter-spacing:.06em;color:#445047;white-space:nowrap}
+.awo-home-footer .footer-brand .awo-group-logo{width:175px;max-width:100%;margin:0 0 8px}
+.awo-home-footer .footer-brand>span{font-size:10px;line-height:1.4;letter-spacing:.08em}
+#maquinas .awo-hero-copy .awo-group-logo{width:min(100%,330px);margin:16px 0}
+#maquinas .awo-brand-footer .awo-group-logo{width:205px;max-width:100%}
+.awo-group-logo{image-rendering:auto}
+@media(max-width:1100px){.site-header .brand-tagline{display:none}.site-header .brand .awo-group-logo{width:150px}}
+@media(max-width:760px){.site-header .brand .awo-group-logo{width:145px}.awo-home-footer .footer-brand .awo-group-logo{width:170px}}
+@media(max-width:390px){.site-header .brand .awo-group-logo{width:132px}}
