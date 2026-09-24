@@ -1668,8 +1668,8 @@ body{background:#F8FAF8;color:var(--awo-ink)}
 .awo-compressor-components>div{min-height:75px;padding:0 10px}
 .awo-compressor-components strong,.awo-compressor-components svg{height:30px;margin-bottom:5px}
 .awo-compressor-components svg{width:31px}
-.awo-compressor-components .awo-component-brand{font-size:20px;color:var(--awo-green-deep)}
-.awo-compressor-components .awo-component-skf{font-size:26px}
+.awo-compressor-components .awo-component-logo{display:block;width:120px;max-width:100%;height:30px;object-fit:contain;margin:0 auto 5px}
+.awo-compressor-components .awo-component-logo-skf{width:86px}
 .awo-compressor-components span{font-size:11px}
 .awo-compressor-slide .awo-home-actions{width:min(610px,100%);grid-template-columns:1.1fr 1fr 1fr;gap:8px}
 .awo-compressor-slide .awo-home-button{height:51px;min-height:51px;padding:8px 12px;font-size:12px;box-shadow:none}
