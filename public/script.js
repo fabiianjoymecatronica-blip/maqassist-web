@@ -137,6 +137,7 @@ function selectModel(modelId) {
 function renderMachine(machineKey) {
   currentMachineKey = machineKey;
   currentMachine = machineCatalog[currentMachineKey];
+  document.body.dataset.machineFamily = currentMachineKey;
   document.querySelector('.machine-sidebar').dataset.family = currentMachineKey;
   document.querySelectorAll('.category-button').forEach(button => button.classList.toggle('active', button.dataset.machine === currentMachineKey));
   const activeCategoryButton = document.querySelector(`.category-button[data-machine="${currentMachineKey}"]`);
@@ -371,6 +372,9 @@ function updatePageView() {
   const legacyPage = !route && location.hash === '#contacto' ? 'contacto' : (!route && location.hash === '#soporte' ? 'soporte' : '');
   const page = route || (legacyStore ? 'repuestos' : legacyPage) || 'home';
   const sectionForPage = { contacto: 'soporte', soporte: 'soporte' }[page] || page;
+  document.body.dataset.page = page;
+  const requestedFamily = new URLSearchParams(location.search).get('categoria');
+  document.body.dataset.machineFamily = page === 'home' ? 'compresor' : (page === 'maquinas' && machineCatalog[requestedFamily] ? requestedFamily : (page === 'repuestos' ? currentMachineKey : ''));
   document.body.classList.toggle('home-view', page === 'home');
   document.body.classList.toggle('store-view', page === 'repuestos');
   document.body.classList.toggle('machines-view', page === 'maquinas');
