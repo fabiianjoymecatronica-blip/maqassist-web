@@ -1811,3 +1811,114 @@ body{background:#F4F7F3;font-size:16px;font-weight:400}
 .awo-home-cta{background:#EAF4E8}
 @media(max-width:760px){.awo-compressor-slide .awo-home-copy>p{font-size:16px}.awo-compressor-slide .awo-home-button{font-size:14px}}
 @media(max-width:520px){.awo-preview-grid strong,.awo-preview-grid small{font-size:16px}}
+
+/* Recorrido de repuestos: hero, búsqueda, selección, opciones y cotización. */
+#repuestos{padding-top:118px;scroll-margin-top:90px}
+#repuestos .store-showcase{min-height:385px;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);margin-bottom:18px}
+#repuestos .store-showcase-copy{padding:30px 20px 30px 42px}
+#repuestos .store-showcase-copy h1{max-width:720px;margin:12px 0;font-size:clamp(36px,3.8vw,56px);line-height:1.08;letter-spacing:-.045em}
+#repuestos .store-showcase-copy h1 em{font-style:normal;color:#187A1B}
+#repuestos .store-showcase-copy>p{max-width:680px;font-size:16px;line-height:1.5}
+#repuestos .store-showcase-benefits{display:none}
+#repuestos .store-showcase-actions{margin-top:20px}
+#repuestos .store-showcase-actions .button{font-size:15px;min-width:0}
+#repuestos .store-showcase-machine{min-height:385px;padding:10px 22px}
+#repuestos .store-showcase-machine:before,#repuestos .store-showcase-machine:after{display:none}
+#repuestos .store-showcase-machine>img{max-height:350px!important;filter:drop-shadow(0 15px 18px rgba(21,23,25,.13))}
+.awo-repuesto-search{padding:22px 26px 18px;margin:0 0 18px;border:1px solid #DDE3DD;border-radius:14px;background:#fff}
+.awo-repuesto-search h2{font-size:25px;margin:2px 0 14px;line-height:1.3}
+.awo-search-paths{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:15px}
+.awo-search-paths button,.awo-search-paths a{display:inline-flex;align-items:center;border:1px solid #DDE3DD;background:#fff;border-radius:7px;padding:10px 15px;color:#151719;font:600 14px Manrope,Arial,sans-serif;cursor:pointer}
+.awo-search-paths button.active{border-color:#39C525;background:#F0FAEE;color:#151719}
+.awo-search-paths a:hover,.awo-search-paths button:hover{border-color:#187A1B}
+.awo-repuesto-search .parts-searchbar{width:100%;margin:0;min-height:58px;border:1px solid #DDE3DD;display:flex;align-items:center}
+.awo-repuesto-search .parts-searchbar input{min-width:0;flex:1;font-size:16px}
+.awo-repuesto-search>p{font-size:14px;color:#4C5650;margin:10px 0 0}
+#repuestos .market-shell{display:flex;flex-direction:column;gap:18px}
+#repuestos .machine-sidebar,#repuestos .machine-detail{width:100%;min-width:0;max-width:none}
+#repuestos .machine-sidebar{padding:20px}
+#repuestos .category-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#repuestos .category-list .category-button{min-height:190px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:7px;border:1px solid #DDE3DD;border-radius:10px;padding:12px;background:#fff;color:#151719!important;transform:none}
+#repuestos .category-list .category-button.active{border:2px solid #39C525;background:#F4FCF1!important;color:#151719!important}
+#repuestos .category-button .category-art{width:100%;height:100px;min-width:0;display:grid;place-items:center;background:#fff!important;border:0}
+#repuestos .category-button .category-art img{width:100%;height:100%;object-fit:contain;object-position:center;mix-blend-mode:multiply;transform:none;padding:4px}
+#repuestos .category-button strong{font-size:16px;font-weight:700}
+#repuestos .category-button small{font-size:14px;line-height:1.4;color:#4C5650}
+#repuestos .category-button b{display:none}
+#repuestos .category-button[data-machine="selladora"]{order:1}
+#repuestos .category-button[data-machine="codificadora"]{order:2}
+#repuestos .category-button[data-machine="empacadora290"]{order:3}
+#repuestos .category-button[data-machine="compresor"]{order:4}
+#repuestos .category-button[data-machine="flowpack"]{order:5}
+#repuestos .category-button[data-machine="dosificadora"]{order:6}
+#repuestos .category-button[data-machine="otras"]{order:7}
+#repuestos .model-list{grid-column:1/-1;order:8;display:flex;flex-direction:row;gap:8px;flex-wrap:wrap;border:0}
+#repuestos .model-list.open{max-height:none;padding:6px 0;border:0}
+#repuestos .model-button{width:auto;font-size:14px}
+#repuestos .future-machine-list,#repuestos .more-machines{display:none}
+#repuestos .machine-detail{display:block}
+#repuestos .parts-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#repuestos .part-card{min-width:0;min-height:0;padding:14px}
+#repuestos .part-card[hidden],#repuestos .part-options[hidden]{display:none!important}
+#repuestos .part-card .part-visual{height:145px}
+#repuestos .part-card>span,#repuestos .parts-count,#repuestos .parts-filters button{font-size:14px}
+#repuestos .part-spec{margin:8px 0 12px;padding:0;font-size:14px;line-height:1.45}
+#repuestos .part-spec>div{margin:5px 0}
+#repuestos .part-spec dt{font-weight:700}
+#repuestos .part-spec dd{margin:0;color:#505950}
+#repuestos .part-card .compatibility{font-size:14px}
+#repuestos .buy-button,#repuestos .request-family{font:700 14px Manrope,Arial,sans-serif;background:#151719;border:1px solid #151719;color:white;border-radius:6px;padding:11px 13px;cursor:pointer}
+#repuestos .part-options{padding-top:12px}
+#repuestos .part-options p{font-size:14px}
+#repuestos .request-family{width:100%;background:#fff;color:#151719}
+.quote-details{padding:16px 22px;display:grid;gap:12px;overflow-y:auto}
+.quote-details label{display:grid;gap:5px;font-size:14px;font-weight:700}
+.quote-details input,.quote-details select{width:100%;min-width:0;padding:10px;border:1px solid #DDE3DD;border-radius:6px;font:400 16px Manrope,Arial,sans-serif}
+.quote-details small{font-size:13px;font-weight:400;color:#505950}
+.cart-footer #email-quote{margin-top:8px;color:#151719;border:1px solid #151719;background:white}
+.whatsapp-float{width:auto;height:48px;display:flex;align-items:center;gap:8px;padding:8px 15px;background:#187A1B;color:white;border-radius:25px;font:700 14px Manrope,Arial,sans-serif}
+.whatsapp-float svg{width:25px;height:25px}
+.site-header .nav-wrap{gap:16px}
+.site-header .main-nav{min-width:0;gap:13px;font-size:14px}
+.site-header .awo-header-search{width:178px;min-width:130px}
+.site-header .awo-header-search input{font-size:14px}
+.site-header .header-search-button{color:#151719;background:#39C525}
+@media(max-width:1180px){
+  .site-header .menu-toggle{display:block;margin-left:auto;cursor:pointer}
+  .site-header .main-nav{display:none;position:absolute;top:104px;left:0;right:0;max-height:calc(100vh - 104px);overflow:auto;flex-direction:column;align-items:stretch;gap:0;padding:12px 20px 20px;background:#fff;box-shadow:0 12px 24px rgba(0,0,0,.1)}
+  .site-header .main-nav.open{display:flex;top:104px}
+  .site-header .main-nav>a{padding:10px 8px;font-size:16px}
+  .site-header .nav-tools{display:flex;flex-wrap:wrap;margin:8px 0 0}
+  .site-header .awo-header-search{width:min(100%,340px)}
+  #repuestos .category-list,#repuestos .parts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .site-header .main-nav,.site-header .main-nav.open{top:70px;max-height:calc(100vh - 70px)}
+  #repuestos{padding-top:90px}
+  #repuestos .store-showcase{grid-template-columns:1fr;min-height:0}
+  #repuestos .store-showcase-copy{padding:28px 22px 8px}
+  #repuestos .store-showcase-copy h1{font-size:clamp(34px,6.6vw,47px)}
+  #repuestos .store-showcase-machine{min-height:220px;padding:0 18px 14px}
+  #repuestos .store-showcase-machine>img{max-height:280px!important}
+  .awo-repuesto-search{padding:18px}
+  #repuestos .category-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #repuestos .category-list .category-button{min-height:175px}
+  #repuestos .parts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .whatsapp-float{right:12px;bottom:12px}
+}
+@media(max-width:520px){
+  #repuestos .store-showcase-copy h1{font-size:35px}
+  #repuestos .store-showcase-actions{flex-direction:column}
+  #repuestos .store-showcase-actions .button{width:100%}
+  .awo-search-paths{display:grid;grid-template-columns:1fr}
+  .awo-repuesto-search .parts-searchbar input{font-size:14px}
+  #repuestos .category-list .category-button{padding:9px;min-height:170px}
+  #repuestos .category-button .category-art{height:85px}
+  #repuestos .category-button strong,#repuestos .category-button small{font-size:14px}
+  #repuestos .parts-grid{grid-template-columns:1fr}
+  #repuestos .part-card{min-height:0}
+  #repuestos .parts-filters button,#repuestos .model-button,#repuestos .buy-button{font-size:14px}
+}
+#repuestos .awo-repuesto-search{order:3}
+.quote-details .quote-photo-choice{display:flex;align-items:center;gap:9px}
+.quote-details .quote-photo-choice input{width:18px;height:18px;accent-color:#187A1B}

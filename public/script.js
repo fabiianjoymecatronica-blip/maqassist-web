@@ -149,23 +149,13 @@ function renderMachine(machineKey) {
   document.getElementById('machine-image').src = currentMachine.image;
   document.getElementById('machine-image').alt = currentMachine.imageAlt;
   document.getElementById('machine-pending-panel').hidden = currentMachineKey === 'selladora';
-  document.getElementById('parts-search-input').placeholder = `Buscar repuestos para ${currentMachine.breadcrumb.toLowerCase()}…`;
+  document.getElementById('parts-search-input').placeholder = 'Buscar por referencia, modelo de máquina o tipo de repuesto';
 
-  const heroTitle = currentMachine.heroTitle.split('|');
   document.getElementById('technical-store-hero').dataset.family = currentMachineKey;
   document.getElementById('store-hero-category').textContent = currentMachine.heroCategory;
-  document.getElementById('store-hero-title').innerHTML = `${heroTitle[0]}<br><em>${heroTitle[1]}</em>`;
-  document.getElementById('store-hero-description').textContent = currentMachine.heroDescription;
-  document.getElementById('store-hero-benefits').innerHTML = currentMachine.benefits.map(item => `<li>${item}</li>`).join('');
-  document.getElementById('store-callout-one').textContent = currentMachine.benefits[0];
-  document.getElementById('store-callout-two').textContent = currentMachine.benefits[1];
   const heroMachine = document.getElementById('store-hero-machine');
   heroMachine.src = currentMachine.heroImage;
   heroMachine.alt = currentMachine.heroAlt;
-  document.getElementById('store-view-front').src = currentMachine.viewFront || currentMachine.heroImage;
-  document.getElementById('store-view-front-label').textContent = currentMachine.viewFrontLabel || 'VISTA TÉCNICA';
-  document.getElementById('store-view-side').src = currentMachine.viewSide || currentMachine.heroImage;
-  document.getElementById('store-view-side-label').textContent = currentMachine.viewSideLabel || 'DETALLE DE REFERENCIA';
   document.getElementById('store-view-plans').href = `https://wa.me/573189324488?text=${encodeURIComponent(`Hola AWO Group, tengo una foto o placa de mi equipo ${currentMachine.breadcrumb} y necesito identificar un repuesto.`)}`;
 
   document.getElementById('model-list').innerHTML = `
@@ -212,6 +202,7 @@ function renderCart() {
   const quantity = cart.reduce((total, item) => total + item.quantity, 0);
   cartCount.textContent = quantity;
   checkoutCart.disabled = cart.length === 0;
+  document.getElementById('email-quote').disabled = cart.length === 0;
   if (!cart.length) {
     cartItems.innerHTML = '<div class="empty-cart"><strong>Tu solicitud está vacía</strong><span>Agrega repuestos para preparar tu cotización.</span></div>';
     return;
@@ -219,16 +210,27 @@ function renderCart() {
   cartItems.innerHTML = cart.map((item, index) => `
     <article class="cart-item">
       <div class="cart-item-icon">${item.name.charAt(0)}</div>
-      <div class="cart-item-info"><span>${item.store}</span><strong>${item.name}</strong><small>Equipo: ${item.model}</small><b>Validamos la compatibilidad antes del despacho</b></div>
+      <div class="cart-item-info"><span>${item.store}</span><strong>${item.name}</strong><small>Equipo: ${item.model}</small><b>Referencia exacta por identificar</b></div>
       <div class="cart-item-actions"><button type="button" data-cart-action="plus" data-index="${index}">+</button><span>${item.quantity}</span><button type="button" data-cart-action="minus" data-index="${index}">−</button><button class="remove-item" type="button" data-cart-action="remove" data-index="${index}">×</button></div>
     </article>`).join('');
 }
 
-document.querySelectorAll('.add-to-cart').forEach(button => button.addEventListener('click', () => {
-  const model = currentModel ? currentModel.name : `${currentMachine.label} — referencia por confirmar`;
-  const existing = cart.find(item => item.name === button.dataset.name && item.model === model);
+document.querySelectorAll('.view-options').forEach(button => button.addEventListener('click', () => {
+  const options = button.nextElementSibling;
+  options.hidden = !options.hidden;
+  button.setAttribute('aria-expanded', String(!options.hidden));
+}));
+
+document.querySelectorAll('.request-family').forEach(button => button.addEventListener('click', () => {
+  const name = button.closest('.part-card').querySelector('.view-options').dataset.name;
+  const model = currentModel ? `${currentMachine.label} ${currentModel.name}` : `${currentMachine.label} — modelo por identificar`;
+  const existing = cart.find(item => item.name === name && item.model === model);
   if (existing) existing.quantity += 1;
-  else cart.push({ name: button.dataset.name, store: button.dataset.store, model, quantity: 1 });
+  else cart.push({ name, store: 'Familia de repuestos', model, quantity: 1 });
+  const quoteMachine = document.getElementById('quote-machine');
+  const machineOption = [...quoteMachine.options].find(option => model.toLowerCase().includes(option.text.toLowerCase().split(' ')[0]));
+  if (machineOption) quoteMachine.value = machineOption.value;
+  if (currentModel) document.getElementById('quote-reference').value = currentModel.name;
   renderCart();
   openCart();
 }));
@@ -248,9 +250,22 @@ document.getElementById('close-cart').addEventListener('click', closeCart);
 cartOverlay.addEventListener('click', closeCart);
 checkoutCart.addEventListener('click', () => {
   if (!cart.length) return;
-  const lines = cart.map(item => `• ${item.quantity} x ${item.name} para ${item.model}`).join('\n');
-  const message = `Hola AWO Group, solicito una cotización de estos repuestos:\n${lines}\nPor favor validen compatibilidad, disponibilidad y precio antes del despacho.`;
-  window.open(`https://wa.me/573189324488?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+  if (!document.getElementById('quote-location').reportValidity()) return;
+  window.open(`https://wa.me/573189324488?text=${encodeURIComponent(quoteMessage())}`, '_blank', 'noopener');
+});
+
+function quoteMessage() {
+  const machine = document.getElementById('quote-machine').value || 'Por identificar';
+  const reference = document.getElementById('quote-reference').value.trim() || 'Por identificar';
+  const locationText = document.getElementById('quote-location').value.trim();
+  const photo = document.getElementById('quote-photo').checked ? '\nTengo una fotografía o placa para adjuntar.' : '';
+  const lines = cart.map(item => `• ${item.quantity} × ${item.name} · ${item.model} (referencia exacta por identificar)`).join('\n');
+  return `Hola AWO Group, solicito una cotización de repuestos:\nMáquina: ${machine}\nReferencia o modelo: ${reference}\nCiudad y país: ${locationText}\n${lines}${photo}\nPor favor validen referencia, compatibilidad, disponibilidad y precio.`;
+}
+
+document.getElementById('email-quote').addEventListener('click', () => {
+  if (!cart.length || !document.getElementById('quote-location').reportValidity()) return;
+  location.href = `mailto:ventas@awogroup.com.co?subject=${encodeURIComponent('Solicitud de cotización de repuestos AWO')}&body=${encodeURIComponent(quoteMessage())}`;
 });
 
 renderCart();
@@ -281,7 +296,22 @@ function filterParts() {
   document.getElementById('no-parts').classList.toggle('show', visible === 0);
 }
 
-partsSearchInput.addEventListener('input', filterParts);
+partsSearchInput.addEventListener('input', () => {
+  if (document.querySelector('[data-search-path="modelo"].active')) {
+    const query = normalizeSearch(partsSearchInput.value);
+    const match = Object.entries(machineCatalog).find(([, machine]) => machine.models.some(model => normalizeSearch(model.name) === query));
+    if (match) { renderMachine(match[0]); selectModel(match[1].models.find(model => normalizeSearch(model.name) === query).id); }
+  }
+  filterParts();
+});
+
+document.querySelectorAll('[data-search-path]').forEach(button => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-search-path]').forEach(item => { item.classList.toggle('active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
+  document.getElementById('search-path-hint').textContent = button.dataset.searchPath === 'modelo'
+    ? 'Escriba el modelo (por ejemplo FR-770) o seleccione la máquina más abajo.'
+    : 'Escriba el código de la pieza o un término técnico. Si no conoce el código, elija otro camino.';
+  partsSearchInput.focus();
+}));
 document.getElementById('clear-parts-search').addEventListener('click', () => { partsSearchInput.value = ''; activePartFilter = 'all'; document.querySelectorAll('.parts-filters button').forEach((button, index) => button.classList.toggle('active', index === 0)); filterParts(); partsSearchInput.focus(); });
 document.querySelectorAll('.parts-filters button').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('.parts-filters button').forEach(item => item.classList.remove('active'));
@@ -389,7 +419,7 @@ function updatePageView() {
     requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView({ block: 'start' }));
   }
   const pageTitles = {
-    repuestos: 'Tienda de Repuestos | AWO Group',
+    repuestos: 'Repuestos para máquinas industriales | AWO Group',
     maquinas: 'Tienda de Máquinas | AWO Group',
     planes: 'Planes de Mantenimiento | AWO Group',
     nosotros: 'Nosotros | AWO Group',
