@@ -343,6 +343,23 @@ if (routeName() === 'maquinas') {
   });
 }
 
+document.querySelectorAll('[data-compressor-request]').forEach(link => {
+  const messages = {
+    cotizacion: 'Hola AWO Group, quiero cotizar un compresor de la línea AWO VDCM (7, 10, 15 o 20). ¿Me ayudan a escoger el modelo y confirmar precio y disponibilidad?',
+    ficha: 'Hola AWO Group, quiero solicitar la ficha técnica de un compresor AWO VDCM. ¿Podemos revisar cuál modelo y configuración corresponde a mi aplicación?',
+    asesoria: 'Hola AWO Group, tengo preguntas sobre los compresores AWO VDCM. Quiero asesoría sobre capacidad, instalación y mantenimiento.'
+  };
+  link.href = `https://wa.me/573189324488?text=${encodeURIComponent(messages[link.dataset.compressorRequest])}`;
+  link.target = '_blank';
+  link.rel = 'noopener';
+});
+document.querySelectorAll('[data-compressor-part]').forEach(link => {
+  const message = `Hola AWO Group, quiero consultar ${link.dataset.compressorPart} para un compresor AWO VDCM. Puedo compartir modelo y fotografía de la placa para validar compatibilidad.`;
+  link.href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
+  link.target = '_blank';
+  link.rel = 'noopener';
+});
+
 if (routeName() === 'repuestos') {
   const searchQuery = new URLSearchParams(location.search).get('buscar');
   if (searchQuery) {
@@ -365,6 +382,15 @@ const planRules = {
 
 let selectedMonths = 3;
 const countInput = document.getElementById('machine-count');
+const planParams = new URLSearchParams(location.search);
+const planEquipment = routeName() === 'planes' ? planParams.get('equipo') : null;
+const requestedDuration = Number(planParams.get('duracion'));
+if (routeName() === 'planes' && planRules[requestedDuration]) {
+  selectedMonths = requestedDuration;
+  document.querySelectorAll('.period-options button').forEach(button => {
+    button.classList.toggle('active', Number(button.dataset.months) === selectedMonths);
+  });
+}
 
 function updatePlan() {
   const count = Math.max(1, Math.min(50, Number(countInput.value) || 1));
@@ -378,7 +404,8 @@ function updatePlan() {
   document.getElementById('emergency-included').textContent = rule.emergencies * count;
   document.getElementById('emergency-condition').textContent = rule.condition;
   document.getElementById('response-level').textContent = rule.response;
-  const message = `Hola AWO Group, quiero cotizar un Plan Care de ${selectedMonths} meses para ${count} ${count === 1 ? 'máquina' : 'máquinas'}. Incluye ${rule.preventive * count} mantenimientos preventivos, ${rule.inspections * count} inspecciones y ${rule.emergencies * count} urgencias incluidas.`;
+  const equipmentContext = planEquipment ? ` de ${planEquipment}` : '';
+  const message = `Hola AWO Group, quiero cotizar un Plan Care de ${selectedMonths} meses para ${count} ${count === 1 ? 'máquina' : 'máquinas'}${equipmentContext}. La propuesta indica ${rule.preventive * count} mantenimientos preventivos, ${rule.inspections * count} inspecciones y ${rule.emergencies * count} urgencias incluidas; por favor confirmen el alcance para mi equipo.`;
   document.getElementById('plan-quote').href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
 }
 
@@ -414,9 +441,13 @@ function updatePageView() {
   document.querySelectorAll('main > section').forEach(section => {
     section.hidden = section.id !== sectionForPage;
   });
-  if (page === 'maquinas' && ['#selladora-inkjet', '#compresor-awo'].includes(location.hash)) {
-    if (location.hash === '#compresor-awo') document.querySelector('#compresor-awo details').open = true;
-    requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView({ block: 'start' }));
+  if (page === 'maquinas') {
+    const target = location.hash === '#selladora-inkjet' ? '#selladora-inkjet'
+      : (location.hash === '#compresores' || location.hash === '#compresor-awo' || requestedFamily === 'compresor') ? '#compresores' : null;
+    if (target) requestAnimationFrame(() => document.querySelector(target)?.scrollIntoView({ block: 'start' }));
+  }
+  if (page === 'planes' && location.hash === '#plan-configurador') {
+    requestAnimationFrame(() => document.getElementById('plan-configurador')?.scrollIntoView({ block: 'start' }));
   }
   const pageTitles = {
     repuestos: 'Repuestos para máquinas industriales | AWO Group',

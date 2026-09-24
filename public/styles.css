@@ -1999,3 +1999,65 @@ body{background:#F4F7F3;font-size:16px;font-weight:400}
   #repuestos .part-visual{height:165px;min-height:165px;flex-basis:165px}
   .awo-preview-visual img,#repuestos .part-visual img{padding:8px}
 }
+
+/* Familia VDCM: presentación, consumibles y planes en la tienda de máquinas. */
+#compresores{scroll-margin-top:112px}
+.awo-compressor-range,.awo-compressor-support,.awo-compressor-care{margin:40px 0 0;color:#151719}
+.awo-compressor-range{padding:clamp(24px,3.8vw,52px);border:1px solid #DDE3DD;border-radius:20px;background:#fff;box-shadow:0 16px 40px rgba(21,23,25,.04)}
+.awo-compressor-range-heading{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(270px,.8fr);gap:32px;align-items:end}
+.awo-range-kicker{display:block;color:#187A1B;font-size:13px;font-weight:700;letter-spacing:.12em}
+.awo-compressor-range h2,.awo-compressor-section-heading h2{max-width:680px;margin:12px 0 0;font-size:clamp(33px,4.2vw,58px);line-height:1.07;letter-spacing:-.055em}
+.awo-compressor-range-heading p,.awo-compressor-section-heading p{max-width:500px;margin:0;color:#505950;font-size:16px;line-height:1.65}
+.awo-compressor-range-visual{display:flex;align-items:center;justify-content:center;width:100%;margin:22px auto 0;background:#fff;overflow:hidden}
+.awo-compressor-range-visual img{display:block;width:100%;height:auto;max-height:580px;object-fit:contain;object-position:center}
+.awo-compressor-range-foot{display:flex;justify-content:space-between;align-items:center;gap:25px;padding:14px 0 24px;border-bottom:1px solid #DDE3DD}
+.awo-range-models{display:flex;flex-wrap:wrap;gap:7px}
+.awo-range-models span{padding:8px 12px;border:1px solid #DDE3DD;border-radius:6px;color:#187A1B;font-size:13px;font-weight:700}
+.awo-compressor-range-foot p{max-width:330px;margin:0;color:#505950;font-size:14px;line-height:1.45}
+.awo-range-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.awo-range-button{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:48px;padding:12px 18px;border:1px solid #151719;border-radius:6px;background:#fff;color:#151719;font-size:15px;font-weight:700;text-decoration:none;transition:background .2s,border-color .2s}
+.awo-range-button:hover{background:#F4F7F3;border-color:#187A1B}
+.awo-range-button-primary{background:#151719;color:#fff}
+.awo-range-button-primary:hover{background:#187A1B;color:#fff}
+.awo-range-footnote{margin:16px 0 0;color:#505950;font-size:13px;line-height:1.5}
+.awo-compressor-section-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:24px}
+.awo-compressor-section-heading h2{max-width:690px;font-size:clamp(30px,3.3vw,44px);margin-bottom:12px}
+.awo-compressor-section-heading>a{flex-shrink:0;color:#187A1B;font-size:15px;font-weight:700;text-decoration:none}
+.awo-compressor-parts-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.awo-compressor-parts-grid article{display:flex;min-width:0;flex-direction:column;min-height:240px;padding:22px 18px;border:1px solid #DDE3DD;border-radius:12px;background:#fff}
+.awo-part-number,.awo-compressor-care-grid a>span{color:#187A1B;font-size:12px;font-weight:700;letter-spacing:.08em}
+.awo-compressor-parts-grid h3{margin:36px 0 9px;font-size:19px;line-height:1.2;letter-spacing:-.03em}
+.awo-compressor-parts-grid p,.awo-compressor-care-grid p{margin:0 0 17px;color:#505950;font-size:14px;line-height:1.5}
+.awo-compressor-parts-grid a{margin-top:auto;padding-top:15px;border-top:1px solid #DDE3DD;color:#151719;font-size:14px;font-weight:700;text-decoration:none}
+.awo-compressor-parts-grid a span{color:#187A1B}
+.awo-compressor-care{padding:clamp(22px,3.3vw,42px);border-radius:18px;background:#EBF6E9}
+.awo-compressor-care-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.awo-compressor-care-grid a{display:flex;min-height:208px;flex-direction:column;padding:23px;border:1px solid #DDE3DD;border-radius:10px;background:#fff;color:#151719;text-decoration:none;transition:border-color .2s,transform .2s}
+.awo-compressor-care-grid a:hover{border-color:#187A1B;transform:translateY(-3px)}
+.awo-compressor-care-grid h3{margin:20px 0 8px;font-size:27px;letter-spacing:-.04em}
+.awo-compressor-care-grid strong{display:flex;justify-content:space-between;gap:12px;margin-top:auto;padding-top:12px;border-top:1px solid #DDE3DD;font-size:14px}
+.awo-compressor-care-grid strong span{color:#187A1B}
+#plan-configurador{scroll-margin-top:112px}
+@media(max-width:1050px){
+  .awo-compressor-parts-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .awo-compressor-range-heading{grid-template-columns:1fr;gap:14px}
+  .awo-compressor-range-foot,.awo-compressor-section-heading{align-items:flex-start;flex-direction:column}
+  .awo-compressor-parts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .awo-compressor-care-grid{grid-template-columns:1fr}
+  .awo-compressor-care-grid a{min-height:180px}
+}
+@media(max-width:520px){
+  .awo-compressor-range,.awo-compressor-support,.awo-compressor-care{margin-top:24px}
+  .awo-compressor-range{padding:20px 16px}
+  .awo-compressor-range h2{font-size:34px}
+  .awo-compressor-range-visual{margin-top:20px}
+  .awo-compressor-range-foot{gap:14px}
+  .awo-range-models span{padding:6px 8px;font-size:12px}
+  .awo-range-actions{display:grid;grid-template-columns:1fr}
+  .awo-compressor-parts-grid{gap:9px}
+  .awo-compressor-parts-grid article{min-height:216px;padding:16px 12px}
+  .awo-compressor-parts-grid h3{font-size:16px;margin:23px 0 8px}
+  .awo-compressor-parts-grid p,.awo-compressor-parts-grid a{font-size:13px}
+}
