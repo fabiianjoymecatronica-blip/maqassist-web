@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=awo-busqueda-integrada-20260925">
+  <link rel="stylesheet" href="/styles.css?v=awo-busqueda-guiada-20260925">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -194,12 +194,15 @@
         <section class="awo-repuesto-search" id="catalogo-repuestos" aria-labelledby="repuesto-search-title">
           <div><span class="kicker">ENCUENTRE SU REPUESTO</span><h2 id="repuesto-search-title">¿Qué información tiene a mano?</h2></div>
           <div class="awo-search-paths" role="group" aria-label="Forma de búsqueda">
-            <button type="button" class="active" data-search-path="referencia" aria-pressed="true">Conozco la referencia</button>
-            <button type="button" data-search-path="modelo" aria-pressed="false">Conozco el modelo de la máquina</button>
-            <a href="https://wa.me/573189324488?text=Hola%20AWO%20Group%2C%20solo%20tengo%20una%20fotograf%C3%ADa%20o%20placa%20de%20mi%20equipo.%20Necesito%20identificar%20un%20repuesto." target="_blank" rel="noopener">Solo tengo una fotografía o placa ↗</a>
+            <button type="button" class="active" data-search-path="referencia" aria-pressed="true">Tengo la referencia</button>
+            <button type="button" data-search-path="modelo" aria-pressed="false">Conozco mi máquina</button>
+            <a href="https://wa.me/573189324488?text=Hola%20AWO%20Group%2C%20solo%20tengo%20una%20fotograf%C3%ADa%20o%20placa%20de%20mi%20equipo.%20Necesito%20identificar%20un%20repuesto." target="_blank" rel="noopener">Tengo una foto o placa ↗</a>
           </div>
-          <div class="parts-searchbar"><span aria-hidden="true">⌕</span><label class="sr-only" for="parts-search-input">Buscar por referencia, modelo de máquina o tipo de repuesto</label><input id="parts-search-input" type="search" placeholder="Buscar por referencia, modelo de máquina o tipo de repuesto" autocomplete="off"><button id="clear-parts-search" type="button">Limpiar</button></div>
-          <p id="search-path-hint">Escriba el código de la pieza o un término técnico. Si no conoce el código, elija otro camino.</p>
+          <div class="awo-search-control">
+            <div class="parts-searchbar"><span aria-hidden="true">⌕</span><label class="sr-only" for="parts-search-input">Buscar repuesto</label><input id="parts-search-input" type="search" placeholder="Escriba el nombre o código del repuesto" autocomplete="off"><button id="clear-parts-search" type="button">Limpiar</button></div>
+            <div class="awo-model-search" id="awo-model-search" hidden><label for="awo-search-model-select">Seleccione su modelo</label><select id="awo-search-model-select"><option value="all">Todos los modelos</option></select></div>
+          </div>
+          <p id="search-path-hint">Escriba el nombre o código del repuesto para ver las opciones disponibles.</p>
         </section>
         <div class="market-shell">
           <aside class="machine-sidebar">
@@ -501,6 +504,6 @@
     <div class="quote-details"><label>Máquina<select id="quote-machine"><option value="">Seleccione la máquina</option><option>Selladora de banda</option><option>Codificadora</option><option>Empacadora</option><option>Compresor</option><option>Otra máquina</option></select></label><label>Referencia o modelo<input id="quote-reference" type="text" placeholder="Número de parte o modelo (si lo conoce)"></label><label>Ciudad y país<input id="quote-location" type="text" placeholder="Ej. Bogotá, Colombia" required></label><label class="quote-photo-choice"><input id="quote-photo" type="checkbox">Tengo fotografía o placa para adjuntar</label><small>Adjunte la imagen en WhatsApp o en su aplicación de correo al abrir la solicitud.</small></div>
     <div class="cart-footer"><div class="cart-note"><span>Resumen de repuestos</span><strong>Validamos cada referencia antes de cotizar</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Enviar por WhatsApp <span>↗</span></button><button class="button secondary" id="email-quote" type="button" disabled>Enviar por correo ↗</button><small>Validamos la compatibilidad y disponibilidad antes del despacho.</small></div>
   </aside>
-  <script src="/script.js?v=awo-botones-sin-panel-20260925"></script>
+  <script src="/script.js?v=awo-busqueda-guiada-20260925"></script>
 </body>
 </html>

@@ -2161,3 +2161,28 @@ body[data-machine-family="compresor"] #repuestos .parts-filters{justify-content:
   #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-actions .button{width:100%}
   #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-machine>img{min-width:720px}
 }
+
+/* Búsqueda guiada: una acción clara por camino y resultados inmediatos. */
+body[data-machine-family="compresor"] #repuestos .awo-repuesto-search{background:#F4F7F3;border-color:#DDE3DD;padding:24px clamp(18px,3vw,34px) 19px}
+body[data-machine-family="compresor"] #repuestos .market-shell{border-color:#DDE3DD}
+body[data-machine-family="compresor"] #repuestos .machine-detail{padding:0 clamp(18px,3vw,34px) 28px}
+body[data-machine-family="compresor"] #repuestos .parts-section{padding-top:21px}
+body[data-machine-family="compresor"] #repuestos .parts-heading .kicker{color:#187A1B}
+body[data-machine-family="compresor"] #repuestos .parts-heading h3{margin:5px 0 3px;font-size:clamp(21px,2.6vw,29px)}
+body[data-machine-family="compresor"] #repuestos .parts-count{border:1px solid #DDE3DD;border-radius:6px;padding:7px 10px;background:#F4F7F3;color:#151719}
+#repuestos .awo-search-paths{gap:8px;margin-bottom:14px}
+#repuestos .awo-search-paths button,#repuestos .awo-search-paths a{min-height:45px;border-radius:7px;padding:10px 14px;font-size:14px;text-decoration:none}
+#repuestos .awo-search-paths button.active{border-color:#187A1B;background:#187A1B;color:#fff}
+#repuestos .awo-search-paths :is(button,a):focus-visible,#repuestos .awo-model-search select:focus-visible{outline:3px solid #39C525;outline-offset:2px}
+#repuestos .awo-repuesto-search .parts-searchbar[hidden],#repuestos .awo-model-search[hidden]{display:none!important}
+#repuestos .awo-search-control{max-width:780px}
+#repuestos .awo-model-search{display:flex;align-items:center;gap:16px;min-height:58px}
+#repuestos .awo-model-search label{font-size:15px;font-weight:700;color:#151719}
+#repuestos .awo-model-search select{min-height:47px;min-width:220px;padding:9px 34px 9px 12px;border:1px solid #B9C9B8;border-radius:7px;background:#fff;color:#151719;font:600 15px Manrope,Arial,sans-serif}
+#repuestos .awo-repuesto-search>p{margin-top:10px}
+@media(max-width:760px){
+  #repuestos .awo-search-paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  #repuestos .awo-search-paths a{grid-column:1/-1}
+  #repuestos .awo-model-search{align-items:stretch;flex-direction:column;gap:6px}
+  #repuestos .awo-model-search select{width:100%}
+}

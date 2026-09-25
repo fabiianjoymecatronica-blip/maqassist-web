@@ -119,6 +119,7 @@ function selectModel(modelId) {
   });
   const modelSelect = document.getElementById('store-model-select');
   if (modelSelect) modelSelect.value = currentModel?.id || 'all';
+  document.getElementById('awo-search-model-select').value = currentModel?.id || 'all';
   const preview = document.getElementById('selection-preview');
   preview.hidden = !currentModel;
   document.querySelector('.machine-sidebar').classList.toggle('has-selection', Boolean(currentModel));
@@ -198,6 +199,9 @@ function renderMachine(machineKey) {
   const modelSelect = document.getElementById('store-model-select');
   modelSelect.innerHTML = `<option value="all">Todas las referencias</option>${currentMachine.models.map(model => `<option value="${model.id}">${model.name}</option>`).join('')}`;
   modelSelect.disabled = currentMachine.models.length === 0;
+  const searchModelSelect = document.getElementById('awo-search-model-select');
+  searchModelSelect.innerHTML = `<option value="all">Todos los modelos</option>${currentMachine.models.map(model => `<option value="${model.id}">${model.name}</option>`).join('')}`;
+  searchModelSelect.disabled = currentMachine.models.length === 0;
   document.querySelectorAll('.model-button').forEach(button => button.addEventListener('click', () => selectModel(button.dataset.model)));
   document.getElementById('model-list').classList.add('open');
   document.querySelectorAll('.category-button').forEach(button => button.setAttribute('aria-expanded', String(button.dataset.machine === currentMachineKey)));
@@ -211,6 +215,7 @@ document.querySelectorAll('[data-compressor-model]').forEach(button => button.ad
 }));
 
 document.getElementById('store-model-select').addEventListener('change', event => selectModel(event.target.value));
+document.getElementById('awo-search-model-select').addEventListener('change', event => selectModel(event.target.value));
 
 let cart = [];
 try { cart = JSON.parse(localStorage.getItem('awo-group-cart')) || []; } catch (error) { cart = []; }
@@ -344,10 +349,15 @@ partsSearchInput.addEventListener('input', () => {
 
 document.querySelectorAll('[data-search-path]').forEach(button => button.addEventListener('click', () => {
   document.querySelectorAll('[data-search-path]').forEach(item => { item.classList.toggle('active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
-  document.getElementById('search-path-hint').textContent = button.dataset.searchPath === 'modelo'
-    ? 'Escriba el modelo (por ejemplo FR-770) o seleccione la máquina más abajo.'
-    : 'Escriba el código de la pieza o un término técnico. Si no conoce el código, elija otro camino.';
-  partsSearchInput.focus();
+  const byModel = button.dataset.searchPath === 'modelo';
+  document.getElementById('awo-model-search').hidden = !byModel;
+  document.querySelector('.awo-repuesto-search .parts-searchbar').hidden = byModel;
+  document.getElementById('search-path-hint').textContent = byModel
+    ? 'Elija el modelo y le mostraremos sus repuestos compatibles.'
+    : 'Escriba el nombre o código del repuesto para ver las opciones disponibles.';
+  partsSearchInput.value = '';
+  filterParts();
+  (byModel ? document.getElementById('awo-search-model-select') : partsSearchInput).focus();
 }));
 document.getElementById('clear-parts-search').addEventListener('click', () => { partsSearchInput.value = ''; activePartFilter = 'all'; document.querySelectorAll('.parts-filters button').forEach((button, index) => button.classList.toggle('active', index === 0)); filterParts(); partsSearchInput.focus(); });
 document.querySelectorAll('.parts-filters button').forEach(button => button.addEventListener('click', () => {
