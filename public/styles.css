@@ -2186,3 +2186,44 @@ body[data-machine-family="compresor"] #repuestos .parts-count{border:1px solid #
   #repuestos .awo-model-search{align-items:stretch;flex-direction:column;gap:6px}
   #repuestos .awo-model-search select{width:100%}
 }
+
+/* Compresores AWO: selección de modelo, ficha legible y consulta comercial. */
+.awo-machine-model-picker{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:28px}
+.awo-machine-model-picker button{min-height:58px;border:1px solid #DDE3DD;border-radius:9px;background:#F4F7F3;color:#151719;font:700 16px Manrope,Arial,sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.awo-machine-model-picker button:hover{border-color:#187A1B;background:#E9F7E6}
+.awo-machine-model-picker button[aria-pressed="true"]{border-color:#187A1B;background:#187A1B;color:#fff}
+.awo-machine-model-picker button:focus-visible,.awo-machine-quote a:focus-visible,.awo-machine-quote button:focus-visible{outline:3px solid #39C525;outline-offset:2px}
+.awo-machine-selected{margin:18px 0 0;padding:16px 20px;border-left:4px solid #39C525;background:#F4F7F3}
+.awo-machine-selected[hidden]{display:none!important}
+.awo-machine-selected strong{font-size:20px;color:#151719}
+.awo-machine-selected p{margin:5px 0 0;color:#505950;font-size:15px;line-height:1.55}
+.awo-compressor-range-visual.shows-technical-sheet{margin-top:20px;border:1px solid #DDE3DD;border-radius:10px}
+.awo-compressor-range-visual.shows-technical-sheet img{width:min(100%,1055px);height:auto;max-height:none;object-fit:contain}
+.awo-machine-benefits,.awo-machine-quote{margin-top:32px;padding:clamp(22px,3.4vw,42px);border:1px solid #DDE3DD;border-radius:18px;background:#fff;color:#151719}
+.awo-machine-benefits h2,.awo-machine-quote h2{max-width:760px;margin:10px 0 24px;font-size:clamp(30px,3.5vw,46px);line-height:1.12;letter-spacing:-.04em}
+.awo-machine-benefits-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.awo-machine-benefits-grid article{padding:21px;border:1px solid #DDE3DD;border-radius:10px;background:#F4F7F3}
+.awo-machine-benefits-grid strong{color:#187A1B;font-size:14px}
+.awo-machine-benefits-grid h3{margin:12px 0 8px;font-size:19px;line-height:1.25}
+.awo-machine-benefits-grid p{margin:0;color:#505950;font-size:15px;line-height:1.55}
+#cotizar-compresor{scroll-margin-top:105px}
+.awo-machine-quote{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,3vw,46px);background:#F4F7F3}
+.awo-machine-quote p{color:#505950;font-size:16px;line-height:1.6}
+.awo-machine-quote a{display:inline-block;margin-top:13px;color:#187A1B;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.awo-machine-quote form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;padding:24px;border:1px solid #DDE3DD;border-radius:12px;background:#fff}
+.awo-machine-quote form label{display:flex;min-width:0;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
+.awo-machine-quote form :is(input,select,textarea){width:100%;min-height:45px;padding:10px 12px;border:1px solid #B9C9B8;border-radius:6px;background:#fff;color:#151719;font:400 16px Manrope,Arial,sans-serif}
+.awo-machine-quote form :is(input,select,textarea):focus-visible{outline:3px solid #39C525;outline-offset:1px}
+.awo-machine-quote form .wide{grid-column:1/-1}
+.awo-machine-quote form button{justify-content:center;cursor:pointer;font:700 16px Manrope,Arial,sans-serif}
+.awo-machine-quote form small{color:#505950;font-size:13px;line-height:1.5}
+@media(max-width:900px){
+  .awo-machine-quote{grid-template-columns:1fr}
+  .awo-machine-benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  .awo-machine-model-picker{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .awo-machine-benefits-grid,.awo-machine-quote form{grid-template-columns:1fr}
+  .awo-machine-quote form{padding:18px}
+  .awo-machine-quote form .wide{grid-column:1}
+}

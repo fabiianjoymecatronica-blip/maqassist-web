@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=awo-busqueda-guiada-20260925">
+  <link rel="stylesheet" href="/styles.css?v=awo-ficha-vdcm10-20260925">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -317,19 +317,52 @@
             <div><span class="awo-range-kicker">AIRE COMPRIMIDO · LÍNEA AWO VDCM</span><h2 id="compressor-range-title">El aire que mueve tu producción.</h2></div>
             <p>Conoce la familia VDCM 7, 10, 15 y 20. Encuentra un compresor para tu operación con acompañamiento técnico, opciones de mantenimiento y los consumibles que necesitas para seguir trabajando.</p>
           </div>
+          <div class="awo-machine-model-picker" role="group" aria-label="Seleccione el modelo del compresor">
+            <button type="button" data-machine-model="7" aria-pressed="false">VDCM 7</button>
+            <button type="button" data-machine-model="10" aria-pressed="false">VDCM 10</button>
+            <button type="button" data-machine-model="15" aria-pressed="false">VDCM 15</button>
+            <button type="button" data-machine-model="20" aria-pressed="false">VDCM 20</button>
+          </div>
+          <div class="awo-machine-selected" id="awo-machine-selected" hidden aria-live="polite"><strong id="awo-machine-selected-name"></strong><p id="awo-machine-selected-description"></p></div>
           <div class="awo-compressor-range-visual">
-            <img src="/assets/awo/compresores-vdcm-7-10-15-20.webp" alt="Familia de compresores AWO VDCM 7, VDCM 10, VDCM 15 y VDCM 20 sobre tanques horizontales" width="1774" height="887" loading="eager">
+            <img id="awo-machine-range-image" src="/assets/awo/compresores-vdcm-7-10-15-20.webp" alt="Familia de compresores AWO VDCM 7, VDCM 10, VDCM 15 y VDCM 20 sobre tanques horizontales" width="1774" height="887" loading="eager">
           </div>
           <div class="awo-compressor-range-foot">
             <div class="awo-range-models" aria-label="Modelos de la línea"><span>VDCM 7</span><span>VDCM 10</span><span>VDCM 15</span><span>VDCM 20</span></div>
             <p>Cuéntanos tu aplicación y te ayudamos a identificar el modelo y la configuración adecuados.</p>
           </div>
           <div class="awo-range-actions">
-            <a class="awo-range-button awo-range-button-primary" href="https://wa.me/573189324488" data-compressor-request="cotizacion">Cotizar un compresor <span aria-hidden="true">↗</span></a>
-            <a class="awo-range-button" href="https://wa.me/573189324488" data-compressor-request="ficha">Solicitar ficha técnica <span aria-hidden="true">↗</span></a>
+            <a class="awo-range-button awo-range-button-primary" id="awo-special-price" href="https://wa.me/573189324488" target="_blank" rel="noopener">Obtén un precio especial hoy <span aria-hidden="true">↗</span></a>
+            <a class="awo-range-button" href="#cotizar-compresor">Cotizar ahora <span aria-hidden="true">→</span></a>
             <a class="awo-range-button" href="https://wa.me/573189324488" data-compressor-request="asesoria">Preguntar a un asesor <span aria-hidden="true">↗</span></a>
           </div>
-          <p class="awo-range-footnote">Especificaciones, componentes, disponibilidad y ficha técnica se confirman según el modelo cotizado.</p>
+          <p class="awo-range-footnote">El precio especial se solicita directamente al asesor por WhatsApp. La propuesta se confirma según modelo, ciudad y configuración.</p>
+        </section>
+        <section class="awo-machine-benefits" aria-labelledby="awo-machine-benefits-title">
+          <span class="awo-range-kicker">MÁS QUE UN COMPRESOR</span><h2 id="awo-machine-benefits-title">Un equipo con acompañamiento de principio a fin.</h2>
+          <div class="awo-machine-benefits-grid">
+            <article><strong>01</strong><h3>Envíos a Colombia</h3><p>Coordinamos la entrega en tu ciudad y confirmamos tiempos antes de cerrar la compra.</p></article>
+            <article><strong>02</strong><h3>Instalación y capacitación</h3><p>Te orientamos en la puesta en marcha y en el uso correcto del equipo.</p></article>
+            <article><strong>03</strong><h3>Acompañamiento y posventa</h3><p>Resolvemos tus preguntas técnicas y te ayudamos a planificar el mantenimiento.</p></article>
+            <article><strong>04</strong><h3>Garantía y respaldo</h3><p>Consulta las condiciones de garantía aplicables a la configuración cotizada.</p></article>
+            <article><strong>05</strong><h3>Componentes y repuestos</h3><p>La ficha VDCM 10 presenta unidad Hanbell, rodamientos SKF y variador Inovance. Confirmamos componentes de cada versión antes de cotizar.</p></article>
+            <article><strong>06</strong><h3>Aplicaciones</h3><p>Aire para herramientas neumáticas, automatización y procesos de empaque. Validamos caudal, presión y calidad de aire para tu operación.</p></article>
+          </div>
+        </section>
+        <section class="awo-machine-quote" id="cotizar-compresor" aria-labelledby="awo-machine-quote-title">
+          <div><span class="awo-range-kicker">SOLICITUD DE COTIZACIÓN</span><h2 id="awo-machine-quote-title">Cuéntanos qué necesita tu operación.</h2><p>Con estos datos un asesor podrá recomendarte la configuración y responder con una propuesta. También puedes solicitar el precio especial directamente por WhatsApp.</p><a id="awo-quote-shortcut" href="https://wa.me/573189324488" target="_blank" rel="noopener">Solicitar precio por WhatsApp ↗</a></div>
+          <form id="awo-machine-quote-form">
+            <label>Nombre y apellido <input name="nombre" autocomplete="name" required></label>
+            <label>Empresa <input name="empresa" autocomplete="organization" required></label>
+            <label>WhatsApp <input name="telefono" type="tel" autocomplete="tel" required></label>
+            <label>Correo electrónico <input name="correo" type="email" autocomplete="email" required></label>
+            <label>Ciudad y país <input name="ubicacion" autocomplete="address-level2" required></label>
+            <label>Modelo de interés <select name="modelo" id="awo-quote-model"><option value="Por definir">Ayúdame a elegir</option><option>VDCM 7</option><option>VDCM 10</option><option>VDCM 15</option><option>VDCM 20</option></select></label>
+            <label class="wide">¿Para qué usarás el aire comprimido? <textarea name="aplicacion" rows="3" placeholder="Cuéntanos tu proceso, herramientas o máquinas; presión, caudal y horas de uso si los conoces" required></textarea></label>
+            <label class="wide">¿Necesitas instalación o capacitación? <select name="servicios"><option value="Necesito asesoría para definirlo">Necesito asesoría para definirlo</option><option value="Sí, instalación y capacitación">Sí, instalación y capacitación</option><option value="Solo equipo">Solo equipo</option></select></label>
+            <button class="awo-range-button awo-range-button-primary wide" type="submit">Enviar solicitud al asesor por WhatsApp ↗</button>
+            <small class="wide">Se abrirá WhatsApp con tus datos listos. Revisa el mensaje y pulsa Enviar para que llegue al asesor.</small>
+          </form>
         </section>
         <section class="awo-compressor-support" aria-labelledby="compressor-parts-title">
           <div class="awo-compressor-section-heading"><div><span class="awo-range-kicker">REPUESTOS Y CONSUMIBLES</span><h2 id="compressor-parts-title">Todo para mantener el aire en movimiento.</h2><p>Indícanos el modelo y envíanos una foto de la placa: validamos el repuesto antes de cotizarlo.</p></div><a href="/repuestos?categoria=compresor">Explorar repuestos <span aria-hidden="true">→</span></a></div>
@@ -504,6 +537,6 @@
     <div class="quote-details"><label>Máquina<select id="quote-machine"><option value="">Seleccione la máquina</option><option>Selladora de banda</option><option>Codificadora</option><option>Empacadora</option><option>Compresor</option><option>Otra máquina</option></select></label><label>Referencia o modelo<input id="quote-reference" type="text" placeholder="Número de parte o modelo (si lo conoce)"></label><label>Ciudad y país<input id="quote-location" type="text" placeholder="Ej. Bogotá, Colombia" required></label><label class="quote-photo-choice"><input id="quote-photo" type="checkbox">Tengo fotografía o placa para adjuntar</label><small>Adjunte la imagen en WhatsApp o en su aplicación de correo al abrir la solicitud.</small></div>
     <div class="cart-footer"><div class="cart-note"><span>Resumen de repuestos</span><strong>Validamos cada referencia antes de cotizar</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Enviar por WhatsApp <span>↗</span></button><button class="button secondary" id="email-quote" type="button" disabled>Enviar por correo ↗</button><small>Validamos la compatibilidad y disponibilidad antes del despacho.</small></div>
   </aside>
-  <script src="/script.js?v=awo-busqueda-guiada-20260925"></script>
+  <script src="/script.js?v=awo-ficha-vdcm10-20260925"></script>
 </body>
 </html>

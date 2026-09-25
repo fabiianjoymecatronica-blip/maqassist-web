@@ -400,6 +400,59 @@ document.querySelectorAll('[data-compressor-request]').forEach(link => {
   link.target = '_blank';
   link.rel = 'noopener';
 });
+const awoMachineModelButtons = [...document.querySelectorAll('[data-machine-model]')];
+const awoMachineRangeImage = document.getElementById('awo-machine-range-image');
+const awoMachineSelected = document.getElementById('awo-machine-selected');
+const awoSpecialPrice = document.getElementById('awo-special-price');
+const awoQuoteShortcut = document.getElementById('awo-quote-shortcut');
+let awoSelectedMachineModel = '';
+
+function updateMachinePriceLinks() {
+  const model = awoSelectedMachineModel ? `VDCM ${awoSelectedMachineModel}` : 'línea VDCM (modelo por definir)';
+  const message = `Hola AWO Group, vi las características del compresor AWO ${model}. Quiero conocer el precio especial disponible hoy y recibir una cotización para mi ciudad. ¿Me ayudan a confirmar configuración, disponibilidad, envío e instalación?`;
+  const url = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
+  awoSpecialPrice.href = url;
+  awoQuoteShortcut.href = url;
+}
+
+awoMachineModelButtons.forEach(button => button.addEventListener('click', () => {
+  awoSelectedMachineModel = button.dataset.machineModel;
+  awoMachineModelButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  const isTen = awoSelectedMachineModel === '10';
+  awoMachineRangeImage.src = isTen ? '/assets/awo/ficha-tecnica-vdcm-10.jpeg' : '/assets/awo/compresores-vdcm-7-10-15-20.webp';
+  awoMachineRangeImage.alt = isTen
+    ? 'Ficha técnica ilustrada del compresor AWO VDCM 10: vistas, dimensiones y especificaciones aportadas por AWO'
+    : `Familia de compresores AWO VDCM; ficha específica del VDCM ${awoSelectedMachineModel} disponible por consulta`;
+  awoMachineRangeImage.width = isTen ? 1055 : 1774;
+  awoMachineRangeImage.height = isTen ? 1491 : 887;
+  document.querySelector('.awo-compressor-range-visual').classList.toggle('shows-technical-sheet', isTen);
+  awoMachineSelected.hidden = false;
+  document.getElementById('awo-machine-selected-name').textContent = `AWO VDCM ${awoSelectedMachineModel}`;
+  document.getElementById('awo-machine-selected-description').textContent = isTen
+    ? 'Ficha VDCM 10: 7,5 kW / 10 HP, 8 bar, 1,1 m³/min, tanque de 260 L y alimentación trifásica 220 V según la ficha aportada. Confirma la configuración vigente antes de comprar.'
+    : 'Conoce la línea y solicita la ficha de esta referencia para confirmar potencia, caudal y configuración disponibles.';
+  document.getElementById('awo-quote-model').value = `VDCM ${awoSelectedMachineModel}`;
+  updateMachinePriceLinks();
+}));
+updateMachinePriceLinks();
+
+document.getElementById('awo-machine-quote-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const data = new FormData(event.currentTarget);
+  const lines = [
+    'Hola AWO Group, quiero una cotización de compresor.',
+    `Nombre: ${data.get('nombre')}`,
+    `Empresa: ${data.get('empresa')}`,
+    `WhatsApp: ${data.get('telefono')}`,
+    `Correo: ${data.get('correo')}`,
+    `Ciudad y país: ${data.get('ubicacion')}`,
+    `Modelo: ${data.get('modelo')}`,
+    `Aplicación: ${data.get('aplicacion')}`,
+    `Instalación y capacitación: ${data.get('servicios')}`,
+    'Por favor indíquenme precio, disponibilidad, condiciones de garantía y alcance de la instalación.'
+  ];
+  window.open(`https://wa.me/573189324488?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+});
 document.querySelectorAll('[data-compressor-part]').forEach(link => {
   const message = `Hola AWO Group, quiero consultar ${link.dataset.compressorPart} para un compresor AWO VDCM. Puedo compartir modelo y fotografía de la placa para validar compatibilidad.`;
   link.href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
