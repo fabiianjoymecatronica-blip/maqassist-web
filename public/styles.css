@@ -2112,3 +2112,37 @@ body{background:#F4F7F3;font-size:16px;font-weight:400}
   .awo-compressor-model-options{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
   .awo-compressor-model-options button{width:100%}
 }
+
+/* Comparador de compresores en el encabezado de Repuestos. */
+#repuestos #technical-store-hero[data-family="compresor"]{display:flex;flex-direction:column;min-height:0;overflow:hidden;border:1px solid #DDE3DD;border-radius:18px;background:#fff;box-shadow:0 12px 34px rgba(21,23,25,.045)}
+#repuestos #technical-store-hero[data-family="compresor"]:before,#repuestos #technical-store-hero[data-family="compresor"]:after,#repuestos #technical-store-hero[data-family="compresor"] .store-showcase-grid{display:none}
+#repuestos #technical-store-hero[data-family="compresor"] .store-showcase-copy{width:100%;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(310px,.8fr);column-gap:clamp(22px,3vw,52px);align-items:center;padding:clamp(26px,3.2vw,42px) clamp(22px,3.8vw,52px) 24px}
+#repuestos #technical-store-hero[data-family="compresor"] .store-showcase-copy .kicker{grid-column:1/-1;margin-bottom:8px;color:#187A1B;font-size:13px;letter-spacing:.11em}
+#repuestos #technical-store-hero[data-family="compresor"] .store-showcase-copy h1{grid-column:1;grid-row:2/4;max-width:690px;margin:0;font-size:clamp(38px,3.7vw,55px);line-height:1.08}
+#repuestos #technical-store-hero[data-family="compresor"] .store-showcase-copy>p{grid-column:2;grid-row:2;max-width:490px;margin:0;color:#505950;font-size:16px;line-height:1.55}
+#repuestos #technical-store-hero[data-family="compresor"] .store-showcase-actions{grid-column:2;grid-row:3;margin:16px 0 0}
+#repuestos #technical-store-hero[data-family="compresor"] .store-showcase-actions .button{min-width:0;padding:12px 14px;font-size:14px}
+#repuestos #technical-store-hero[data-family="compresor"] .store-showcase-machine{display:block;width:100%;min-height:0;margin:0;padding:0 clamp(18px,3vw,42px)!important;overflow:hidden;border-top:1px solid #E7ECE7;background:#fff}
+#repuestos #technical-store-hero[data-family="compresor"] .store-showcase-machine>img{display:block;width:100%!important;max-width:none!important;height:auto!important;max-height:none!important;margin:0 auto;object-fit:contain!important;filter:none!important}
+#repuestos #technical-store-hero[data-family="compresor"] .compressor-comparison-note{width:100%;margin:0;padding:0 clamp(22px,3.8vw,52px) 22px;color:#505950;font-size:13px;line-height:1.5}
+#repuestos #technical-store-hero .compressor-comparison-note[hidden]{display:none!important}
+#repuestos #technical-store-hero[data-family="compresor"] .mobile-comparison-hint{display:none}
+@media(max-width:1050px){
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-copy{grid-template-columns:minmax(0,1fr) minmax(280px,.9fr)}
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-actions{flex-direction:column}
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-actions .button{width:100%}
+}
+@media(max-width:760px){
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-copy{display:block;padding:24px 21px 20px}
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-copy h1{margin:9px 0 14px;font-size:clamp(34px,6vw,46px)}
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-actions{flex-direction:row;margin-top:18px}
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-actions .button{width:auto}
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-machine{overflow-x:auto;overscroll-behavior-inline:contain;padding:0 14px!important}
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-machine>img{min-width:840px}
+  #repuestos #technical-store-hero[data-family="compresor"] .mobile-comparison-hint{display:inline}
+}
+@media(max-width:520px){
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-actions{flex-direction:column}
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-actions .button{width:100%}
+  #repuestos #technical-store-hero[data-family="compresor"] .store-showcase-machine>img{min-width:720px}
+}

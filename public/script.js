@@ -82,7 +82,7 @@ const machineCatalog = {
     label: 'Compresores', breadcrumb: 'Compresores', heroCategory: 'COMPRESORES DE AIRE INDUSTRIAL',
     heroTitle: 'Repuestos para|compresores',
     heroDescription: 'Filtros, purgas y componentes para la línea AWO VDCM. Elige el modelo o envíanos la placa para validar la referencia antes del despacho.',
-    heroImage: '/assets/awo/compresores-vdcm-7-10-15-20.webp', heroAlt: 'Compresores AWO VDCM 7, 10, 15 y 20',
+    heroImage: '/assets/awo/compresores-vdcm-comparativa.webp', heroAlt: 'Comparación visual de compresores AWO VDCM 7, 10, 15 y 20 con potencia, presión y flujo de aire indicados en la imagen',
     benefits: ['Identificación por referencia', 'Validamos la compatibilidad antes del despacho', 'Asesoría técnica especializada'],
     image: '/assets/awo/compresores-vdcm-7-10-15-20.webp', imageAlt: 'Familia de compresores AWO VDCM 7, 10, 15 y 20',
     status: 'FAMILIAS DE REPUESTOS', description: 'Selecciona VDCM 7, 10, 15 o 20. Confirmamos la referencia exacta con la placa del equipo.',
@@ -180,9 +180,15 @@ function renderMachine(machineKey) {
 
   document.getElementById('technical-store-hero').dataset.family = currentMachineKey;
   document.getElementById('store-hero-category').textContent = currentMachine.heroCategory;
+  document.getElementById('store-hero-description').textContent = compressorSelected
+    ? currentMachine.heroDescription
+    : 'Encuentre repuestos para selladoras, codificadoras, empacadoras y compresores. Validamos la compatibilidad antes del despacho.';
   const heroMachine = document.getElementById('store-hero-machine');
   heroMachine.src = currentMachine.heroImage;
   heroMachine.alt = currentMachine.heroAlt;
+  heroMachine.width = compressorSelected ? 1774 : 900;
+  heroMachine.height = compressorSelected ? 887 : 600;
+  document.getElementById('compressor-comparison-note').hidden = !compressorSelected;
   document.getElementById('store-view-plans').href = `https://wa.me/573189324488?text=${encodeURIComponent(`Hola AWO Group, tengo una foto o placa de mi equipo ${currentMachine.breadcrumb} y necesito identificar un repuesto.`)}`;
 
   document.getElementById('model-list').innerHTML = `
