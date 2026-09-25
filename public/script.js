@@ -81,11 +81,17 @@ const machineCatalog = {
   compresor: {
     label: 'Compresores', breadcrumb: 'Compresores', heroCategory: 'COMPRESORES DE AIRE INDUSTRIAL',
     heroTitle: 'Repuestos para|compresores',
-    heroDescription: 'Componentes y repuestos para mantener tu sistema de aire comprimido en máximo rendimiento.',
-    heroImage: '/assets/compresores/compresores-tecnicos-v1.webp', heroAlt: 'Tres compresores de aire industriales completos en ilustración técnica',
+    heroDescription: 'Filtros, purgas y componentes para la línea AWO VDCM. Elige el modelo o envíanos la placa para validar la referencia antes del despacho.',
+    heroImage: '/assets/awo/compresores-vdcm-7-10-15-20.webp', heroAlt: 'Compresores AWO VDCM 7, 10, 15 y 20',
     benefits: ['Identificación por referencia', 'Validamos la compatibilidad antes del despacho', 'Asesoría técnica especializada'],
-    image: '/assets/compresores/compresores-tecnicos-v1.webp', imageAlt: 'Compresores de tornillo y de pistón, ilustración de referencia',
-    status: 'CONTENIDO EN PREPARACIÓN', description: 'Envíanos la placa y fotografías de tu compresor para identificar sus repuestos.', models: []
+    image: '/assets/awo/compresores-vdcm-7-10-15-20.webp', imageAlt: 'Familia de compresores AWO VDCM 7, 10, 15 y 20',
+    status: 'FAMILIAS DE REPUESTOS', description: 'Selecciona VDCM 7, 10, 15 o 20. Confirmamos la referencia exacta con la placa del equipo.',
+    models: [
+      { id: 'vdcm7', name: 'VDCM 7' },
+      { id: 'vdcm10', name: 'VDCM 10' },
+      { id: 'vdcm15', name: 'VDCM 15' },
+      { id: 'vdcm20', name: 'VDCM 20' }
+    ]
   },
   otras: {
     label: 'Otras máquinas', breadcrumb: 'Otras máquinas', heroCategory: 'OTRAS MÁQUINAS', heroTitle: 'Encuentra repuestos para|otra máquina',
@@ -119,14 +125,27 @@ function selectModel(modelId) {
   if (currentModel) {
     const photo = document.getElementById('selection-photo');
     photo.src = currentMachine.heroImage;
-    photo.alt = 'Vista de referencia de ' + currentMachine.label;
+    photo.alt = currentMachineKey === 'compresor' ? 'Familia de compresores AWO VDCM 7, 10, 15 y 20' : 'Vista de referencia de ' + currentMachine.label;
     document.getElementById('selection-name').textContent = currentMachine.label + ' · ' + currentModel.name;
   }
   document.getElementById('machine-image').src = currentModel?.image || currentMachine.image;
-  document.getElementById('machine-image').alt = currentModel ? `${currentMachine.label} ${currentModel.name} · imagen de referencia` : currentMachine.imageAlt;
+  document.getElementById('machine-image').alt = currentMachineKey === 'compresor' ? currentMachine.imageAlt : (currentModel ? `${currentMachine.label} ${currentModel.name} · imagen de referencia` : currentMachine.imageAlt);
   const selection = currentModel ? currentModel.name : 'Todas las referencias';
   document.getElementById('selected-model').textContent = selection;
   document.getElementById('parts-model-name').textContent = `${currentMachine.label} · ${currentModel ? currentModel.name : 'todas las referencias'}`;
+  if (currentMachineKey === 'compresor') {
+    document.getElementById('compressor-service-model').textContent = currentModel ? `su compresor ${currentModel.name}` : 'su compresor VDCM';
+    document.querySelectorAll('[data-compressor-model]').forEach(button => {
+      const selected = button.dataset.compressorModel === currentModel?.id;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    document.querySelectorAll('[data-service-hours]').forEach(link => {
+      const model = currentModel?.name || 'AWO VDCM (modelo por confirmar)';
+      const message = `Hola AWO Group, quiero cotizar el plan de mantenimiento de ${link.dataset.serviceHours} horas para mi compresor ${model}. Enviaré la foto de la placa y las horas de uso para validar alcance y consumibles.`;
+      link.href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
+    });
+  }
   const identifyText = `Hola AWO Group, necesito identificar un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Voy a enviar fotografía y placa del equipo.`;
   document.getElementById('identify-part-link').href = `https://wa.me/573189324488?text=${encodeURIComponent(identifyText)}`;
   const pendingText = `Hola AWO Group, busco un repuesto para ${currentMachine.label}${currentModel ? ` ${currentModel.name}` : ''}. Quiero confirmar compatibilidad, precio y disponibilidad.`;
@@ -148,7 +167,15 @@ function renderMachine(machineKey) {
   document.getElementById('machine-description').textContent = currentMachine.description;
   document.getElementById('machine-image').src = currentMachine.image;
   document.getElementById('machine-image').alt = currentMachine.imageAlt;
-  document.getElementById('machine-pending-panel').hidden = currentMachineKey === 'selladora';
+  document.getElementById('machine-pending-panel').hidden = currentMachineKey === 'selladora' || currentMachineKey === 'compresor';
+  const compressorSelected = currentMachineKey === 'compresor';
+  document.getElementById('repuestos-compresor').hidden = !compressorSelected;
+  document.getElementById('planes-compresor').hidden = !compressorSelected;
+  document.querySelectorAll('.parts-filters button[data-filter-family]').forEach(button => {
+    button.hidden = button.dataset.filterFamily !== (compressorSelected ? 'compresor' : 'selladora');
+  });
+  activePartFilter = 'all';
+  document.querySelectorAll('.parts-filters button').forEach(button => button.classList.toggle('active', button.dataset.filter === 'all'));
   document.getElementById('parts-search-input').placeholder = 'Buscar por referencia, modelo de máquina o tipo de repuesto';
 
   document.getElementById('technical-store-hero').dataset.family = currentMachineKey;
@@ -172,6 +199,10 @@ function renderMachine(machineKey) {
 }
 
 document.querySelectorAll('.category-button').forEach(button => button.addEventListener('click', () => renderMachine(button.dataset.machine)));
+document.querySelectorAll('[data-compressor-model]').forEach(button => button.addEventListener('click', () => {
+  if (currentMachineKey !== 'compresor') renderMachine('compresor');
+  selectModel(button.dataset.compressorModel);
+}));
 
 document.getElementById('store-model-select').addEventListener('change', event => selectModel(event.target.value));
 
@@ -441,6 +472,9 @@ function updatePageView() {
   document.querySelectorAll('main > section').forEach(section => {
     section.hidden = section.id !== sectionForPage;
   });
+  if (page === 'repuestos' && location.hash === '#repuestos-compresor' && requestedFamily === 'compresor') {
+    requestAnimationFrame(() => document.getElementById('repuestos-compresor')?.scrollIntoView({ block: 'start' }));
+  }
   if (page === 'maquinas') {
     const target = location.hash === '#selladora-inkjet' ? '#selladora-inkjet'
       : (location.hash === '#compresores' || location.hash === '#compresor-awo' || requestedFamily === 'compresor') ? '#compresores' : null;
