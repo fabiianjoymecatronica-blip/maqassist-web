@@ -2068,6 +2068,18 @@ body{background:#F4F7F3;font-size:16px;font-weight:400}
 #repuestos .awo-compressor-selector[hidden]{display:none!important}
 body[data-machine-family="compresor"] #repuestos .machine-sidebar,
 body[data-machine-family="compresor"] #repuestos .machine-title-row{display:none!important}
+body[data-machine-family="compresor"] #repuestos .awo-repuesto-search{margin:0;border-radius:14px 14px 0 0;border-bottom:0;padding-bottom:19px}
+body[data-machine-family="compresor"] #repuestos .market-shell{margin:0;border:1px solid #DDE3DD;border-top:0;border-radius:0 0 14px 14px;background:#fff}
+body[data-machine-family="compresor"] #repuestos .machine-detail{padding:0 26px 26px}
+body[data-machine-family="compresor"] #repuestos .parts-section{margin:0;padding-top:20px;border-top:1px solid #DDE3DD}
+body[data-machine-family="compresor"] #repuestos .parts-heading{justify-content:space-between;align-items:center;margin:0;text-align:left}
+body[data-machine-family="compresor"] #repuestos .parts-count{position:static;flex-shrink:0}
+body[data-machine-family="compresor"] #repuestos .parts-filters{justify-content:flex-start;margin:15px 0 10px}
+@media(max-width:760px){
+  body[data-machine-family="compresor"] #repuestos .machine-detail{padding:0 18px 20px}
+  body[data-machine-family="compresor"] #repuestos .parts-heading{align-items:flex-start;gap:10px;flex-wrap:wrap}
+  body[data-machine-family="compresor"] #repuestos .parts-count{margin:0}
+}
 #repuestos .awo-compressor-selector-intro{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:22px}
 #repuestos .awo-compressor-selector-intro .kicker{color:#187A1B;font-size:12px;font-weight:700;letter-spacing:.12em}
 #repuestos .awo-compressor-selector-intro h2{margin:7px 0 0;color:#151719;font-size:clamp(25px,2.8vw,36px);line-height:1.15;letter-spacing:-.035em}
