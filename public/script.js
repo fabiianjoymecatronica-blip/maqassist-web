@@ -406,6 +406,31 @@ const awoMachineSelected = document.getElementById('awo-machine-selected');
 const awoSpecialPrice = document.getElementById('awo-special-price');
 const awoQuoteShortcut = document.getElementById('awo-quote-shortcut');
 let awoSelectedMachineModel = '';
+let awoGalleryIndex = 0;
+const awoGallerySlides = [
+  { title: 'Vista general · diseño 4 en 1', description: 'La ficha del VDCM 10 muestra el compresor integrado al tanque horizontal.', details: ['Compresor de tornillo, tanque de 260 L, secador de aire y tres filtros de precisión.', 'Dimensiones indicadas: 1530 × 736 × 1447 mm.'] },
+  { title: 'Vista frontal', description: 'Observa el panel, las puertas de servicio y el montaje sobre el tanque.', details: ['Potencia indicada: 7,5 kW / 10 HP.', 'La cota longitudinal de la ficha es 1530 mm.'] },
+  { title: 'Vista trasera', description: 'La vista posterior de la ficha muestra las conexiones y el conjunto de tratamiento de aire.', details: ['La ficha indica secador y filtración integrados.', 'Consulta acceso de mantenimiento y disposición de las conexiones antes de instalar.'] },
+  { title: 'Vista lateral derecha', description: 'Detalle del ventilador lateral y del tanque visto de perfil.', details: ['Alto indicado: 1447 mm.', 'Ancho indicado: 736 mm.'] },
+  { title: 'Datos técnicos', description: 'Especificaciones transcritas de la ficha enviada para VDCM 10.', details: ['8 bar · entrega de aire 1,1 m³/min.', '220 V / 60 Hz / 3 fases · accionamiento de velocidad variable.', 'Tanque de 260 L · peso 310 kg · salida de aire DN20.'] }
+];
+
+function renderAwoGallery() {
+  const slide = awoGallerySlides[awoGalleryIndex];
+  const photo = document.getElementById('awo-gallery-photo');
+  photo.className = `awo-machine-gallery-photo view-${awoGalleryIndex}`;
+  photo.setAttribute('aria-label', `${slide.title}: recorte de la ficha técnica original del AWO VDCM 10`);
+  document.getElementById('awo-gallery-count').textContent = `VISTA ${awoGalleryIndex + 1} DE ${awoGallerySlides.length}`;
+  document.getElementById('awo-gallery-title').textContent = slide.title;
+  document.getElementById('awo-gallery-description').textContent = slide.description;
+  document.getElementById('awo-gallery-details').replaceChildren(...slide.details.map(detail => {
+    const item = document.createElement('li'); item.textContent = detail; return item;
+  }));
+  document.getElementById('awo-gallery-progress').textContent = `${awoGalleryIndex + 1} / ${awoGallerySlides.length}`;
+}
+document.getElementById('awo-gallery-prev').addEventListener('click', () => { awoGalleryIndex = (awoGalleryIndex - 1 + awoGallerySlides.length) % awoGallerySlides.length; renderAwoGallery(); });
+document.getElementById('awo-gallery-next').addEventListener('click', () => { awoGalleryIndex = (awoGalleryIndex + 1) % awoGallerySlides.length; renderAwoGallery(); });
+renderAwoGallery();
 
 function updateMachinePriceLinks() {
   const model = awoSelectedMachineModel ? `VDCM ${awoSelectedMachineModel}` : 'línea VDCM (modelo por definir)';
@@ -425,7 +450,9 @@ awoMachineModelButtons.forEach(button => button.addEventListener('click', () => 
     : `Familia de compresores AWO VDCM; ficha específica del VDCM ${awoSelectedMachineModel} disponible por consulta`;
   awoMachineRangeImage.width = isTen ? 1055 : 1774;
   awoMachineRangeImage.height = isTen ? 1491 : 887;
-  document.querySelector('.awo-compressor-range-visual').classList.toggle('shows-technical-sheet', isTen);
+  document.querySelector('.awo-compressor-range-visual').hidden = isTen;
+  document.getElementById('awo-machine-gallery').hidden = !isTen;
+  if (isTen) { awoGalleryIndex = 0; renderAwoGallery(); }
   awoMachineSelected.hidden = false;
   document.getElementById('awo-machine-selected-name').textContent = `AWO VDCM ${awoSelectedMachineModel}`;
   document.getElementById('awo-machine-selected-description').textContent = isTen

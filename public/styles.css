@@ -2217,13 +2217,39 @@ body[data-machine-family="compresor"] #repuestos .parts-count{border:1px solid #
 .awo-machine-quote form .wide{grid-column:1/-1}
 .awo-machine-quote form button{justify-content:center;cursor:pointer;font:700 16px Manrope,Arial,sans-serif}
 .awo-machine-quote form small{color:#505950;font-size:13px;line-height:1.5}
+.awo-compressor-range-visual[hidden],.awo-machine-gallery[hidden]{display:none!important}
+.awo-machine-gallery{margin-top:22px;border:1px solid #DDE3DD;border-radius:14px;overflow:hidden;background:#fff}
+.awo-machine-gallery-stage{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(280px,.87fr);align-items:stretch}
+.awo-machine-gallery-photo{min-height:450px;background:#fff url('/assets/awo/ficha-tecnica-vdcm-10.jpeg') no-repeat;background-size:100% auto;background-position:center top;border-right:1px solid #DDE3DD}
+.awo-machine-gallery-photo.view-0{background-size:100% auto;background-position:center top}
+.awo-machine-gallery-photo.view-1{background-size:300% auto;background-position:0 73%}
+.awo-machine-gallery-photo.view-2{background-size:300% auto;background-position:50% 73%}
+.awo-machine-gallery-photo.view-3{background-size:300% auto;background-position:100% 73%}
+.awo-machine-gallery-photo.view-4{background-size:200% auto;background-position:0 100%}
+.awo-machine-gallery-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(22px,3vw,42px)}
+.awo-machine-gallery-copy h3{margin:12px 0;font-size:clamp(26px,3vw,38px);letter-spacing:-.04em;line-height:1.13}
+.awo-machine-gallery-copy p{margin:0 0 14px;color:#505950;font-size:16px;line-height:1.55}
+.awo-machine-gallery-copy ul{margin:0;padding-left:20px;color:#151719;font-size:15px;line-height:1.65}
+.awo-machine-gallery-copy li{margin:7px 0}.awo-machine-gallery-copy li::marker{color:#187A1B}
+.awo-machine-gallery-controls{display:flex;align-items:center;justify-content:center;gap:18px;padding:15px;border-top:1px solid #DDE3DD;background:#F4F7F3}
+.awo-machine-gallery-controls button{min-height:44px;padding:9px 17px;border:1px solid #187A1B;border-radius:7px;background:#fff;color:#151719;font:700 14px Manrope,Arial,sans-serif;cursor:pointer}
+.awo-machine-gallery-controls button:hover{background:#187A1B;color:#fff}
+.awo-machine-gallery-controls button:focus-visible{outline:3px solid #39C525;outline-offset:2px}
+.awo-machine-gallery-controls span{min-width:50px;text-align:center;font-weight:700;color:#187A1B}
+.awo-machine-gallery-original{display:block;padding:11px;text-align:center;color:#187A1B;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:900px){
   .awo-machine-quote{grid-template-columns:1fr}
   .awo-machine-benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .awo-machine-gallery-stage{grid-template-columns:1fr}
+  .awo-machine-gallery-photo{min-height:420px;border-right:0;border-bottom:1px solid #DDE3DD}
 }
 @media(max-width:600px){
   .awo-machine-model-picker{grid-template-columns:repeat(2,minmax(0,1fr))}
   .awo-machine-benefits-grid,.awo-machine-quote form{grid-template-columns:1fr}
   .awo-machine-quote form{padding:18px}
   .awo-machine-quote form .wide{grid-column:1}
+  .awo-machine-gallery-photo{min-height:330px}
+  .awo-machine-gallery-copy{padding:22px}
+  .awo-machine-gallery-controls{gap:8px;padding:12px 8px}
+  .awo-machine-gallery-controls button{padding:8px 10px}
 }
