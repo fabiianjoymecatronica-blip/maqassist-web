@@ -2065,6 +2065,10 @@ body{background:#F4F7F3;font-size:16px;font-weight:400}
 /* Repuestos VDCM: accesos directos a modelos y planes por horas. */
 #repuestos-compresor{scroll-margin-top:108px}
 #repuestos .awo-compressor-model-shortcuts{order:3;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:10px 0 20px;padding:0;background:transparent}
+#repuestos .awo-compressor-reference-design{order:3;width:min(100%,640px);margin:0 auto 25px;padding:18px 24px 14px;border:1px solid #DDE3DD;border-radius:12px;background:#fff;text-align:center}
+#repuestos .awo-compressor-reference-design[hidden]{display:none!important}
+#repuestos .awo-compressor-reference-design img{display:block;width:min(100%,530px);height:auto;margin:auto;object-fit:contain}
+#repuestos .awo-compressor-reference-design figcaption{margin-top:8px;color:#187A1B;font-size:14px;font-weight:700}
 #repuestos .awo-repuesto-search{order:4}
 #repuestos .market-shell{order:5}
 #repuestos .awo-compressor-hour-plans{order:6}

@@ -87,10 +87,10 @@ const machineCatalog = {
     image: '/assets/awo/compresores-vdcm-7-10-15-20.webp', imageAlt: 'Familia de compresores AWO VDCM 7, 10, 15 y 20',
     status: 'FAMILIAS DE REPUESTOS', description: 'Selecciona VDCM 7, 10, 15 o 20. Confirmamos la referencia exacta con la placa del equipo.',
     models: [
-      { id: 'vdcm7', name: 'VDCM 7' },
-      { id: 'vdcm10', name: 'VDCM 10' },
-      { id: 'vdcm15', name: 'VDCM 15' },
-      { id: 'vdcm20', name: 'VDCM 20' }
+      { id: 'vdcm7', name: 'VDCM 7', design: '/assets/awo/vdcm-7-diseno.webp' },
+      { id: 'vdcm10', name: 'VDCM 10', design: '/assets/awo/vdcm-10-diseno.webp' },
+      { id: 'vdcm15', name: 'VDCM 15', design: '/assets/awo/vdcm-15-diseno.webp' },
+      { id: 'vdcm20', name: 'VDCM 20', design: '/assets/awo/vdcm-20-diseno.webp' }
     ]
   },
   otras: {
@@ -134,6 +134,14 @@ function selectModel(modelId) {
   document.getElementById('selected-model').textContent = selection;
   document.getElementById('parts-model-name').textContent = `${currentMachine.label} · ${currentModel ? currentModel.name : 'todas las referencias'}`;
   if (currentMachineKey === 'compresor') {
+    const designPanel = document.getElementById('compressor-reference-design');
+    designPanel.hidden = !currentModel;
+    if (currentModel) {
+      const designImage = document.getElementById('compressor-reference-image');
+      designImage.src = currentModel.design;
+      designImage.alt = `Diseño original de la referencia AWO ${currentModel.name}, saving energy`;
+      document.getElementById('compressor-reference-caption').textContent = `Referencia seleccionada: ${currentModel.name}`;
+    }
     document.getElementById('compressor-service-model').textContent = currentModel ? `su compresor ${currentModel.name}` : 'su compresor VDCM';
     document.querySelectorAll('[data-compressor-model]').forEach(button => {
       const selected = button.dataset.compressorModel === currentModel?.id;
@@ -170,6 +178,7 @@ function renderMachine(machineKey) {
   document.getElementById('machine-pending-panel').hidden = currentMachineKey === 'selladora' || currentMachineKey === 'compresor';
   const compressorSelected = currentMachineKey === 'compresor';
   document.getElementById('repuestos-compresor').hidden = !compressorSelected;
+  document.getElementById('compressor-reference-design').hidden = true;
   document.getElementById('planes-compresor').hidden = !compressorSelected;
   document.querySelectorAll('.parts-filters button[data-filter-family]').forEach(button => {
     button.hidden = button.dataset.filterFamily !== (compressorSelected ? 'compresor' : 'selladora');
