@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=awo-disenos-vdcm-20260925">
+  <link rel="stylesheet" href="/styles.css?v=awo-selector-vdcm-20260925">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -179,16 +179,22 @@
           </div>
           <p id="compressor-comparison-note" class="compressor-comparison-note" hidden><span class="mobile-comparison-hint">Deslice la imagen para comparar los cuatro modelos. </span>Datos ilustrados; confirme especificaciones y configuración en la ficha del equipo cotizado.</p>
         </section>
-        <div class="awo-compressor-model-shortcuts" id="repuestos-compresor" role="group" aria-label="Seleccione la referencia del compresor AWO VDCM" hidden>
-          <button type="button" data-compressor-model="vdcm7" aria-pressed="false">VDCM 7</button>
-          <button type="button" data-compressor-model="vdcm10" aria-pressed="false">VDCM 10</button>
-          <button type="button" data-compressor-model="vdcm15" aria-pressed="false">VDCM 15</button>
-          <button type="button" data-compressor-model="vdcm20" aria-pressed="false">VDCM 20</button>
-        </div>
-        <figure class="awo-compressor-reference-design" id="compressor-reference-design" hidden aria-live="polite">
-          <img id="compressor-reference-image" src="" width="530" height="205" alt="">
-          <figcaption id="compressor-reference-caption"></figcaption>
-        </figure>
+        <section class="awo-compressor-selector" id="repuestos-compresor" aria-labelledby="awo-model-selector-title" hidden>
+          <div class="awo-compressor-selector-intro">
+            <div><span class="kicker">LÍNEA AWO VDCM</span><h2 id="awo-model-selector-title">Seleccione su referencia</h2></div>
+            <p>Elija el modelo de su compresor para consultar sus repuestos y planes de mantenimiento.</p>
+          </div>
+          <div class="awo-compressor-model-shortcuts" role="group" aria-label="Referencias de compresores AWO VDCM">
+            <button type="button" data-compressor-model="vdcm7" aria-pressed="false"><span>VDCM</span><strong>7</strong></button>
+            <button type="button" data-compressor-model="vdcm10" aria-pressed="false"><span>VDCM</span><strong>10</strong></button>
+            <button type="button" data-compressor-model="vdcm15" aria-pressed="false"><span>VDCM</span><strong>15</strong></button>
+            <button type="button" data-compressor-model="vdcm20" aria-pressed="false"><span>VDCM</span><strong>20</strong></button>
+          </div>
+          <figure class="awo-compressor-reference-design" id="compressor-reference-design" hidden aria-live="polite">
+            <img id="compressor-reference-image" src="" width="680" height="220" alt="">
+            <figcaption id="compressor-reference-caption"></figcaption>
+          </figure>
+        </section>
         <section class="awo-repuesto-search" id="catalogo-repuestos" aria-labelledby="repuesto-search-title">
           <div><span class="kicker">ENCUENTRE SU REPUESTO</span><h2 id="repuesto-search-title">¿Qué información tiene a mano?</h2></div>
           <div class="awo-search-paths" role="group" aria-label="Forma de búsqueda">
@@ -499,6 +505,6 @@
     <div class="quote-details"><label>Máquina<select id="quote-machine"><option value="">Seleccione la máquina</option><option>Selladora de banda</option><option>Codificadora</option><option>Empacadora</option><option>Compresor</option><option>Otra máquina</option></select></label><label>Referencia o modelo<input id="quote-reference" type="text" placeholder="Número de parte o modelo (si lo conoce)"></label><label>Ciudad y país<input id="quote-location" type="text" placeholder="Ej. Bogotá, Colombia" required></label><label class="quote-photo-choice"><input id="quote-photo" type="checkbox">Tengo fotografía o placa para adjuntar</label><small>Adjunte la imagen en WhatsApp o en su aplicación de correo al abrir la solicitud.</small></div>
     <div class="cart-footer"><div class="cart-note"><span>Resumen de repuestos</span><strong>Validamos cada referencia antes de cotizar</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Enviar por WhatsApp <span>↗</span></button><button class="button secondary" id="email-quote" type="button" disabled>Enviar por correo ↗</button><small>Validamos la compatibilidad y disponibilidad antes del despacho.</small></div>
   </aside>
-  <script src="/script.js?v=awo-disenos-vdcm-20260925"></script>
+  <script src="/script.js?v=awo-selector-vdcm-20260925"></script>
 </body>
 </html>

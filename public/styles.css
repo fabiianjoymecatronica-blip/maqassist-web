@@ -2064,18 +2064,26 @@ body{background:#F4F7F3;font-size:16px;font-weight:400}
 
 /* Repuestos VDCM: accesos directos a modelos y planes por horas. */
 #repuestos-compresor{scroll-margin-top:108px}
-#repuestos .awo-compressor-model-shortcuts{order:3;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:10px 0 20px;padding:0;background:transparent}
-#repuestos .awo-compressor-reference-design{order:3;width:min(100%,640px);margin:0 auto 25px;padding:18px 24px 14px;border:1px solid #DDE3DD;border-radius:12px;background:#fff;text-align:center}
+#repuestos .awo-compressor-selector{order:3;margin:18px 0 24px;padding:clamp(20px,3vw,34px);border:1px solid #DDE3DD;border-radius:16px;background:#F4F7F3}
+#repuestos .awo-compressor-selector[hidden]{display:none!important}
+#repuestos .awo-compressor-selector-intro{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:22px}
+#repuestos .awo-compressor-selector-intro .kicker{color:#187A1B;font-size:12px;font-weight:700;letter-spacing:.12em}
+#repuestos .awo-compressor-selector-intro h2{margin:7px 0 0;color:#151719;font-size:clamp(25px,2.8vw,36px);line-height:1.15;letter-spacing:-.035em}
+#repuestos .awo-compressor-selector-intro p{max-width:390px;margin:0;color:#505950;font-size:16px;line-height:1.5}
+#repuestos .awo-compressor-model-shortcuts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#repuestos .awo-compressor-reference-design{display:flex;align-items:center;justify-content:center;flex-direction:column;margin:18px 0 0;padding:20px;min-height:190px;border:1px solid #DDE3DD;border-radius:12px;background:#fff;text-align:center}
 #repuestos .awo-compressor-reference-design[hidden]{display:none!important}
-#repuestos .awo-compressor-reference-design img{display:block;width:min(100%,530px);height:auto;margin:auto;object-fit:contain}
-#repuestos .awo-compressor-reference-design figcaption{margin-top:8px;color:#187A1B;font-size:14px;font-weight:700}
+#repuestos .awo-compressor-reference-design img{display:block;width:min(100%,510px);height:auto;max-height:200px;margin:auto;object-fit:contain}
+#repuestos .awo-compressor-reference-design figcaption{margin-top:4px;color:#505950;font-size:14px;font-weight:600}
 #repuestos .awo-repuesto-search{order:4}
 #repuestos .market-shell{order:5}
 #repuestos .awo-compressor-hour-plans{order:6}
-#repuestos .awo-compressor-model-shortcuts[hidden],#repuestos .awo-compressor-hour-plans[hidden],#repuestos .parts-filters button[hidden]{display:none!important}
-#repuestos .awo-compressor-model-shortcuts button{min-width:145px;min-height:49px;padding:12px 20px;border:1px solid #39C525;border-radius:7px;background:#39C525;color:#151719;font:700 15px Manrope,Arial,sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
-#repuestos .awo-compressor-model-shortcuts button:hover{background:#70D65F;border-color:#70D65F;transform:translateY(-2px)}
-#repuestos .awo-compressor-model-shortcuts button.active{background:#187A1B;border-color:#187A1B;color:#fff}
+#repuestos .awo-compressor-hour-plans[hidden],#repuestos .parts-filters button[hidden]{display:none!important}
+#repuestos .awo-compressor-model-shortcuts button{display:flex;align-items:center;justify-content:center;gap:10px;min-width:0;min-height:67px;padding:11px;border:1px solid #DDE3DD;border-radius:10px;background:#fff;color:#151719;font:700 16px Manrope,Arial,sans-serif;cursor:pointer;transition:background .2s,border-color .2s,box-shadow .2s}
+#repuestos .awo-compressor-model-shortcuts button strong{display:grid;place-items:center;min-width:40px;height:40px;padding:0 7px;border-radius:7px;background:#39C525;color:#151719;font-size:20px;line-height:1}
+#repuestos .awo-compressor-model-shortcuts button:hover{border-color:#39C525;box-shadow:0 3px 12px rgba(21,23,25,.08)}
+#repuestos .awo-compressor-model-shortcuts button.active{border-color:#187A1B;background:#187A1B;color:#fff}
+#repuestos .awo-compressor-model-shortcuts button.active strong{background:#fff;color:#187A1B}
 #repuestos .awo-compressor-model-shortcuts button:focus-visible{outline:3px solid #151719;outline-offset:3px}
 .awo-compressor-hour-intro h2{max-width:780px;margin:9px 0 13px;font-size:clamp(30px,3.8vw,48px);line-height:1.1;letter-spacing:-.045em}
 .awo-compressor-hour-intro p{max-width:710px;margin:0;color:#505950;font-size:16px;line-height:1.6}
@@ -2103,8 +2111,12 @@ body{background:#F4F7F3;font-size:16px;font-weight:400}
   #repuestos .awo-compressor-hour-plans{padding:18px 15px}
   .awo-compressor-hour-intro h2{font-size:31px}
   #repuestos .awo-compressor-part-card .awo-compressor-part-visual{height:115px}
-  #repuestos .awo-compressor-model-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  #repuestos .awo-compressor-model-shortcuts button{min-width:0;width:100%}
+  #repuestos .awo-compressor-selector{padding:18px 14px}
+  #repuestos .awo-compressor-selector-intro{display:block}
+  #repuestos .awo-compressor-selector-intro p{margin-top:10px}
+  #repuestos .awo-compressor-model-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #repuestos .awo-compressor-model-shortcuts button{min-height:60px;font-size:15px}
+  #repuestos .awo-compressor-reference-design{padding:10px;min-height:140px}
 }
 
 /* Comparador de compresores en el encabezado de Repuestos. */

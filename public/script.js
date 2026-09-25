@@ -87,10 +87,10 @@ const machineCatalog = {
     image: '/assets/awo/compresores-vdcm-7-10-15-20.webp', imageAlt: 'Familia de compresores AWO VDCM 7, 10, 15 y 20',
     status: 'FAMILIAS DE REPUESTOS', description: 'Selecciona VDCM 7, 10, 15 o 20. Confirmamos la referencia exacta con la placa del equipo.',
     models: [
-      { id: 'vdcm7', name: 'VDCM 7', design: '/assets/awo/vdcm-7-diseno.webp' },
-      { id: 'vdcm10', name: 'VDCM 10', design: '/assets/awo/vdcm-10-diseno.webp' },
-      { id: 'vdcm15', name: 'VDCM 15', design: '/assets/awo/vdcm-15-diseno.webp' },
-      { id: 'vdcm20', name: 'VDCM 20', design: '/assets/awo/vdcm-20-diseno.webp' }
+      { id: 'vdcm7', name: 'VDCM 7', design: '/assets/awo/vdcm-7-diseno.svg' },
+      { id: 'vdcm10', name: 'VDCM 10', design: '/assets/awo/vdcm-10-diseno.svg' },
+      { id: 'vdcm15', name: 'VDCM 15', design: '/assets/awo/vdcm-15-diseno.svg' },
+      { id: 'vdcm20', name: 'VDCM 20', design: '/assets/awo/vdcm-20-diseno.svg' }
     ]
   },
   otras: {

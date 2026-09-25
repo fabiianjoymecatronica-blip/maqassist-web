@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220" role="img" aria-label="AWO VDCM 10, saving energy">
+<rect width="680" height="220" fill="#fff"/>
+<rect x="24" y="27" width="420" height="118" rx="15" fill="#39C525"/>
+<text x="43" y="112" fill="#151719" font-family="Arial,Helvetica,sans-serif" font-size="91" font-weight="700" letter-spacing="-4">VDCM</text>
+<rect x="445" y="27" width="156" height="118" rx="15" fill="#151719"/>
+<text x="523.0" y="112" fill="#fff" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="91" font-weight="700">10</text>
+<text x="32" y="193" fill="#151719" font-family="Arial,Helvetica,sans-serif" font-size="30" letter-spacing="9">saving energy</text>
+<path d="M557 178c14-22 29-23 43-24-3 19-13 34-38 33-2 6-4 10-8 13 1-9 8-19 22-29-8 2-14 4-19 7Z" fill="#39C525"/>
+</svg>
