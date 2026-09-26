@@ -2319,4 +2319,8 @@ body[data-division="parts"],body[data-division="care"]{--brand-accent:var(--awo-
 
 /* En Inicio, el selector VDCM reutiliza la ficha completa con una vista compacta. */
 #home > .awo-compressor-range .awo-compressor-range-visual img{max-height:320px}
-#home > .awo-compressor-range .awo-range-actions,#home > .awo-compressor-range .awo-range-footnote{display:none}
+#home > .awo-compressor-range .awo-range-footnote{display:none}
+
+/* Se reutilizan los CTAs y repuestos existentes en Inicio sin duplicar sus componentes. */
+#home > .awo-range-actions,#home > .awo-compressor-support{width:min(var(--max),calc(100% - 40px));margin:24px auto}
+#maquinas .awo-stock-grid #compresor-awo{order:-1}
