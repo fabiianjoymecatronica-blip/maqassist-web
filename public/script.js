@@ -146,6 +146,10 @@ function routeName() {
   return ['repuestos', 'maquinas', 'planes', 'servicios', 'nosotros', 'contacto', 'soporte'].includes(route) ? route : '';
 }
 
+function vdcmRouteModel() {
+  return location.pathname.match(/^\/compresores\/vdcm-(7|10|15|20)\/?$/)?.[1] || '';
+}
+
 const vdcmModels = {
   '7': { power: '5,5 kW / 7 HP', flow: '0,63 m³/min', tank: '260 L', dimensions: '1530 × 736 × 1447 mm', weight: '310 kg' },
   '10': { power: '7,5 kW / 10 HP', flow: '1,10 m³/min', tank: '260 L', dimensions: '1530 × 736 × 1447 mm', weight: '310 kg' },
@@ -516,7 +520,7 @@ renderAwoGallery();
 
 function updateMachinePriceLinks() {
   const model = awoSelectedMachineModel ? `VDCM ${awoSelectedMachineModel}` : 'línea VDCM (modelo por definir)';
-  const message = `Hola AWO Group, vi las características del compresor AWO ${model}. Quiero conocer el precio especial disponible hoy y recibir una cotización para mi ciudad. ¿Me ayudan a confirmar configuración, disponibilidad, envío e instalación?`;
+  const message = `Hola AWO Group, quiero solicitar una cotización del compresor AWO ${model}. ¿Me ayudan a confirmar configuración, disponibilidad, envío e instalación para mi ciudad?`;
   const url = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
   awoSpecialPrice.href = url;
   awoQuoteShortcut.href = url;
@@ -536,6 +540,14 @@ awoMachineModelButtons.forEach(button => button.addEventListener('click', () => 
   awoMachineSelected.hidden = false;
   document.getElementById('awo-machine-selected-name').textContent = `AWO VDCM ${awoSelectedMachineModel}`;
   document.getElementById('awo-machine-selected-description').textContent = vdcmDescription(awoSelectedMachineModel);
+  let productLink = document.getElementById('awo-selected-product-link');
+  if (!productLink) {
+    productLink = document.createElement('a');
+    productLink.id = 'awo-selected-product-link';
+    productLink.textContent = 'Ver especificaciones completas →';
+    awoMachineSelected.appendChild(productLink);
+  }
+  productLink.href = `/compresores/vdcm-${awoSelectedMachineModel}`;
   document.getElementById('awo-quote-model').value = `VDCM ${awoSelectedMachineModel}`;
   updateMachinePriceLinks();
 }));
@@ -626,12 +638,56 @@ document.querySelectorAll('.period-options button').forEach(button => button.add
 
 updatePlan();
 
+function renderVdcmProduct(number) {
+  const model = vdcmModels[number];
+  const name = `AWO VDCM ${number}`;
+  const set = (id, value) => { document.getElementById(id).textContent = value; };
+  set('vdcm-breadcrumb', name);
+  set('vdcm-product-title', name);
+  set('vdcm-product-subtitle', `Compresor de tornillo VSD · ${number} HP`);
+  set('vdcm-fact-flow', model.flow);
+  set('vdcm-fact-tank', model.tank);
+  const image = document.getElementById('vdcm-product-image');
+  image.src = number === '10' ? '/assets/awo/compresor-vdcm10-hero.webp' : `/assets/awo/vdcm-${number}-diseno.webp`;
+  image.alt = `Compresor de tornillo ${name} con tanque integrado`;
+  const specs = [
+    ['Potencia', model.power], ['Caudal', model.flow], ['Presión', '8 bar'],
+    ['Tanque', model.tank], ['Voltaje', '220 V'], ['Frecuencia', '60 Hz'],
+    ['Fases', 'Trifásico'], ['Peso', model.weight], ['Dimensiones', model.dimensions], ['Salida', 'DN20']
+  ];
+  document.getElementById('vdcm-spec-list').replaceChildren(...specs.map(([label, value]) => {
+    const row = document.createElement('div');
+    const term = document.createElement('dt'); term.textContent = label;
+    const detail = document.createElement('dd'); detail.textContent = value;
+    row.append(term, detail);
+    return row;
+  }));
+  document.querySelectorAll('.awo-product-models a').forEach(link => {
+    const active = link.pathname.endsWith(`vdcm-${number}`);
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
+  });
+  const quote = `Hola AWO Group, estoy interesado en cotizar el ${name}. Quiero confirmar configuración, disponibilidad, instalación y condiciones de garantía para mi ciudad.`;
+  const advice = `Hola AWO Group, estoy evaluando el ${name}. Necesito asesoría para validar caudal, presión, horas de operación y demanda simultánea de mi aplicación.`;
+  document.querySelectorAll('[data-vdcm-whatsapp]').forEach(link => { link.href = `https://wa.me/573189324488?text=${encodeURIComponent(quote)}`; });
+  document.querySelector('[data-vdcm-advice]').href = `https://wa.me/573189324488?text=${encodeURIComponent(advice)}`;
+  document.getElementById('awo-quote-model').value = `VDCM ${number}`;
+  awoSelectedMachineModel = number;
+  updateMachinePriceLinks();
+  document.querySelector('.header-whatsapp').href = `https://wa.me/573189324488?text=${encodeURIComponent(quote)}`;
+  document.querySelector('.whatsapp-float').href = `https://wa.me/573189324488?text=${encodeURIComponent(quote)}`;
+  document.querySelector('.site-header .header-quote').href = '#cotizar-compresor';
+  document.querySelector('.awo-machine-quote h2').textContent = `¿Quieres cotizar el ${name}?`;
+  document.querySelector('.awo-machine-quote > div > p').textContent = 'Envíanos tus datos y un asesor confirmará la configuración, disponibilidad y condiciones aplicables.';
+}
+
 // Cada pantalla principal usa una ruta propia; la portada ya no funciona como página larga.
 function updatePageView() {
   const route = routeName();
+  const productNumber = vdcmRouteModel();
   const legacyStore = !route && ['#repuestos', '#catalogo-repuestos'].includes(location.hash);
   const legacyPage = !route && location.hash === '#contacto' ? 'contacto' : (!route && location.hash === '#soporte' ? 'soporte' : '');
-  const page = route || (legacyStore ? 'repuestos' : legacyPage) || 'home';
+  const page = productNumber ? 'vdcm-product' : route || (legacyStore ? 'repuestos' : legacyPage) || 'home';
   const sectionForPage = { contacto: 'soporte', soporte: 'soporte' }[page] || page;
   // La misma familia VDCM se muestra en Inicio y Máquinas, sin duplicar tarjetas ni fichas.
   const range = document.getElementById('compresores');
@@ -646,13 +702,32 @@ function updatePageView() {
     home.insertBefore(parts, home.querySelector('.awo-home-cta'));
     quoteLink.href = '/maquinas#cotizar-compresor';
   } else {
-    machineStore.insertBefore(range, machineStore.querySelector('.awo-machine-benefits'));
+    machineStore.insertBefore(range, machineStore.querySelector('.awo-machine-benefits') || machineStore.querySelector('.awo-compressor-care'));
     range.insertBefore(actions, range.querySelector('.awo-range-footnote'));
     machineStore.insertBefore(parts, machineStore.querySelector('.awo-compressor-care'));
     quoteLink.href = '#cotizar-compresor';
   }
+  const benefits = document.querySelector('.awo-machine-benefits');
+  const quote = document.getElementById('cotizar-compresor');
+  if (productNumber) {
+    renderVdcmProduct(productNumber);
+    document.getElementById('vdcm-existing-benefits').appendChild(benefits);
+    document.getElementById('vdcm-existing-quote').appendChild(quote);
+  } else {
+    machineStore.insertBefore(benefits, parts.parentElement === machineStore ? parts : machineStore.querySelector('.awo-compressor-care'));
+    machineStore.insertBefore(quote, machineStore.querySelector('.awo-heading'));
+    document.querySelector('.site-header .header-quote').href = '/maquinas#cotizar-compresor';
+    document.querySelector('.awo-machine-quote h2').textContent = 'Cuéntanos qué necesita tu operación.';
+  }
   document.body.dataset.page = page;
   document.body.dataset.division = page === 'repuestos' ? 'parts' : (['planes', 'servicios', 'soporte'].includes(page) ? 'care' : 'compressors');
+  if (page === 'repuestos' || page === 'planes') {
+    const message = page === 'repuestos'
+      ? 'Hola AWO Group, necesito asesoría con un repuesto. Puedo compartir la referencia o una foto de la placa del equipo.'
+      : 'Hola AWO Group, quiero información sobre AWO Care, sus planes de mantenimiento y soporte.';
+    document.querySelector('.header-whatsapp').href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
+    document.querySelector('.whatsapp-float').href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
+  }
   updateAwoLogo();
   const requestedFamily = new URLSearchParams(location.search).get('categoria');
   document.body.dataset.machineFamily = page === 'home' ? 'compresor' : (page === 'maquinas' && machineCatalog[requestedFamily] ? requestedFamily : (page === 'repuestos' ? currentMachineKey : ''));
@@ -677,7 +752,11 @@ function updatePageView() {
   if (page === 'planes' && location.hash === '#plan-configurador') {
     requestAnimationFrame(() => document.getElementById('plan-configurador')?.scrollIntoView({ block: 'start' }));
   }
+  if (productNumber && location.hash === '#cotizar-compresor') {
+    requestAnimationFrame(() => quote.scrollIntoView({ block: 'start' }));
+  }
   const pageTitles = {
+    'vdcm-product': `Compresor de tornillo AWO VDCM ${productNumber} · ${productNumber} HP | AWO Group`,
     repuestos: 'Repuestos para máquinas industriales | AWO Group',
     maquinas: 'Tienda de Máquinas | AWO Group',
     planes: 'Planes de Mantenimiento | AWO Group',
@@ -722,7 +801,7 @@ document.getElementById('header-search-button').addEventListener('click', () => 
 
 function updateNavState() {
   const route = routeName();
-  const key = route || (location.hash === '#contacto' ? 'contacto' : location.hash === '#soporte' ? 'soporte' : location.hash === '#repuestos' || location.hash === '#catalogo-repuestos' ? 'repuestos' : 'inicio');
+  const key = vdcmRouteModel() ? 'maquinas' : route || (location.hash === '#contacto' ? 'contacto' : location.hash === '#soporte' ? 'soporte' : location.hash === '#repuestos' || location.hash === '#catalogo-repuestos' ? 'repuestos' : 'inicio');
   document.querySelectorAll('[data-nav]').forEach(link => {
     const active = link.dataset.nav === key || (key === 'catalogo-repuestos' && link.dataset.nav === 'repuestos') || (link.dataset.nav === 'soluciones' && key === 'maquinas' && (location.hash === '#awo-lines-title' || ['selladora', 'codificadora'].includes(new URLSearchParams(location.search).get('categoria'))));
     link.classList.toggle('active', active);
