@@ -601,10 +601,19 @@ function updatePageView() {
   const range = document.getElementById('compresores');
   const home = document.getElementById('home');
   const machineStore = document.querySelector('#maquinas > .container');
+  const parts = document.querySelector('.awo-compressor-support');
+  const actions = range.querySelector('.awo-range-actions') || home.querySelector('.awo-range-actions');
+  const quoteLink = actions.querySelectorAll('a')[1];
   if (page === 'home') {
     home.insertBefore(range, home.querySelector('.awo-home-benefit-strip'));
+    home.insertBefore(actions, home.querySelector('.awo-home-cta'));
+    home.insertBefore(parts, home.querySelector('.awo-home-cta'));
+    quoteLink.href = '/maquinas#cotizar-compresor';
   } else {
     machineStore.insertBefore(range, machineStore.querySelector('.awo-machine-benefits'));
+    range.insertBefore(actions, range.querySelector('.awo-range-footnote'));
+    machineStore.insertBefore(parts, machineStore.querySelector('.awo-compressor-care'));
+    quoteLink.href = '#cotizar-compresor';
   }
   document.body.dataset.page = page;
   document.body.dataset.division = page === 'repuestos' ? 'parts' : (['planes', 'servicios', 'soporte'].includes(page) ? 'care' : 'compressors');
