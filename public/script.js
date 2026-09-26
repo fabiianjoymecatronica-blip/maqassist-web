@@ -597,6 +597,15 @@ function updatePageView() {
   const legacyPage = !route && location.hash === '#contacto' ? 'contacto' : (!route && location.hash === '#soporte' ? 'soporte' : '');
   const page = route || (legacyStore ? 'repuestos' : legacyPage) || 'home';
   const sectionForPage = { contacto: 'soporte', soporte: 'soporte' }[page] || page;
+  // La misma familia VDCM se muestra en Inicio y Máquinas, sin duplicar tarjetas ni fichas.
+  const range = document.getElementById('compresores');
+  const home = document.getElementById('home');
+  const machineStore = document.querySelector('#maquinas > .container');
+  if (page === 'home') {
+    home.insertBefore(range, home.querySelector('.awo-home-benefit-strip'));
+  } else {
+    machineStore.insertBefore(range, machineStore.querySelector('.awo-machine-benefits'));
+  }
   document.body.dataset.page = page;
   document.body.dataset.division = page === 'repuestos' ? 'parts' : (['planes', 'servicios', 'soporte'].includes(page) ? 'care' : 'compressors');
   updateAwoLogo();
