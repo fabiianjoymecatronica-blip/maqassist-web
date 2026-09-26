@@ -424,7 +424,7 @@ if (routeName() === 'maquinas') {
   const selectedMachine = machineCatalog[requestedMachine];
   const equipment = selectedMachine ? selectedMachine.label : 'Asesoría para mi producción';
   document.getElementById('machine-store-selected').textContent = selectedMachine
-    ? `MÁQUINAS AWO · ${selectedMachine.label.toUpperCase()}` : 'MÁQUINAS INDUSTRIALES';
+    ? (requestedMachine === 'compresor' ? 'AWO COMPRESSORS · SISTEMAS DE AIRE COMPRIMIDO' : `OTRAS SOLUCIONES INDUSTRIALES AWO · ${selectedMachine.label.toUpperCase()}`) : 'AWO COMPRESSORS · SISTEMAS DE AIRE COMPRIMIDO';
   document.querySelectorAll('[data-awo-category]').forEach(card => {
     card.classList.toggle('awo-selected', card.dataset.awoCategory === requestedMachine);
   });
@@ -565,7 +565,7 @@ function updatePlan() {
   const count = Math.max(1, Math.min(50, Number(countInput.value) || 1));
   countInput.value = count;
   const rule = planRules[selectedMonths];
-  document.getElementById('plan-title').textContent = `Plan Care · ${selectedMonths} meses`;
+  document.getElementById('plan-title').textContent = `AWO Care · ${selectedMonths} meses`;
   document.getElementById('machine-badge').textContent = count;
   document.getElementById('machine-word').textContent = count === 1 ? ' máquina' : ' máquinas';
   document.getElementById('preventive-total').textContent = rule.preventive * count;
@@ -574,7 +574,7 @@ function updatePlan() {
   document.getElementById('emergency-condition').textContent = rule.condition;
   document.getElementById('response-level').textContent = rule.response;
   const equipmentContext = planEquipment ? ` de ${planEquipment}` : '';
-  const message = `Hola AWO Group, quiero cotizar un Plan Care de ${selectedMonths} meses para ${count} ${count === 1 ? 'máquina' : 'máquinas'}${equipmentContext}. La propuesta indica ${rule.preventive * count} mantenimientos preventivos, ${rule.inspections * count} inspecciones y ${rule.emergencies * count} urgencias incluidas; por favor confirmen el alcance para mi equipo.`;
+  const message = `Hola AWO Group, quiero cotizar un plan AWO Care de ${selectedMonths} meses para ${count} ${count === 1 ? 'máquina' : 'máquinas'}${equipmentContext}. La propuesta indica ${rule.preventive * count} mantenimientos preventivos, ${rule.inspections * count} inspecciones y ${rule.emergencies * count} urgencias incluidas; por favor confirmen el alcance para mi equipo.`;
   document.getElementById('plan-quote').href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
 }
 
@@ -632,7 +632,7 @@ function updatePageView() {
     soporte: 'Soporte técnico | AWO Group',
     servicios: 'Servicios industriales | AWO Group'
   };
-  document.title = pageTitles[page] || 'AWO Group | Acompañamiento técnico continuo';
+  document.title = pageTitles[page] || 'AWO Group | Compresores industriales, repuestos y soporte';
 }
 window.addEventListener('hashchange', updatePageView);
 window.addEventListener('popstate', updatePageView);
