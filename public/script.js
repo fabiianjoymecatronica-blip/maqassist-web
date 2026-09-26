@@ -700,9 +700,16 @@ if (routeName() === 'maquinas' && ['7', '10', '15', '20'].includes(headerRequest
 }
 
 document.getElementById('header-search-button').addEventListener('click', () => {
-  const query = document.getElementById('awo-header-query').value.trim();
+  const searchForm = document.querySelector('.awo-header-search');
+  const searchInput = document.getElementById('awo-header-query');
+  const query = searchInput.value.trim();
   if (query) {
     location.href = `/repuestos?buscar=${encodeURIComponent(query)}`;
+    return;
+  }
+  if (!searchForm.classList.contains('search-open')) {
+    searchForm.classList.add('search-open');
+    searchInput.focus();
     return;
   }
   if (routeName() !== 'repuestos') {
