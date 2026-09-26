@@ -4,12 +4,48 @@ const nav = document.querySelector('.main-nav');
 toggle.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
   toggle.setAttribute('aria-expanded', String(open));
+  toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
 });
 
 nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   nav.classList.remove('open');
   toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-label', 'Abrir menú');
 }));
+
+const header = document.querySelector('.site-header');
+const navGroups = [...nav.querySelectorAll('.nav-group')];
+function closeHeaderMenus() {
+  navGroups.forEach(group => {
+    group.classList.remove('open');
+    group.querySelector('.nav-expand').setAttribute('aria-expanded', 'false');
+  });
+}
+navGroups.forEach(group => {
+  group.querySelector('.nav-expand').addEventListener('click', event => {
+    event.stopPropagation();
+    const opening = !group.classList.contains('open');
+    closeHeaderMenus();
+    group.classList.toggle('open', opening);
+    group.querySelector('.nav-expand').setAttribute('aria-expanded', String(opening));
+  });
+});
+document.addEventListener('click', event => {
+  if (header.contains(event.target)) return;
+  closeHeaderMenus();
+  nav.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-label', 'Abrir menú');
+});
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape') return;
+  closeHeaderMenus();
+  nav.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-label', 'Abrir menú');
+});
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
+header.classList.toggle('scrolled', window.scrollY > 24);
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -656,6 +692,13 @@ window.addEventListener('hashchange', updatePageView);
 window.addEventListener('popstate', updatePageView);
 updatePageView();
 
+// Los enlaces del menú abren la ficha técnica de la familia ya existente.
+const headerRequestedModel = new URLSearchParams(location.search).get('modelo');
+if (routeName() === 'maquinas' && ['7', '10', '15', '20'].includes(headerRequestedModel)) {
+  document.querySelector(`[data-machine-model="${headerRequestedModel}"]`)?.click();
+  requestAnimationFrame(() => document.getElementById('compresores')?.scrollIntoView({ block: 'start' }));
+}
+
 document.getElementById('header-search-button').addEventListener('click', () => {
   const query = document.getElementById('awo-header-query').value.trim();
   if (query) {
@@ -674,7 +717,7 @@ function updateNavState() {
   const route = routeName();
   const key = route || (location.hash === '#contacto' ? 'contacto' : location.hash === '#soporte' ? 'soporte' : location.hash === '#repuestos' || location.hash === '#catalogo-repuestos' ? 'repuestos' : 'inicio');
   document.querySelectorAll('[data-nav]').forEach(link => {
-    const active = link.dataset.nav === key || (key === 'catalogo-repuestos' && link.dataset.nav === 'repuestos');
+    const active = link.dataset.nav === key || (key === 'catalogo-repuestos' && link.dataset.nav === 'repuestos') || (link.dataset.nav === 'soluciones' && key === 'maquinas' && (location.hash === '#awo-lines-title' || ['selladora', 'codificadora'].includes(new URLSearchParams(location.search).get('categoria'))));
     link.classList.toggle('active', active);
     if (active) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
   });
