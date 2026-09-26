@@ -2308,8 +2308,15 @@ body[data-division] .cart-count-badge{background:var(--awo-accent)}
 body[data-division="parts"],body[data-division="care"]{--brand-accent:var(--awo-accent);--brand-strong:var(--awo-accent-strong);--brand-soft:var(--awo-accent-soft);--brand-border:var(--awo-accent-border)}
 
 /* Los mismos catálogos conservan su retícula; compresores aparecen primero. */
-.awo-machine-card[data-brand-family="compresores"],#maquinas .awo-stock-grid #compresor-awo{order:-1}
+.awo-machine-card[data-brand-family="compresores"]{order:-1}
 
 /* Enlace de texto en el bloque existente de AWO Care; conserva el botón de WhatsApp. */
 .awo-home-cta .awo-care-inline{display:inline;min-width:0;height:auto;margin:0;padding:0;flex:none;border:0;border-radius:0;background:transparent;color:var(--awo-accent-strong);font:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .awo-home-cta .awo-care-inline:hover,.awo-home-cta .awo-care-inline:focus-visible{background:transparent;color:var(--awo-accent-hover)}
+
+/* La misma ficha VDCM conserva su ancho al mostrarse directamente bajo el hero. */
+#home > .awo-compressor-range{width:min(var(--max),calc(100% - 40px));margin:24px auto}
+
+/* En Inicio, el selector VDCM reutiliza la ficha completa con una vista compacta. */
+#home > .awo-compressor-range .awo-compressor-range-visual img{max-height:320px}
+#home > .awo-compressor-range .awo-range-actions,#home > .awo-compressor-range .awo-range-footnote{display:none}
