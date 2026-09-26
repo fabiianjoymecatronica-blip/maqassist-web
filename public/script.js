@@ -82,7 +82,7 @@ const machineCatalog = {
     label: 'Compresores', breadcrumb: 'Compresores', heroCategory: 'COMPRESORES DE AIRE INDUSTRIAL',
     heroTitle: 'Repuestos para|compresores',
     heroDescription: 'Filtros, purgas y componentes para la línea AWO VDCM. Elige el modelo o envíanos la placa para validar la referencia antes del despacho.',
-    heroImage: '/assets/awo/compresores-vdcm-comparativa.webp', heroAlt: 'Comparación visual de compresores AWO VDCM 7, 10, 15 y 20 con potencia, presión y flujo de aire indicados en la imagen',
+    heroImage: '/assets/awo/compresores-vdcm-7-10-15-20.webp', heroAlt: 'Familia de compresores AWO VDCM 7, 10, 15 y 20',
     benefits: ['Identificación por referencia', 'Validamos la compatibilidad antes del despacho', 'Asesoría técnica especializada'],
     image: '/assets/awo/compresores-vdcm-7-10-15-20.webp', imageAlt: 'Familia de compresores AWO VDCM 7, 10, 15 y 20',
     status: 'FAMILIAS DE REPUESTOS', description: 'Selecciona VDCM 7, 10, 15 o 20. Confirmamos la referencia exacta con la placa del equipo.',
@@ -110,6 +110,47 @@ function routeName() {
   return ['repuestos', 'maquinas', 'planes', 'servicios', 'nosotros', 'contacto', 'soporte'].includes(route) ? route : '';
 }
 
+const vdcmModels = {
+  '7': { power: '5,5 kW / 7 HP', flow: '0,63 m³/min', tank: '260 L', dimensions: '1530 × 736 × 1447 mm', weight: '310 kg' },
+  '10': { power: '7,5 kW / 10 HP', flow: '1,10 m³/min', tank: '260 L', dimensions: '1530 × 736 × 1447 mm', weight: '310 kg' },
+  '15': { power: '11 kW / 15 HP', flow: '1,60 m³/min', tank: '300 L', dimensions: '1660 × 750 × 1550 mm', weight: '410 kg' },
+  '20': { power: '15 kW / 20 HP', flow: '2,40 m³/min', tank: '300 L', dimensions: '1660 × 750 × 1550 mm', weight: '410 kg' }
+};
+const vdcmShared = 'Compresor de tornillo con VSD, refrigeración por aire, secador integrado, tres filtros de precisión y drenaje automático. Unidad Hanbell Air End, rodamientos SKF, variador Inovance y panel de control.';
+function vdcmDescription(number) {
+  const model = vdcmModels[number];
+  return `${model.power} · 8 bar · ${model.flow} · tanque ${model.tank} · 220 V / 60 Hz / 3 fases. ${model.dimensions} · ${model.weight} · salida DN20. ${vdcmShared}`;
+}
+
+// El archivo maestro del logo se mantiene; el lienzo cambia únicamente los píxeles del triángulo.
+const logoMaster = new Image();
+logoMaster.src = '/assets/awo/awo-group-transparent.webp?v=1';
+const logoColors = { compressors: '#2E9E1E', parts: '#1683C4', care: '#F28C28' };
+const logoVariants = {};
+function updateAwoLogo() {
+  if (!logoMaster.complete || !logoMaster.naturalWidth) return;
+  const division = document.body.dataset.division || 'compressors';
+  if (!logoVariants[division]) {
+    const canvas = document.createElement('canvas');
+    canvas.width = logoMaster.naturalWidth;
+    canvas.height = logoMaster.naturalHeight;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    context.drawImage(logoMaster, 0, 0);
+    const frame = context.getImageData(0, 0, canvas.width, canvas.height);
+    const rgb = logoColors[division].match(/[\da-f]{2}/gi).map(hex => parseInt(hex, 16));
+    for (let i = 0; i < frame.data.length; i += 4) {
+      const r = frame.data[i], g = frame.data[i + 1], b = frame.data[i + 2], a = frame.data[i + 3];
+      if (a && g > 65 && g > r * 1.3 && g > b * 1.3) {
+        frame.data[i] = rgb[0]; frame.data[i + 1] = rgb[1]; frame.data[i + 2] = rgb[2];
+      }
+    }
+    context.putImageData(frame, 0, 0);
+    logoVariants[division] = canvas.toDataURL('image/png');
+  }
+  document.querySelectorAll('img.awo-group-logo').forEach(img => { img.src = logoVariants[division]; });
+}
+logoMaster.addEventListener('load', updateAwoLogo);
+
 function selectModel(modelId) {
   currentModel = modelId === 'all' ? null : currentMachine.models.find(model => model.id === modelId) || null;
   document.querySelectorAll('.model-button').forEach(button => {
@@ -135,6 +176,9 @@ function selectModel(modelId) {
   document.getElementById('selected-model').textContent = selection;
   document.getElementById('parts-model-name').textContent = `${currentMachine.label} · ${currentModel ? currentModel.name : 'todas las referencias'}`;
   if (currentMachineKey === 'compresor') {
+    document.getElementById('machine-description').textContent = currentModel
+      ? vdcmDescription(currentModel.id.replace('vdcm', ''))
+      : currentMachine.description;
     document.getElementById('compressor-service-model').textContent = currentModel ? `su compresor ${currentModel.name}` : 'su compresor VDCM';
     document.querySelectorAll('[data-compressor-model]').forEach(button => {
       const selected = button.dataset.compressorModel === currentModel?.id;
@@ -368,7 +412,9 @@ document.querySelectorAll('.parts-filters button').forEach(button => button.addE
 }));
 
 const requestedMachine = new URLSearchParams(location.search).get('categoria');
-renderMachine(machineCatalog[requestedMachine] ? requestedMachine : 'selladora');
+const initialMachine = machineCatalog[requestedMachine] ? requestedMachine
+  : (routeName() === 'repuestos' && !new URLSearchParams(location.search).has('buscar') ? 'compresor' : 'selladora');
+renderMachine(initialMachine);
 
 function awoWhatsAppUrl(equipment = 'Asesoría para mi producción') {
   const message = `¿Qué máquina o equipo AWO requiere tu producción?\nHola AWO Group, vengo de la tienda de máquinas AWO.\nEquipo de interés: ${equipment}\nQuiero conocer las opciones, disponibilidad y cotización.`;
@@ -412,7 +458,7 @@ const awoGallerySlides = [
   { title: 'Vista frontal', description: 'Observa el panel, las puertas de servicio y el montaje sobre el tanque.', details: ['Potencia indicada: 7,5 kW / 10 HP.', 'La cota longitudinal de la ficha es 1530 mm.'] },
   { title: 'Vista trasera', description: 'La vista posterior de la ficha muestra las conexiones y el conjunto de tratamiento de aire.', details: ['La ficha indica secador y filtración integrados.', 'Consulta acceso de mantenimiento y disposición de las conexiones antes de instalar.'] },
   { title: 'Vista lateral derecha', description: 'Detalle del ventilador lateral y del tanque visto de perfil.', details: ['Alto indicado: 1447 mm.', 'Ancho indicado: 736 mm.'] },
-  { title: 'Datos técnicos', description: 'Especificaciones transcritas de la ficha enviada para VDCM 10.', details: ['8 bar · entrega de aire 1,1 m³/min.', '220 V / 60 Hz / 3 fases · accionamiento de velocidad variable.', 'Tanque de 260 L · peso 310 kg · salida de aire DN20.'] }
+  { title: 'Datos técnicos', description: 'Especificaciones del AWO VDCM 10.', details: ['7,5 kW / 10 HP · 8 bar · 1,10 m³/min.', '220 V / 60 Hz / 3 fases · accionamiento VSD.', 'Tanque de 260 L · peso 310 kg · salida DN20.'] }
 ];
 
 function renderAwoGallery() {
@@ -444,20 +490,16 @@ awoMachineModelButtons.forEach(button => button.addEventListener('click', () => 
   awoSelectedMachineModel = button.dataset.machineModel;
   awoMachineModelButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   const isTen = awoSelectedMachineModel === '10';
-  awoMachineRangeImage.src = isTen ? '/assets/awo/ficha-tecnica-vdcm-10.jpeg' : '/assets/awo/compresores-vdcm-7-10-15-20.webp';
-  awoMachineRangeImage.alt = isTen
-    ? 'Ficha técnica ilustrada del compresor AWO VDCM 10: vistas, dimensiones y especificaciones aportadas por AWO'
-    : `Familia de compresores AWO VDCM; ficha específica del VDCM ${awoSelectedMachineModel} disponible por consulta`;
-  awoMachineRangeImage.width = isTen ? 1055 : 1774;
-  awoMachineRangeImage.height = isTen ? 1491 : 887;
+  awoMachineRangeImage.src = '/assets/awo/compresores-vdcm-7-10-15-20.webp';
+  awoMachineRangeImage.alt = `Familia de compresores AWO VDCM; datos del modelo ${awoSelectedMachineModel} en el texto contiguo`;
+  awoMachineRangeImage.width = 1774;
+  awoMachineRangeImage.height = 887;
   document.querySelector('.awo-compressor-range-visual').hidden = isTen;
   document.getElementById('awo-machine-gallery').hidden = !isTen;
   if (isTen) { awoGalleryIndex = 0; renderAwoGallery(); }
   awoMachineSelected.hidden = false;
   document.getElementById('awo-machine-selected-name').textContent = `AWO VDCM ${awoSelectedMachineModel}`;
-  document.getElementById('awo-machine-selected-description').textContent = isTen
-    ? 'Ficha VDCM 10: 7,5 kW / 10 HP, 8 bar, 1,1 m³/min, tanque de 260 L y alimentación trifásica 220 V según la ficha aportada. Confirma la configuración vigente antes de comprar.'
-    : 'Conoce la línea y solicita la ficha de esta referencia para confirmar potencia, caudal y configuración disponibles.';
+  document.getElementById('awo-machine-selected-description').textContent = vdcmDescription(awoSelectedMachineModel);
   document.getElementById('awo-quote-model').value = `VDCM ${awoSelectedMachineModel}`;
   updateMachinePriceLinks();
 }));
@@ -556,6 +598,8 @@ function updatePageView() {
   const page = route || (legacyStore ? 'repuestos' : legacyPage) || 'home';
   const sectionForPage = { contacto: 'soporte', soporte: 'soporte' }[page] || page;
   document.body.dataset.page = page;
+  document.body.dataset.division = page === 'repuestos' ? 'parts' : (['planes', 'servicios', 'soporte'].includes(page) ? 'care' : 'compressors');
+  updateAwoLogo();
   const requestedFamily = new URLSearchParams(location.search).get('categoria');
   document.body.dataset.machineFamily = page === 'home' ? 'compresor' : (page === 'maquinas' && machineCatalog[requestedFamily] ? requestedFamily : (page === 'repuestos' ? currentMachineKey : ''));
   document.body.classList.toggle('home-view', page === 'home');
