@@ -648,8 +648,14 @@ function renderVdcmProduct(number) {
   set('vdcm-fact-flow', model.flow);
   set('vdcm-fact-tank', model.tank);
   const image = document.getElementById('vdcm-product-image');
-  image.src = number === '10' ? '/assets/awo/compresor-vdcm10-hero.webp' : `/assets/awo/vdcm-${number}-diseno.webp`;
+  const individualPhoto = number === '10';
+  image.src = individualPhoto ? '/assets/awo/compresor-vdcm10-hero.webp' : '/assets/awo/compresores-vdcm-7-10-15-20.webp';
+  image.width = individualPhoto ? 1448 : 1774;
+  image.height = individualPhoto ? 1086 : 887;
   image.alt = `Compresor de tornillo ${name} con tanque integrado`;
+  const visual = image.parentElement;
+  visual.classList.toggle('single', individualPhoto);
+  visual.style.setProperty('--product-x', { '7': '0%', '10': '-25%', '15': '-50%', '20': '-75%' }[number]);
   const specs = [
     ['Potencia', model.power], ['Caudal', model.flow], ['Presión', '8 bar'],
     ['Tanque', model.tank], ['Voltaje', '220 V'], ['Frecuencia', '60 Hz'],
