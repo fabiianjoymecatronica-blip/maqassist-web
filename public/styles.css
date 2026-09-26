@@ -2324,3 +2324,72 @@ body[data-division="parts"],body[data-division="care"]{--brand-accent:var(--awo-
 /* Se reutilizan los CTAs y repuestos existentes en Inicio sin duplicar sus componentes. */
 #home > .awo-range-actions,#home > .awo-compressor-support{width:min(var(--max),calc(100% - 40px));margin:24px auto}
 #maquinas .awo-stock-grid #compresor-awo{order:-1}
+
+/* Navegación AWO: conserva el header y sus herramientas existentes. */
+.site-header,.home-view .site-header{background:#fff;border-bottom:1px solid #e6e9e6;box-shadow:0 2px 8px rgba(16,21,16,.035);backdrop-filter:none}
+.site-header .awo-utility-bar{display:none}
+.site-header .nav-wrap{height:76px;gap:22px;max-width:1440px}
+.site-header.scrolled .nav-wrap{height:62px}
+.site-header .nav-wrap{transition:height .2s ease}
+.site-header .brand .awo-group-logo{width:158px}
+.site-header .brand-tagline{display:none}
+.site-header .main-nav{display:flex;align-items:center;gap:clamp(14px,1.6vw,28px);margin-left:auto;font-size:13px;font-weight:600;white-space:nowrap}
+.site-header .main-nav>a,.site-header .nav-group>a{position:relative;display:inline-flex;align-items:center;min-height:76px;padding:0;color:#171d17;transition:color .2s ease}
+.site-header.scrolled .main-nav>a,.site-header.scrolled .nav-group>a{min-height:62px}
+.site-header .main-nav>a::after,.site-header .nav-group>a::after{content:"";position:absolute;left:0;right:0;bottom:14px;height:2px;background:var(--awo-accent);transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+.site-header .main-nav>a:hover::after,.site-header .main-nav>a.active::after,.site-header .nav-group:hover>a::after,.site-header .nav-group>a.active::after,.site-header .nav-group.open>a::after{transform:scaleX(1)}
+.site-header .main-nav a:hover,.site-header .nav-group.open>a{color:var(--awo-accent-strong)}
+.site-header .nav-group{position:relative;display:flex;align-items:center}
+.site-header .nav-expand{border:0;background:transparent;color:#303a32;font:600 18px Manrope,Arial,sans-serif;cursor:pointer;padding:10px 5px;transition:color .2s}
+.site-header .nav-expand:hover{color:var(--awo-accent-strong)}
+.site-header .nav-dropdown{display:none;position:absolute;left:-24px;top:100%;width:490px;padding:22px 26px;background:#fff;border:1px solid #e5e9e6;box-shadow:0 12px 25px rgba(16,21,16,.09);grid-template-columns:1fr 1fr;gap:28px;white-space:normal}
+.site-header .nav-solutions .nav-dropdown{width:255px;grid-template-columns:1fr}
+.site-header .nav-group:hover .nav-dropdown,.site-header .nav-group:focus-within .nav-dropdown,.site-header .nav-group.open .nav-dropdown{display:grid}
+.site-header .nav-dropdown strong{display:block;margin-bottom:9px;color:#657067;font-size:10px;letter-spacing:.1em}
+.site-header .nav-dropdown a{display:block;padding:8px 0;border-bottom:1px solid #f0f2f0;font-size:13px;color:#171d17}
+.site-header .nav-dropdown a:hover{color:var(--awo-accent-strong)}
+.site-header .nav-dropdown small{display:block;font-size:11px;color:#68746c;font-weight:400}
+.site-header .nav-tools{display:flex;align-items:center;gap:9px;margin-left:4px}
+.site-header .awo-header-search{width:38px;min-width:38px;height:38px;overflow:visible;border:0;background:transparent;position:relative}
+.site-header .awo-header-search input{position:absolute;right:38px;top:0;width:0;opacity:0;pointer-events:none;height:38px;border:1px solid #dde3df;background:#fff;transition:width .2s,opacity .2s}
+.site-header .awo-header-search:focus-within input{width:180px;opacity:1;pointer-events:auto}
+.site-header .header-search-button{width:38px;height:38px;background:transparent;color:#171d17}
+.site-header .cart-button{width:38px;height:38px;flex:0 0 38px}
+.site-header .header-quote{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 15px;background:#171d17;color:#fff;border-radius:4px;font-size:12px;font-weight:700;transition:background .2s}
+.site-header .header-quote:hover{background:var(--awo-accent);color:#fff}
+.site-header .header-whatsapp{display:grid;place-items:center;width:38px;height:38px;padding:0!important;margin:0;border:1px solid #dde3df;border-radius:50%;background:#fff;color:#171d17!important}
+.site-header .header-whatsapp:hover{background:#f5f7f5;color:var(--awo-accent-strong)!important}
+.site-header .header-whatsapp svg{width:20px;height:20px}
+.site-header .header-whatsapp span,.site-header .nav-mobile-actions{display:none}
+.site-header .menu-toggle{display:none}
+@media(max-width:1230px){
+ .site-header .menu-toggle{display:block;order:-2;margin:0;padding:10px}
+ .site-header .brand{order:-1;margin-right:auto}
+ .site-header .main-nav{display:none;position:absolute;top:76px;left:0;right:0;margin:0;padding:12px 24px 24px;max-height:calc(100dvh - 76px);overflow-y:auto;flex-direction:column;align-items:stretch;gap:0;background:#fff;box-shadow:0 14px 25px rgba(16,21,16,.1);white-space:normal}
+ .site-header.scrolled .main-nav{top:62px;max-height:calc(100dvh - 62px)}
+ .site-header .main-nav.open{display:flex;top:76px}
+ .site-header.scrolled .main-nav.open{top:62px}
+ .site-header .main-nav>a,.site-header .nav-group>a,.site-header.scrolled .main-nav>a,.site-header.scrolled .nav-group>a{min-height:46px;padding:10px 0;font-size:15px}
+ .site-header .nav-group{display:flex;flex-wrap:wrap;justify-content:space-between}
+ .site-header .nav-expand{padding:10px 16px}
+ .site-header .nav-dropdown,.site-header .nav-solutions .nav-dropdown{display:none;position:static;width:100%;padding:8px 14px 14px;box-shadow:none;border:0;border-left:2px solid var(--awo-accent);grid-template-columns:1fr}
+ .site-header .nav-group:hover .nav-dropdown,.site-header .nav-group:focus-within .nav-dropdown{display:none}
+ .site-header .nav-group.open .nav-dropdown{display:grid}
+ .site-header .nav-mobile-actions{display:grid;gap:10px;margin-top:18px}
+ .site-header .nav-mobile-actions a{padding:11px 14px;border:1px solid #dde3df;border-radius:4px;font-weight:700;font-size:13px}
+ .site-header .nav-mobile-actions a:first-child{background:#171d17;color:#fff;border-color:#171d17}
+ .site-header .nav-tools{margin:0}
+}
+@media(max-width:620px){
+ .site-header .nav-wrap{height:64px;gap:6px;width:calc(100% - 20px)}
+ .site-header.scrolled .nav-wrap{height:60px}
+ .site-header .brand .awo-group-logo{width:clamp(100px,30vw,145px)}
+ .site-header .main-nav,.site-header .main-nav.open{top:64px;max-height:calc(100dvh - 64px)}
+ .site-header.scrolled .main-nav,.site-header.scrolled .main-nav.open{top:60px;max-height:calc(100dvh - 60px)}
+ .site-header .nav-tools{gap:3px}
+ .site-header .awo-header-search,.site-header .cart-button{display:none}
+ .site-header .header-quote{height:34px;padding:0 9px;font-size:11px}
+ .site-header .header-whatsapp{width:34px;height:34px}
+ .site-header .menu-toggle{padding:5px}
+}
+@media(prefers-reduced-motion:reduce){.site-header .nav-wrap,.site-header .nav-dropdown a,.site-header .main-nav a::after{transition:none}}
