@@ -2445,3 +2445,10 @@ body[data-division="parts"],body[data-division="care"]{--brand-accent:var(--awo-
 #vdcm-product #cotizar-compresor{scroll-margin-top:105px}
 @media(max-width:900px){.awo-product-hero{grid-template-columns:1fr}.awo-product-hero img{max-width:620px;margin:auto}.awo-product-four{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){#vdcm-product{padding-top:84px}.awo-product-hero{padding:20px}.awo-product-facts,.awo-product-four,.awo-product-specs,.awo-product-connections{grid-template-columns:1fr}.awo-product-actions .awo-range-button{width:100%;justify-content:center}.awo-product-hero img{order:-1}.awo-product-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.awo-product-facts strong{font-size:14px}.awo-product-block{margin-top:18px}.awo-product-models a{flex:1;text-align:center;min-width:calc(50% - 5px)}}
+.awo-product-visual{position:relative;width:100%;aspect-ratio:1/1.3;overflow:hidden}
+.awo-product-visual img{position:absolute;top:50%;left:0;width:400%;max-width:none;height:auto;transform:translate(var(--product-x,0%),-50%)}
+.awo-product-visual.single{aspect-ratio:1/1}
+.awo-product-visual.single img{position:static;width:100%;max-width:100%;height:100%;object-fit:contain;transform:none}
+@media(max-width:600px){.awo-product-visual{order:-1}.awo-product-visual.single{aspect-ratio:1/0.85}}
+.awo-product-hero .awo-product-visual img{width:400%;max-width:none;height:auto;object-fit:initial}
+.awo-product-hero .awo-product-visual.single img{width:100%;max-width:100%;height:100%;object-fit:contain}
