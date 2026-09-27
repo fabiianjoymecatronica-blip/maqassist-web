@@ -594,9 +594,9 @@ document.getElementById('hero-search-form').addEventListener('submit', event => 
 });
 
 const planRules = {
-  3: { preventive: 1, inspections: 4, emergencies: 0, condition: 'Urgencias a $60.000 cada una', response: 'Nivel de respuesta estándar.' },
-  6: { preventive: 2, inspections: 8, emergencies: 1, condition: 'Primera urgencia incluida; siguientes a $45.000', response: 'Nivel de respuesta prioritario.' },
-  12: { preventive: 4, inspections: 16, emergencies: 2, condition: 'Dos urgencias incluidas; siguientes a $35.000', response: 'Nivel de respuesta preferencial.' }
+  3: { preventive: 1, inspections: 4, emergencies: 0, condition: 'Urgencias adicionales sujetas a cotización', response: 'Nivel de respuesta estándar.' },
+  6: { preventive: 2, inspections: 8, emergencies: 1, condition: 'Primera urgencia incluida; siguientes por cotizar', response: 'Nivel de respuesta prioritario.' },
+  12: { preventive: 4, inspections: 16, emergencies: 2, condition: 'Dos urgencias incluidas; siguientes por cotizar', response: 'Nivel de respuesta preferencial.' }
 };
 
 let selectedMonths = 3;
