@@ -2442,6 +2442,22 @@ body[data-division="parts"],body[data-division="care"]{--brand-accent:var(--awo-
 .awo-product-advice .awo-range-button{margin-top:10px}
 #awo-selected-product-link{display:inline-block;margin-top:9px;color:var(--awo-accent-strong);font-weight:700}
 #vdcm-product :is(a,button):focus-visible{outline:3px solid var(--awo-accent);outline-offset:2px}
+
+/* La portada reutiliza los bloques existentes en el orden comercial. */
+#home > .awo-compressor-range{width:min(var(--max),calc(100% - 40px));margin:28px auto 0}
+#home > .awo-home-benefit-strip{display:none}
+#home > .awo-machine-benefits,#home > .awo-machine-quote{width:min(var(--max),calc(100% - 40px));margin:28px auto}
+#home > .awo-range-actions{justify-content:center;margin-top:26px}
+#home > .awo-machine-quote{margin-bottom:42px}
+.awo-machine-model-picker button{padding:10px 6px}
+.awo-machine-model-picker button small{display:block;margin-top:6px;font-size:11px;font-weight:500;line-height:1.35}
+.awo-range-system{margin:20px 0 0;color:#505950;font-size:16px;line-height:1.6}
+.awo-range-system strong{color:#151719}
+.awo-compressor-range-foot{justify-content:flex-end}
+#home > .awo-compressor-support{--awo-accent:#1683C4;--awo-accent-strong:#08699F;--awo-accent-soft:#F3F9FD;--awo-accent-border:#C9E4F3}
+#home > .awo-home-cta{--awo-accent:#F28C28;--awo-accent-strong:#98500B;--awo-accent-hover:#D97616;background:#FFF8F0;border-color:#F7DABD}
+#home > .awo-home-cta > .container > a{background:#F28C28}
+@media(max-width:600px){.awo-machine-model-picker button small{font-size:10px}#home > .awo-compressor-range,#home > .awo-machine-benefits,#home > .awo-machine-quote{width:calc(100% - 28px)}}
 #vdcm-product #cotizar-compresor{scroll-margin-top:105px}
 @media(max-width:900px){.awo-product-hero{grid-template-columns:1fr}.awo-product-hero img{max-width:620px;margin:auto}.awo-product-four{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){#vdcm-product{padding-top:84px}.awo-product-hero{padding:20px}.awo-product-facts,.awo-product-four,.awo-product-specs,.awo-product-connections{grid-template-columns:1fr}.awo-product-actions .awo-range-button{width:100%;justify-content:center}.awo-product-hero img{order:-1}.awo-product-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.awo-product-facts strong{font-size:14px}.awo-product-block{margin-top:18px}.awo-product-models a{flex:1;text-align:center;min-width:calc(50% - 5px)}}
