@@ -564,6 +564,8 @@ document.getElementById('awo-machine-quote-form').addEventListener('submit', eve
     `Correo: ${data.get('correo')}`,
     `Ciudad y país: ${data.get('ubicacion')}`,
     `Modelo: ${data.get('modelo')}`,
+    `Presión requerida: ${data.get('presion') || 'No sé'}`,
+    `Consumo / equipo actual: ${data.get('equipo_actual') || 'No sé'}`,
     `Aplicación: ${data.get('aplicacion')}`,
     `Instalación y capacitación: ${data.get('servicios')}`,
     'Por favor indíquenme precio, disponibilidad, condiciones de garantía y alcance de la instalación.'
@@ -688,6 +690,8 @@ function renderVdcmProduct(number) {
 }
 
 // Cada pantalla principal usa una ruta propia; la portada ya no funciona como página larga.
+const stockGrid = document.querySelector('.awo-stock-grid');
+stockGrid.insertBefore(document.getElementById('compresor-awo'), stockGrid.firstElementChild);
 function updatePageView() {
   const route = routeName();
   const productNumber = vdcmRouteModel();
@@ -700,29 +704,34 @@ function updatePageView() {
   const home = document.getElementById('home');
   const machineStore = document.querySelector('#maquinas > .container');
   const parts = document.querySelector('.awo-compressor-support');
+  const benefits = document.querySelector('.awo-machine-benefits');
+  const quote = document.getElementById('cotizar-compresor');
   const actions = range.querySelector('.awo-range-actions') || home.querySelector('.awo-range-actions');
   const quoteLink = actions.querySelectorAll('a')[1];
   if (page === 'home') {
     home.insertBefore(range, home.querySelector('.awo-home-benefit-strip'));
-    home.insertBefore(actions, home.querySelector('.awo-home-cta'));
     home.insertBefore(parts, home.querySelector('.awo-home-cta'));
-    quoteLink.href = '/maquinas#cotizar-compresor';
+    home.insertBefore(benefits, home.querySelector('.awo-select-panel'));
+    home.appendChild(actions);
+    home.appendChild(quote);
+    quoteLink.href = '#cotizar-compresor';
   } else {
     machineStore.insertBefore(range, machineStore.querySelector('.awo-machine-benefits') || machineStore.querySelector('.awo-compressor-care'));
     range.insertBefore(actions, range.querySelector('.awo-range-footnote'));
     machineStore.insertBefore(parts, machineStore.querySelector('.awo-compressor-care'));
     quoteLink.href = '#cotizar-compresor';
   }
-  const benefits = document.querySelector('.awo-machine-benefits');
-  const quote = document.getElementById('cotizar-compresor');
   if (productNumber) {
     renderVdcmProduct(productNumber);
     document.getElementById('vdcm-existing-benefits').appendChild(benefits);
     document.getElementById('vdcm-existing-quote').appendChild(quote);
-  } else {
+  } else if (page !== 'home') {
     machineStore.insertBefore(benefits, parts.parentElement === machineStore ? parts : machineStore.querySelector('.awo-compressor-care'));
     machineStore.insertBefore(quote, machineStore.querySelector('.awo-heading'));
     document.querySelector('.site-header .header-quote').href = '/maquinas#cotizar-compresor';
+    document.querySelector('.awo-machine-quote h2').textContent = 'Cuéntanos qué necesita tu operación.';
+  } else {
+    document.querySelector('.site-header .header-quote').href = '#cotizar-compresor';
     document.querySelector('.awo-machine-quote h2').textContent = 'Cuéntanos qué necesita tu operación.';
   }
   document.body.dataset.page = page;
