@@ -2460,6 +2460,101 @@ body[data-division="parts"],body[data-division="care"]{--brand-accent:var(--awo-
 @media(max-width:600px){.awo-machine-model-picker button small{font-size:10px}#home > .awo-compressor-range,#home > .awo-machine-benefits,#home > .awo-machine-quote{width:calc(100% - 28px)}}
 #vdcm-product #cotizar-compresor{scroll-margin-top:105px}
 
+/* Landing de AWO Compressors, activada solo por /maquinas#compresores. */
+#maquinas .awo-compressor-experience{display:none}
+body[data-compressor-view="true"] #maquinas>.container>:not(#awo-compressor-experience){display:none!important}
+body[data-compressor-view="true"] #maquinas .awo-compressor-experience{display:block;max-width:1180px;margin:auto;color:#151719}
+#awo-compressor-experience{scroll-margin-top:106px}
+#awo-compressor-experience :is(section,[data-cx-slot]){min-width:0}
+.awo-cx-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:510px;align-items:center;gap:24px;padding:clamp(26px,4vw,50px);border:1px solid #DDE3DD;border-radius:20px;background:#fff;overflow:hidden;position:relative}
+.awo-cx-hero:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#2E9E1E0B 1px,transparent 1px),linear-gradient(90deg,#2E9E1E0B 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(90deg,transparent 18%,#000 100%)}
+.awo-cx-hero-copy,.awo-cx-hero-visual{position:relative;z-index:1}
+.awo-cx-hero h1{max-width:620px;margin:15px 0 20px;font-size:clamp(37px,4.3vw,58px);line-height:1.08;letter-spacing:-.05em}
+.awo-cx-hero p{max-width:505px;margin:0;color:#505950;font-size:17px;line-height:1.6}
+.awo-cx-family-labels{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0}
+.awo-cx-family-labels span{padding:8px 11px;border:1px solid #C9E2C5;border-radius:5px;color:#1C6415;background:#F7FCF6;font-size:12px;font-weight:700;letter-spacing:.03em}
+.awo-cx-actions{display:flex;flex-wrap:wrap;gap:10px}
+.awo-cx-hero-visual{min-height:390px;display:flex;align-items:center;justify-content:center;border-left:1px solid #DDE3DD}
+.awo-cx-hero-visual img{display:block;width:100%;height:auto;max-height:445px;object-fit:contain;filter:drop-shadow(0 15px 15px #1517191C)}
+.awo-cx-hero-visual span{position:absolute;right:0;bottom:0;padding:7px 10px;background:#fff;border:1px solid #DDE3DD;border-radius:5px;color:#2C4930;font-size:11px;font-weight:700;letter-spacing:.07em}
+#awo-compressor-experience [data-cx-slot="range"] .awo-compressor-range{margin:24px 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:0 30px}
+#awo-compressor-experience .awo-compressor-range-heading,#awo-compressor-experience .awo-machine-model-picker,#awo-compressor-experience .awo-range-system,#awo-compressor-experience .awo-compressor-range-foot,#awo-compressor-experience .awo-range-footnote,#awo-compressor-experience .awo-range-actions{grid-column:1/-1}
+#awo-compressor-experience .awo-machine-selected{grid-column:1;align-self:center;min-height:180px;margin:22px 0}
+#awo-compressor-experience .awo-compressor-range-visual{grid-column:2;align-self:center;justify-self:center;position:relative;width:min(100%,330px);height:480px;margin:0;overflow:hidden}
+#awo-compressor-experience .awo-compressor-range-visual img{position:absolute;top:50%;left:0;display:block;width:400%;max-width:none;height:auto;max-height:none;object-fit:initial;transform:translate(0,-50%);transition:transform .36s cubic-bezier(.22,1,.36,1)}
+#awo-compressor-experience .awo-compressor-range-visual[data-model="10"] img{transform:translate(-25%,-50%)}
+#awo-compressor-experience .awo-compressor-range-visual[data-model="15"] img{transform:translate(-50%,-50%)}
+#awo-compressor-experience .awo-compressor-range-visual[data-model="20"] img{transform:translate(-75%,-50%)}
+#awo-compressor-experience .awo-range-actions{justify-content:flex-start}
+#awo-compressor-experience .awo-range-actions .awo-range-button{min-width:0}
+.awo-cx-compare,.awo-cx-system,.awo-cx-technology{margin-top:26px;padding:clamp(24px,3.4vw,42px);border:1px solid #DDE3DD;border-radius:18px;background:#fff}
+.awo-cx-heading h2{margin:9px 0 12px;font-size:clamp(29px,3.3vw,44px);line-height:1.13;letter-spacing:-.04em}
+.awo-cx-heading p{margin:0 0 24px;color:#505950}
+.awo-cx-table-wrap{width:100%;overflow:visible}
+.awo-cx-compare table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.awo-cx-compare th,.awo-cx-compare td{padding:16px 12px;border-bottom:1px solid #DDE3DD;text-align:left;white-space:nowrap}
+.awo-cx-compare thead th{color:#4E5D50;font-size:12px;text-transform:uppercase;letter-spacing:.07em}
+.awo-cx-compare tbody th{color:#1C6415}
+.awo-cx-compare tbody tr:hover{background:#F7FCF6}
+.awo-cx-compare button{padding:7px 0;border:0;background:transparent;color:#207A18;font:700 13px Manrope,Arial,sans-serif;cursor:pointer;white-space:nowrap}
+.awo-cx-help{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:25px;padding:22px;border-left:3px solid #2E9E1E;background:#F7FCF6}
+.awo-cx-help h3{margin:0 0 5px;font-size:20px}.awo-cx-help p{max-width:660px;margin:0;color:#505950;font-size:14px}
+.awo-cx-help a{flex:none;padding:12px 16px;border-radius:6px;background:#171D17;color:#fff;font-size:14px;font-weight:700}
+.awo-cx-track{display:block;width:100%;height:4px;margin:30px 0 0;overflow:visible}
+.awo-cx-track path{fill:none;stroke:#2E9E1E;stroke-width:3;vector-effect:non-scaling-stroke}
+.awo-cx-system-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:10px}
+.awo-cx-system-grid article{min-width:0;padding:20px;border:1px solid #DDE3DD;border-top:3px solid #2E9E1E;border-radius:0 0 8px 8px;background:#F8FAF8}
+.awo-cx-system-grid article>span{color:#23801A;font-size:13px;font-weight:700}
+.awo-cx-system-grid h3{margin:13px 0 0;font-size:17px;line-height:1.35}
+.awo-cx-tech-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px;margin-top:25px}
+.awo-cx-tech-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.awo-cx-tech-list span{display:flex;align-items:center;min-height:70px;padding:14px;border:1px solid #DDE3DD;border-radius:8px;color:#27372A;background:#F8FAF8;font-size:14px;font-weight:700}
+.awo-cx-vsd{padding:24px;border:1px solid #C9E2C5;border-radius:10px;background:#F7FCF6}
+.awo-cx-vsd h3{margin:0 0 10px;font-size:24px}.awo-cx-vsd p{margin:0;color:#505950;font-size:15px;line-height:1.6}
+.awo-cx-vsd-flow{display:flex;align-items:center;gap:8px;margin-top:22px}
+.awo-cx-vsd-flow span{flex:1;min-width:0;padding:11px 8px;border:1px solid #C9E2C5;border-radius:6px;background:#fff;text-align:center;font-size:12px;font-weight:700}
+.awo-cx-vsd-flow b{color:#2E9E1E}
+#awo-compressor-experience [data-cx-slot="parts"] .awo-compressor-support{--awo-accent:#1683C4;--awo-accent-strong:#08699F;--awo-accent-soft:#F3F9FD;--awo-accent-border:#C9E4F3;margin-top:26px}
+#awo-compressor-experience [data-cx-slot="care"] .awo-compressor-care{--awo-accent:#F28C28;--awo-accent-strong:#98500B;--awo-accent-soft:#FFF8F0;--awo-accent-border:#F7DABD;margin-top:26px;background:#FFF8F0}
+#awo-compressor-experience .awo-compressor-care-grid{display:none}
+#maquinas .awo-cx-care-link,#maquinas .awo-cx-care-summary{display:none}
+body[data-compressor-view="true"] #maquinas .awo-cx-care-link{display:inline-flex}
+body[data-compressor-view="true"] #maquinas .awo-cx-care-summary{display:block}
+body[data-compressor-view="true"] #maquinas .awo-compressor-care .awo-compressor-section-heading p:not(.awo-cx-care-summary){display:none}
+#awo-compressor-experience .awo-machine-benefits{margin-top:26px}
+#awo-compressor-experience .awo-machine-quote{margin-top:26px}
+.awo-cx-more{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:26px 0 38px;padding:20px 24px;border-top:1px solid #DDE3DD}
+.awo-cx-more span{font-size:12px;font-weight:700;letter-spacing:.08em;color:#455047}.awo-cx-more a{color:#207A18;font-weight:700}
+body[data-compressor-view="true"] #maquinas .awo-compressor-range{scroll-margin-top:105px}
+@media(max-width:900px){
+  .awo-cx-hero{grid-template-columns:1fr}.awo-cx-hero-visual{min-height:300px;border-left:0;border-top:1px solid #DDE3DD}
+  .awo-cx-tech-grid{grid-template-columns:1fr}.awo-cx-system-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #awo-compressor-experience [data-cx-slot="range"] .awo-compressor-range{grid-template-columns:1fr}
+  #awo-compressor-experience .awo-machine-selected,#awo-compressor-experience .awo-compressor-range-visual{grid-column:1}
+  #awo-compressor-experience .awo-compressor-range-visual{height:430px}
+}
+@media(max-width:700px){
+  .awo-cx-hero{padding:22px;min-height:0}.awo-cx-hero h1{font-size:clamp(32px,9vw,42px)}.awo-cx-hero p{font-size:15px}
+  .awo-cx-hero-visual{min-height:240px}.awo-cx-hero-visual img{max-height:300px}
+  .awo-cx-hero-visual span{font-size:9px}.awo-cx-actions a{width:100%;justify-content:center}
+  .awo-cx-compare table,.awo-cx-compare tbody{display:block}.awo-cx-compare thead{display:none}
+  .awo-cx-compare tbody{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .awo-cx-compare tr{display:block;min-width:0;padding:14px;border:1px solid #DDE3DD;border-radius:9px}
+  .awo-cx-compare th,.awo-cx-compare td{display:flex;justify-content:space-between;gap:8px;padding:7px 0;white-space:normal;font-size:13px}
+  .awo-cx-compare :is(th,td)[data-label]::before{content:attr(data-label);color:#5B675D;font-size:11px;font-weight:600}
+  .awo-cx-compare tr td:last-child{border:0}.awo-cx-help{display:block}.awo-cx-help a{display:inline-block;margin-top:18px}
+  .awo-cx-system-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .awo-cx-vsd-flow{flex-wrap:wrap}.awo-cx-vsd-flow span{flex-basis:100%}.awo-cx-vsd-flow b{width:100%;text-align:center;transform:rotate(90deg)}
+  .awo-cx-more{display:block}.awo-cx-more a{display:block;margin-top:10px}
+}
+@media(max-width:480px){.awo-cx-compare tbody{grid-template-columns:1fr}.awo-cx-system-grid{grid-template-columns:1fr}#awo-compressor-experience .awo-compressor-range-visual{width:min(100%,260px);height:360px}}
+@media(prefers-reduced-motion:no-preference){
+  #awo-compressor-experience .awo-cx-track path{stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset .8s cubic-bezier(.22,1,.36,1)}
+  #awo-compressor-experience .awo-cx-system.is-visible .awo-cx-track path{stroke-dashoffset:0}
+  #awo-compressor-experience :is(.awo-cx-compare button,.awo-cx-help a,.awo-cx-more a){transition:color .2s ease,transform .2s ease,background-color .2s ease}
+  #awo-compressor-experience :is(.awo-cx-compare button,.awo-cx-more a):hover{transform:translateY(-2px)}
+}
+
 /* Microinteracciones limitadas al HOME; sin alterar estados en reposo. */
 @media (prefers-reduced-motion: no-preference) {
   #home .awo-machine-model-picker button,
