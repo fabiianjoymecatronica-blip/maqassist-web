@@ -2482,9 +2482,9 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-experience{display:b
 #awo-compressor-experience .awo-machine-selected{grid-column:1;align-self:center;min-height:180px;margin:22px 0}
 #awo-compressor-experience .awo-compressor-range-visual{grid-column:2;align-self:center;justify-self:center;position:relative;width:min(100%,330px);height:480px;margin:0;overflow:hidden}
 #awo-compressor-experience .awo-compressor-range-visual img{position:absolute;top:50%;left:0;display:block;width:400%;max-width:none;height:auto;max-height:none;object-fit:initial;transform:translate(0,-50%);transition:transform .36s cubic-bezier(.22,1,.36,1)}
-#awo-compressor-experience .awo-compressor-range-visual[data-model="10"] img{transform:translate(-25%,-50%)}
-#awo-compressor-experience .awo-compressor-range-visual[data-model="15"] img{transform:translate(-50%,-50%)}
-#awo-compressor-experience .awo-compressor-range-visual[data-model="20"] img{transform:translate(-75%,-50%)}
+#awo-compressor-experience .awo-compressor-range-visual[data-model="10"] img{transform:translate(-22%,-50%)}
+#awo-compressor-experience .awo-compressor-range-visual[data-model="15"] img{transform:translate(-47%,-50%)}
+#awo-compressor-experience .awo-compressor-range-visual[data-model="20"] img{transform:translate(-72%,-50%)}
 #awo-compressor-experience .awo-range-actions{justify-content:flex-start}
 #awo-compressor-experience .awo-range-actions .awo-range-button{min-width:0}
 .awo-cx-compare,.awo-cx-system,.awo-cx-technology{margin-top:26px;padding:clamp(24px,3.4vw,42px);border:1px solid #DDE3DD;border-radius:18px;background:#fff}
