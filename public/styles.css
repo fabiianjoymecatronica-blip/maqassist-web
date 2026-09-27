@@ -2459,6 +2459,30 @@ body[data-division="parts"],body[data-division="care"]{--brand-accent:var(--awo-
 #home > .awo-home-cta > .container > a{background:#F28C28}
 @media(max-width:600px){.awo-machine-model-picker button small{font-size:10px}#home > .awo-compressor-range,#home > .awo-machine-benefits,#home > .awo-machine-quote{width:calc(100% - 28px)}}
 #vdcm-product #cotizar-compresor{scroll-margin-top:105px}
+
+/* Microinteracciones limitadas al HOME; sin alterar estados en reposo. */
+@media (prefers-reduced-motion: no-preference) {
+  #home .awo-machine-model-picker button,
+  #home .awo-compressor-parts-grid article,
+  #home .awo-select-grid > a,
+  #home .awo-machine-benefits-grid article {
+    transition: transform .28s cubic-bezier(.22,1,.36,1), border-color .28s ease, box-shadow .28s ease, background-color .28s ease;
+  }
+  #home :is(.awo-home-button,.awo-range-button,.awo-machine-model-picker button,.awo-compressor-parts-grid a,.awo-select-grid > a,.awo-machine-quote button):active {
+    transform: translateY(1px);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    #home .awo-compressor-parts-grid article:hover {
+      transform: translateY(-4px);
+      border-color: var(--awo-accent);
+      box-shadow: 0 8px 20px rgba(8,105,159,.08);
+    }
+    #home .awo-select-grid > a:hover,
+    #home .awo-machine-benefits-grid article:hover {
+      transform: translateY(-3px);
+    }
+  }
+}
 @media(max-width:900px){.awo-product-hero{grid-template-columns:1fr}.awo-product-hero img{max-width:620px;margin:auto}.awo-product-four{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){#vdcm-product{padding-top:84px}.awo-product-hero{padding:20px}.awo-product-facts,.awo-product-four,.awo-product-specs,.awo-product-connections{grid-template-columns:1fr}.awo-product-actions .awo-range-button{width:100%;justify-content:center}.awo-product-hero img{order:-1}.awo-product-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.awo-product-facts strong{font-size:14px}.awo-product-block{margin-top:18px}.awo-product-models a{flex:1;text-align:center;min-width:calc(50% - 5px)}}
 .awo-product-visual{position:relative;width:100%;aspect-ratio:1/1.3;overflow:hidden}
