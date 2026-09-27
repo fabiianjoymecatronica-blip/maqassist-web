@@ -537,6 +537,12 @@ awoMachineModelButtons.forEach(button => button.addEventListener('click', () => 
   document.querySelector('.awo-compressor-range-visual').hidden = isTen;
   document.getElementById('awo-machine-gallery').hidden = !isTen;
   if (isTen) { awoGalleryIndex = 0; renderAwoGallery(); }
+  if (document.body.dataset.compressorView === 'true') {
+    document.querySelector('.awo-compressor-range-visual').hidden = false;
+    document.getElementById('awo-machine-gallery').hidden = true;
+    document.querySelector('.awo-compressor-range-visual').dataset.model = awoSelectedMachineModel;
+    awoMachineRangeImage.alt = `Compresor AWO VDCM ${awoSelectedMachineModel}, vista de la familia VDCM`;
+  }
   awoMachineSelected.hidden = false;
   document.getElementById('awo-machine-selected-name').textContent = `AWO VDCM ${awoSelectedMachineModel}`;
   document.getElementById('awo-machine-selected-description').textContent = vdcmDescription(awoSelectedMachineModel);
@@ -698,14 +704,25 @@ function updatePageView() {
   const legacyStore = !route && ['#repuestos', '#catalogo-repuestos'].includes(location.hash);
   const legacyPage = !route && location.hash === '#contacto' ? 'contacto' : (!route && location.hash === '#soporte' ? 'soporte' : '');
   const page = productNumber ? 'vdcm-product' : route || (legacyStore ? 'repuestos' : legacyPage) || 'home';
+  const requestedFamily = new URLSearchParams(location.search).get('categoria');
+  const compressorView = page === 'maquinas' && (
+    ['#compresores', '#compresor-awo'].includes(location.hash) || requestedFamily === 'compresor' ||
+    (location.hash === '#cotizar-compresor' && document.body.dataset.compressorView === 'true')
+  );
   const sectionForPage = { contacto: 'soporte', soporte: 'soporte' }[page] || page;
   // La misma familia VDCM se muestra en Inicio y Máquinas, sin duplicar tarjetas ni fichas.
   const range = document.getElementById('compresores');
   const home = document.getElementById('home');
   const machineStore = document.querySelector('#maquinas > .container');
+  const care = machineStore.querySelector('.awo-compressor-care');
   const parts = document.querySelector('.awo-compressor-support');
   const benefits = document.querySelector('.awo-machine-benefits');
   const quote = document.getElementById('cotizar-compresor');
+  const experience = document.getElementById('awo-compressor-experience');
+  // Restaurar los bloques compartidos antes de cambiar entre anclas de Máquinas.
+  for (const block of [care, benefits, parts, range, quote]) {
+    if (experience.contains(block)) machineStore.insertBefore(block, machineStore.querySelector('.awo-heading'));
+  }
   const actions = range.querySelector('.awo-range-actions') || home.querySelector('.awo-range-actions');
   const quoteLink = actions.querySelectorAll('a')[1];
   if (page === 'home') {
@@ -736,6 +753,23 @@ function updatePageView() {
     document.querySelector('.site-header .header-quote').href = '#cotizar-compresor';
     document.querySelector('.awo-machine-quote h2').textContent = 'Cuéntanos qué necesita tu operación.';
   }
+  if (!compressorView && document.body.dataset.compressorView === 'true') {
+    const showGallery = awoSelectedMachineModel === '10';
+    range.querySelector('.awo-compressor-range-visual').hidden = showGallery;
+    range.querySelector('.awo-machine-gallery').hidden = !showGallery;
+  }
+  document.body.dataset.compressorView = String(compressorView);
+  if (compressorView) {
+    for (const [slot, block] of [['range', range], ['parts', parts], ['care', care], ['benefits', benefits], ['quote', quote]]) {
+      experience.querySelector(`[data-cx-slot="${slot}"]`).appendChild(block);
+    }
+    if (!awoSelectedMachineModel) document.querySelector('[data-machine-model="10"]').click();
+    else {
+      range.querySelector('.awo-compressor-range-visual').hidden = false;
+      range.querySelector('.awo-machine-gallery').hidden = true;
+      range.querySelector('.awo-compressor-range-visual').dataset.model = awoSelectedMachineModel;
+    }
+  }
   document.body.dataset.page = page;
   document.body.dataset.division = page === 'repuestos' ? 'parts' : (['planes', 'servicios', 'soporte'].includes(page) ? 'care' : 'compressors');
   if (page === 'repuestos' || page === 'planes') {
@@ -746,7 +780,6 @@ function updatePageView() {
     document.querySelector('.whatsapp-float').href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
   }
   updateAwoLogo();
-  const requestedFamily = new URLSearchParams(location.search).get('categoria');
   document.body.dataset.machineFamily = page === 'home' ? 'compresor' : (page === 'maquinas' && machineCatalog[requestedFamily] ? requestedFamily : (page === 'repuestos' ? currentMachineKey : ''));
   document.body.classList.toggle('home-view', page === 'home');
   document.body.classList.toggle('store-view', page === 'repuestos');
@@ -762,8 +795,9 @@ function updatePageView() {
     requestAnimationFrame(() => document.getElementById('repuestos-compresor')?.scrollIntoView({ block: 'start' }));
   }
   if (page === 'maquinas') {
-    const target = location.hash === '#selladora-inkjet' ? '#selladora-inkjet'
-      : (location.hash === '#compresores' || location.hash === '#compresor-awo' || requestedFamily === 'compresor') ? '#compresores' : null;
+    const target = compressorView && location.hash !== '#cotizar-compresor' ? '#awo-compressor-experience'
+      : location.hash === '#selladora-inkjet' ? '#selladora-inkjet'
+      : location.hash === '#awo-lines-title' ? '#awo-lines-title' : null;
     if (target) requestAnimationFrame(() => document.querySelector(target)?.scrollIntoView({ block: 'start' }));
   }
   if (page === 'planes' && location.hash === '#plan-configurador') {
@@ -775,7 +809,7 @@ function updatePageView() {
   const pageTitles = {
     'vdcm-product': `Compresor de tornillo AWO VDCM ${productNumber} · ${productNumber} HP | AWO Group`,
     repuestos: 'Repuestos para máquinas industriales | AWO Group',
-    maquinas: 'Tienda de Máquinas | AWO Group',
+    maquinas: compressorView ? 'Compresores de tornillo VSD · AWO Compressors | AWO Group' : 'Tienda de Máquinas | AWO Group',
     planes: 'Planes de Mantenimiento | AWO Group',
     nosotros: 'Nosotros | AWO Group',
     contacto: 'Contacto | AWO Group',
@@ -787,6 +821,30 @@ function updatePageView() {
 window.addEventListener('hashchange', updatePageView);
 window.addEventListener('popstate', updatePageView);
 updatePageView();
+
+// La vista de Compresores reutiliza el selector y la cotización existentes.
+(() => {
+  const experience = document.getElementById('awo-compressor-experience');
+  experience.querySelectorAll('[data-cx-select]').forEach(button => button.addEventListener('click', () => {
+    document.querySelector(`[data-machine-model="${button.dataset.cxSelect}"]`).click();
+    document.getElementById('compresores').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }));
+  if (!('IntersectionObserver' in window)) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting || document.body.dataset.compressorView !== 'true') return;
+    observer.unobserve(entry.target);
+    entry.target.classList.add('is-visible');
+    if (reduced.matches || !Element.prototype.animate) return;
+    const items = entry.target.matches('.awo-cx-system')
+      ? entry.target.querySelectorAll('.awo-cx-system-grid article')
+      : entry.target.querySelectorAll('.awo-cx-heading, .awo-cx-tech-list span, .awo-cx-vsd, .awo-cx-table-wrap');
+    items.forEach((item, index) => item.animate([
+      { opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }
+    ], { duration: 520, delay: Math.min(index * 70, 280), easing: 'cubic-bezier(.22,1,.36,1)' }));
+  }), { threshold: .08 });
+  experience.querySelectorAll('.awo-cx-system,.awo-cx-compare,.awo-cx-technology').forEach(item => observer.observe(item));
+})();
 
 // Los enlaces del menú abren la ficha técnica de la familia ya existente.
 const headerRequestedModel = new URLSearchParams(location.search).get('modelo');
