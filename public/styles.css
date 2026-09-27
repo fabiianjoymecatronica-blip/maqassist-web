@@ -2445,7 +2445,6 @@ body[data-division="parts"],body[data-division="care"]{--brand-accent:var(--awo-
 
 /* La portada reutiliza los bloques existentes en el orden comercial. */
 #home > .awo-compressor-range{width:min(var(--max),calc(100% - 40px));margin:28px auto 0}
-#home > .awo-home-benefit-strip{display:none}
 #home > .awo-machine-benefits,#home > .awo-machine-quote{width:min(var(--max),calc(100% - 40px));margin:28px auto}
 #home > .awo-range-actions{justify-content:center;margin-top:26px}
 #home > .awo-machine-quote{margin-bottom:42px}
@@ -2453,6 +2452,7 @@ body[data-division="parts"],body[data-division="care"]{--brand-accent:var(--awo-
 .awo-machine-model-picker button small{display:block;margin-top:6px;font-size:11px;font-weight:500;line-height:1.35}
 .awo-range-system{margin:20px 0 0;color:#505950;font-size:16px;line-height:1.6}
 .awo-range-system strong{color:#151719}
+#home .awo-range-system strong{display:none}
 .awo-compressor-range-foot{justify-content:flex-end}
 #home > .awo-compressor-support{--awo-accent:#1683C4;--awo-accent-strong:#08699F;--awo-accent-soft:#F3F9FD;--awo-accent-border:#C9E4F3}
 #home > .awo-home-cta{--awo-accent:#F28C28;--awo-accent-strong:#98500B;--awo-accent-hover:#D97616;background:#FFF8F0;border-color:#F7DABD}
