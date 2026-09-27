@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=awo-depuracion-20260927b">
+  <link rel="stylesheet" href="/styles.css?v=awo-home-orden-20260927">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -67,20 +67,60 @@
 
 
 
-      <section class="awo-home-benefit-strip" aria-label="Ventajas de AWO Group">
-        <div><img src="/assets/awo/home/feature-efficiency.png" alt="" width="38" height="35"><span>Mayor eficiencia</span></div>
-        <div><img src="/assets/awo/home/feature-energy.png" alt="" width="40" height="40"><span>Consumo según demanda</span></div>
-        <div><img src="/assets/awo/home/feature-productivity.png" alt="" width="36" height="36"><span>Mayor productividad</span></div>
-        <div><img src="/assets/awo/home/feature-support.png" alt="" width="42" height="38"><span>Acompañamiento real</span></div>
-        <div><img src="/assets/awo/home/feature-coverage.png" alt="" width="37" height="38"><span>Cobertura nacional</span></div>
-      </section>
-
-
-
+        <section class="awo-compressor-range" id="compresores" aria-labelledby="compressor-range-title">
+          <div class="awo-compressor-range-heading">
+            <div><span class="awo-range-kicker">AWO COMPRESSORS · LÍNEA VDCM</span><h2 id="compressor-range-title">Sistema de aire comprimido 4 en 1.</h2></div>
+            <p>Elige entre VDCM 7, 10, 15 y 20 según la demanda de tu operación. Selecciona un modelo para conocer sus características y acceder a su ficha.</p>
+          </div>
+          <div class="awo-machine-model-picker" role="group" aria-label="Seleccione el modelo del compresor">
+            <button type="button" data-machine-model="7" aria-pressed="false">VDCM 7<small>7 HP · 8 bar · 0.63 m³/min · 260 L</small></button>
+            <button type="button" data-machine-model="10" aria-pressed="false">VDCM 10<small>10 HP · 8 bar · 1.10 m³/min · 260 L</small></button>
+            <button type="button" data-machine-model="15" aria-pressed="false">VDCM 15<small>15 HP · 8 bar · 1.60 m³/min · 300 L</small></button>
+            <button type="button" data-machine-model="20" aria-pressed="false">VDCM 20<small>20 HP · 8 bar · 2.40 m³/min · 300 L</small></button>
+          </div>
+          <p class="awo-range-system"><strong>Sistema de aire comprimido 4 en 1.</strong> Compresor de tornillo VSD, tanque de almacenamiento, secador de aire y filtración de precisión. La velocidad se adapta a la demanda de aire en aplicaciones variables.</p>
+          <div class="awo-machine-selected" id="awo-machine-selected" hidden aria-live="polite"><strong id="awo-machine-selected-name"></strong><p id="awo-machine-selected-description"></p></div>
+          <div class="awo-compressor-range-visual">
+            <img id="awo-machine-range-image" src="/assets/awo/compresores-vdcm-7-10-15-20.webp" alt="Familia de compresores AWO VDCM 7, VDCM 10, VDCM 15 y VDCM 20 sobre tanques horizontales" width="1774" height="887" loading="eager">
+          </div>
+          <div class="awo-machine-gallery" id="awo-machine-gallery" hidden aria-label="Galería de la ficha técnica VDCM 10">
+            <div class="awo-machine-gallery-stage">
+              <div class="awo-machine-gallery-photo" id="awo-gallery-photo" role="img" aria-label="Vista del compresor VDCM 10 tomada de la ficha técnica original"></div>
+              <div class="awo-machine-gallery-copy" aria-live="polite"><span class="awo-range-kicker" id="awo-gallery-count">VISTA 1 DE 5</span><h3 id="awo-gallery-title"></h3><p id="awo-gallery-description"></p><ul id="awo-gallery-details"></ul></div>
+            </div>
+            <div class="awo-machine-gallery-controls"><button type="button" id="awo-gallery-prev" aria-label="Vista anterior">← Anterior</button><span id="awo-gallery-progress" aria-hidden="true"></span><button type="button" id="awo-gallery-next" aria-label="Vista siguiente">Siguiente →</button></div>
+            <a class="awo-machine-gallery-original" href="https://wa.me/573189324488?text=Hola%20AWO%20Group%2C%20quisiera%20la%20ficha%20t%C3%A9cnica%20vigente%20del%20VDCM%2010" target="_blank" rel="noopener">Solicitar ficha técnica vigente ↗</a>
+          </div>
+          <div class="awo-compressor-range-foot">
+            <p>Cuéntanos tu aplicación y te ayudamos a identificar el modelo. <a href="/repuestos?categoria=compresor">AWO Parts →</a> · <a href="/planes?equipo=AWO%20VDCM">AWO Care →</a></p>
+          </div>
+          <p class="awo-range-footnote">La propuesta se confirma según modelo, ciudad y configuración.</p>
+        </section>
+        <section class="awo-compressor-support" aria-labelledby="compressor-parts-title">
+          <div class="awo-compressor-section-heading"><div><span class="awo-range-kicker">AWO PARTS · REPUESTOS Y CONSUMIBLES</span><h2 id="compressor-parts-title">Todo para mantener el aire en movimiento.</h2><p>Indícanos el modelo, la referencia o envíanos una foto de la placa para validar compatibilidad. El catálogo completo está en AWO Parts.</p></div><a href="/repuestos?categoria=compresor">Explorar AWO Parts <span aria-hidden="true">→</span></a></div>
+          <div class="awo-compressor-parts-grid">
+            <article><span class="awo-part-number">01 / ADMISIÓN</span><h3>Filtro de aire</h3><p>Para el sistema de admisión del compresor.</p><a href="https://wa.me/573189324488" data-compressor-part="Filtro de aire de admisión">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
+            <article><span class="awo-part-number">02 / LUBRICACIÓN</span><h3>Filtro de aceite</h3><p>Consumible para el circuito de lubricación.</p><a href="https://wa.me/573189324488" data-compressor-part="Filtro de aceite">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
+            <article><span class="awo-part-number">03 / SEPARACIÓN</span><h3>Separador aire/aceite</h3><p>Consulta el elemento compatible con tu configuración.</p><a href="https://wa.me/573189324488" data-compressor-part="Separador aire/aceite">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
+            <article><span class="awo-part-number">04 / TRATAMIENTO</span><h3>Filtración de línea</h3><p>Filtración en la línea de aire comprimido.</p><a href="https://wa.me/573189324488" data-compressor-part="Filtración de línea">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
+            <article><span class="awo-part-number">05 / CONDENSADO</span><h3>Purga automática</h3><p>Gestión del condensado del sistema.</p><a href="https://wa.me/573189324488" data-compressor-part="Purga automática">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
+          </div>
+        </section>
       <section class="awo-home-cta">
         <div class="container"><img src="/assets/awo/home/feature-support.png" alt="" width="42" height="38"><div><h2>AWO Care: respaldo durante toda la operación</h2><p>Planes por meses de mantenimiento programado, soporte técnico y seguimiento de operación. Las revisiones de 400 / 800 horas se programan según uso. <a class="awo-care-inline" href="/planes?equipo=AWO%20VDCM">Conocer AWO Care →</a></p></div><a href="https://wa.me/573189324488?text=Hola%20AWO%20Group%2C%20quiero%20informaci%C3%B3n%20sobre%20AWO%20Care" target="_blank" rel="noopener"><span class="awo-wa-icon">◉</span> Habla con un asesor <b>→</b></a></div>
       </section>
 
+        <section class="awo-machine-benefits" aria-labelledby="awo-machine-benefits-title">
+          <span class="awo-range-kicker">RESPALDO AWO · MÁS QUE UN COMPRESOR</span><h2 id="awo-machine-benefits-title">Te acompañamos durante la operación del equipo.</h2>
+          <div class="awo-machine-benefits-grid">
+            <article><strong>01</strong><h3>Selección</h3><p>Validamos caudal, presión, calidad de aire y aplicación para elegir la configuración.</p></article>
+            <article><strong>02</strong><h3>Instalación</h3><p>Coordinamos entrega en Colombia y orientamos la puesta en marcha según la propuesta.</p></article>
+            <article><strong>03</strong><h3>Capacitación</h3><p>Te orientamos sobre el uso y cuidado del equipo.</p></article>
+            <article><strong>04</strong><h3>Repuestos</h3><p>AWO Parts ayuda a identificar filtros, componentes y kits según el modelo.</p></article>
+            <article><strong>05</strong><h3>Mantenimiento</h3><p>Programamos intervenciones según horas de operación y planes de seguimiento por meses.</p></article>
+            <article><strong>06</strong><h3>Soporte</h3><p>Respondemos consultas técnicas y confirmamos las condiciones de garantía aplicables al cotizar.</p></article>
+          </div>
+        </section>
       <section class="container awo-select-panel" aria-labelledby="awo-select-title">
         <div class="awo-panel-heading"><h2 id="awo-select-title">Otras soluciones industriales AWO · Selecciona tu máquina</h2><a href="/maquinas#awo-lines-title">Ver todas las máquinas →</a></div>
         <div class="awo-select-grid">
@@ -91,6 +131,29 @@
       </section>
 
 
+          <div class="awo-range-actions">
+            <a class="awo-range-button awo-range-button-primary" id="awo-special-price" href="https://wa.me/573189324488" target="_blank" rel="noopener">Solicitar cotización <span aria-hidden="true">↗</span></a>
+            <a class="awo-range-button" href="#cotizar-compresor">Cotizar ahora <span aria-hidden="true">→</span></a>
+            <a class="awo-range-button" href="https://wa.me/573189324488" data-compressor-request="asesoria">Preguntar a un asesor <span aria-hidden="true">↗</span></a>
+          </div>
+        <section class="awo-machine-quote" id="cotizar-compresor" aria-labelledby="awo-machine-quote-title">
+          <div><span class="awo-range-kicker">SOLICITUD DE COTIZACIÓN</span><h2 id="awo-machine-quote-title">Cuéntanos qué necesita tu operación.</h2><p>Con estos datos un asesor podrá recomendarte la configuración y responder con una propuesta. También puedes hablar directamente con un asesor por WhatsApp.</p><a id="awo-quote-shortcut" href="https://wa.me/573189324488" target="_blank" rel="noopener">Hablar con un asesor por WhatsApp ↗</a></div>
+          <form id="awo-machine-quote-form">
+            <label>Nombre y apellido <input name="nombre" autocomplete="name" required></label>
+            <label>Empresa <input name="empresa" autocomplete="organization" required></label>
+            <label>WhatsApp <input name="telefono" type="tel" autocomplete="tel" required></label>
+            <label>Correo electrónico <input name="correo" type="email" autocomplete="email" required></label>
+            <label>Ciudad y país <input name="ubicacion" autocomplete="address-level2" required></label>
+            <label>Modelo de interés <select name="modelo" id="awo-quote-model"><option value="Por definir">Ayúdame a elegir</option><option>VDCM 7</option><option>VDCM 10</option><option>VDCM 15</option><option>VDCM 20</option></select></label>
+            <label>Presión requerida <select name="presion"><option>No sé</option><option>8 bar</option><option>Otra</option></select></label>
+            <label>Consumo / equipo actual <input name="equipo_actual" placeholder="No sé; HP, m³/min u otra información" value="No sé"></label>
+            <small class="wide">¿No conoces estos datos? No hay problema. Te ayudamos a dimensionar el sistema.</small>
+            <label class="wide">¿Para qué usarás el aire comprimido? <textarea name="aplicacion" rows="3" placeholder="Cuéntanos tu proceso, herramientas o máquinas; presión, caudal y horas de uso si los conoces" required></textarea></label>
+            <label class="wide">¿Necesitas instalación o capacitación? <select name="servicios"><option value="Necesito asesoría para definirlo">Necesito asesoría para definirlo</option><option value="Sí, instalación y capacitación">Sí, instalación y capacitación</option><option value="Solo equipo">Solo equipo</option></select></label>
+            <button class="awo-range-button awo-range-button-primary wide" type="submit">Enviar solicitud al asesor por WhatsApp ↗</button>
+            <small class="wide">Se abrirá WhatsApp con tus datos listos. Revisa el mensaje y pulsa Enviar para que llegue al asesor.</small>
+          </form>
+        </section>
     </section>
 
     <section class="hero">
@@ -296,61 +359,6 @@
           <div class="awo-hero-art"><span class="awo-source awo-source-hero" role="img" aria-label="Equipos AWO sobre pedestales: codificadora, selladora con Inkjet y compresor"></span></div>
         </div>
         <div class="awo-benefits"><span>✓ Comercialización por AWO Group</span><span>⚙ Instalación y capacitación</span><span>◇ Repuestos y soporte técnico</span><span>↗ Envíos a Colombia</span><span>＋ Importación bajo pedido</span></div>
-        <section class="awo-compressor-range" id="compresores" aria-labelledby="compressor-range-title">
-          <div class="awo-compressor-range-heading">
-            <div><span class="awo-range-kicker">AWO COMPRESSORS · LÍNEA VDCM</span><h2 id="compressor-range-title">Familia AWO VDCM.</h2></div>
-            <p>Elige entre VDCM 7, 10, 15 y 20 según la demanda de tu operación. Selecciona un modelo para conocer sus características y acceder a su ficha.</p>
-          </div>
-          <div class="awo-machine-model-picker" role="group" aria-label="Seleccione el modelo del compresor">
-            <button type="button" data-machine-model="7" aria-pressed="false">VDCM 7<small>7 HP · 8 bar · 0.63 m³/min · 260 L</small></button>
-            <button type="button" data-machine-model="10" aria-pressed="false">VDCM 10<small>10 HP · 8 bar · 1.10 m³/min · 260 L</small></button>
-            <button type="button" data-machine-model="15" aria-pressed="false">VDCM 15<small>15 HP · 8 bar · 1.60 m³/min · 300 L</small></button>
-            <button type="button" data-machine-model="20" aria-pressed="false">VDCM 20<small>20 HP · 8 bar · 2.40 m³/min · 300 L</small></button>
-          </div>
-          <p class="awo-range-system"><strong>Sistema de aire comprimido 4 en 1.</strong> Compresor de tornillo VSD, tanque de almacenamiento, secador de aire y filtración de precisión. La velocidad se adapta a la demanda de aire en aplicaciones variables.</p>
-          <div class="awo-machine-selected" id="awo-machine-selected" hidden aria-live="polite"><strong id="awo-machine-selected-name"></strong><p id="awo-machine-selected-description"></p></div>
-          <div class="awo-compressor-range-visual">
-            <img id="awo-machine-range-image" src="/assets/awo/compresores-vdcm-7-10-15-20.webp" alt="Familia de compresores AWO VDCM 7, VDCM 10, VDCM 15 y VDCM 20 sobre tanques horizontales" width="1774" height="887" loading="eager">
-          </div>
-          <div class="awo-machine-gallery" id="awo-machine-gallery" hidden aria-label="Galería de la ficha técnica VDCM 10">
-            <div class="awo-machine-gallery-stage">
-              <div class="awo-machine-gallery-photo" id="awo-gallery-photo" role="img" aria-label="Vista del compresor VDCM 10 tomada de la ficha técnica original"></div>
-              <div class="awo-machine-gallery-copy" aria-live="polite"><span class="awo-range-kicker" id="awo-gallery-count">VISTA 1 DE 5</span><h3 id="awo-gallery-title"></h3><p id="awo-gallery-description"></p><ul id="awo-gallery-details"></ul></div>
-            </div>
-            <div class="awo-machine-gallery-controls"><button type="button" id="awo-gallery-prev" aria-label="Vista anterior">← Anterior</button><span id="awo-gallery-progress" aria-hidden="true"></span><button type="button" id="awo-gallery-next" aria-label="Vista siguiente">Siguiente →</button></div>
-            <a class="awo-machine-gallery-original" href="https://wa.me/573189324488?text=Hola%20AWO%20Group%2C%20quisiera%20la%20ficha%20t%C3%A9cnica%20vigente%20del%20VDCM%2010" target="_blank" rel="noopener">Solicitar ficha técnica vigente ↗</a>
-          </div>
-          <div class="awo-compressor-range-foot">
-            <p>Cuéntanos tu aplicación y te ayudamos a identificar el modelo. <a href="/repuestos?categoria=compresor">AWO Parts →</a> · <a href="/planes?equipo=AWO%20VDCM">AWO Care →</a></p>
-          </div>
-          <div class="awo-range-actions">
-            <a class="awo-range-button awo-range-button-primary" id="awo-special-price" href="https://wa.me/573189324488" target="_blank" rel="noopener">Solicitar cotización <span aria-hidden="true">↗</span></a>
-            <a class="awo-range-button" href="#cotizar-compresor">Cotizar ahora <span aria-hidden="true">→</span></a>
-            <a class="awo-range-button" href="https://wa.me/573189324488" data-compressor-request="asesoria">Preguntar a un asesor <span aria-hidden="true">↗</span></a>
-          </div>
-          <p class="awo-range-footnote">La propuesta se confirma según modelo, ciudad y configuración.</p>
-        </section>
-        <section class="awo-machine-benefits" aria-labelledby="awo-machine-benefits-title">
-          <span class="awo-range-kicker">RESPALDO AWO · MÁS QUE UN COMPRESOR</span><h2 id="awo-machine-benefits-title">Te acompañamos durante la operación del equipo.</h2>
-          <div class="awo-machine-benefits-grid">
-            <article><strong>01</strong><h3>Selección</h3><p>Validamos caudal, presión, calidad de aire y aplicación para elegir la configuración.</p></article>
-            <article><strong>02</strong><h3>Instalación</h3><p>Coordinamos entrega en Colombia y orientamos la puesta en marcha según la propuesta.</p></article>
-            <article><strong>03</strong><h3>Capacitación</h3><p>Te orientamos sobre el uso y cuidado del equipo.</p></article>
-            <article><strong>04</strong><h3>Repuestos</h3><p>AWO Parts ayuda a identificar filtros, componentes y kits según el modelo.</p></article>
-            <article><strong>05</strong><h3>Mantenimiento</h3><p>Programamos intervenciones según horas de operación y planes de seguimiento por meses.</p></article>
-            <article><strong>06</strong><h3>Soporte</h3><p>Respondemos consultas técnicas y confirmamos las condiciones de garantía aplicables al cotizar.</p></article>
-          </div>
-        </section>
-        <section class="awo-compressor-support" aria-labelledby="compressor-parts-title">
-          <div class="awo-compressor-section-heading"><div><span class="awo-range-kicker">AWO PARTS · REPUESTOS Y CONSUMIBLES</span><h2 id="compressor-parts-title">Todo para mantener el aire en movimiento.</h2><p>Indícanos el modelo, la referencia o envíanos una foto de la placa para validar compatibilidad. El catálogo completo está en AWO Parts.</p></div><a href="/repuestos?categoria=compresor">Explorar AWO Parts <span aria-hidden="true">→</span></a></div>
-          <div class="awo-compressor-parts-grid">
-            <article><span class="awo-part-number">01 / ADMISIÓN</span><h3>Filtro de aire</h3><p>Para el sistema de admisión del compresor.</p><a href="https://wa.me/573189324488" data-compressor-part="Filtro de aire de admisión">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
-            <article><span class="awo-part-number">02 / LUBRICACIÓN</span><h3>Filtro de aceite</h3><p>Consumible para el circuito de lubricación.</p><a href="https://wa.me/573189324488" data-compressor-part="Filtro de aceite">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
-            <article><span class="awo-part-number">03 / SEPARACIÓN</span><h3>Separador aire/aceite</h3><p>Consulta el elemento compatible con tu configuración.</p><a href="https://wa.me/573189324488" data-compressor-part="Separador aire/aceite">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
-            <article><span class="awo-part-number">04 / TRATAMIENTO</span><h3>Filtración de línea</h3><p>Filtración en la línea de aire comprimido.</p><a href="https://wa.me/573189324488" data-compressor-part="Filtración de línea">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
-            <article><span class="awo-part-number">05 / CONDENSADO</span><h3>Purga automática</h3><p>Gestión del condensado del sistema.</p><a href="https://wa.me/573189324488" data-compressor-part="Purga automática">Consultar repuesto <span aria-hidden="true">↗</span></a></article>
-          </div>
-        </section>
         <section class="awo-compressor-care" aria-labelledby="compressor-care-title">
           <div class="awo-compressor-section-heading"><div><span class="awo-range-kicker">AWO CARE · COMPRESORES</span><h2 id="compressor-care-title">Tu compresor también necesita un plan.</h2><p>AWO Care es el plan de acompañamiento por meses; las revisiones a las 400 y 800 horas son intervenciones programadas según el uso del compresor. Elige una duración para configurar la atención de tu equipo. Ajustamos la propuesta a tus horas de trabajo y a las condiciones de tu planta.</p></div></div>
           <div class="awo-compressor-care-grid">
@@ -358,24 +366,6 @@
             <a href="/planes?equipo=AWO%20VDCM&duracion=6#plan-configurador"><span>02 / CONTINUIDAD</span><h3>6 meses</h3><p>Visitas programadas para atender el equipo durante más tiempo.</p><strong>Configurar plan <span aria-hidden="true">→</span></strong></a>
             <a href="/planes?equipo=AWO%20VDCM&duracion=12#plan-configurador"><span>03 / ANUAL</span><h3>12 meses</h3><p>Seguimiento periódico para incorporar el compresor a tu rutina preventiva.</p><strong>Configurar plan <span aria-hidden="true">→</span></strong></a>
           </div>
-        </section>
-        <section class="awo-machine-quote" id="cotizar-compresor" aria-labelledby="awo-machine-quote-title">
-          <div><span class="awo-range-kicker">SOLICITUD DE COTIZACIÓN</span><h2 id="awo-machine-quote-title">Cuéntanos qué necesita tu operación.</h2><p>Con estos datos un asesor podrá recomendarte la configuración y responder con una propuesta. También puedes hablar directamente con un asesor por WhatsApp.</p><a id="awo-quote-shortcut" href="https://wa.me/573189324488" target="_blank" rel="noopener">Hablar con un asesor por WhatsApp ↗</a></div>
-          <form id="awo-machine-quote-form">
-            <label>Nombre y apellido <input name="nombre" autocomplete="name" required></label>
-            <label>Empresa <input name="empresa" autocomplete="organization" required></label>
-            <label>WhatsApp <input name="telefono" type="tel" autocomplete="tel" required></label>
-            <label>Correo electrónico <input name="correo" type="email" autocomplete="email" required></label>
-            <label>Ciudad y país <input name="ubicacion" autocomplete="address-level2" required></label>
-            <label>Modelo de interés <select name="modelo" id="awo-quote-model"><option value="Por definir">Ayúdame a elegir</option><option>VDCM 7</option><option>VDCM 10</option><option>VDCM 15</option><option>VDCM 20</option></select></label>
-            <label>Presión requerida <select name="presion"><option>No sé</option><option>8 bar</option><option>Otra</option></select></label>
-            <label>Consumo / equipo actual <input name="equipo_actual" placeholder="No sé; HP, m³/min u otra información" value="No sé"></label>
-            <small class="wide">¿No conoces estos datos? No hay problema. Te ayudamos a dimensionar el sistema.</small>
-            <label class="wide">¿Para qué usarás el aire comprimido? <textarea name="aplicacion" rows="3" placeholder="Cuéntanos tu proceso, herramientas o máquinas; presión, caudal y horas de uso si los conoces" required></textarea></label>
-            <label class="wide">¿Necesitas instalación o capacitación? <select name="servicios"><option value="Necesito asesoría para definirlo">Necesito asesoría para definirlo</option><option value="Sí, instalación y capacitación">Sí, instalación y capacitación</option><option value="Solo equipo">Solo equipo</option></select></label>
-            <button class="awo-range-button awo-range-button-primary wide" type="submit">Enviar solicitud al asesor por WhatsApp ↗</button>
-            <small class="wide">Se abrirá WhatsApp con tus datos listos. Revisa el mensaje y pulsa Enviar para que llegue al asesor.</small>
-          </form>
         </section>
         <div class="awo-heading"><div><h2>Equipos AWO <em>en stock</em></h2><p>La familia VDCM encabeza nuestros equipos; después encontrarás selladoras y codificadoras. Consulta la disponibilidad antes de comprar.</p></div><span class="awo-label">AWO COMPRESSORS · OTRAS SOLUCIONES INDUSTRIALES AWO</span></div>
         <div class="awo-stock-grid"><article class="awo-card" id="selladora-inkjet" data-awo-category="selladora"><span class="awo-stock awo-sr-only">EN STOCK</span><img class="awo-sealer-card-image" src="/assets/awo/selladora-inkjet-touch.webp" width="1725" height="912" loading="lazy" alt="Selladora de banda en acero inoxidable con módulo Inkjet y pantalla táctil"><small>AWO · Distribuido por AWO Group</small><h3>Selladora de banda continua con Inkjet</h3><p>Acero inoxidable, componentes de alta calidad y control mediante pantalla táctil.</p><details><summary>Ver detalles</summary><p>Sellado continuo con codificación Inkjet. Consulta el material del empaque y la información que necesitas imprimir. Confirmamos componentes, modelo, configuración y disponibilidad al cotizar.</p></details><a class="button primary" data-awo-quote="Selladora de banda continua con Inkjet" href="https://wa.me/573189324488?text=%C2%BFQu%C3%A9%20m%C3%A1quina%20o%20equipo%20AWO%20requiere%20tu%20producci%C3%B3n%3F%0AHola%20AWO%20Group%2C%20vengo%20de%20la%20tienda%20de%20m%C3%A1quinas%20AWO.%0AEquipo%20de%20inter%C3%A9s%3A%20Selladora%20de%20banda%20continua%20con%20Inkjet%0AQuiero%20conocer%20las%20opciones%2C%20disponibilidad%20y%20cotizaci%C3%B3n." target="_blank" rel="noopener">Cotizar equipo <span>↗</span></a></article><article class="awo-card" data-awo-category="codificadora"><span class="awo-stock awo-sr-only">EN STOCK</span><span class="awo-source awo-source-codificadora" role="img" aria-label="Equipo AWO: codificadora"></span><small>AWO · Distribuido por AWO Group</small><h3>Codificadoras Inkjet y TTO</h3><p>Soluciones para identificar productos, fechas y lotes.</p><details><summary>Ver detalles</summary><p>Te orientamos sobre la tecnología de impresión según superficie, aplicación y línea de producción. Confirmamos modelo, configuración y disponibilidad al cotizar.</p></details><a class="button primary" data-awo-quote="Codificadoras Inkjet y TTO" href="https://wa.me/573189324488?text=%C2%BFQu%C3%A9%20m%C3%A1quina%20o%20equipo%20AWO%20requiere%20tu%20producci%C3%B3n%3F%0AHola%20AWO%20Group%2C%20vengo%20de%20la%20tienda%20de%20m%C3%A1quinas%20AWO.%0AEquipo%20de%20inter%C3%A9s%3A%20Codificadoras%20Inkjet%20y%20TTO%0AQuiero%20conocer%20las%20opciones%2C%20disponibilidad%20y%20cotizaci%C3%B3n." target="_blank" rel="noopener">Cotizar equipo <span>↗</span></a></article><article class="awo-card" id="compresor-awo" data-awo-category="compresor"><img class="awo-compressor-card-image" src="/assets/awo/compresor-vdcm10-hero.webp" width="1448" height="1086" loading="lazy" alt="Compresor AWO Group VDCM 10"><small>AWO · Compresor de tornillo</small><h3>Compresores AWO · Familia VDCM</h3><p>Selecciona entre VDCM 7, 10, 15 y 20 y consulta la configuración adecuada para tu planta.</p><details><summary>Ver componentes</summary><p>Hanbell Air End, rodamientos SKF, variador Inovance, secador integrado, tres filtros de precisión y drenaje automático. Tecnología VSD para demanda variable.</p></details><a class="button primary" data-awo-quote="Compresor AWO VDCM 10: deseo conocer el precio" href="https://wa.me/573189324488?text=%C2%BFQu%C3%A9%20m%C3%A1quina%20o%20equipo%20AWO%20requiere%20tu%20producci%C3%B3n%3F%0AHola%20AWO%20Group%2C%20vengo%20de%20la%20tienda%20de%20m%C3%A1quinas%20AWO.%0AEquipo%20de%20inter%C3%A9s%3A%20Compresores%20de%20aire%0AQuiero%20conocer%20las%20opciones%2C%20disponibilidad%20y%20cotizaci%C3%B3n." target="_blank" rel="noopener">Consultar precio <span>↗</span></a></article></div>
@@ -571,6 +561,6 @@
     <div class="quote-details"><label>Máquina<select id="quote-machine"><option value="">Seleccione la máquina</option><option>Selladora de banda</option><option>Codificadora</option><option>Empacadora</option><option>Compresor</option><option>Otra máquina</option></select></label><label>Referencia o modelo<input id="quote-reference" type="text" placeholder="Número de parte o modelo (si lo conoce)"></label><label>Ciudad y país<input id="quote-location" type="text" placeholder="Ej. Bogotá, Colombia" required></label><label class="quote-photo-choice"><input id="quote-photo" type="checkbox">Tengo fotografía o placa para adjuntar</label><small>Adjunte la imagen en WhatsApp o en su aplicación de correo al abrir la solicitud.</small></div>
     <div class="cart-footer"><div class="cart-note"><span>Resumen de repuestos</span><strong>Validamos cada referencia antes de cotizar</strong></div><button class="button primary" id="checkout-cart" type="button" disabled>Enviar por WhatsApp <span>↗</span></button><button class="button secondary" id="email-quote" type="button" disabled>Enviar por correo ↗</button><small>Validamos la compatibilidad y disponibilidad antes del despacho.</small></div>
   </aside>
-  <script src="/script.js?v=awo-depuracion-20260927b"></script>
+  <script src="/script.js?v=awo-home-orden-20260927"></script>
 </body>
 </html>
