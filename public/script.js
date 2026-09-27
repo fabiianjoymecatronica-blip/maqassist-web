@@ -709,13 +709,15 @@ function updatePageView() {
   const actions = range.querySelector('.awo-range-actions') || home.querySelector('.awo-range-actions');
   const quoteLink = actions.querySelectorAll('a')[1];
   if (page === 'home') {
-    home.insertBefore(range, home.querySelector('.awo-home-benefit-strip'));
+    document.getElementById('compressor-range-title').textContent = 'Sistema de aire comprimido 4 en 1.';
+    home.insertBefore(range, parts);
     home.insertBefore(parts, home.querySelector('.awo-home-cta'));
     home.insertBefore(benefits, home.querySelector('.awo-select-panel'));
     home.appendChild(actions);
     home.appendChild(quote);
     quoteLink.href = '#cotizar-compresor';
   } else {
+    document.getElementById('compressor-range-title').textContent = 'Familia AWO VDCM.';
     machineStore.insertBefore(range, machineStore.querySelector('.awo-machine-benefits') || machineStore.querySelector('.awo-compressor-care'));
     range.insertBefore(actions, range.querySelector('.awo-range-footnote'));
     machineStore.insertBefore(parts, machineStore.querySelector('.awo-compressor-care'));
