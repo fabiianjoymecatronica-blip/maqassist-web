@@ -2554,6 +2554,7 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-range{scroll-margin-
   #awo-compressor-experience :is(.awo-cx-compare button,.awo-cx-help a,.awo-cx-more a){transition:color .2s ease,transform .2s ease,background-color .2s ease}
   #awo-compressor-experience :is(.awo-cx-compare button,.awo-cx-more a):hover{transform:translateY(-2px)}
 }
+@media(prefers-reduced-motion:reduce){#awo-compressor-experience .awo-compressor-range-visual img{transition:none}}
 
 /* Microinteracciones limitadas al HOME; sin alterar estados en reposo. */
 @media (prefers-reduced-motion: no-preference) {
