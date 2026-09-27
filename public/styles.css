@@ -2479,6 +2479,7 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-experience{display:b
 .awo-cx-hero-visual span{position:absolute;right:0;bottom:0;padding:7px 10px;background:#fff;border:1px solid #DDE3DD;border-radius:5px;color:#2C4930;font-size:11px;font-weight:700;letter-spacing:.07em}
 #awo-compressor-experience [data-cx-slot="range"] .awo-compressor-range{margin:24px 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:0 30px}
 #awo-compressor-experience .awo-compressor-range-heading,#awo-compressor-experience .awo-machine-model-picker,#awo-compressor-experience .awo-range-system,#awo-compressor-experience .awo-compressor-range-foot,#awo-compressor-experience .awo-range-footnote,#awo-compressor-experience .awo-range-actions{grid-column:1/-1}
+#awo-compressor-experience .awo-range-system,#awo-compressor-experience .awo-compressor-range-foot{display:none}
 #awo-compressor-experience .awo-machine-selected{grid-column:1;align-self:center;min-height:180px;margin:22px 0}
 #awo-compressor-experience .awo-compressor-range-visual{grid-column:2;align-self:center;justify-self:center;position:relative;width:min(100%,330px);height:480px;margin:0;overflow:hidden}
 #awo-compressor-experience .awo-compressor-range-visual img{position:absolute;top:50%;left:0;display:block;width:400%;max-width:none;height:auto;max-height:none;object-fit:initial;transform:translate(0,-50%);transition:transform .36s cubic-bezier(.22,1,.36,1)}
