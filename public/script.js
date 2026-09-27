@@ -881,6 +881,70 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   label(); start();
 })();
 
+// Movimiento del HOME: solo efectos visuales; el contenido y las rutas permanecen intactos.
+(() => {
+  const home = document.getElementById('home');
+  if (!home || document.body.dataset.page !== 'home' || !Element.prototype.animate) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+  const reveal = (element, { x = 0, y = 12, delay = 0, duration = 560 } = {}) => {
+    if (!element || reduced.matches) return;
+    element.animate([
+      { opacity: 0, transform: `translate3d(${x}px, ${y}px, 0)` },
+      { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+    ], { duration, delay, easing: ease });
+  };
+
+  reveal(document.querySelector('.site-header .brand'), { y: -6, duration: 500 });
+  const hero = home.querySelector('.awo-compressor-slide');
+  reveal(hero.querySelector('.awo-eyebrow'), { x: -20, duration: 630 });
+  reveal(hero.querySelector('h1'), { x: -24, delay: 70, duration: 700 });
+  reveal(hero.querySelector('.awo-home-copy > p'), { x: -18, delay: 130, duration: 700 });
+  hero.querySelectorAll('.awo-compressor-components > div').forEach((item, index) =>
+    reveal(item, { y: 9, delay: 170 + index * 65, duration: 540 }));
+  reveal(hero.querySelector('.awo-compressor-art'), { x: 28, delay: 80, duration: 760 });
+  hero.querySelectorAll('.awo-home-actions > a').forEach((item, index) =>
+    reveal(item, { y: 10, delay: 340 + index * 65, duration: 560 }));
+
+  const groups = [
+    ['.awo-compressor-range', '.awo-compressor-range-heading, .awo-machine-model-picker > button, .awo-range-system, .awo-compressor-range-visual'],
+    ['.awo-compressor-support', '.awo-compressor-section-heading, .awo-compressor-parts-grid > article'],
+    ['.awo-home-cta', '.container > img, .container > div, .container > a'],
+    ['.awo-machine-benefits', '.awo-range-kicker, h2, .awo-machine-benefits-grid > article'],
+    ['.awo-select-panel', '.awo-panel-heading, .awo-select-grid > a'],
+    ['.awo-machine-quote', ':scope > div, :scope > form']
+  ];
+  if ('IntersectionObserver' in window && !reduced.matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        const index = groups.findIndex(([selector]) => entry.target.matches(selector));
+        const [, children] = groups[index];
+        entry.target.querySelectorAll(children).forEach((item, position) =>
+          reveal(item, { y: 12, delay: Math.min(position * 55, 275), duration: 560 }));
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+    groups.forEach(([selector]) => {
+      const section = home.querySelector(selector);
+      if (section) observer.observe(section);
+    });
+    reduced.addEventListener('change', () => observer.disconnect(), { once: true });
+  }
+
+  let lastModel = '';
+  home.querySelectorAll('.awo-machine-model-picker button').forEach(button => {
+    button.addEventListener('click', () => {
+      const model = button.dataset.machineModel;
+      if (model === lastModel || reduced.matches) return;
+      lastModel = model;
+      reveal(home.querySelector('#awo-machine-selected'), { y: 7, duration: 320 });
+      const visual = home.querySelector(model === '10' ? '#awo-machine-gallery' : '.awo-compressor-range-visual');
+      reveal(visual, { x: 8, duration: 350 });
+    });
+  });
+})();
+
 // La portada alterna los equipos destacados; los controles permiten detener o cambiar la presentación.
 (() => {
   const slider = document.getElementById('awo-hero-slider');
