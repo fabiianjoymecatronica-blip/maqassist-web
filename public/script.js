@@ -837,13 +837,15 @@ updatePageView();
     entry.target.classList.add('is-visible');
     if (reduced.matches || !Element.prototype.animate) return;
     const items = entry.target.matches('.awo-cx-system')
-      ? entry.target.querySelectorAll('.awo-cx-system-grid article')
-      : entry.target.querySelectorAll('.awo-cx-heading, .awo-cx-tech-list span, .awo-cx-vsd, .awo-cx-table-wrap');
+      ? entry.target.querySelectorAll('.awo-cx-system-grid article, .awo-cx-profile-visual, .awo-cx-profile-data')
+      : entry.target.matches('.awo-cx-engineering')
+        ? entry.target.querySelectorAll('.awo-cx-engineering-visual, .awo-cx-engineering-copy')
+        : entry.target.querySelectorAll('.awo-cx-heading, .awo-cx-tech-list span, .awo-cx-vsd, .awo-cx-table-wrap');
     items.forEach((item, index) => item.animate([
       { opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }
     ], { duration: 520, delay: Math.min(index * 70, 280), easing: 'cubic-bezier(.22,1,.36,1)' }));
   }), { threshold: .08 });
-  experience.querySelectorAll('.awo-cx-system,.awo-cx-compare,.awo-cx-technology').forEach(item => observer.observe(item));
+  experience.querySelectorAll('.awo-cx-engineering,.awo-cx-system,.awo-cx-compare,.awo-cx-technology').forEach(item => observer.observe(item));
 })();
 
 // Los enlaces del menú abren la ficha técnica de la familia ya existente.
