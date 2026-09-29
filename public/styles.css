@@ -2609,4 +2609,4 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-range{scroll-margin-
 .awo-product-visual.single:has(.awo-photo-reference) img{height:calc(100% - 28px)}
 @media(max-width:600px){.awo-product-visual{order:-1}.awo-product-visual.single{aspect-ratio:1/0.85}}
 .awo-product-hero .awo-product-visual img{width:400%;max-width:none;height:auto;object-fit:initial}
-.awo-product-hero .awo-product-visual.single img{width:100%;max-width:100%;height:100%;object-fit:contain}
+.awo-product-hero .awo-product-visual.single img{width:100%;max-width:100%;height:calc(100% - 30px);object-fit:contain}
