@@ -552,7 +552,7 @@ const awoQuoteShortcut = document.getElementById('awo-quote-shortcut');
 let awoSelectedMachineModel = '';
 let awoGalleryIndex = 0;
 const awoGallerySlides = [
-  { title: 'Fotografía de referencia · VDCM 15', description: 'Vista real del VDCM 15 como referencia visual de la familia. Los datos del VDCM 10 se detallan en su ficha.', details: ['El VDCM 10 integra compresor de tornillo, tanque de 260 L, secador de aire y filtración.', 'Dimensiones indicadas para VDCM 10: 1530 × 736 × 1447 mm.'] },
+  { title: 'Ficha técnica · VDCM 10', description: 'Lámina técnica existente del VDCM 10. Las vistas y cotas pertenecen a este modelo.', details: ['El VDCM 10 integra compresor de tornillo, tanque de 260 L, secador de aire y filtración.', 'Dimensiones indicadas para VDCM 10: 1530 × 736 × 1447 mm.'] },
   { title: 'Vista frontal', description: 'Observa el panel, las puertas de servicio y el montaje sobre el tanque.', details: ['Potencia indicada: 7,5 kW / 10 HP.', 'La cota longitudinal de la ficha es 1530 mm.'] },
   { title: 'Vista trasera', description: 'La vista posterior de la ficha muestra las conexiones y el conjunto de tratamiento de aire.', details: ['La ficha indica secador y filtración integrados.', 'Consulta acceso de mantenimiento y disposición de las conexiones antes de instalar.'] },
   { title: 'Vista lateral derecha', description: 'Detalle del ventilador lateral y del tanque visto de perfil.', details: ['Alto indicado: 1447 mm.', 'Ancho indicado: 736 mm.'] },
@@ -563,7 +563,7 @@ function renderAwoGallery() {
   const slide = awoGallerySlides[awoGalleryIndex];
   const photo = document.getElementById('awo-gallery-photo');
   photo.className = `awo-machine-gallery-photo view-${awoGalleryIndex}`;
-  photo.setAttribute('aria-label', awoGalleryIndex === 0 ? 'Fotografía real del AWO VDCM 15 usada como referencia visual de la familia' : `${slide.title}: recorte de la ficha técnica original del AWO VDCM 10`);
+  photo.setAttribute('aria-label', `${slide.title}: ficha técnica original del AWO VDCM 10`);
   document.getElementById('awo-gallery-count').textContent = `VISTA ${awoGalleryIndex + 1} DE ${awoGallerySlides.length}`;
   document.getElementById('awo-gallery-title').textContent = slide.title;
   document.getElementById('awo-gallery-description').textContent = slide.description;
@@ -588,19 +588,16 @@ awoMachineModelButtons.forEach(button => button.addEventListener('click', () => 
   awoSelectedMachineModel = button.dataset.machineModel;
   awoMachineModelButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   const isTen = awoSelectedMachineModel === '10';
-  awoMachineRangeImage.src = '/assets/awo/vdcm15-frontal-real.webp';
-  awoMachineRangeImage.alt = 'Fotografía del AWO VDCM 15 como referencia visual de la familia VDCM';
-  awoMachineRangeImage.width = 1292;
-  awoMachineRangeImage.height = 1217;
-  document.querySelector('.awo-compressor-range-visual').hidden = isTen;
-  document.getElementById('awo-machine-gallery').hidden = !isTen;
+  const isFifteen = awoSelectedMachineModel === '15';
+  const visual = document.querySelector('.awo-compressor-range-visual');
+  const gallery = document.getElementById('awo-machine-gallery');
+  visual.hidden = isTen;
+  gallery.hidden = !isTen;
+  visual.dataset.model = awoSelectedMachineModel;
+  awoMachineRangeImage.hidden = !isFifteen;
+  document.getElementById('awo-range-photo-caption').hidden = !isFifteen;
+  document.getElementById('awo-range-photo-pending').hidden = isFifteen;
   if (isTen) { awoGalleryIndex = 0; renderAwoGallery(); }
-  if (document.body.dataset.compressorView === 'true') {
-    document.querySelector('.awo-compressor-range-visual').hidden = false;
-    document.getElementById('awo-machine-gallery').hidden = true;
-    document.querySelector('.awo-compressor-range-visual').dataset.model = awoSelectedMachineModel;
-    awoMachineRangeImage.alt = 'Fotografía del AWO VDCM 15 como referencia visual de la familia VDCM';
-  }
   awoMachineSelected.hidden = false;
   document.getElementById('awo-machine-selected-name').textContent = `AWO VDCM ${awoSelectedMachineModel}`;
   document.getElementById('awo-machine-selected-description').textContent = vdcmDescription(awoSelectedMachineModel);
@@ -608,14 +605,14 @@ awoMachineModelButtons.forEach(button => button.addEventListener('click', () => 
   if (!productLink) {
     productLink = document.createElement('a');
     productLink.id = 'awo-selected-product-link';
-    productLink.textContent = 'Ver especificaciones completas →';
+    productLink.textContent = 'Conocer el equipo →';
     awoMachineSelected.appendChild(productLink);
   }
   productLink.href = `/compresores/vdcm-${awoSelectedMachineModel}`;
   document.getElementById('awo-quote-model').value = `VDCM ${awoSelectedMachineModel}`;
   updateMachinePriceLinks();
 }));
-updateMachinePriceLinks();
+document.querySelector('[data-machine-model="15"]').click();
 
 document.getElementById('awo-machine-quote-form').addEventListener('submit', event => {
   event.preventDefault();
@@ -714,12 +711,19 @@ function renderVdcmProduct(number) {
   set('vdcm-fact-flow', model.flow);
   set('vdcm-fact-tank', model.tank);
   const image = document.getElementById('vdcm-product-image');
-  image.src = '/assets/awo/vdcm15-frontal-real.webp';
-  image.width = 1292;
-  image.height = 1217;
-  image.alt = 'Fotografía del AWO VDCM 15 como referencia visual de la familia VDCM';
+  const isFifteen = number === '15';
+  const isTen = number === '10';
+  image.hidden = !isFifteen && !isTen;
+  image.src = isTen ? '/assets/awo/ficha-tecnica-vdcm-10.jpeg' : '/assets/awo/vdcm15-frontal-real.webp';
+  image.width = isTen ? 1055 : 1292;
+  image.height = isTen ? 1460 : 1217;
+  image.alt = isTen ? 'Ficha técnica existente del AWO VDCM 10, con vistas y cotas del modelo' : 'Fotografía real del AWO VDCM 15 cerrado';
   const visual = image.parentElement;
   visual.classList.add('single');
+  visual.querySelector('.awo-photo-reference').textContent = isFifteen ? 'Fotografía real · AWO VDCM 15' : isTen ? 'Ficha técnica · AWO VDCM 10' : '';
+  document.getElementById('vdcm-product-photo-pending').hidden = isFifteen || isTen;
+  document.getElementById('vdcm-real-gallery').hidden = !isFifteen;
+  document.getElementById('vdcm-real-interior').hidden = !isFifteen;
   const specs = [
     ['Potencia', model.power], ['Caudal', model.flow], ['Presión', '8 bar'],
     ['Tanque', model.tank], ['Voltaje', '220 V'], ['Frecuencia', '60 Hz'],
@@ -750,6 +754,45 @@ function renderVdcmProduct(number) {
   document.querySelector('.awo-machine-quote h2').textContent = `¿Quieres cotizar el ${name}?`;
   document.querySelector('.awo-machine-quote > div > p').textContent = 'Envíanos tus datos y un asesor confirmará la configuración, disponibilidad y condiciones aplicables.';
 }
+
+
+const vdcmPhotoSlides = [
+  { src: 'vdcm15-frontal-real.webp', width: 1292, height: 1217, title: 'Vista general', alt: 'AWO VDCM 15 cerrado sobre tanque horizontal', description: 'Vista real del equipo cerrado: gabinete y tanque horizontal.' },
+  { src: 'vdcm15-interior-real.webp', width: 1152, height: 1536, title: 'Interior', alt: 'Gabinete abierto del AWO VDCM 15', description: 'Interior del gabinete abierto; observa el conjunto mecánico y las conexiones visibles.' },
+  { src: 'vdcm15-interior-real.webp', width: 1152, height: 1536, title: 'Compresión', alt: 'Conjunto mecánico visible dentro del AWO VDCM 15', description: 'Conjunto mecánico fotografiado. El Air End Hanbell es una tecnología confirmada de la línea.' },
+  { src: 'vdcm15-inovance-real.webp', width: 1152, height: 1536, title: 'Tecnología VSD', alt: 'Variador Inovance real del VDCM 15', description: 'Variador Inovance fotografiado en el equipo. Ajusta la velocidad del motor a la demanda de aire.' },
+  { src: 'vdcm15-vista-recta-real.webp', width: 1086, height: 1448, title: 'Vista de extremo', alt: 'Vista real del extremo del AWO VDCM 15 sobre el tanque', description: 'Vista desde el extremo del gabinete y el tanque, conservando las proporciones originales.' },
+  { src: 'vdcm15-posterior-real.webp', width: 1303, height: 1207, title: 'Tratamiento del aire', alt: 'Vista posterior del VDCM 15 con filtros y tanque', description: 'Vista real posterior con filtros azules, conexiones y tanque horizontal.' },
+  { src: 'vdcm15-filtracion-real.webp', width: 1152, height: 1536, title: 'Filtración', alt: 'Detalle de filtros azules del VDCM 15', description: 'Detalle fotográfico del conjunto de filtros y sus tuberías.' },
+  { src: 'vdcm15-control-purga-real.webp', width: 1152, height: 1536, title: 'Purga automática', alt: 'Detalle del control y las conexiones de purga del VDCM 15', description: 'Control y conexiones visibles del sistema de purga de condensado.' },
+  { src: 'vdcm15-purga-conexiones-real.webp', width: 1152, height: 1536, title: 'Tanque y conexiones', alt: 'Conexiones de la purga sobre el tanque real del VDCM 15', description: 'Detalle de conexiones sobre el tanque horizontal real; se conservan las proporciones de la fotografía.' }
+];
+let vdcmPhotoIndex = 0;
+const vdcmGalleryImage = document.getElementById('vdcm-gallery-image');
+const vdcmThumbs = document.getElementById('vdcm-gallery-thumbs');
+function renderVdcmGallery() {
+  const slide = vdcmPhotoSlides[vdcmPhotoIndex];
+  vdcmGalleryImage.src = `/assets/awo/${slide.src}`;
+  vdcmGalleryImage.width = slide.width;
+  vdcmGalleryImage.height = slide.height;
+  vdcmGalleryImage.alt = slide.alt;
+  document.getElementById('vdcm-gallery-caption').textContent = slide.title;
+  document.getElementById('vdcm-gallery-description').textContent = slide.description;
+  document.getElementById('vdcm-gallery-counter').textContent = `${vdcmPhotoIndex + 1} / ${vdcmPhotoSlides.length}`;
+  vdcmThumbs.querySelectorAll('button').forEach((button, index) => button.setAttribute('aria-pressed', String(index === vdcmPhotoIndex)));
+}
+vdcmPhotoSlides.forEach((slide, index) => {
+  const button = document.createElement('button');
+  button.type = 'button'; button.textContent = slide.title;
+  button.addEventListener('click', () => { vdcmPhotoIndex = index; renderVdcmGallery(); });
+  vdcmThumbs.appendChild(button);
+});
+document.getElementById('vdcm-gallery-prev').addEventListener('click', () => { vdcmPhotoIndex = (vdcmPhotoIndex - 1 + vdcmPhotoSlides.length) % vdcmPhotoSlides.length; renderVdcmGallery(); });
+document.getElementById('vdcm-gallery-next').addEventListener('click', () => { vdcmPhotoIndex = (vdcmPhotoIndex + 1) % vdcmPhotoSlides.length; renderVdcmGallery(); });
+let vdcmTouchStart = 0;
+vdcmGalleryImage.addEventListener('touchstart', e => { vdcmTouchStart = e.changedTouches[0].screenX; }, { passive: true });
+vdcmGalleryImage.addEventListener('touchend', e => { const delta = e.changedTouches[0].screenX - vdcmTouchStart; if (Math.abs(delta) > 35) { vdcmPhotoIndex = (vdcmPhotoIndex + (delta < 0 ? 1 : -1) + vdcmPhotoSlides.length) % vdcmPhotoSlides.length; renderVdcmGallery(); } }, { passive: true });
+renderVdcmGallery();
 
 // Cada pantalla principal usa una ruta propia; la portada ya no funciona como página larga.
 const stockGrid = document.querySelector('.awo-stock-grid');
@@ -783,7 +826,7 @@ function updatePageView() {
   const quoteLink = actions.querySelectorAll('a')[1];
   if (page === 'home') {
     document.getElementById('compressor-range-title').textContent = 'Sistema de aire comprimido 4 en 1.';
-    home.insertBefore(range, parts);
+    home.insertBefore(range, home.querySelector('.awo-home-engineering'));
     home.insertBefore(parts, home.querySelector('.awo-home-cta'));
     home.insertBefore(benefits, home.querySelector('.awo-select-panel'));
     home.appendChild(actions);
@@ -816,13 +859,14 @@ function updatePageView() {
   }
   document.body.dataset.compressorView = String(compressorView);
   if (compressorView) {
+    experience.querySelector('.awo-cx-system').after(experience.querySelector('.awo-cx-engineering'));
     for (const [slot, block] of [['range', range], ['parts', parts], ['care', care], ['benefits', benefits], ['quote', quote]]) {
       experience.querySelector(`[data-cx-slot="${slot}"]`).appendChild(block);
     }
     if (!awoSelectedMachineModel) document.querySelector('[data-machine-model="15"]').click();
     else {
-      range.querySelector('.awo-compressor-range-visual').hidden = false;
-      range.querySelector('.awo-machine-gallery').hidden = true;
+      range.querySelector('.awo-compressor-range-visual').hidden = awoSelectedMachineModel === '10';
+      range.querySelector('.awo-machine-gallery').hidden = awoSelectedMachineModel !== '10';
       range.querySelector('.awo-compressor-range-visual').dataset.model = awoSelectedMachineModel;
     }
   }

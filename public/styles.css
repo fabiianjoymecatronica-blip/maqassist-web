@@ -2629,3 +2629,49 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-range{scroll-margin-
 @media(max-width:600px){.awo-product-visual{order:-1}.awo-product-visual.single{aspect-ratio:1/0.85}}
 .awo-product-hero .awo-product-visual img{width:400%;max-width:none;height:auto;object-fit:initial}
 .awo-product-hero .awo-product-visual.single img{width:100%;max-width:100%;height:calc(100% - 30px);object-fit:contain}
+
+/* Fotografías reales de VDCM 15 y estado verificable de los otros modelos. */
+#awo-machine-range-image[hidden],#awo-range-photo-caption[hidden],#awo-range-photo-pending[hidden],#vdcm-product-image[hidden],#vdcm-product-photo-pending[hidden],#vdcm-real-gallery[hidden],#vdcm-real-interior[hidden]{display:none!important}
+.awo-model-photo-pending{display:grid;place-items:center;min-height:220px;padding:28px;border:1px solid #DDE3DD;border-radius:8px;background:#F7FAF7;color:#405347;text-align:center;font-size:14px;line-height:1.5}
+.awo-compressor-range-visual:has(.awo-model-photo-pending:not([hidden])){width:min(100%,420px)!important;height:auto!important;min-height:260px}
+.awo-product-visual:has(.awo-model-photo-pending:not([hidden])){aspect-ratio:auto;min-height:320px;display:grid;align-items:center}
+.awo-home-engineering{width:min(var(--max),calc(100% - 40px));margin:28px auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,54px);align-items:center;padding:clamp(22px,3vw,36px);border:1px solid #DDE3DD;border-radius:16px;background:#fff}
+.awo-home-engineering-image{position:relative;max-height:460px;overflow:hidden;background:#F8FAF8;text-align:center}
+.awo-home-engineering-image img{display:block;width:100%;max-height:460px;object-fit:contain}
+.awo-home-engineering-image span{position:absolute;bottom:10px;left:10px;padding:7px 10px;background:#fff;color:#255920;font-size:11px;font-weight:700}
+.awo-home-engineering h2{margin:10px 0 15px;font-size:clamp(28px,3vw,42px);line-height:1.15}
+.awo-home-engineering p{color:#505950;line-height:1.55}
+.awo-home-engineering a{color:#207A18;font-weight:700}
+.awo-engineering-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:22px 0}
+.awo-engineering-points span{padding:13px;border:1px solid #DDE3DD;border-left:3px solid #2E9E1E;font-size:13px;font-weight:700}
+.awo-home-engineering .awo-image-note{font-size:11px}
+.awo-cx-photo-proof{margin-top:26px;padding:clamp(24px,3.4vw,42px);border:1px solid #DDE3DD;border-radius:18px;background:#fff}
+.awo-cx-proof-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:26px}
+.awo-cx-proof-grid article{min-width:0;border:1px solid #DDE3DD;background:#F8FAF8}
+.awo-cx-proof-grid img{display:block;width:100%;height:230px;object-fit:contain;background:#fff}
+.awo-cx-proof-grid article>span{display:block;margin:16px 15px 0;color:#23801A;font-size:11px;font-weight:700}
+.awo-cx-proof-grid h3{margin:7px 15px;font-size:17px;line-height:1.3}
+.awo-cx-proof-grid article p{margin:0 15px 18px;color:#505950;font-size:13px;line-height:1.5}
+.awo-cx-compare td:last-child{white-space:normal;min-width:120px}
+.awo-cx-compare td:last-child a{display:inline-block;margin:3px 5px 3px 0;color:#207A18;font-size:12px;font-weight:700;white-space:nowrap}
+.awo-machine-gallery-photo.view-0{background-image:url('/assets/awo/ficha-tecnica-vdcm-10.jpeg');background-size:contain;background-position:center}
+.awo-product-gallery-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:24px;align-items:start}
+.awo-product-gallery-media{min-width:0;background:#F8FAF8;border:1px solid #DDE3DD}
+.awo-product-gallery-media img{display:block;width:100%;height:min(60vw,570px);object-fit:contain;background:#fff}
+.awo-gallery-nav{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;font-size:13px}
+.awo-gallery-nav button{width:44px;height:44px;border:1px solid #DDE3DD;background:#fff;color:#1C6415;font-size:20px;cursor:pointer}
+.awo-product-gallery-info h3{margin:0 0 8px;font-size:24px}.awo-product-gallery-info p{color:#505950;line-height:1.6}
+.awo-gallery-thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:22px}
+.awo-gallery-thumbs button{min-height:45px;padding:8px;border:1px solid #DDE3DD;background:#fff;color:#314034;font:700 12px Manrope,Arial,sans-serif;text-align:left;cursor:pointer}
+.awo-gallery-thumbs button[aria-pressed="true"]{border-color:#2E9E1E;background:#F1F9EF;color:#1C6415}
+.awo-gallery-thumbs button:focus-visible,.awo-gallery-nav button:focus-visible{outline:3px solid #2E9E1E;outline-offset:2px}
+.awo-product-interior-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center}
+.awo-product-interior-grid img{display:block;width:100%;max-height:520px;object-fit:contain;background:#fff}
+.awo-product-interior-grid p,.awo-product-interior-grid li{line-height:1.6;color:#505950}
+.awo-product-interior-grid li{margin:8px 0}
+@media(max-width:900px){.awo-cx-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.awo-home-engineering,.awo-product-gallery-layout,.awo-product-interior-grid{grid-template-columns:1fr}.awo-home-engineering{width:calc(100% - 28px)}.awo-cx-proof-grid{grid-template-columns:1fr 1fr}.awo-cx-proof-grid img{height:180px}.awo-product-gallery-media img{height:360px}}
+@media(max-width:480px){.awo-cx-proof-grid{grid-template-columns:1fr}.awo-gallery-thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:no-preference){.awo-gallery-thumbs button,.awo-gallery-nav button{transition:border-color .2s ease,background-color .2s ease}}
+.awo-product-models a small{display:block;margin-top:5px;color:#59665B;font-size:11px;font-weight:500;white-space:nowrap}
+.awo-product-models a.active small{color:inherit}
