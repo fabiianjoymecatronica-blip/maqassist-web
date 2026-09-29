@@ -2494,6 +2494,25 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-experience{display:b
 #awo-compressor-experience .awo-compressor-range-visual img{display:block;width:100%;max-width:100%;height:calc(100% - 30px);max-height:none;object-fit:contain;transition:opacity .36s cubic-bezier(.22,1,.36,1)}
 .awo-photo-reference{display:block;margin:8px auto 0;color:#59665B;font-size:11px;font-weight:600;line-height:1.3;text-align:center}
 .awo-compressor-range-visual{flex-direction:column}
+/* AWO Parts: datos de identificación y carrito de solicitud en las tarjetas existentes. */
+#repuestos .part-card .part-photo-note{display:block;min-height:34px;margin:7px 0 2px;color:#59665B;font-size:11px;line-height:1.3}
+#repuestos .part-card .part-identification{margin:8px 0 12px;color:#3D4C46;font-size:12px;line-height:1.45;text-align:left}
+#repuestos .part-card .part-commerce{display:flex;flex-direction:column;gap:4px;margin-top:auto;padding:10px 0;border-top:1px solid #DDE3DD;text-align:left}
+#repuestos .part-commerce span{color:#505950;font-size:12px}
+#repuestos .part-commerce strong{color:#151719;font-size:17px}
+#repuestos .part-card .compatibility{margin:5px 0 12px}
+#repuestos .part-card .add-part{background:var(--awo-accent-strong);border-color:var(--awo-accent-strong);color:#fff}
+#repuestos .part-card .view-options{margin-top:7px;background:#fff;border-color:#B8C7D0;color:#263B48}
+#repuestos .part-card .view-options:hover{border-color:var(--awo-accent-strong);color:var(--awo-accent-strong);background:#fff}
+#repuestos .part-card .part-options{text-align:left}
+.cart-total{margin:0 0 14px;padding:10px 12px;border:1px solid #DDE3DD;border-radius:6px;background:#F4F7F3;color:#151719;font-size:13px;font-weight:700}
+.cart-item-info small{line-height:1.4}
+#repuestos .awo-find-panel{order:1}
+#repuestos .awo-repuesto-search{order:2}
+#repuestos .awo-compressor-selector{order:3}
+#repuestos .market-shell{order:4}
+#repuestos .store-showcase{order:5}
+#repuestos .awo-compressor-hour-plans{order:6}
 #awo-compressor-experience .awo-range-actions{justify-content:flex-start}
 #awo-compressor-experience .awo-range-actions .awo-range-button{min-width:0}
 .awo-cx-compare,.awo-cx-system,.awo-cx-technology{margin-top:26px;padding:clamp(24px,3.4vw,42px);border:1px solid #DDE3DD;border-radius:18px;background:#fff}

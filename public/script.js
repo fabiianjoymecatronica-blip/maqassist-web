@@ -303,11 +303,14 @@ document.getElementById('awo-search-model-select').addEventListener('change', ev
 
 let cart = [];
 try { cart = JSON.parse(localStorage.getItem('awo-group-cart')) || []; } catch (error) { cart = []; }
+if (!Array.isArray(cart)) cart = [];
 const cartDrawer = document.getElementById('cart-drawer');
 const cartOverlay = document.getElementById('cart-overlay');
 const cartItems = document.getElementById('cart-items');
 const cartCount = document.getElementById('cart-count');
 const checkoutCart = document.getElementById('checkout-cart');
+const cop = amount => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(amount);
+const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 
 function openCart() {
   cartDrawer.classList.add('open');
@@ -329,17 +332,82 @@ function renderCart() {
   cartCount.textContent = quantity;
   checkoutCart.disabled = cart.length === 0;
   document.getElementById('email-quote').disabled = cart.length === 0;
+  const priced = cart.filter(item => Number.isFinite(item.priceCOP));
+  document.getElementById('cart-total').textContent = priced.length === cart.length && cart.length
+    ? `Subtotal de repuestos: ${cop(priced.reduce((sum, item) => sum + item.priceCOP * item.quantity, 0))} · envío por confirmar`
+    : 'Valor del pedido por confirmar con AWO';
   if (!cart.length) {
-    cartItems.innerHTML = '<div class="empty-cart"><strong>Tu solicitud está vacía</strong><span>Agrega repuestos para preparar tu cotización.</span></div>';
+    cartItems.innerHTML = '<div class="empty-cart"><strong>Tu carrito está vacío</strong><span>Explora AWO Parts y añade los repuestos que necesitas.</span></div>';
     return;
   }
   cartItems.innerHTML = cart.map((item, index) => `
     <article class="cart-item">
-      <div class="cart-item-icon">${item.name.charAt(0)}</div>
-      <div class="cart-item-info"><span>${item.store}</span><strong>${item.name}</strong><small>Equipo: ${item.model}</small><b>Referencia exacta por identificar</b></div>
+      <div class="cart-item-icon">${escapeHtml(item.name?.charAt(0) || 'R')}</div>
+      <div class="cart-item-info"><span>${escapeHtml(item.store)}</span><strong>${escapeHtml(item.name)}</strong><small>Equipo: ${escapeHtml(item.model)}</small><b>Código: ${escapeHtml(item.code || 'Por confirmar')}</b><small>${Number.isFinite(item.priceCOP) ? cop(item.priceCOP) + ' c/u' : 'Precio por confirmar'}</small></div>
       <div class="cart-item-actions"><button type="button" data-cart-action="plus" data-index="${index}">+</button><span>${item.quantity}</span><button type="button" data-cart-action="minus" data-index="${index}">−</button><button class="remove-item" type="button" data-cart-action="remove" data-index="${index}">×</button></div>
     </article>`).join('');
 }
+
+// Los datos comerciales se publican únicamente cuando existe una referencia individual verificada.
+// Para habilitar una pieza, agregue data-code, data-price-cop y una foto propia al artículo correspondiente.
+const identificationByCategory = {
+  sellado: 'Confirma ancho, longitud, material y foto de la pieza instalada.',
+  calentamiento: 'Confirma voltaje, dimensiones, conexiones y foto de la resistencia.',
+  temperatura: 'Confirma tipo de sensor, longitud, conexión y foto de la pieza.',
+  transmision: 'Confirma medidas, material y foto de la banda o rodillo.',
+  filtracion: 'Confirma modelo VDCM, placa y dimensiones del filtro.',
+  condensado: 'Confirma modelo, conexión y foto de la purga instalada.',
+  control: 'Confirma placa del equipo, referencia impresa y conexiones.',
+  enfriamiento: 'Confirma modelo, dimensiones y foto del componente.'
+};
+function addPartToCart(card) {
+  const name = card.querySelector('h4').textContent.trim();
+  const model = currentModel ? `${currentMachine.label} ${currentModel.name}` : `${currentMachine.label} — modelo por identificar`;
+  const code = card.dataset.code?.trim() || '';
+  const rawPrice = card.dataset.priceCop;
+  const priceCOP = rawPrice && /^\d+$/.test(rawPrice) ? Number(rawPrice) : null;
+  const existing = cart.find(item => item.name === name && item.model === model && (item.code || '') === code);
+  if (existing) existing.quantity += 1;
+  else cart.push({ name, store: 'AWO Parts', model, code, priceCOP, quantity: 1 });
+  const quoteMachine = document.getElementById('quote-machine');
+  const machineOption = [...quoteMachine.options].find(option => model.toLowerCase().includes(option.text.toLowerCase().split(' ')[0]));
+  if (machineOption) quoteMachine.value = machineOption.value;
+  if (currentModel) document.getElementById('quote-reference').value = currentModel.name;
+  renderCart();
+  openCart();
+}
+
+document.querySelectorAll('.part-card').forEach(card => {
+  const photo = card.querySelector('.part-visual img');
+  const visual = card.querySelector('.part-visual, .awo-compressor-part-visual');
+  const photoNote = document.createElement('small');
+  photoNote.className = 'part-photo-note';
+  photoNote.textContent = photo ? 'Imagen de referencia · confirma la pieza' : 'Foto individual pendiente';
+  visual.after(photoNote);
+  const identification = document.createElement('p');
+  identification.className = 'part-identification';
+  identification.textContent = `Para identificarlo: ${identificationByCategory[card.dataset.category] || 'envía modelo, placa y foto de la pieza.'}`;
+  card.querySelector('.part-spec').after(identification);
+  const commerce = document.createElement('div');
+  commerce.className = 'part-commerce';
+  const code = document.createElement('span');
+  code.textContent = `Código: ${card.dataset.code || 'Por confirmar'}`;
+  const price = document.createElement('strong');
+  price.textContent = card.dataset.priceCop && /^\d+$/.test(card.dataset.priceCop) ? cop(Number(card.dataset.priceCop)) : 'Precio por confirmar';
+  commerce.append(code, price);
+  card.querySelector('.compatibility').before(commerce);
+  const add = document.createElement('button');
+  add.className = 'buy-button add-part';
+  add.type = 'button';
+  add.textContent = 'Añadir al carrito';
+  add.setAttribute('aria-label', `Añadir ${card.querySelector('h4').textContent} al carrito de solicitud`);
+  card.querySelector('.view-options').before(add);
+  card.querySelector('.view-options').textContent = 'Cómo identificarlo';
+});
+document.querySelector('.parts-grid').addEventListener('click', event => {
+  const add = event.target.closest('.add-part');
+  if (add) addPartToCart(add.closest('.part-card'));
+});
 
 document.querySelectorAll('.view-options').forEach(button => button.addEventListener('click', () => {
   const options = button.nextElementSibling;
@@ -348,17 +416,7 @@ document.querySelectorAll('.view-options').forEach(button => button.addEventList
 }));
 
 document.querySelectorAll('.request-family').forEach(button => button.addEventListener('click', () => {
-  const name = button.closest('.part-card').querySelector('.view-options').dataset.name;
-  const model = currentModel ? `${currentMachine.label} ${currentModel.name}` : `${currentMachine.label} — modelo por identificar`;
-  const existing = cart.find(item => item.name === name && item.model === model);
-  if (existing) existing.quantity += 1;
-  else cart.push({ name, store: 'Familia de repuestos', model, quantity: 1 });
-  const quoteMachine = document.getElementById('quote-machine');
-  const machineOption = [...quoteMachine.options].find(option => model.toLowerCase().includes(option.text.toLowerCase().split(' ')[0]));
-  if (machineOption) quoteMachine.value = machineOption.value;
-  if (currentModel) document.getElementById('quote-reference').value = currentModel.name;
-  renderCart();
-  openCart();
+  addPartToCart(button.closest('.part-card'));
 }));
 
 cartItems.addEventListener('click', event => {
@@ -385,8 +443,8 @@ function quoteMessage() {
   const reference = document.getElementById('quote-reference').value.trim() || 'Por identificar';
   const locationText = document.getElementById('quote-location').value.trim();
   const photo = document.getElementById('quote-photo').checked ? '\nTengo una fotografía o placa para adjuntar.' : '';
-  const lines = cart.map(item => `• ${item.quantity} × ${item.name} · ${item.model} (referencia exacta por identificar)`).join('\n');
-  return `Hola AWO Group, solicito una cotización de repuestos:\nMáquina: ${machine}\nReferencia o modelo: ${reference}\nCiudad y país: ${locationText}\n${lines}${photo}\nPor favor validen referencia, compatibilidad, disponibilidad y precio.`;
+  const lines = cart.map(item => `• ${item.quantity} × ${item.name} · ${item.model} · código: ${item.code || 'por confirmar'} · precio: ${Number.isFinite(item.priceCOP) ? cop(item.priceCOP) + ' c/u' : 'por confirmar'}`).join('\n');
+  return `Hola AWO Group, quiero solicitar estos repuestos de AWO Parts:\nMáquina: ${machine}\nReferencia o modelo: ${reference}\nCiudad y país: ${locationText}\n${lines}${photo}\nPor favor confirmen las referencias, compatibilidad, precio final y envío para completar la compra.`;
 }
 
 document.getElementById('email-quote').addEventListener('click', () => {
