@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=awo-vdcm-photos-20260929b">
+  <link rel="stylesheet" href="/styles.css?v=awo-parts-20260929a">
 </head>
 <body>
   <header class="site-header" id="inicio">
@@ -212,7 +212,38 @@
     </section>
 
     <section class="section marketplace" id="repuestos" hidden>
-      <div class="container">
+      <div class="container awo-parts-container">
+        <div class="awo-parts-experience" id="awo-parts-marketplace">
+          <div class="awo-parts-breadcrumb"><a href="/">Inicio</a><span>›</span><strong>AWO Parts</strong></div>
+          <section class="awo-parts-hero" aria-labelledby="awo-parts-title">
+            <span class="awo-parts-kicker">AWO PARTS · REPUESTOS Y CONSUMIBLES</span>
+            <h1 id="awo-parts-title">Repuestos que mantienen<br>tu operación en movimiento.</h1>
+            <p>Encuentra repuestos y consumibles para tus equipos industriales.</p>
+            <label class="awo-parts-search"><span class="sr-only">Buscar por nombre, referencia o equipo</span><input id="awo-parts-query" type="search" placeholder="Buscar por nombre, referencia o equipo…" autocomplete="off"><span aria-hidden="true">⌕</span></label>
+            <p class="awo-parts-examples">Por ejemplo: filtro de aire · 2914100241 · VDCM 15 · selladora · codificadora</p>
+            <a id="awo-parts-help-top" class="awo-parts-text-link" href="#awo-parts-identificar">¿No encuentras tu repuesto? →</a>
+          </section>
+          <section class="awo-parts-listing" aria-labelledby="awo-parts-catalog-title">
+            <div class="awo-parts-section-head"><div><span class="awo-parts-kicker">CATÁLOGO TÉCNICO</span><h2 id="awo-parts-catalog-title">Explora por tipo de máquina</h2></div><p>Consulta la compatibilidad antes de solicitar el repuesto.</p></div>
+            <div class="awo-parts-machines" id="awo-parts-machines" role="group" aria-label="Tipo de máquina"></div>
+            <div class="awo-parts-results-layout">
+              <details class="awo-parts-filters" id="awo-parts-filters" open><summary>Filtros <span aria-hidden="true">⌄</span></summary><div class="awo-parts-filter-fields">
+                <label>Tipo de máquina<select id="awo-parts-machine"></select></label>
+                <label>Categoría<select id="awo-parts-category"></select></label>
+                <label>Tipo de producto<select id="awo-parts-type"></select></label>
+                <label>Modelo<select id="awo-parts-model"></select></label>
+                <label>Marca / línea<select id="awo-parts-brand"></select></label>
+                <label>Referencia<input id="awo-parts-reference" type="search" placeholder="Número de referencia"></label>
+                <button id="awo-parts-reset" type="button">Limpiar filtros</button>
+              </div></details>
+              <div class="awo-parts-results"><div class="awo-parts-results-head"><h3>Productos registrados</h3><span id="awo-parts-count" aria-live="polite"></span></div><div class="awo-parts-grid" id="awo-parts-grid"></div><p id="awo-parts-empty" class="awo-parts-empty" hidden>No hay productos registrados para esta selección. Envíanos la referencia o una fotografía para ayudarte a identificarlo. <a href="#awo-parts-identificar">Identificar mi repuesto →</a></p></div>
+            </div>
+          </section>
+          <section class="awo-parts-assist" id="awo-parts-identificar"><span class="awo-parts-kicker">IDENTIFICACIÓN DE REPUESTOS</span><h2>¿No sabes qué repuesto necesitas?</h2><p>Envíanos una fotografía de la pieza, la referencia o la placa de tu equipo y te ayudamos a identificarla.</p><a class="awo-parts-button" data-parts-message="identify" target="_blank" rel="noopener">Identificar mi repuesto ↗</a></section>
+          <section class="awo-parts-care"><div><span>AWO CARE</span><h2>¿Necesitas instalación o mantenimiento?</h2><p>Repuestos + mantenimiento + soporte técnico.</p></div><a href="/planes">Solicitar soporte →</a></section>
+        </div>
+        <article id="awo-parts-product" class="awo-parts-product" hidden aria-live="polite"></article>
+        <details class="awo-parts-legacy" id="awo-parts-legacy"><summary>Consultar el catálogo anterior por familia de máquina <span aria-hidden="true">⌄</span></summary><div class="awo-parts-legacy-body">
         <nav class="shop-breadcrumb" aria-label="Ruta de compra"><a href="/">Inicio</a><b>›</b><strong>Tienda de Repuestos</strong><b>›</b><span id="shop-machine-breadcrumb">Selladoras de banda</span></nav>
       <section class="container awo-find-panel" aria-labelledby="awo-find-title">
         <div class="awo-panel-heading"><div><h2 id="awo-find-title">AWO Parts: repuestos para compresores y otras máquinas</h2><p>Busca por referencia, modelo o tipo de repuesto. También puedes enviarnos una foto o la placa de tu equipo.</p></div></div>
@@ -281,7 +312,7 @@
             </div>
             <div class="machine-pending-panel" id="machine-pending-panel" hidden><strong>Repuestos en preparación</strong><span>Estamos cargando los repuestos de esta familia. Puedes enviarnos una fotografía o la placa para identificar el componente.</span><a id="machine-pending-link" href="#">Consultar repuesto por WhatsApp →</a></div>
             <div class="parts-section">
-              <div class="parts-heading"><div><span class="kicker">2. Elige los repuestos</span><h3>Repuestos para <span id="parts-model-name">Selladoras · todas las referencias</span></h3><p>Explora las piezas, revisa sus características y añádelas al carrito. Confirmamos código, compatibilidad y precio antes del envío.</p></div><span class="parts-count"><b id="visible-parts-count">4</b> en catálogo</span></div>
+              <div class="parts-heading"><div><span class="kicker">2. Elige los repuestos</span><h3>Repuestos para <span id="parts-model-name">Selladoras · todas las referencias</span></h3><p>Explora las piezas y sus características. Confirmamos código, compatibilidad y precio antes de la cotización.</p></div><span class="parts-count"><b id="visible-parts-count">4</b> en catálogo</span></div>
               <div class="parts-filters" aria-label="Filtrar repuestos"><button class="active" type="button" data-filter="all">Todos</button><button type="button" data-filter="sellado" data-filter-family="selladora">Sellado</button><button type="button" data-filter="calentamiento" data-filter-family="selladora">Calentamiento</button><button type="button" data-filter="temperatura" data-filter-family="selladora">Temperatura</button><button type="button" data-filter="transmision" data-filter-family="selladora">Transmisión</button><button type="button" data-filter="filtracion" data-filter-family="compresor" hidden>Filtración</button><button type="button" data-filter="condensado" data-filter-family="compresor" hidden>Condensado</button><button type="button" data-filter="control" data-filter-family="compresor" hidden>Control</button><button type="button" data-filter="enfriamiento" data-filter-family="compresor" hidden>Enfriamiento</button></div>
               <div class="parts-grid">
                 <article class="part-card" data-machine="selladora" data-models="fr770 fr900 fr1000 fr1300" data-category="sellado" data-search="cintas teflon sellado banda"><div class="part-visual"><img src="/assets/repuestos/cintas-teflon.webp" alt="Cintas de teflón, imagen de referencia" loading="lazy" width="900" height="900"></div><span>Sellado</span><h4>Cintas de teflón</h4><p>Bandas y cintas resistentes a temperatura para el sistema de sellado.</p><dl class="part-spec"><div><dt>Modelos</dt><dd>FR-770 · FR-900 · FR-1000 · FR-1300</dd></div><div><dt>Especificación</dt><dd>Material: PTFE · medidas por validar</dd></div><div><dt>Disponibilidad</dt><dd>Consultar</dd></div></dl><small class="compatibility">Validamos la compatibilidad antes del despacho</small><button class="buy-button view-options" type="button" aria-expanded="false" data-name="Cintas de teflón" data-store="Repuestos">Ver opciones</button><div class="part-options" hidden><p>La referencia y especificación exactas se identifican con la placa o fotografía de su equipo.</p><button type="button" class="request-family">Solicitar identificación y cotización</button></div></article>
@@ -354,6 +385,7 @@
           </div>
           <p class="awo-hour-note">La frecuencia de mantenimiento se valida con el manual y el uso real del compresor. Envíenos una foto de la placa o el registro de horas para preparar la propuesta.</p>
         </section>
+        </div></details>
       </div>
     </section>
 
@@ -596,5 +628,7 @@
     <div class="cart-footer"><div class="cart-note"><span>Solicitud de repuestos</span><strong>Código, precio y compatibilidad sujetos a confirmación</strong></div><div id="cart-total" class="cart-total" aria-live="polite"></div><button class="button primary" id="checkout-cart" type="button" disabled>Solicitar pedido por WhatsApp <span>↗</span></button><button class="button secondary" id="email-quote" type="button" disabled>Enviar por correo ↗</button><small>AWO confirmará las referencias, el valor y el envío antes de cerrar la compra. No se realiza un cobro aquí.</small></div>
   </aside>
   <script src="/script.js?v=awo-vdcm-gallery-20260929c"></script>
+  <script src="/parts-catalog.js?v=1"></script>
+  <script src="/parts-marketplace.js?v=1"></script>
 </body>
 </html>

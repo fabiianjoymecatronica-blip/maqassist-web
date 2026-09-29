@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const publicDir = path.join(__dirname, "public");
+const partsProducts = require("./public/parts-catalog.js");
 const port = process.env.PORT || 3000;
 const types = {
   ".html": "text/html; charset=utf-8",
@@ -23,8 +24,18 @@ function renderHtml(data, req, pathname) {
   const protocol = req.headers['x-forwarded-proto'] === 'https' ? 'https' : safeHost.startsWith('localhost') ? 'http' : 'https';
   const origin = configuredOrigin || `${protocol}://${safeHost}`;
   const productMatch = pathname.match(/^\/compresores\/vdcm-(7|10|15|20)\/?$/);
-  const cleanPath = productMatch ? `/compresores/vdcm-${productMatch[1]}` : ['/repuestos', '/maquinas', '/planes', '/servicios', '/nosotros', '/contacto'].includes(pathname) ? pathname : '/';
+  const partsProduct = partsProducts.find(product => pathname.replace(/\/$/, '') === `/repuestos/${product.slug}`);
+  const cleanPath = partsProduct ? `/repuestos/${partsProduct.slug}` : productMatch ? `/compresores/vdcm-${productMatch[1]}` : ['/repuestos', '/maquinas', '/planes', '/servicios', '/nosotros', '/contacto'].includes(pathname) ? pathname : '/';
   let html = data.toString('utf8').replace('__CANONICAL_URL__', new URL(cleanPath, origin).href);
+  if (partsProduct) {
+    const title = `${partsProduct.name} ${partsProduct.reference} | AWO Parts · AWO Group`;
+    const description = `${partsProduct.name} referencia ${partsProduct.reference}: ${partsProduct.description} Consulta compatibilidad y cotización con AWO Parts.`;
+    html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
+      .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${description}">`);
+  } else if (pathname === '/repuestos') {
+    html = html.replace(/<title>[^<]*<\/title>/, '<title>AWO Parts | Repuestos industriales y consumibles · AWO Group</title>')
+      .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="Encuentra repuestos y consumibles industriales en AWO Parts. Busca por referencia, tipo de equipo o categoría y solicita cotización y verificación de compatibilidad.">');
+  }
   if (productMatch) {
     const number = productMatch[1];
     const title = `Compresor de tornillo AWO VDCM ${number} · ${number} HP | AWO Group`;

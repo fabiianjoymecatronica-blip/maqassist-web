@@ -2675,3 +2675,95 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-range{scroll-margin-
 @media(prefers-reduced-motion:no-preference){.awo-gallery-thumbs button,.awo-gallery-nav button{transition:border-color .2s ease,background-color .2s ease}}
 .awo-product-models a small{display:block;margin-top:5px;color:#59665B;font-size:11px;font-weight:500;white-space:nowrap}
 .awo-product-models a.active small{color:inherit}
+
+/* AWO Parts: marketplace técnico, restringido a /repuestos. */
+body[data-page="repuestos"] #repuestos{background:#fff;color:#17212b}
+#repuestos .awo-parts-container{display:block;width:100%;min-width:0}
+#repuestos .awo-parts-experience,#repuestos .awo-parts-product{--parts-blue:#1683C4;max-width:1240px;margin:0 auto}
+#repuestos .awo-parts-experience[hidden],#repuestos .awo-parts-product[hidden],#repuestos .awo-parts-legacy[hidden]{display:none!important}
+#repuestos .awo-parts-breadcrumb{display:flex;align-items:center;gap:10px;padding:20px 0;color:#6c7882;font-size:12px}
+#repuestos .awo-parts-breadcrumb a{color:#425969;text-decoration:none}#repuestos .awo-parts-breadcrumb a:hover{color:#1683C4}
+#repuestos .awo-parts-breadcrumb strong{color:#1b2933}
+#repuestos .awo-parts-kicker{display:block;color:#1683C4;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+#repuestos .awo-parts-hero{position:relative;padding:80px 7% 76px;background:#f5f8fa;border:1px solid #e1e8ed;overflow:hidden}
+#repuestos .awo-parts-hero:before{content:"";position:absolute;right:5%;top:0;bottom:0;width:1px;background:#d9e9f3;transform:skew(-15deg);pointer-events:none}
+#repuestos .awo-parts-hero h1{font-size:clamp(36px,4.1vw,64px);line-height:1.08;letter-spacing:-.045em;margin:18px 0 14px;max-width:870px;color:#17212b;text-transform:uppercase}
+#repuestos .awo-parts-hero>p:not(.awo-parts-examples){font-size:17px;color:#53616d;margin:0 0 32px}
+#repuestos .awo-parts-search{display:flex;align-items:center;max-width:720px;height:64px;background:#fff;border:1px solid #ccd9e2;box-shadow:0 10px 30px #142d3e0d}
+#repuestos .awo-parts-search:focus-within{border-color:#1683C4;outline:2px solid #1683C440}
+#repuestos .awo-parts-search input{width:100%;height:100%;border:0;outline:0;background:transparent;padding:0 22px;color:#17212b;font:inherit;font-size:15px;min-width:0}
+#repuestos .awo-parts-search>span:last-child{font-size:31px;color:#1683C4;padding:0 20px}
+#repuestos .awo-parts-examples{font-size:12px!important;color:#677581;margin:10px 0 25px!important}
+#repuestos .awo-parts-text-link{color:#1683C4;font-weight:800;font-size:13px;text-decoration:none}
+#repuestos .awo-parts-listing{padding:78px 0 55px}
+#repuestos .awo-parts-section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}
+#repuestos .awo-parts-section-head h2{font-size:clamp(27px,3vw,38px);margin:9px 0 0;color:#17212b}
+#repuestos .awo-parts-section-head p{max-width:280px;color:#66747e;font-size:13px;margin:0}
+#repuestos .awo-parts-machines{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+#repuestos .awo-parts-machines button{padding:13px 16px;background:#fff;border:1px solid #d8e2e8;color:#344858;font:700 11px Manrope,sans-serif;text-transform:uppercase;letter-spacing:.04em;cursor:pointer}
+#repuestos .awo-parts-machines button:hover,#repuestos .awo-parts-machines button.active{background:#1683C4;border-color:#1683C4;color:white}
+#repuestos .awo-parts-results-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:30px;align-items:start}
+#repuestos .awo-parts-filters{border:1px solid #e0e7ec;background:#f7f9fa;padding:18px}
+#repuestos .awo-parts-filters summary{font-weight:800;color:#17212b;list-style:none;cursor:pointer;display:flex;justify-content:space-between}
+#repuestos .awo-parts-filters summary::-webkit-details-marker{display:none}
+#repuestos .awo-parts-filter-fields{display:grid;gap:16px;margin-top:22px}
+#repuestos .awo-parts-filter-fields label{display:grid;gap:6px;font-size:11px;font-weight:800;color:#344858;text-transform:uppercase}
+#repuestos .awo-parts-filter-fields select,#repuestos .awo-parts-filter-fields input{width:100%;min-width:0;background:#fff;border:1px solid #cfdce5;border-radius:0;padding:11px;color:#243544;font:600 12px Manrope,sans-serif}
+#repuestos .awo-parts-filter-fields button{background:none;border:0;border-top:1px solid #d8e2e8;padding:16px 0 0;color:#1683C4;cursor:pointer;font:800 12px Manrope,sans-serif;text-align:left}
+#repuestos .awo-parts-results-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #dfe7ec;padding-bottom:16px;margin-bottom:22px}
+#repuestos .awo-parts-results-head h3{font-size:22px;margin:0;color:#17212b}
+#repuestos .awo-parts-results-head span{font-size:12px;color:#697982}
+#repuestos .awo-parts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+#repuestos .awo-parts-card{border:1px solid #dce5ea;background:#fff;min-width:0;transition:border-color .2s,transform .2s}
+#repuestos .awo-parts-card:hover{border-color:#1683C4;transform:translateY(-3px)}
+#repuestos .awo-parts-card-photo{display:block;height:280px;background:#f6f7f6;overflow:hidden}
+#repuestos .awo-parts-card-photo img{width:100%;height:100%;object-fit:contain}
+#repuestos .awo-parts-card-copy{padding:20px}
+#repuestos .awo-parts-badge{display:inline-flex;border:1px solid #cbe1ef;background:#eff7fc;color:#11699e;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 8px}
+#repuestos .awo-parts-card h4{font-size:21px;color:#17212b;margin:17px 0 8px}
+#repuestos .awo-parts-card-copy strong{display:block;color:#506271;font-size:12px}
+#repuestos .awo-parts-card-copy p{font-size:12px;color:#6d7b85;margin:16px 0 22px}
+#repuestos .awo-parts-card-copy a:last-child{display:flex;justify-content:space-between;border-top:1px solid #e5ebef;padding-top:15px;color:#1683C4;font-size:12px;font-weight:800;text-transform:uppercase;text-decoration:none}
+#repuestos .awo-parts-empty{padding:30px;border:1px solid #dce5ea;background:#f8fafb;line-height:1.7;color:#53616d}
+#repuestos .awo-parts-empty[hidden]{display:none}#repuestos .awo-parts-empty a{color:#1683C4;font-weight:700}
+#repuestos .awo-parts-assist{padding:48px 6%;background:#eaf4fa;border-left:3px solid #1683C4;margin:10px 0 28px}
+#repuestos .awo-parts-assist h2{font-size:clamp(25px,3vw,38px);margin:12px 0;color:#17212b}
+#repuestos .awo-parts-assist p{color:#506271;max-width:700px;line-height:1.7}
+#repuestos .awo-parts-button{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;background:#1683C4;color:#fff;text-decoration:none;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;border:1px solid #1683C4;min-height:48px}
+#repuestos .awo-parts-button:hover{background:#106a9f}
+#repuestos .awo-parts-button.secondary{background:white;color:#1683C4}
+#repuestos .awo-parts-care{display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid #e4e8ea;padding:28px 35px;margin-bottom:56px}
+#repuestos .awo-parts-care span{color:#e97b29;font-size:11px;font-weight:800;letter-spacing:.1em}
+#repuestos .awo-parts-care h2{font-size:21px;margin:7px 0;color:#17212b}
+#repuestos .awo-parts-care p{font-size:13px;color:#65727b;margin:0}
+#repuestos .awo-parts-care a{color:#e97b29;font-size:12px;font-weight:800;text-decoration:none;white-space:nowrap}
+#repuestos .awo-parts-legacy{border-top:1px solid #e0e7ec;padding:18px 0 48px;margin-top:12px}
+#repuestos .awo-parts-legacy>summary{cursor:pointer;color:#506271;font-weight:700;font-size:13px}
+#repuestos .awo-parts-legacy-body{padding-top:28px}
+#repuestos .awo-parts-legacy .add-part,#repuestos .awo-parts-legacy .request-family{display:none!important}
+body[data-page="repuestos"] .cart-button,body[data-page="repuestos"] .cart-overlay,body[data-page="repuestos"] .cart-drawer{display:none!important}
+#repuestos .awo-parts-product{padding-bottom:80px}
+#repuestos .awo-parts-product .awo-parts-breadcrumb{padding:25px 0 34px}
+#repuestos .awo-parts-detail-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:start}
+#repuestos .awo-parts-gallery-main{background:#f5f6f5;display:grid;place-items:center;position:relative;height:min(65vw,620px);max-height:620px}
+#repuestos .awo-parts-gallery-main img{width:100%;height:100%;object-fit:contain}
+#repuestos .awo-parts-gallery-main span{position:absolute;left:16px;bottom:16px;background:#fffdf4ee;padding:7px 10px;color:#40515e;font-size:11px;font-weight:700}
+#repuestos .awo-parts-thumbnails{display:flex;gap:9px;overflow-x:auto;padding:12px 0;scroll-snap-type:x mandatory}
+#repuestos .awo-parts-thumbnails button{flex:0 0 79px;height:86px;padding:0;border:1px solid #d7e2e8;background:#f5f6f5;cursor:pointer;scroll-snap-align:start}
+#repuestos .awo-parts-thumbnails button[aria-pressed="true"]{border:2px solid #1683C4}
+#repuestos .awo-parts-thumbnails img{width:100%;height:100%;object-fit:contain}
+#repuestos .awo-parts-detail-copy>.awo-parts-badge{margin-top:24px}
+#repuestos .awo-parts-detail-copy h1{font-size:clamp(35px,4vw,56px);color:#17212b;text-transform:uppercase;line-height:1.08;margin:13px 0}
+#repuestos .awo-parts-ref{font-size:15px;color:#5e6d79}.awo-parts-ref strong{color:#17212b}
+#repuestos .awo-parts-description{color:#52616c;line-height:1.75;font-size:14px;margin:30px 0}
+#repuestos .awo-parts-detail-copy dl{border-top:1px solid #dce5ea;margin:0}
+#repuestos .awo-parts-detail-copy dl div{display:flex;justify-content:space-between;gap:24px;padding:13px 0;border-bottom:1px solid #dce5ea;font-size:13px}
+#repuestos .awo-parts-detail-copy dt{color:#687783}#repuestos .awo-parts-detail-copy dd{color:#17212b;font-weight:700;text-align:right;margin:0}
+#repuestos .awo-parts-price{display:flex;justify-content:space-between;align-items:center;background:#f5f8fa;margin:27px 0;padding:19px 20px}
+#repuestos .awo-parts-price span{font-size:11px;color:#697984;letter-spacing:.1em;font-weight:800}#repuestos .awo-parts-price strong{font-size:20px;color:#17212b}
+#repuestos .awo-parts-detail-actions{display:flex;flex-wrap:wrap;gap:9px}
+#repuestos .awo-parts-reference-note{font-size:12px;color:#6b7982;line-height:1.6;margin:20px 0}
+@media(max-width:900px){#repuestos .awo-parts-results-layout{grid-template-columns:200px minmax(0,1fr);gap:20px}#repuestos .awo-parts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#repuestos .awo-parts-detail-grid{gap:28px}}
+@media(max-width:700px){#repuestos .awo-parts-hero{padding:46px 22px 50px}#repuestos .awo-parts-hero h1{font-size:clamp(29px,8vw,43px)}#repuestos .awo-parts-hero>p:not(.awo-parts-examples){font-size:14px}#repuestos .awo-parts-search{height:58px}#repuestos .awo-parts-search input{font-size:13px;padding:0 12px}#repuestos .awo-parts-listing{padding:50px 0 28px}#repuestos .awo-parts-section-head{display:block}#repuestos .awo-parts-section-head p{margin-top:12px}#repuestos .awo-parts-machines{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px}#repuestos .awo-parts-machines button{flex:0 0 auto}#repuestos .awo-parts-results-layout{display:block}#repuestos .awo-parts-filters{padding:15px;margin-bottom:25px}#repuestos .awo-parts-filters:not([open]) .awo-parts-filter-fields{display:none}#repuestos .awo-parts-filter-fields{grid-template-columns:repeat(2,minmax(0,1fr))}#repuestos .awo-parts-filter-fields button{grid-column:1/-1}#repuestos .awo-parts-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#repuestos .awo-parts-card-photo{height:210px}#repuestos .awo-parts-card-copy{padding:13px}#repuestos .awo-parts-card h4{font-size:17px}#repuestos .awo-parts-card-copy p{font-size:11px}#repuestos .awo-parts-assist{padding:35px 24px}#repuestos .awo-parts-care{display:block;padding:22px}#repuestos .awo-parts-care a{display:inline-block;margin-top:19px}#repuestos .awo-parts-detail-grid{grid-template-columns:1fr;gap:28px}#repuestos .awo-parts-gallery-main{height:76vw;max-height:550px}#repuestos .awo-parts-detail-actions{display:grid}#repuestos .awo-parts-button{width:100%}}
+@media(max-width:380px){#repuestos .awo-parts-grid{grid-template-columns:1fr}#repuestos .awo-parts-card-photo{height:260px}#repuestos .awo-parts-filter-fields{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#repuestos .awo-parts-card{transition:none}}
