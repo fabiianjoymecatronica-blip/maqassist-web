@@ -759,13 +759,15 @@ function renderVdcmProduct(number) {
 const vdcmPhotoSlides = [
   { src: 'vdcm15-frontal-real.webp', width: 1292, height: 1217, title: 'Vista general', alt: 'AWO VDCM 15 cerrado sobre tanque horizontal', description: 'Vista real del equipo cerrado: gabinete y tanque horizontal.' },
   { src: 'vdcm15-interior-real.webp', width: 1152, height: 1536, title: 'Interior', alt: 'Gabinete abierto del AWO VDCM 15', description: 'Interior del gabinete abierto; observa el conjunto mecánico y las conexiones visibles.' },
-  { src: 'vdcm15-interior-real.webp', width: 1152, height: 1536, title: 'Compresión', alt: 'Conjunto mecánico visible dentro del AWO VDCM 15', description: 'Conjunto mecánico fotografiado. El Air End Hanbell es una tecnología confirmada de la línea.' },
+  { src: 'vdcm15-electrico-abierto-real.webp', width: 1152, height: 1536, title: 'Gabinete eléctrico', alt: 'Puertas abiertas del VDCM 15 y compartimiento eléctrico visible', description: 'Vista real del gabinete abierto con el variador Inovance y las conexiones visibles.' },
+  { src: 'vdcm15-lateral-abierto-real.webp', width: 1152, height: 1536, title: 'Lateral abierto', alt: 'Vista lateral abierta del VDCM 15 con módulo de tratamiento y tanque', description: 'Otro ángulo del equipo abierto: gabinete, conexiones, filtros y tanque en su montaje real.' },
   { src: 'vdcm15-inovance-real.webp', width: 1152, height: 1536, title: 'Tecnología VSD', alt: 'Variador Inovance real del VDCM 15', description: 'Variador Inovance fotografiado en el equipo. Ajusta la velocidad del motor a la demanda de aire.' },
   { src: 'vdcm15-vista-recta-real.webp', width: 1086, height: 1448, title: 'Vista de extremo', alt: 'Vista real del extremo del AWO VDCM 15 sobre el tanque', description: 'Vista desde el extremo del gabinete y el tanque, conservando las proporciones originales.' },
   { src: 'vdcm15-posterior-real.webp', width: 1303, height: 1207, title: 'Tratamiento del aire', alt: 'Vista posterior del VDCM 15 con filtros y tanque', description: 'Vista real posterior con filtros azules, conexiones y tanque horizontal.' },
   { src: 'vdcm15-filtracion-real.webp', width: 1152, height: 1536, title: 'Filtración', alt: 'Detalle de filtros azules del VDCM 15', description: 'Detalle fotográfico del conjunto de filtros y sus tuberías.' },
   { src: 'vdcm15-control-purga-real.webp', width: 1152, height: 1536, title: 'Purga automática', alt: 'Detalle del control y las conexiones de purga del VDCM 15', description: 'Control y conexiones visibles del sistema de purga de condensado.' },
-  { src: 'vdcm15-purga-conexiones-real.webp', width: 1152, height: 1536, title: 'Tanque y conexiones', alt: 'Conexiones de la purga sobre el tanque real del VDCM 15', description: 'Detalle de conexiones sobre el tanque horizontal real; se conservan las proporciones de la fotografía.' }
+  { src: 'vdcm15-purga-conexiones-real.webp', width: 1152, height: 1536, title: 'Tanque y conexiones', alt: 'Conexiones de la purga sobre el tanque real del VDCM 15', description: 'Detalle de conexiones sobre el tanque horizontal real; se conservan las proporciones de la fotografía.' },
+  { src: 'vdcm15-placa-tanque-real.webp', width: 1152, height: 1536, title: 'Placa del tanque', alt: 'Placa original del tanque del AWO VDCM 15 con volumen de 0,30 m³', description: 'La placa original del tanque indica 0,30 m³ de volumen, equivalentes a 300 L.' }
 ];
 let vdcmPhotoIndex = 0;
 const vdcmGalleryImage = document.getElementById('vdcm-gallery-image');
