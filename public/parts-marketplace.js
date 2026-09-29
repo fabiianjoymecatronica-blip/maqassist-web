@@ -24,7 +24,12 @@
   $('awo-parts-machines').innerHTML = `<button type="button" data-parts-machine="" class="active" aria-pressed="true">Todos</button>${machines.map(machine => `<button type="button" data-parts-machine="${escape(machine)}" aria-pressed="false">${escape(machine)}</button>`).join('')}`;
   const query = $('awo-parts-query');
   query.value = new URLSearchParams(location.search).get('buscar') || '';
-  if (new URLSearchParams(location.search).get('categoria') === 'compresor') selects.machine.value = 'Compresores';
+  const legacyFamily = new URLSearchParams(location.search).get('categoria');
+  const familyToMachine = {compresor:'Compresores',selladora:'Selladoras',codificadora:'Codificadoras',flowpack:'Máquinas de empaque',empacadora290:'Máquinas de empaque',dosificadora:'Máquinas de empaque',otras:'Otros equipos'};
+  if (familyToMachine[legacyFamily]) selects.machine.value = familyToMachine[legacyFamily];
+  const legacyHashes = ['#catalogo-repuestos','#repuestos-compresor','#planes-compresor'];
+  if (legacyHashes.includes(location.hash)) $('awo-parts-legacy').open = true;
+  window.addEventListener('hashchange', () => { if (legacyHashes.includes(location.hash)) $('awo-parts-legacy').open = true; });
   const machineFromQuery = normal(query.value);
   if (!products.some(p => normal([p.name,p.reference,p.machineType,p.application,p.category].join(' ')).includes(machineFromQuery)) && ['vdcm 7','vdcm 10','vdcm 15','vdcm 20'].includes(machineFromQuery)) {
     selects.model.value = query.value.toUpperCase(); query.value = '';
