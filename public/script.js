@@ -761,7 +761,7 @@ function updatePageView() {
     for (const [slot, block] of [['range', range], ['parts', parts], ['care', care], ['benefits', benefits], ['quote', quote]]) {
       experience.querySelector(`[data-cx-slot="${slot}"]`).appendChild(block);
     }
-    if (!awoSelectedMachineModel) document.querySelector('[data-machine-model="10"]').click();
+    if (!awoSelectedMachineModel) document.querySelector('[data-machine-model="15"]').click();
     else {
       range.querySelector('.awo-compressor-range-visual').hidden = false;
       range.querySelector('.awo-machine-gallery').hidden = true;
