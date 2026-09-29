@@ -31,15 +31,15 @@
   if (legacyHashes.includes(location.hash)) $('awo-parts-legacy').open = true;
   window.addEventListener('hashchange', () => { if (legacyHashes.includes(location.hash)) $('awo-parts-legacy').open = true; });
   const machineFromQuery = normal(query.value);
-  if (!products.some(p => normal([p.name,p.reference,p.machineType,p.application,p.category].join(' ')).includes(machineFromQuery)) && ['vdcm 7','vdcm 10','vdcm 15','vdcm 20'].includes(machineFromQuery)) {
+  if (!products.some(p => normal([p.name,p.reference,p.awoId,p.machineType,p.application,p.category].join(' ')).includes(machineFromQuery)) && ['vdcm 7','vdcm 10','vdcm 15','vdcm 20'].includes(machineFromQuery)) {
     selects.model.value = query.value.toUpperCase(); query.value = '';
   }
   function renderList() {
     const search = normal(query.value.trim());
     const reference = normal($('awo-parts-reference').value.trim());
     const found = products.filter(p => {
-      const searchable = normal([p.name,p.reference,p.sku,p.category,p.subcategory,p.machineType,p.application,p.brand,...p.compatibleModels].join(' '));
-      return (!search || searchable.includes(search)) && (!reference || normal(p.reference).includes(reference)) &&
+      const searchable = normal([p.name,p.reference,p.awoId,p.sku,p.category,p.subcategory,p.machineType,p.application,p.brand,...p.compatibleModels].join(' '));
+      return (!search || searchable.includes(search)) && (!reference || normal([p.reference,p.awoId].join(' ')).includes(reference)) &&
         (!selects.machine.value || p.machineType === selects.machine.value) &&
         (!selects.category.value || p.category === selects.category.value) &&
         (!selects.type.value || p.productType === selects.type.value) &&
@@ -47,7 +47,7 @@
         (!selects.brand.value || p.brand === selects.brand.value);
     });
     $('awo-parts-count').textContent = `${found.length} ${found.length === 1 ? 'producto' : 'productos'}`;
-    $('awo-parts-grid').innerHTML = found.map(p => `<article class="awo-parts-card"><a class="awo-parts-card-photo" href="/repuestos/${encodeURIComponent(p.slug)}"><img src="${escape(p.images[0].src)}" alt="${escape(p.images[0].alt)}" width="${p.images[0].width}" height="${p.images[0].height}" loading="lazy"></a><div class="awo-parts-card-copy"><span class="awo-parts-badge">${escape(p.productType)}</span><h4>${escape(p.name)}</h4><strong>REF. ${escape(p.reference)}</strong><p>${escape(p.category)} · ${escape(p.application)}</p><a href="/repuestos/${encodeURIComponent(p.slug)}">Ver detalle <span aria-hidden="true">→</span></a></div></article>`).join('');
+    $('awo-parts-grid').innerHTML = found.map(p => `<article class="awo-parts-card"><a class="awo-parts-card-photo" href="/repuestos/${encodeURIComponent(p.slug)}"><img src="${escape(p.images[0].src)}" alt="${escape(p.images[0].alt)}" width="${p.images[0].width}" height="${p.images[0].height}" loading="lazy"></a><div class="awo-parts-card-copy"><span class="awo-parts-badge">${escape(p.productType)}</span><h4>${escape(p.name)}</h4><strong>REF. ${escape(p.reference)}</strong>${p.awoId ? `<p>ID AWO: ${escape(p.awoId)}</p>` : ''}<p>${escape(p.category)} · ${escape(p.application)}</p><a href="/repuestos/${encodeURIComponent(p.slug)}">Ver detalle <span aria-hidden="true">→</span></a></div></article>`).join('');
     $('awo-parts-empty').hidden = found.length > 0;
     document.querySelectorAll('[data-parts-machine]').forEach(button => {
       const active = button.dataset.partsMachine === selects.machine.value;
@@ -74,11 +74,11 @@
     $('awo-parts-marketplace').hidden = true;
     $('awo-parts-legacy').hidden = true;
     document.body.dataset.partsProduct = 'true';
-    const quote = wa(`Hola AWO, quiero cotizar el ${product.name.toLowerCase()} referencia ${product.reference}. ¿Me ayudan a confirmar precio y compatibilidad?`);
-    const compatibility = wa(`Hola AWO, necesito verificar la compatibilidad del ${product.name.toLowerCase()} referencia ${product.reference} con mi compresor.`);
+    const quote = wa(`Hola AWO, quiero cotizar el ${product.name.toLowerCase()} referencia ${product.reference}${product.awoId ? ` (ID AWO ${product.awoId})` : ''}. ¿Me ayudan a confirmar precio y compatibilidad?`);
+    const compatibility = wa(`Hola AWO, necesito verificar la compatibilidad del ${product.name.toLowerCase()} referencia ${product.reference}${product.awoId ? ` (ID AWO ${product.awoId})` : ''} con mi compresor.`);
     $('awo-parts-product').innerHTML = `<nav class="awo-parts-breadcrumb" aria-label="Ruta"><a href="/">Inicio</a><span>›</span><a href="/repuestos">AWO Parts</a><span>›</span><strong>${escape(product.name)}</strong></nav>
       <div class="awo-parts-detail-grid"><div class="awo-parts-gallery"><div class="awo-parts-gallery-main"><img id="awo-parts-main-photo" src="${escape(product.images[0].src)}" alt="${escape(product.images[0].alt)}" width="${product.images[0].width}" height="${product.images[0].height}"><span id="awo-parts-photo-label">${escape(product.images[0].label)}</span></div><div class="awo-parts-thumbnails" role="group" aria-label="Fotografías del producto">${product.images.map((im,i) => `<button type="button" data-parts-image="${i}" aria-label="Ver ${escape(im.label)}" aria-pressed="${i===0}"><img src="${escape(im.src)}" alt="" width="${im.width}" height="${im.height}" loading="lazy"></button>`).join('')}</div></div>
-      <div class="awo-parts-detail-copy"><span class="awo-parts-kicker">AWO PARTS · ${escape(product.machineType)}</span><span class="awo-parts-badge">${escape(product.productType)}</span><h1>${escape(product.name)}</h1><p class="awo-parts-ref">Referencia <strong>${escape(product.reference)}</strong></p><p class="awo-parts-description">${escape(product.description)}</p><dl><div><dt>Categoría</dt><dd>${escape(product.category)}</dd></div><div><dt>Aplicación</dt><dd>${escape(product.application)}</dd></div><div><dt>Compatibilidad</dt><dd>${product.compatibleModels.length ? escape(product.compatibleModels.join(' · ')) : 'Consulta compatibilidad con tu equipo.'}</dd></div></dl><div class="awo-parts-price"><span>PRECIO</span><strong>Consultar</strong></div><div class="awo-parts-detail-actions"><a class="awo-parts-button" href="${quote}" target="_blank" rel="noopener">Cotizar repuesto ↗</a><a class="awo-parts-button secondary" href="${compatibility}" target="_blank" rel="noopener">Verificar compatibilidad ↗</a></div><p class="awo-parts-reference-note">La fotografía de la caja documenta la referencia. Confirma el modelo de tu equipo con AWO antes de solicitarlo.</p></div></div>`;
+      <div class="awo-parts-detail-copy"><span class="awo-parts-kicker">AWO PARTS · ${escape(product.machineType)}</span><span class="awo-parts-badge">${escape(product.productType)}</span><h1>${escape(product.name)}</h1><p class="awo-parts-ref">Referencia <strong>${escape(product.reference)}</strong></p>${product.awoId ? `<p class="awo-parts-ref">ID AWO <strong>${escape(product.awoId)}</strong></p>` : ''}<p class="awo-parts-description">${escape(product.description)}</p><dl><div><dt>Categoría</dt><dd>${escape(product.category)}</dd></div><div><dt>Aplicación</dt><dd>${escape(product.application)}</dd></div><div><dt>Compatibilidad</dt><dd>${product.compatibleModels.length ? escape(product.compatibleModels.join(' · ')) : 'Consulta compatibilidad con tu equipo.'}</dd></div></dl><div class="awo-parts-price"><span>PRECIO</span><strong>Consultar</strong></div><div class="awo-parts-detail-actions"><a class="awo-parts-button" href="${quote}" target="_blank" rel="noopener">Cotizar repuesto ↗</a><a class="awo-parts-button secondary" href="${compatibility}" target="_blank" rel="noopener">Verificar compatibilidad ↗</a></div><p class="awo-parts-reference-note">Confirma el modelo de tu equipo con AWO antes de solicitarlo.</p></div></div>`;
     $('awo-parts-product').hidden = false;
     document.title = `${product.name} ${product.reference} | AWO Parts · AWO Group`;
     const main = $('awo-parts-main-photo');
