@@ -118,9 +118,9 @@ const machineCatalog = {
     label: 'Compresores', breadcrumb: 'Compresores', heroCategory: 'COMPRESORES DE AIRE INDUSTRIAL',
     heroTitle: 'Repuestos para|compresores',
     heroDescription: 'Filtros, purgas y componentes para la línea AWO VDCM. Elige el modelo o envíanos la placa para validar la referencia antes del despacho.',
-    heroImage: '/assets/awo/compresores-vdcm-7-10-15-20.webp', heroAlt: 'Familia de compresores AWO VDCM 7, 10, 15 y 20',
+    heroImage: '/assets/awo/vdcm15-frontal-real.webp', heroAlt: 'AWO VDCM 15, fotografía de referencia de la familia VDCM',
     benefits: ['Identificación por referencia', 'Validamos la compatibilidad antes del despacho', 'Asesoría técnica especializada'],
-    image: '/assets/awo/compresores-vdcm-7-10-15-20.webp', imageAlt: 'Familia de compresores AWO VDCM 7, 10, 15 y 20',
+    image: '/assets/awo/vdcm15-frontal-real.webp', imageAlt: 'AWO VDCM 15, fotografía de referencia de la familia VDCM',
     status: 'FAMILIAS DE REPUESTOS', description: 'Selecciona VDCM 7, 10, 15 o 20. Confirmamos la referencia exacta con la placa del equipo.',
     models: [
       { id: 'vdcm7', name: 'VDCM 7' },
@@ -494,7 +494,7 @@ const awoQuoteShortcut = document.getElementById('awo-quote-shortcut');
 let awoSelectedMachineModel = '';
 let awoGalleryIndex = 0;
 const awoGallerySlides = [
-  { title: 'Vista general · diseño 4 en 1', description: 'La ficha del VDCM 10 muestra el compresor integrado al tanque horizontal.', details: ['Compresor de tornillo, tanque de 260 L, secador de aire y tres filtros de precisión.', 'Dimensiones indicadas: 1530 × 736 × 1447 mm.'] },
+  { title: 'Fotografía de referencia · VDCM 15', description: 'Vista real del VDCM 15 como referencia visual de la familia. Los datos del VDCM 10 se detallan en su ficha.', details: ['El VDCM 10 integra compresor de tornillo, tanque de 260 L, secador de aire y filtración.', 'Dimensiones indicadas para VDCM 10: 1530 × 736 × 1447 mm.'] },
   { title: 'Vista frontal', description: 'Observa el panel, las puertas de servicio y el montaje sobre el tanque.', details: ['Potencia indicada: 7,5 kW / 10 HP.', 'La cota longitudinal de la ficha es 1530 mm.'] },
   { title: 'Vista trasera', description: 'La vista posterior de la ficha muestra las conexiones y el conjunto de tratamiento de aire.', details: ['La ficha indica secador y filtración integrados.', 'Consulta acceso de mantenimiento y disposición de las conexiones antes de instalar.'] },
   { title: 'Vista lateral derecha', description: 'Detalle del ventilador lateral y del tanque visto de perfil.', details: ['Alto indicado: 1447 mm.', 'Ancho indicado: 736 mm.'] },
@@ -505,7 +505,7 @@ function renderAwoGallery() {
   const slide = awoGallerySlides[awoGalleryIndex];
   const photo = document.getElementById('awo-gallery-photo');
   photo.className = `awo-machine-gallery-photo view-${awoGalleryIndex}`;
-  photo.setAttribute('aria-label', `${slide.title}: recorte de la ficha técnica original del AWO VDCM 10`);
+  photo.setAttribute('aria-label', awoGalleryIndex === 0 ? 'Fotografía real del AWO VDCM 15 usada como referencia visual de la familia' : `${slide.title}: recorte de la ficha técnica original del AWO VDCM 10`);
   document.getElementById('awo-gallery-count').textContent = `VISTA ${awoGalleryIndex + 1} DE ${awoGallerySlides.length}`;
   document.getElementById('awo-gallery-title').textContent = slide.title;
   document.getElementById('awo-gallery-description').textContent = slide.description;
@@ -530,10 +530,10 @@ awoMachineModelButtons.forEach(button => button.addEventListener('click', () => 
   awoSelectedMachineModel = button.dataset.machineModel;
   awoMachineModelButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   const isTen = awoSelectedMachineModel === '10';
-  awoMachineRangeImage.src = '/assets/awo/compresores-vdcm-7-10-15-20.webp';
-  awoMachineRangeImage.alt = `Familia de compresores AWO VDCM; datos del modelo ${awoSelectedMachineModel} en el texto contiguo`;
-  awoMachineRangeImage.width = 1774;
-  awoMachineRangeImage.height = 887;
+  awoMachineRangeImage.src = '/assets/awo/vdcm15-frontal-real.webp';
+  awoMachineRangeImage.alt = 'Fotografía del AWO VDCM 15 como referencia visual de la familia VDCM';
+  awoMachineRangeImage.width = 1292;
+  awoMachineRangeImage.height = 1217;
   document.querySelector('.awo-compressor-range-visual').hidden = isTen;
   document.getElementById('awo-machine-gallery').hidden = !isTen;
   if (isTen) { awoGalleryIndex = 0; renderAwoGallery(); }
@@ -541,7 +541,7 @@ awoMachineModelButtons.forEach(button => button.addEventListener('click', () => 
     document.querySelector('.awo-compressor-range-visual').hidden = false;
     document.getElementById('awo-machine-gallery').hidden = true;
     document.querySelector('.awo-compressor-range-visual').dataset.model = awoSelectedMachineModel;
-    awoMachineRangeImage.alt = `Compresor AWO VDCM ${awoSelectedMachineModel}, vista de la familia VDCM`;
+    awoMachineRangeImage.alt = 'Fotografía del AWO VDCM 15 como referencia visual de la familia VDCM';
   }
   awoMachineSelected.hidden = false;
   document.getElementById('awo-machine-selected-name').textContent = `AWO VDCM ${awoSelectedMachineModel}`;
@@ -656,14 +656,12 @@ function renderVdcmProduct(number) {
   set('vdcm-fact-flow', model.flow);
   set('vdcm-fact-tank', model.tank);
   const image = document.getElementById('vdcm-product-image');
-  const individualPhoto = number === '10';
-  image.src = individualPhoto ? '/assets/awo/compresor-vdcm10-hero.webp' : '/assets/awo/compresores-vdcm-7-10-15-20.webp';
-  image.width = individualPhoto ? 1448 : 1774;
-  image.height = individualPhoto ? 1086 : 887;
-  image.alt = `Compresor de tornillo ${name} con tanque integrado`;
+  image.src = '/assets/awo/vdcm15-frontal-real.webp';
+  image.width = 1292;
+  image.height = 1217;
+  image.alt = 'Fotografía del AWO VDCM 15 como referencia visual de la familia VDCM';
   const visual = image.parentElement;
-  visual.classList.toggle('single', individualPhoto);
-  visual.style.setProperty('--product-x', { '7': '0%', '10': '-25%', '15': '-50%', '20': '-75%' }[number]);
+  visual.classList.add('single');
   const specs = [
     ['Potencia', model.power], ['Caudal', model.flow], ['Presión', '8 bar'],
     ['Tanque', model.tank], ['Voltaje', '220 V'], ['Frecuencia', '60 Hz'],
