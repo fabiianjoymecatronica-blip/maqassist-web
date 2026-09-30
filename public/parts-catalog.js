@@ -19,8 +19,9 @@ const AWO_PARTS_PRODUCTS = [
     id: 'ink-cartridge-sp70', slug: 'cartucho-tinta-sp70',
     name: 'Cartucho de tinta SP70', reference: 'SP70', awoId: 'CTN-C1', sku: 'SP70',
     division: 'AWO Parts', productType: 'Consumible', category: 'Codificación', subcategory: 'Cartucho de tinta',
-    machineType: 'Codificadoras', application: 'Codificación industrial', compatibleModels: [], brand: 'Willita',
-    description: 'Cartucho de tinta negra modelo SP70 para procesos de codificación. Verifica la compatibilidad con tu codificadora antes de solicitarlo.',
+    machineType: 'Codificadoras', machineTypes: ['Codificadoras', 'Selladoras'],
+    application: 'Codificación industrial', compatibleModels: ['SP9', 'SP7'], brand: 'Willita',
+    description: 'Cartucho de tinta negra modelo SP70 para procesos de codificación, compatible con las selladoras SP9 y SP7. Para otras máquinas, consulta la compatibilidad antes de solicitarlo.',
     technicalData: [
       { label: 'Color', value: 'Negro' },
       { label: 'Ancho de pulso (etiqueta)', value: '130–150 (1,8 µs)' },
