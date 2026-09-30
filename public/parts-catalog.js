@@ -32,8 +32,7 @@ const AWO_PARTS_PRODUCTS = [
       { src: '/assets/parts/cartucho-sp70-0989-cutout.png?v=2', alt: 'Vista lateral del cartucho de tinta SP70', label: 'Lateral', width: 1086, height: 1448 },
       { src: '/assets/parts/cartucho-sp70-0988-cutout.png?v=2', alt: 'Vista del extremo y cubierta del cartucho SP70', label: 'Extremo', width: 1086, height: 1448 },
       { src: '/assets/parts/cartucho-sp70-0987-cutout.png?v=2', alt: 'Cartucho SP70 con etiqueta lateral Willita', label: 'Etiqueta lateral', width: 1086, height: 1448 },
-      { src: '/assets/parts/cartucho-sp70-0986-cutout.png?v=2', alt: 'Otra vista del cartucho SP70 y su protector transparente', label: 'Protector', width: 1086, height: 1448 },
-      { src: '/assets/parts/cartucho-sp70-0993-cutout.png?v=2', alt: 'Etiqueta de datos técnicos del cartucho SP70 Willita, color negro y voltaje de 9 V', label: 'Datos técnicos', width: 1620, height: 971 }
+      { src: '/assets/parts/cartucho-sp70-0986-cutout.png?v=2', alt: 'Otra vista del cartucho SP70 y su protector transparente', label: 'Protector', width: 1086, height: 1448 }
     ],
     price: null, currency: 'COP', stock: null, quantity: 1, cartEnabled: false, featured: false, status: 'published'
   }
