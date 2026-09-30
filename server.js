@@ -28,8 +28,8 @@ function renderHtml(data, req, pathname) {
   const cleanPath = partsProduct ? `/repuestos/${partsProduct.slug}` : productMatch ? `/compresores/vdcm-${productMatch[1]}` : ['/repuestos', '/maquinas', '/planes', '/servicios', '/nosotros', '/contacto'].includes(pathname) ? pathname : '/';
   let html = data.toString('utf8').replace('__CANONICAL_URL__', new URL(cleanPath, origin).href);
   if (partsProduct) {
-    const title = `${partsProduct.name} ${partsProduct.reference} | AWO Parts · AWO Group`;
-    const description = `${partsProduct.name} referencia ${partsProduct.reference}: ${partsProduct.description} Consulta compatibilidad y cotización con AWO Parts.`;
+    const title = `${partsProduct.name}${partsProduct.name.includes(partsProduct.reference) ? '' : ` ${partsProduct.reference}`} | AWO Parts · AWO Group`;
+    const description = `${partsProduct.name}, ID AWO ${partsProduct.awoId || partsProduct.reference}: ${partsProduct.description} Consulta compatibilidad y cotización con AWO Parts.`;
     html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
       .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${description}">`);
   } else if (pathname === '/repuestos') {

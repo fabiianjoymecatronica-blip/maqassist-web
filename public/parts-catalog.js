@@ -14,6 +14,29 @@ const AWO_PARTS_PRODUCTS = [
       { src: '/assets/parts/filtro-aire-2914100241-material-sin-fondo.webp', alt: 'Detalle del material filtrante del filtro de aire real', label: 'Material filtrante', width: 1086, height: 1448 }
     ],
     price: null, currency: 'COP', stock: null, quantity: 1, cartEnabled: false, featured: true, status: 'published'
+  },
+  {
+    id: 'ink-cartridge-sp70', slug: 'cartucho-tinta-sp70',
+    name: 'Cartucho de tinta SP70', reference: 'SP70', awoId: 'CTN-C1', sku: 'SP70',
+    division: 'AWO Parts', productType: 'Consumible', category: 'Codificación', subcategory: 'Cartucho de tinta',
+    machineType: 'Codificadoras', application: 'Codificación industrial', compatibleModels: [], brand: 'Willita',
+    description: 'Cartucho de tinta negra modelo SP70 para procesos de codificación. Verifica la compatibilidad con tu codificadora antes de solicitarlo.',
+    technicalData: [
+      { label: 'Color', value: 'Negro' },
+      { label: 'Ancho de pulso (etiqueta)', value: '130–150 (1,8 µs)' },
+      { label: 'Voltaje de boquilla', value: '9 V' }
+    ],
+    images: [
+      { src: '/assets/parts/cartucho-sp70-0991.jpg', alt: 'Cartucho de tinta SP70 real, vista diagonal del cuerpo y boquilla protegida', label: 'Vista general', width: 1152, height: 1536 },
+      { src: '/assets/parts/cartucho-sp70-0990.jpg', alt: 'Cartucho SP70 real con etiqueta de modelo y datos de operación', label: 'Modelo SP70', width: 1152, height: 1536 },
+      { src: '/assets/parts/cartucho-sp70-0989.jpg', alt: 'Vista lateral del cartucho de tinta SP70', label: 'Lateral', width: 1152, height: 1536 },
+      { src: '/assets/parts/cartucho-sp70-0988.jpg', alt: 'Vista del extremo y cubierta del cartucho SP70', label: 'Extremo', width: 1152, height: 1536 },
+      { src: '/assets/parts/cartucho-sp70-0987.jpg', alt: 'Cartucho SP70 con etiqueta lateral Willita', label: 'Etiqueta lateral', width: 1152, height: 1536 },
+      { src: '/assets/parts/cartucho-sp70-0986.jpg', alt: 'Otra vista del cartucho SP70 y su protector transparente', label: 'Protector', width: 1152, height: 1536 },
+      { src: '/assets/parts/cartucho-sp70-0993.jpg', alt: 'Etiqueta de datos técnicos del cartucho SP70 Willita, color negro y voltaje de 9 V', label: 'Datos técnicos', width: 1536, height: 1152 },
+      { src: '/assets/parts/cartucho-sp70-0992.jpg', alt: 'Indicaciones del fabricante incluidas con el cartucho SP70', label: 'Indicaciones', width: 1152, height: 1536 }
+    ],
+    price: null, currency: 'COP', stock: null, quantity: 1, cartEnabled: false, featured: false, status: 'published'
   }
 ];
 if (typeof module !== 'undefined') module.exports = AWO_PARTS_PRODUCTS;
