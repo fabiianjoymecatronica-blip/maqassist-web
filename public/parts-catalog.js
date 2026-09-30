@@ -27,13 +27,13 @@ const AWO_PARTS_PRODUCTS = [
       { label: 'Voltaje de boquilla', value: '9 V' }
     ],
     images: [
-      { src: '/assets/parts/cartucho-sp70-0991-cutout.png', alt: 'Cartucho de tinta SP70 real, vista diagonal del cuerpo y boquilla protegida', label: 'Vista general', width: 1086, height: 1448 },
-      { src: '/assets/parts/cartucho-sp70-0990-cutout.png', alt: 'Cartucho SP70 real con etiqueta de modelo y datos de operación', label: 'Modelo SP70', width: 1086, height: 1448 },
-      { src: '/assets/parts/cartucho-sp70-0989-cutout.png', alt: 'Vista lateral del cartucho de tinta SP70', label: 'Lateral', width: 1086, height: 1448 },
-      { src: '/assets/parts/cartucho-sp70-0988-cutout.png', alt: 'Vista del extremo y cubierta del cartucho SP70', label: 'Extremo', width: 1086, height: 1448 },
-      { src: '/assets/parts/cartucho-sp70-0987-cutout.png', alt: 'Cartucho SP70 con etiqueta lateral Willita', label: 'Etiqueta lateral', width: 1086, height: 1448 },
-      { src: '/assets/parts/cartucho-sp70-0986-cutout.png', alt: 'Otra vista del cartucho SP70 y su protector transparente', label: 'Protector', width: 1086, height: 1448 },
-      { src: '/assets/parts/cartucho-sp70-0993-cutout.png', alt: 'Etiqueta de datos técnicos del cartucho SP70 Willita, color negro y voltaje de 9 V', label: 'Datos técnicos', width: 1620, height: 971 }
+      { src: '/assets/parts/cartucho-sp70-0991-cutout.png?v=2', alt: 'Cartucho de tinta SP70 real, vista diagonal del cuerpo y boquilla protegida', label: 'Vista general', width: 1086, height: 1448 },
+      { src: '/assets/parts/cartucho-sp70-0990-cutout.png?v=2', alt: 'Cartucho SP70 real con etiqueta de modelo y datos de operación', label: 'Modelo SP70', width: 1086, height: 1448 },
+      { src: '/assets/parts/cartucho-sp70-0989-cutout.png?v=2', alt: 'Vista lateral del cartucho de tinta SP70', label: 'Lateral', width: 1086, height: 1448 },
+      { src: '/assets/parts/cartucho-sp70-0988-cutout.png?v=2', alt: 'Vista del extremo y cubierta del cartucho SP70', label: 'Extremo', width: 1086, height: 1448 },
+      { src: '/assets/parts/cartucho-sp70-0987-cutout.png?v=2', alt: 'Cartucho SP70 con etiqueta lateral Willita', label: 'Etiqueta lateral', width: 1086, height: 1448 },
+      { src: '/assets/parts/cartucho-sp70-0986-cutout.png?v=2', alt: 'Otra vista del cartucho SP70 y su protector transparente', label: 'Protector', width: 1086, height: 1448 },
+      { src: '/assets/parts/cartucho-sp70-0993-cutout.png?v=2', alt: 'Etiqueta de datos técnicos del cartucho SP70 Willita, color negro y voltaje de 9 V', label: 'Datos técnicos', width: 1620, height: 971 }
     ],
     price: null, currency: 'COP', stock: null, quantity: 1, cartEnabled: false, featured: false, status: 'published'
   }
