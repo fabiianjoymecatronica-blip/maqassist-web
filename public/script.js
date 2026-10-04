@@ -1118,6 +1118,7 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   let index = 0;
   let paused = false;
   let timer;
+  let touchStartX = 0;
   const measure = () => {
     if (window.innerWidth > 760) { slider.style.height = ''; return; }
     const layout = slides[index].querySelector('.awo-home-hero-layout');
@@ -1143,16 +1144,21 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
     if (!paused && !reducedMotion.matches) {
       timer = setInterval(() => {
         if (!document.hidden && !slider.matches(':hover') && !slider.matches(':focus-within')) show(index + 1);
-      }, 9000);
+      }, 6500);
     }
   };
   dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); schedule(); }));
   pause.addEventListener('click', () => {
     paused = !paused;
     pause.setAttribute('aria-pressed', String(paused));
-    pause.textContent = paused ? 'Reanudar movimiento' : 'Pausar movimiento';
+    pause.textContent = paused ? 'Reanudar' : 'Pausar';
     schedule();
   });
+  slider.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+  slider.addEventListener('touchend', event => {
+    const distance = event.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(distance) > 55) { show(index + (distance < 0 ? 1 : -1)); schedule(); }
+  }, { passive: true });
   reducedMotion.addEventListener('change', schedule);
   window.addEventListener('resize', measure);
   slides.forEach(slide => slide.querySelector('img').addEventListener('load', measure));
