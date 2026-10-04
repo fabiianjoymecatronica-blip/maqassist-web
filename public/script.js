@@ -1107,7 +1107,7 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   });
 })();
 
-// La portada alterna los equipos destacados; los controles permiten detener o cambiar la presentación.
+// La portada alterna las divisiones; elegir una reinicia el tiempo sin detener la rotación.
 (() => {
   const slider = document.getElementById('awo-hero-slider');
   if (!slider || !document.getElementById('awo-hero-pause')) return;
@@ -1143,17 +1143,11 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
     clearInterval(timer);
     if (!paused && !reducedMotion.matches) {
       timer = setInterval(() => {
-        if (!document.hidden && !slider.matches(':hover') && !slider.matches(':focus-within')) show(index + 1);
-      }, 8000);
+        if (!document.hidden) show(index + 1);
+      }, 6500);
     }
   };
-  const stopAfterSelection = () => {
-    paused = true;
-    pause.setAttribute('aria-pressed', 'true');
-    pause.textContent = 'Reanudar';
-    schedule();
-  };
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); stopAfterSelection(); }));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); schedule(); }));
   pause.addEventListener('click', () => {
     paused = !paused;
     pause.setAttribute('aria-pressed', String(paused));
@@ -1163,7 +1157,7 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   slider.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
   slider.addEventListener('touchend', event => {
     const distance = event.changedTouches[0].screenX - touchStartX;
-    if (Math.abs(distance) > 55) { show(index + (distance < 0 ? 1 : -1)); stopAfterSelection(); }
+    if (Math.abs(distance) > 55) { show(index + (distance < 0 ? 1 : -1)); schedule(); }
   }, { passive: true });
   reducedMotion.addEventListener('change', schedule);
   window.addEventListener('resize', measure);
