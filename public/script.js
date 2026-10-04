@@ -1059,6 +1059,7 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
 
   reveal(document.querySelector('.site-header .brand'), { y: -6, duration: 500 });
   const hero = home.querySelector('.awo-compressor-slide');
+  if (hero) {
   reveal(hero.querySelector('.awo-eyebrow'), { x: -20, duration: 630 });
   reveal(hero.querySelector('h1'), { x: -24, delay: 70, duration: 700 });
   reveal(hero.querySelector('.awo-home-copy > p'), { x: -18, delay: 130, duration: 700 });
@@ -1067,6 +1068,7 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   reveal(hero.querySelector('.awo-compressor-art'), { x: 28, delay: 80, duration: 760 });
   hero.querySelectorAll('.awo-home-actions > a').forEach((item, index) =>
     reveal(item, { y: 10, delay: 340 + index * 65, duration: 560 }));
+  }
 
   const groups = [
     ['.awo-compressor-range', '.awo-compressor-range-heading, .awo-machine-model-picker > button, .awo-range-system, .awo-compressor-range-visual'],
