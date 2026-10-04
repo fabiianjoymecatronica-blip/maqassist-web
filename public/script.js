@@ -1107,29 +1107,46 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   });
 })();
 
-// La portada alterna las divisiones; elegir una reinicia el tiempo sin detener la rotación.
+// HOME: cinco presentaciones en una escena, sin modificar las demás secciones.
 (() => {
   const slider = document.getElementById('awo-hero-slider');
-  if (!slider || !document.getElementById('awo-hero-pause')) return;
+  const hero = slider?.closest('.awo-ecosystem');
+  if (!hero) return;
   const slides = [...slider.querySelectorAll('[data-hero-slide]')];
-  const dots = [...document.querySelectorAll('[data-hero-dot]')];
-  const pause = document.getElementById('awo-hero-pause');
+  const dots = [...hero.querySelectorAll('[data-hero-dot]')];
+  const pause = hero.querySelector('#awo-hero-pause');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let index = 0;
-  let paused = false;
-  let timer;
-  let touchStartX = 0;
-  const measure = () => {
-    if (window.innerWidth > 760) { slider.style.height = ''; return; }
-    const layout = slides[index].querySelector('.awo-home-hero-layout');
-    slider.style.height = `${Math.ceil(layout.getBoundingClientRect().height) + 28}px`;
+  let index = 0, paused = reducedMotion.matches, hovered = false, focused = false;
+  let timer, request = 0, touchStart;
+  const loaded = new Map();
+  const load = slide => {
+    if (!loaded.has(slide)) loaded.set(slide, Promise.all([...slide.querySelectorAll('img')].map(img => {
+      if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
+      return img.decode ? img.decode().catch(() => {}) : Promise.resolve();
+    })));
+    return loaded.get(slide);
   };
-  const show = next => {
-    index = (next + slides.length) % slides.length;
+  const schedule = () => {
+    clearTimeout(timer);
+    if (!paused && !hovered && !focused && !document.hidden) timer = setTimeout(() => show(index + 1), 4800);
+  };
+  const updatePause = () => {
+    pause.setAttribute('aria-pressed', String(paused));
+    pause.textContent = paused ? 'Reanudar' : 'Pausar';
+    pause.setAttribute('aria-label', paused ? 'Reanudar presentación automática' : 'Pausar presentación automática');
+  };
+  const show = async next => {
+    clearTimeout(timer);
+    const ticket = ++request;
+    const target = (next + slides.length) % slides.length;
+    await load(slides[target]);
+    if (ticket !== request) return;
+    index = target;
     slides.forEach((slide, i) => {
       const active = i === index;
       slide.classList.toggle('is-active', active);
       slide.setAttribute('aria-hidden', String(!active));
+      slide.inert = !active;
       slide.querySelectorAll('a').forEach(link => { link.tabIndex = active ? 0 : -1; });
     });
     dots.forEach((dot, i) => {
@@ -1137,31 +1154,31 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
       if (i === index) dot.setAttribute('aria-current', 'true');
       else dot.removeAttribute('aria-current');
     });
-    requestAnimationFrame(measure);
-  };
-  const schedule = () => {
-    clearInterval(timer);
-    if (!paused && !reducedMotion.matches) {
-      timer = setInterval(() => {
-        if (!document.hidden) show(index + 1);
-      }, 6500);
-    }
-  };
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); schedule(); }));
-  pause.addEventListener('click', () => {
-    paused = !paused;
-    pause.setAttribute('aria-pressed', String(paused));
-    pause.textContent = paused ? 'Reanudar' : 'Pausar';
+    // Solo anticipar la siguiente escena; las otras imágenes esperan su turno.
+    if (!paused) load(slides[(index + 1) % slides.length]);
     schedule();
+  };
+  dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+  pause.addEventListener('click', () => { paused = !paused; updatePause(); if (!paused) load(slides[(index + 1) % slides.length]); schedule(); });
+  hero.addEventListener('mouseenter', () => { hovered = true; schedule(); });
+  hero.addEventListener('mouseleave', () => { hovered = false; schedule(); });
+  hero.addEventListener('focusin', () => { focused = true; schedule(); });
+  hero.addEventListener('focusout', event => { focused = hero.contains(event.relatedTarget); schedule(); });
+  hero.querySelector('.awo-eco-nav').addEventListener('keydown', event => {
+    const current = dots.indexOf(document.activeElement);
+    if (current < 0 || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? slides.length - 1 : (current + (event.key === 'ArrowRight' ? 1 : -1) + slides.length) % slides.length;
+    dots[next].focus(); show(next);
   });
-  slider.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+  slider.addEventListener('touchstart', event => { touchStart = event.changedTouches[0]; }, { passive: true });
   slider.addEventListener('touchend', event => {
-    const distance = event.changedTouches[0].screenX - touchStartX;
-    if (Math.abs(distance) > 55) { show(index + (distance < 0 ? 1 : -1)); schedule(); }
+    if (!touchStart) return;
+    const touch = event.changedTouches[0], dx = touch.screenX - touchStart.screenX, dy = touch.screenY - touchStart.screenY;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) show(index + (dx < 0 ? 1 : -1));
+    touchStart = null;
   }, { passive: true });
-  reducedMotion.addEventListener('change', schedule);
-  window.addEventListener('resize', measure);
-  slides.forEach(slide => slide.querySelector('img').addEventListener('load', measure));
-  show(0);
-  schedule();
+  reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; updatePause(); schedule(); });
+  document.addEventListener('visibilitychange', schedule);
+  updatePause(); show(0);
 })();

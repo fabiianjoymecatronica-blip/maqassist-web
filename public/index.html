@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=awo-home-divisions-20261004d">
+  <link rel="stylesheet" href="/styles.css?v=awo-hero-ecosystem-20261004">
   <link rel="stylesheet" href="/parts-marketplace.css?v=3">
 </head>
 <body>
@@ -37,61 +37,115 @@
 
   <main>
     <section class="homepage awo-home" id="home">
-      <div class="awo-home-hero" aria-label="Divisiones de AWO Group">
-        <div class="awo-home-grid" aria-hidden="true"></div>
+      <div class="awo-home-hero awo-ecosystem" role="region" aria-roledescription="carrusel" aria-label="Soluciones industriales">
+        <div class="awo-eco-grid" aria-hidden="true"></div>
         <div class="awo-hero-slider" id="awo-hero-slider">
-          <article class="awo-hero-slide awo-compressor-slide is-active" aria-hidden="false" data-hero-slide>
-            <div class="container awo-home-hero-layout">
-              <div class="awo-home-copy">
-                <span class="awo-eyebrow">AWO GROUP · <strong>SOLUCIONES INDUSTRIALES</strong></span>
-                <h1>Bienvenido a AWO Group. <em>Tu operación en movimiento.</em></h1>
-                <p>Conoce nuestros equipos industriales, encuentra repuestos y consumibles, y recibe acompañamiento para cuidar tu operación. AWO Compressors es nuestra división principal de aire comprimido.</p>
-                <div class="awo-home-actions awo-compressor-actions">
-                  <a class="awo-home-button filled" href="#compresores">Explorar compresores <span>→</span></a>
+          <article class="awo-hero-slide awo-eco-slide eco-scene-0 is-active" data-hero-slide aria-hidden="false" role="group" aria-roledescription="presentación" aria-label="Presentación">
+            <div class="container awo-eco-layout">
+              <div class="awo-eco-copy">
+                <span class="awo-eco-kicker">SOLUCIONES INDUSTRIALES</span>
+                <h1>SOLUCIONES PARA <em>UNA INDUSTRIA QUE AVANZA</em></h1>
+                <p>Equipos, repuestos y respaldo técnico para acompañar tu operación.</p>
+                <div class="awo-eco-actions">
+                  <a class="awo-eco-button primary" href="/nosotros">CONOCER AWO <span aria-hidden="true">→</span></a>
+                  <a class="awo-eco-button secondary" href="https://wa.me/573189324488?text=Hola%20AWO%20Group%2C%20necesito%20asesor%C3%ADa%20para%20mi%20operaci%C3%B3n." target="_blank" rel="noopener">SOLICITAR ASESORÍA <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
-              <a class="awo-home-art awo-compressor-art" href="#compresores" aria-label="Ver compresores AWO VDCM y solicitar cotización">
-                <img src="/assets/awo/vdcm15-frontal-real.webp" width="1292" height="1217" fetchpriority="high" alt="Compresor AWO VDCM 15 sobre tanque horizontal">
-              </a>
+              <div class="awo-eco-art">
+                <div class="awo-eco-products">
+                  <img class="eco-product eco-overview" src="/assets/awo/vdcm15-vista-recta-real.webp" width="1086" height="1448" decoding="async" fetchpriority="high" alt="Vista real del compresor VDCM 15 sobre tanque">
+                </div>
+                <p class="awo-eco-meta">EQUIPOS · REPUESTOS · RESPALDO</p>
+              </div>
             </div>
           </article>
-          <article class="awo-hero-slide awo-parts-slide" aria-hidden="true" data-hero-slide>
-            <div class="container awo-home-hero-layout">
-              <div class="awo-home-copy">
-                <span class="awo-eyebrow">AWO PARTS · REPUESTOS Y CONSUMIBLES</span>
-                <h2>Encuentra la pieza que tu operación necesita.</h2>
-                <p>Consulta repuestos reales por máquina o referencia. Te ayudamos a verificar la compatibilidad antes de cotizar.</p>
-                <div class="awo-home-actions"><a class="awo-home-button filled" href="/repuestos" tabindex="-1">Buscar repuestos <span>→</span></a></div>
+          <article class="awo-hero-slide awo-eco-slide eco-scene-1" data-hero-slide aria-hidden="true" inert role="group" aria-roledescription="presentación" aria-label="Compressors">
+            <div class="container awo-eco-layout">
+              <div class="awo-eco-copy">
+                <span class="awo-eco-kicker">COMPRESSORS</span>
+                <h2>AIRE COMPRIMIDO <em>PARA TU PRODUCCIÓN</em></h2>
+                <p>Sistemas de aire comprimido diseñados para responder a las necesidades reales de tu operación.</p>
+                <div class="awo-eco-actions">
+                  <a class="awo-eco-button primary" href="/maquinas#compresores" tabindex="-1">VER COMPRESORES <span aria-hidden="true">→</span></a>
+                  <a class="awo-eco-button secondary" href="https://wa.me/573189324488?text=Hola%20AWO%20Group%2C%20quiero%20dimensionar%20un%20sistema%20de%20aire%20comprimido%20para%20mi%20proceso." target="_blank" rel="noopener" tabindex="-1">DIMENSIONAR MI SISTEMA <span aria-hidden="true">↗</span></a>
+                </div>
               </div>
-              <a class="awo-home-art awo-division-art awo-parts-art" href="/repuestos/filtro-aire-2914100241" aria-label="Ver filtro de aire real en AWO Parts" tabindex="-1">
-                <img src="/assets/parts/filtro-aire-2914100241-frontal-sin-fondo.webp" width="1086" height="1448" loading="eager" decoding="async" alt="Filtro de aire real referencia 2914100241, sin fondo">
-                <span>FILTRO DE AIRE REAL · REF. 2914100241</span>
-              </a>
+              <div class="awo-eco-art">
+                <div class="awo-eco-products">
+                  <img class="eco-product eco-compressor" data-src="/assets/awo/vdcm15-frontal-real.webp" width="1292" height="1217" decoding="async" alt="Compresor real VDCM 15 con tanque horizontal">
+                </div>
+                <p class="awo-eco-meta">7 · 10 · 15 · 20 HP <span aria-hidden="true">/</span> TECNOLOGÍA VSD</p>
+              </div>
             </div>
           </article>
-          <article class="awo-hero-slide awo-care-slide" aria-hidden="true" data-hero-slide>
-            <div class="container awo-home-hero-layout">
-              <div class="awo-home-copy">
-                <span class="awo-eyebrow">AWO CARE · MANTENIMIENTO Y SOPORTE</span>
-                <h2>Acompañamiento para cuidar tus equipos.</h2>
-                <p>Conoce los planes de mantenimiento, seguimiento y soporte técnico de AWO Care para tu operación.</p>
-                <div class="awo-home-actions"><a class="awo-home-button filled" href="/planes" tabindex="-1">Conocer planes AWO Care <span>→</span></a></div>
+          <article class="awo-hero-slide awo-eco-slide eco-scene-2" data-hero-slide aria-hidden="true" inert role="group" aria-roledescription="presentación" aria-label="Parts">
+            <div class="container awo-eco-layout">
+              <div class="awo-eco-copy">
+                <span class="awo-eco-kicker">PARTS</span>
+                <h2>REPUESTOS QUE MANTIENEN TU OPERACIÓN EN MARCHA</h2>
+                <p>Repuestos y consumibles para mantener tus equipos disponibles y facilitar su mantenimiento.</p>
+                <div class="awo-eco-actions">
+                  <a class="awo-eco-button primary" href="/repuestos" tabindex="-1">VER REPUESTOS <span aria-hidden="true">→</span></a>
+                  <a class="awo-eco-button secondary" href="https://wa.me/573189324488?text=Hola%20AWO%20Group%2C%20quiero%20consultar%20un%20repuesto%20y%20validar%20su%20compatibilidad." target="_blank" rel="noopener" tabindex="-1">CONSULTAR UN REPUESTO <span aria-hidden="true">↗</span></a>
+                </div>
               </div>
-              <a class="awo-home-art awo-division-art awo-care-art" href="/planes?equipo=AWO%20VDCM" aria-label="Conocer el cuidado de equipos AWO VDCM" tabindex="-1">
-                <img src="/assets/awo/vdcm15-lateral-abierto-sin-fondo.webp" width="1086" height="1448" loading="eager" decoding="async" alt="Compresor AWO VDCM 15 real con acceso lateral abierto, recortado sobre fondo transparente">
-                <span>EQUIPO REAL · VDCM 15 ABIERTO</span>
-              </a>
+              <div class="awo-eco-art">
+                <div class="awo-eco-products">
+                  <img class="eco-product eco-filter" data-src="/assets/parts/filtro-aire-2914100241-frontal-sin-fondo.webp" width="1086" height="1448" decoding="async" alt="Filtro de aire real, referencia 2914100241">
+                  <img class="eco-product eco-cartridge" data-src="/assets/parts/cartucho-sp70-0990-cutout.webp" width="1086" height="1448" decoding="async" alt="Cartucho real SP70 de codificación">
+                </div>
+                <p class="awo-eco-meta">REPUESTOS Y CONSUMIBLES</p>
+              </div>
+            </div>
+          </article>
+          <article class="awo-hero-slide awo-eco-slide eco-scene-3" data-hero-slide aria-hidden="true" inert role="group" aria-roledescription="presentación" aria-label="Care">
+            <div class="container awo-eco-layout">
+              <div class="awo-eco-copy">
+                <span class="awo-eco-kicker">CARE</span>
+                <h2>RESPALDO TÉCNICO DURANTE LA OPERACIÓN</h2>
+                <p>Instalación, mantenimiento y soporte para acompañar tus equipos durante su vida útil.</p>
+                <div class="awo-eco-actions">
+                  <a class="awo-eco-button primary" href="/planes" tabindex="-1">CONOCER CARE <span aria-hidden="true">→</span></a>
+                  <a class="awo-eco-button secondary" href="https://wa.me/573189324488?text=Hola%20AWO%20Group%2C%20necesito%20servicio%20t%C3%A9cnico%20para%20mis%20equipos." target="_blank" rel="noopener" tabindex="-1">SOLICITAR SERVICIO <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+              <div class="awo-eco-art">
+                <div class="awo-eco-products">
+                  <img class="eco-product eco-care" data-src="/assets/awo/vdcm15-lateral-abierto-sin-fondo.webp" width="1086" height="1448" decoding="async" alt="Compresor real VDCM 15 con acceso lateral abierto para mantenimiento">
+                </div>
+                <p class="awo-eco-meta">INSTALACIÓN · MANTENIMIENTO · SOPORTE</p>
+              </div>
+            </div>
+          </article>
+          <article class="awo-hero-slide awo-eco-slide eco-scene-4" data-hero-slide aria-hidden="true" inert role="group" aria-roledescription="presentación" aria-label="Otras soluciones">
+            <div class="container awo-eco-layout">
+              <div class="awo-eco-copy">
+                <span class="awo-eco-kicker">OTRAS SOLUCIONES</span>
+                <h2>MÁS SOLUCIONES PARA TU PROCESO</h2>
+                <p>Equipos y soluciones industriales para diferentes necesidades de producción.</p>
+                <div class="awo-eco-actions">
+                  <a class="awo-eco-button primary" href="/maquinas#awo-lines-title" tabindex="-1">VER OTRAS SOLUCIONES <span aria-hidden="true">→</span></a>
+                </div>
+              </div>
+              <div class="awo-eco-art">
+                <div class="awo-eco-products">
+                  <img class="eco-product eco-sealer" data-src="/assets/selladoras/selladora-continua-transparente.webp" width="1536" height="1024" decoding="async" alt="Selladora de banda continua existente en el catálogo">
+                  <img class="eco-product eco-coders" data-src="/assets/codificadoras/codificadoras-aisladas-v3.webp" width="1983" height="793" decoding="async" alt="Equipos de codificación existentes en el catálogo">
+                </div>
+                <p class="awo-eco-meta">SELLADO Y CODIFICACIÓN</p>
+              </div>
             </div>
           </article>
         </div>
-        <div class="awo-hero-switcher" aria-label="Explorar divisiones AWO">
-          <div class="awo-hero-dots" role="group" aria-label="Seleccionar división">
-            <button type="button" class="is-active" data-hero-dot aria-current="true" aria-label="Mostrar AWO Compressors"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 12h19c5 0 5-6 1-6-2 0-3 1-3 2M3 18h24c5 0 5 7 0 7-2 0-3-1-3-2M3 24h12"/></svg><span>AWO <strong>COMPRESSORS</strong></span></button>
-            <button type="button" data-hero-dot aria-label="Mostrar AWO Parts"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 7h18v18H7zM12 7v18M20 7v18M7 13h18M7 19h18"/></svg><span>AWO <strong>PARTS</strong></span></button>
-            <button type="button" data-hero-dot aria-label="Mostrar AWO Care"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3l11 5v8c0 7-5 11-11 13C10 27 5 23 5 16V8zM16 10v12M10 16h12"/></svg><span>AWO <strong>CARE</strong></span></button>
+        <div class="awo-eco-controls">
+          <div class="awo-eco-nav" role="group" aria-label="Elegir presentación">
+            <button type="button" data-hero-dot class="is-active" aria-current="true" aria-label="Mostrar Presentación"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none"><path d="M4 10 16 4l12 6v17H4zM11 27V16h10v11"/></svg><span>Presentación</span></button>
+            <button type="button" data-hero-dot aria-label="Mostrar Compressors"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none"><path d="M3 12h19c5 0 5-6 1-6-2 0-3 1-3 2M3 18h24c5 0 5 7 0 7-2 0-3-1-3-2M3 24h12"/></svg><span>Compressors</span></button>
+            <button type="button" data-hero-dot aria-label="Mostrar Parts"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none"><path d="M7 7h18v18H7zM12 7v18M20 7v18M7 13h18M7 19h18"/></svg><span>Parts</span></button>
+            <button type="button" data-hero-dot aria-label="Mostrar Care"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none"><path d="M16 3l11 5v8c0 7-5 11-11 13C10 27 5 23 5 16V8zM16 10v12M10 16h12"/></svg><span>Care</span></button>
+            <button type="button" data-hero-dot aria-label="Mostrar Otras soluciones"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none"><path d="M4 7h10v9H4zM18 7h10v9H18zM4 20h24v7H4z"/></svg><span>Otras soluciones</span></button>
           </div>
-          <a class="awo-hero-other" href="/maquinas#awo-lines-title">Otras soluciones <span aria-hidden="true">↗</span></a>
-          <button class="awo-hero-pause" id="awo-hero-pause" type="button" aria-pressed="false">Pausar</button>
+          <button class="awo-eco-pause" id="awo-hero-pause" type="button" aria-pressed="false" aria-label="Pausar presentación automática">Pausar</button>
         </div>
       </div>
 
@@ -657,7 +711,7 @@
     <div class="quote-details"><label>Máquina<select id="quote-machine"><option value="">Seleccione la máquina</option><option>Selladora de banda</option><option>Codificadora</option><option>Empacadora</option><option>Compresor</option><option>Otra máquina</option></select></label><label>Referencia o modelo<input id="quote-reference" type="text" placeholder="Número de parte o modelo (si lo conoce)"></label><label>Ciudad y país<input id="quote-location" type="text" placeholder="Ej. Bogotá, Colombia" required></label><label class="quote-photo-choice"><input id="quote-photo" type="checkbox">Tengo fotografía o placa para adjuntar</label><small>Adjunte la imagen en WhatsApp o en su aplicación de correo al abrir la solicitud.</small></div>
     <div class="cart-footer"><div class="cart-note"><span>Solicitud de repuestos</span><strong>Código, precio y compatibilidad sujetos a confirmación</strong></div><div id="cart-total" class="cart-total" aria-live="polite"></div><button class="button primary" id="checkout-cart" type="button" disabled>Solicitar pedido por WhatsApp <span>↗</span></button><button class="button secondary" id="email-quote" type="button" disabled>Enviar por correo ↗</button><small>AWO confirmará las referencias, el valor y el envío antes de cerrar la compra. No se realiza un cobro aquí.</small></div>
   </aside>
-  <script src="/script.js?v=awo-home-divisions-20261004c"></script>
+  <script src="/script.js?v=awo-hero-ecosystem-20261004"></script>
   <script src="/parts-catalog.js?v=8"></script>
   <script src="/parts-marketplace.js?v=6"></script>
 </body>
