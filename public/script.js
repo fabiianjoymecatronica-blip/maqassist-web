@@ -1144,10 +1144,16 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
     if (!paused && !reducedMotion.matches) {
       timer = setInterval(() => {
         if (!document.hidden && !slider.matches(':hover') && !slider.matches(':focus-within')) show(index + 1);
-      }, 6500);
+      }, 8000);
     }
   };
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); schedule(); }));
+  const stopAfterSelection = () => {
+    paused = true;
+    pause.setAttribute('aria-pressed', 'true');
+    pause.textContent = 'Reanudar';
+    schedule();
+  };
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); stopAfterSelection(); }));
   pause.addEventListener('click', () => {
     paused = !paused;
     pause.setAttribute('aria-pressed', String(paused));
@@ -1157,7 +1163,7 @@ document.querySelectorAll('[data-system]').forEach(link => link.addEventListener
   slider.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
   slider.addEventListener('touchend', event => {
     const distance = event.changedTouches[0].screenX - touchStartX;
-    if (Math.abs(distance) > 55) { show(index + (distance < 0 ? 1 : -1)); schedule(); }
+    if (Math.abs(distance) > 55) { show(index + (distance < 0 ? 1 : -1)); stopAfterSelection(); }
   }, { passive: true });
   reducedMotion.addEventListener('change', schedule);
   window.addEventListener('resize', measure);

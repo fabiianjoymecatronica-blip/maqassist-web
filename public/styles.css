@@ -2678,7 +2678,7 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-range{scroll-margin-
 
 /* Portada AWO: tres divisiones con fotografías distintas y selección directa. */
 .awo-home-hero .awo-hero-slider{height:515px;overflow:hidden}
-.awo-home-hero .awo-hero-slide{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .32s ease,visibility .32s ease}
+.awo-home-hero .awo-hero-slide{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;transition:none}
 .awo-home-hero .awo-hero-slide.is-active{opacity:1;visibility:visible;pointer-events:auto}
 .awo-home-hero .awo-hero-slide.is-active img{animation:none}
 .awo-home-hero .awo-hero-slide:not(.awo-compressor-slide){background:#fff}
