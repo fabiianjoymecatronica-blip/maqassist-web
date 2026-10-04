@@ -827,7 +827,7 @@ function updatePageView() {
   const actions = range.querySelector('.awo-range-actions') || home.querySelector('.awo-range-actions');
   const quoteLink = actions.querySelectorAll('a')[1];
   if (page === 'home') {
-    document.getElementById('compressor-range-title').textContent = 'Sistema de aire comprimido 4 en 1.';
+    document.getElementById('compressor-range-title').textContent = 'Conoce AWO Compressors y la familia VDCM.';
     home.insertBefore(range, home.querySelector('.awo-home-engineering'));
     home.insertBefore(parts, home.querySelector('.awo-home-cta'));
     home.insertBefore(benefits, home.querySelector('.awo-select-panel'));
