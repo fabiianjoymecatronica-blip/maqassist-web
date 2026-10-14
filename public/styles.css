@@ -2846,3 +2846,6 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-range{scroll-margin-
 
 /* Imagen proporcionada: completa y sin recorte, solo en la presentación inicial. */
 .awo-ecosystem .eco-scene-0 .eco-intro-composite{width:100%;height:100%;object-fit:contain;object-position:center}
+
+/* Foto completa de repuestos, limitada a la diapositiva Parts del HOME. */
+.awo-ecosystem .eco-scene-2 .eco-parts-composite{width:100%;height:100%;object-fit:contain;object-position:center;mix-blend-mode:multiply}
