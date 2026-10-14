@@ -1,6 +1,19 @@
 // Catálogo de productos confirmados. Añadir registros aquí publica tarjetas y fichas sin crear páginas a mano.
 const AWO_PARTS_PRODUCTS = [
   {
+    id: 'oil-filter-wd950', slug: 'filtro-aceite-wd950',
+    name: 'Filtro de aceite WD 950', reference: 'WD 950', awoId: 'FO-15HP1', sku: 'WD950',
+    division: 'AWO Parts', productType: 'Consumible', category: 'Lubricación', subcategory: 'Filtro de aceite',
+    machineType: 'Compresores', application: 'Compresor de tornillo de 15 HP', compatibleModels: ['VDCM 15'], brand: null,
+    description: 'Filtro de aceite WD 950 compatible con el compresor AWO VDCM 15 de 15 HP. Consumible para el mantenimiento del circuito de lubricación del compresor.',
+    images: [
+      { src: '/assets/parts/filtro-aceite-wd950-general.jpeg', alt: 'Filtro de aceite WD 950, vista general del cuerpo metálico', label: 'Vista general', width: 1024, height: 1536 },
+      { src: '/assets/parts/filtro-aceite-wd950-rosca.jpeg', alt: 'Filtros de aceite WD 950 con detalle de la conexión roscada', label: 'Conexión roscada', width: 1333, height: 1180 },
+      { src: '/assets/parts/filtro-aceite-wd950-conjunto.jpeg', alt: 'Filtros de aceite WD 950 en dos posiciones', label: 'Dos posiciones', width: 1536, height: 1024 }
+    ],
+    price: null, currency: 'COP', stock: null, quantity: 1, cartEnabled: false, featured: false, status: 'published'
+  },
+  {
     id: 'separador-sp-15hp1', slug: 'separador-aire-aceite-sp-15hp1',
     name: 'Separador aire/aceite', reference: 'SP-15HP1', awoId: 'SP-15HP1', sku: 'SP-15HP1',
     division: 'AWO Parts', productType: 'Consumible', category: 'Separación aire/aceite', subcategory: 'Separador aire/aceite',
