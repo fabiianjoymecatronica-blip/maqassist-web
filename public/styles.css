@@ -2849,3 +2849,13 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-range{scroll-margin-
 
 /* Foto completa de repuestos, limitada a la diapositiva Parts del HOME. */
 .awo-ecosystem .eco-scene-2 .eco-parts-composite{width:100%;height:100%;object-fit:contain;object-position:center;mix-blend-mode:multiply}
+
+/* Márgenes móviles compartidos; no modifica la composición de escritorio. */
+@media(max-width:760px){
+  .container{width:min(var(--max),calc(100% - 32px));margin-inline:auto;min-width:0}
+  .awo-home-hero,.awo-home-engineering{width:calc(100% - 32px)}
+  .awo-home .awo-home-lines.container{width:calc(100% - 32px)}
+  .awo-cx-table-wrap{max-width:100%;overflow-x:auto}
+  .awo-cx-compare,.awo-cx-profile-data,.awo-product-copy,.awo-machine-quote>*,.footer-grid>*{min-width:0}
+  .footer-grid a,.awo-product-copy dd,.awo-cx-profile-data dd{overflow-wrap:anywhere}
+}
