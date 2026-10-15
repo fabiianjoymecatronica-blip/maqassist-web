@@ -27,6 +27,20 @@ function renderHtml(data, req, pathname) {
   const partsProduct = partsProducts.find(product => pathname.replace(/\/$/, '') === `/repuestos/${product.slug}`);
   const cleanPath = partsProduct ? `/repuestos/${partsProduct.slug}` : productMatch ? `/compresores/vdcm-${productMatch[1]}` : ['/repuestos', '/maquinas', '/planes', '/servicios', '/nosotros', '/contacto'].includes(pathname) ? pathname : '/';
   let html = data.toString('utf8').replace('__CANONICAL_URL__', new URL(cleanPath, origin).href);
+  const page = pathname.split('/').filter(Boolean)[0] || 'home';
+  const division = page === 'repuestos' ? 'parts' : ['planes', 'servicios', 'soporte'].includes(page) ? 'care' : 'compressors';
+  const logos = {
+    compressors: ['awo-compressor-official.jpeg', 'AWO Compressor'],
+    parts: ['awo-parts-official.jpeg', 'AWO Parts'],
+    care: ['awo-core-official.jpeg', 'AWO Core']
+  };
+  html = html.replace('<body>', `<body data-division="${division}">`);
+  if (['repuestos', 'maquinas', 'compresores', 'planes', 'servicios', 'soporte'].includes(page)) {
+    const [file, label] = logos[division];
+    html = html.replace(/(<header\b[\s\S]*?)<img class="awo-group-logo"[^>]*>/,
+      (_, prefix) => `${prefix}<img class="awo-group-logo" src="/assets/awo/${file}" alt="${label}" width="1536" height="638">`)
+      .replace('aria-label="AWO Group, inicio"', `aria-label="${label}, inicio"`);
+  }
   if (partsProduct) {
     const title = `${partsProduct.name}${partsProduct.name.includes(partsProduct.reference) ? '' : ` ${partsProduct.reference}`} | AWO Parts · AWO Group`;
     const description = `${partsProduct.name}, ID AWO ${partsProduct.awoId || partsProduct.reference}: ${partsProduct.description} Consulta compatibilidad y cotización con AWO Parts.`;

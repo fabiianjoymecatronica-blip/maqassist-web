@@ -162,34 +162,26 @@ function vdcmDescription(number) {
   return `${model.power} · 8 bar · ${model.flow} · tanque ${model.tank} · 220 V / 60 Hz / 3 fases. ${model.dimensions} · ${model.weight} · salida DN20. ${vdcmShared}`;
 }
 
-// El archivo maestro del logo se mantiene; el lienzo cambia únicamente los píxeles del triángulo.
-const logoMaster = new Image();
-logoMaster.src = '/assets/awo/awo-group-transparent.webp?v=1';
-const logoColors = { compressors: '#2E9E1E', parts: '#1683C4', care: '#F28C28' };
-const logoVariants = {};
+// Archivos oficiales de cada división, sin redibujar ni recolorear el logo.
+const logoVariants = {
+  group: { src: '/assets/awo/awo-group-transparent.webp?v=1', alt: 'AWO Group', width: 1902, height: 827 },
+  compressors: { src: '/assets/awo/awo-compressor-official.jpeg', alt: 'AWO Compressor', width: 1536, height: 638 },
+  parts: { src: '/assets/awo/awo-parts-official.jpeg', alt: 'AWO Parts', width: 1536, height: 638 },
+  care: { src: '/assets/awo/awo-core-official.jpeg', alt: 'AWO Core', width: 1536, height: 638 }
+};
 function updateAwoLogo() {
-  if (!logoMaster.complete || !logoMaster.naturalWidth) return;
-  const division = document.body.dataset.division || 'compressors';
-  if (!logoVariants[division]) {
-    const canvas = document.createElement('canvas');
-    canvas.width = logoMaster.naturalWidth;
-    canvas.height = logoMaster.naturalHeight;
-    const context = canvas.getContext('2d', { willReadFrequently: true });
-    context.drawImage(logoMaster, 0, 0);
-    const frame = context.getImageData(0, 0, canvas.width, canvas.height);
-    const rgb = logoColors[division].match(/[\da-f]{2}/gi).map(hex => parseInt(hex, 16));
-    for (let i = 0; i < frame.data.length; i += 4) {
-      const r = frame.data[i], g = frame.data[i + 1], b = frame.data[i + 2], a = frame.data[i + 3];
-      if (a && g > 65 && g > r * 1.3 && g > b * 1.3) {
-        frame.data[i] = rgb[0]; frame.data[i + 1] = rgb[1]; frame.data[i + 2] = rgb[2];
-      }
-    }
-    context.putImageData(frame, 0, 0);
-    logoVariants[division] = canvas.toDataURL('image/png');
-  }
-  document.querySelectorAll('img.awo-group-logo').forEach(img => { img.src = logoVariants[division]; });
+  const page = document.body.dataset.page;
+  const division = document.body.dataset.division;
+  const key = ['home', 'nosotros', 'contacto'].includes(page) ? 'group' : division;
+  const logo = logoVariants[key] || logoVariants.group;
+  document.querySelectorAll('.site-header img.awo-group-logo').forEach(img => {
+    img.src = logo.src;
+    img.alt = logo.alt;
+    img.width = logo.width;
+    img.height = logo.height;
+    img.closest('a')?.setAttribute('aria-label', `${logo.alt}, inicio`);
+  });
 }
-logoMaster.addEventListener('load', updateAwoLogo);
 
 function selectModel(modelId) {
   currentModel = modelId === 'all' ? null : currentMachine.models.find(model => model.id === modelId) || null;
@@ -676,7 +668,7 @@ function updatePlan() {
   const count = Math.max(1, Math.min(50, Number(countInput.value) || 1));
   countInput.value = count;
   const rule = planRules[selectedMonths];
-  document.getElementById('plan-title').textContent = `AWO Care · ${selectedMonths} meses`;
+  document.getElementById('plan-title').textContent = `AWO Core · ${selectedMonths} meses`;
   document.getElementById('machine-badge').textContent = count;
   document.getElementById('machine-word').textContent = count === 1 ? ' máquina' : ' máquinas';
   document.getElementById('preventive-total').textContent = rule.preventive * count;
@@ -685,7 +677,7 @@ function updatePlan() {
   document.getElementById('emergency-condition').textContent = rule.condition;
   document.getElementById('response-level').textContent = rule.response;
   const equipmentContext = planEquipment ? ` de ${planEquipment}` : '';
-  const message = `Hola AWO Group, quiero cotizar un plan AWO Care de ${selectedMonths} meses para ${count} ${count === 1 ? 'máquina' : 'máquinas'}${equipmentContext}. La propuesta indica ${rule.preventive * count} mantenimientos preventivos, ${rule.inspections * count} inspecciones y ${rule.emergencies * count} urgencias incluidas; por favor confirmen el alcance para mi equipo.`;
+  const message = `Hola AWO Group, quiero cotizar un plan AWO Core de ${selectedMonths} meses para ${count} ${count === 1 ? 'máquina' : 'máquinas'}${equipmentContext}. La propuesta indica ${rule.preventive * count} mantenimientos preventivos, ${rule.inspections * count} inspecciones y ${rule.emergencies * count} urgencias incluidas; por favor confirmen el alcance para mi equipo.`;
   document.getElementById('plan-quote').href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
 }
 
@@ -877,7 +869,7 @@ function updatePageView() {
   if (page === 'repuestos' || page === 'planes') {
     const message = page === 'repuestos'
       ? 'Hola AWO Group, necesito asesoría con un repuesto. Puedo compartir la referencia o una foto de la placa del equipo.'
-      : 'Hola AWO Group, quiero información sobre AWO Care, sus planes de mantenimiento y soporte.';
+      : 'Hola AWO Group, quiero información sobre AWO Core, sus planes de mantenimiento y soporte.';
     document.querySelector('.header-whatsapp').href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
     document.querySelector('.whatsapp-float').href = `https://wa.me/573189324488?text=${encodeURIComponent(message)}`;
   }

@@ -2859,3 +2859,37 @@ body[data-compressor-view="true"] #maquinas .awo-compressor-range{scroll-margin-
   .awo-cx-compare,.awo-cx-profile-data,.awo-product-copy,.awo-machine-quote>*,.footer-grid>*{min-width:0}
   .footer-grid a,.awo-product-copy dd,.awo-cx-profile-data dd{overflow-wrap:anywhere}
 }
+
+/* Acentos muestreados de los tres archivos oficiales proporcionados. */
+:root{
+  --awo-accent:#01B405;
+  --awo-accent-hover:#006B03;
+  --awo-accent-strong:#007F03;
+  --awo-accent-soft:#EFFBEF;
+  --awo-accent-border:#BCE8BE;
+  --awo-core-strong:#B43E00;
+}
+body[data-division="parts"]{
+  --awo-accent:#0154FD;
+  --awo-accent-hover:#0142C7;
+  --awo-accent-strong:#0148DA;
+  --awo-accent-soft:#F0F5FF;
+  --awo-accent-border:#C3D5FF;
+}
+body[data-division="care"]{
+  --awo-accent:#FD5B02;
+  --awo-accent-hover:#963400;
+  --awo-accent-strong:#B43E00;
+  --awo-accent-soft:#FFF5EE;
+  --awo-accent-border:#FFD5BF;
+}
+body[data-division] :is(.button.primary,.awo-range-button-primary,.nav-cta){background:var(--awo-accent-strong);border-color:var(--awo-accent-strong);color:#fff}
+body[data-division] .awo-ecosystem .awo-eco-kicker{color:var(--awo-accent-strong)}
+body[data-division] .awo-ecosystem .awo-eco-kicker:before{background:var(--awo-accent)}
+body[data-division] .awo-ecosystem .awo-eco-button.primary{background:var(--awo-accent-strong);border-color:var(--awo-accent-strong)}
+body[data-division] .awo-ecosystem .awo-eco-button.primary:hover{background:var(--awo-accent-hover);border-color:var(--awo-accent-hover)}
+body[data-division] .awo-ecosystem .awo-eco-nav button.is-active{color:var(--awo-accent-strong);background:var(--awo-accent-soft)}
+body[data-division] .awo-ecosystem .awo-eco-nav button.is-active:after{background:var(--awo-accent)}
+.site-header .brand .awo-group-logo{object-fit:contain;mix-blend-mode:multiply;flex:none}
+body[data-division="care"] :is(.plan-label,.config-label,.coverage-panel h3,.awo-range-kicker){color:var(--awo-accent-strong)}
+body[data-division="care"] :is(.plan-card.recommended,.config-panel,.coverage-panel){border-color:var(--awo-accent-border)}
